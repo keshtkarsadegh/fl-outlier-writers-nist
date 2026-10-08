@@ -1,0 +1,6998 @@
+{
+ "generated_by": "tools/stopping_test_axis.py",
+ "root": "$FOA_STUDY_DIR",
+ "rule": {
+  "patience": 20,
+  "margin": 0.0,
+  "variant": "checkpoint_best",
+  "fired_on": "fold-mean trace"
+ },
+ "source_test_per_round": {
+  "exists": true,
+  "field": "accuracies_0.json accuracies[r][1] (SOURCE_TEST_SET, every round)",
+  "rows": "the run's own fold's source test split (evaluation.sets.source_test); final_evaluation.old.mean and P0 average all five folds' splits",
+  "round_0_test_score_max_abs": 1.3322676295501878e-16
+ },
+ "drawn_only_trace": {
+  "definition": "per round, client_val_accuracies pooled over that round's participants, weighted by validation rows in the run's fold book",
+  "reconstruction_max_error_all_clients": 0.0,
+  "runs": 415
+ },
+ "baselines": {
+  "aggfull": {
+   "A0": 0.8225200326521813,
+   "P0": 0.9985506551168347
+  },
+  "regfull": {
+   "A0": 0.8225200326521813,
+   "P0": 0.9985506551168347
+  },
+  "combo": {
+   "A0": 0.8225200326521813,
+   "P0": 0.9985506551168347
+  },
+  "c10d10": {
+   "A0": 0.8225200326521813,
+   "P0": 0.9985506551168347
+  },
+  "five": {
+   "A0": 0.803205923965891,
+   "P0": 0.9985506551168347
+  },
+  "c20d10": {
+   "A0": 0.8440524717917046,
+   "P0": 0.9985506551168347
+  },
+  "c20d20": {
+   "A0": 0.8440524717917046,
+   "P0": 0.9985506551168347
+  },
+  "extreme": {
+   "A0": 0.7589864158829676,
+   "P0": 0.9985506551168347
+  }
+ },
+ "stages": [
+  {
+   "stage": "aggfull",
+   "arms": 19,
+   "validation_fixed": 0.05823128291545769,
+   "validation_gain": 0.022201816765609412,
+   "validation_gain_drawn": 0.02130065681673092,
+   "test_fixed": 0.06124965554662464,
+   "test_gain_stored": 0.020669198172431492,
+   "test_gain_drawn": 0.0210848581305604,
+   "test_oracle_gain": 0.03371892606733121,
+   "mean_abs_kept_difference": 11.947368421052632,
+   "arms_kept_round_differs": 18,
+   "fires_stored": 19,
+   "fires_drawn": 19,
+   "worst_test_gain_stored": 0.007277011806895509,
+   "worst_test_arm_stored": "anchor_h2/parallel",
+   "worst_test_gain_drawn": 0.006980054560347504,
+   "worst_test_arm_drawn": "anchor_h2/parallel",
+   "arms_hurt_test_stored": 0,
+   "arms_hurt_test_drawn": 0,
+   "per_run_test_gain_stored": 0.02521402245544329,
+   "per_run_test_gain_drawn": 0.02341136985440117,
+   "per_run_validation_gain_stored": 0.033417577962212494
+  },
+  {
+   "stage": "regfull",
+   "arms": 28,
+   "validation_fixed": 0.08257616235373402,
+   "validation_gain": 0.004014160413715361,
+   "validation_gain_drawn": 6.158341606758908e-05,
+   "test_fixed": 0.09237674099271392,
+   "test_gain_stored": 0.001999651175620019,
+   "test_gain_drawn": 0.0008779838816585583,
+   "test_oracle_gain": 0.009851339666718235,
+   "mean_abs_kept_difference": 16.285714285714285,
+   "arms_kept_round_differs": 15,
+   "fires_stored": 10,
+   "fires_drawn": 17,
+   "worst_test_gain_stored": -0.003363871948786859,
+   "worst_test_arm_stored": "param_l2_mu0p0001/parallel",
+   "worst_test_gain_drawn": -0.023047329225188956,
+   "worst_test_arm_drawn": "hybrid_mix0p75/cyclic",
+   "arms_hurt_test_stored": 3,
+   "arms_hurt_test_drawn": 9,
+   "per_run_test_gain_stored": -0.0009356597273384193,
+   "per_run_test_gain_drawn": -0.002532500801603808,
+   "per_run_validation_gain_stored": 0.007555660638102097
+  },
+  {
+   "stage": "combo",
+   "arms": 18,
+   "validation_fixed": 0.08864049291226464,
+   "validation_gain": 0.0030791777601544834,
+   "validation_gain_drawn": -0.0010136519247146117,
+   "test_fixed": 0.10012863233022656,
+   "test_gain_stored": -0.0007262778559104688,
+   "test_gain_drawn": -0.0011166232141646183,
+   "test_oracle_gain": 0.006411502360515294,
+   "mean_abs_kept_difference": 19.666666666666668,
+   "arms_kept_round_differs": 14,
+   "fires_stored": 11,
+   "fires_drawn": 14,
+   "worst_test_gain_stored": -0.0039497683844272186,
+   "worst_test_arm_stored": "weight_q0_hybrid_seq_mix0p5/parallel",
+   "worst_test_gain_drawn": -0.014720534873183255,
+   "worst_test_arm_drawn": "eta_0p95_hybrid_seq_mix0p5/parallel",
+   "arms_hurt_test_stored": 9,
+   "arms_hurt_test_drawn": 7,
+   "per_run_test_gain_stored": -0.0034102115309710365,
+   "per_run_test_gain_drawn": -0.0061898855780638026,
+   "per_run_validation_gain_stored": 0.008277674630775288
+  },
+  {
+   "stage": "c10d10",
+   "arms": 5,
+   "validation_fixed": 0.07813374822038222,
+   "validation_gain": 0.008865087587332643,
+   "validation_gain_drawn": 0.008257327965731486,
+   "test_fixed": 0.08292075344339561,
+   "test_gain_stored": 0.009239481038595199,
+   "test_gain_drawn": 0.010928317135245483,
+   "test_oracle_gain": 0.01928510541413269,
+   "mean_abs_kept_difference": 21,
+   "arms_kept_round_differs": 4,
+   "fires_stored": 4,
+   "fires_drawn": 5,
+   "worst_test_gain_stored": 0.0,
+   "worst_test_arm_stored": "balanced/parallel",
+   "worst_test_gain_drawn": -0.006413743272958225,
+   "worst_test_arm_drawn": "balanced/parallel",
+   "arms_hurt_test_stored": 0,
+   "arms_hurt_test_drawn": 1,
+   "per_run_test_gain_stored": 0.007199624821933672,
+   "per_run_test_gain_drawn": 0.010507581725840197,
+   "per_run_validation_gain_stored": 0.015869190292311732
+  },
+  {
+   "stage": "five",
+   "arms": 5,
+   "validation_fixed": 0.10405879672410574,
+   "validation_gain": 0.024687782606907516,
+   "validation_gain_drawn": 0.020475784974750465,
+   "test_fixed": 0.09968983404393597,
+   "test_gain_stored": 0.010877078014624952,
+   "test_gain_drawn": 0.015013395686487041,
+   "test_oracle_gain": 0.022578174990177453,
+   "mean_abs_kept_difference": 26.6,
+   "arms_kept_round_differs": 5,
+   "fires_stored": 4,
+   "fires_drawn": 5,
+   "worst_test_gain_stored": 0.0,
+   "worst_test_arm_stored": "winner/parallel",
+   "worst_test_gain_drawn": 0.0012735638856926218,
+   "worst_test_arm_drawn": "balanced/parallel",
+   "arms_hurt_test_stored": 0,
+   "arms_hurt_test_drawn": 0,
+   "per_run_test_gain_stored": 0.015074292509811613,
+   "per_run_test_gain_drawn": 0.014097356782135027,
+   "per_run_validation_gain_stored": 0.037347153935069585
+  },
+  {
+   "stage": "c20d10",
+   "arms": 3,
+   "validation_fixed": 0.06175147889338398,
+   "validation_gain": 0.0,
+   "validation_gain_drawn": 0.00014627373079911798,
+   "test_fixed": 0.05500175855436188,
+   "test_gain_stored": 0.0,
+   "test_gain_drawn": -0.004502231965756551,
+   "test_oracle_gain": 0.003168637400670584,
+   "mean_abs_kept_difference": 15.666666666666666,
+   "arms_kept_round_differs": 1,
+   "fires_stored": 0,
+   "fires_drawn": 1,
+   "worst_test_gain_stored": 0.0,
+   "worst_test_arm_stored": "balanced/parallel",
+   "worst_test_gain_drawn": -0.013506695897269654,
+   "worst_test_arm_drawn": "winner/parallel",
+   "arms_hurt_test_stored": 0,
+   "arms_hurt_test_drawn": 1,
+   "per_run_test_gain_stored": -0.005555762487866275,
+   "per_run_test_gain_drawn": -0.0068786070661040815,
+   "per_run_validation_gain_stored": 0.0022564997802581254
+  },
+  {
+   "stage": "c20d20",
+   "arms": 3,
+   "validation_fixed": 0.062172718770290625,
+   "validation_gain": 0.0,
+   "validation_gain_drawn": -0.00035602501812648235,
+   "test_fixed": 0.05388181889096102,
+   "test_gain_stored": 0.0,
+   "test_gain_drawn": 0.000788762994806444,
+   "test_oracle_gain": 0.002075223145426223,
+   "mean_abs_kept_difference": 7.333333333333333,
+   "arms_kept_round_differs": 1,
+   "fires_stored": 0,
+   "fires_drawn": 1,
+   "worst_test_gain_stored": 0.0,
+   "worst_test_arm_stored": "balanced/parallel",
+   "worst_test_gain_drawn": 0.0,
+   "worst_test_arm_drawn": "balanced/parallel",
+   "arms_hurt_test_stored": 0,
+   "arms_hurt_test_drawn": 0,
+   "per_run_test_gain_stored": -0.006919457511028552,
+   "per_run_test_gain_drawn": -0.005638994721028734,
+   "per_run_validation_gain_stored": 0.003238111395832292
+  },
+  {
+   "stage": "extreme",
+   "arms": 2,
+   "validation_fixed": 0.10918774048242746,
+   "validation_gain": 0.11571765921282401,
+   "validation_gain_drawn": 0.11571765921282401,
+   "test_fixed": 0.10164875611547153,
+   "test_gain_stored": 0.08421020099109824,
+   "test_gain_drawn": 0.08421020099109824,
+   "test_oracle_gain": 0.10476701729281658,
+   "mean_abs_kept_difference": 0,
+   "arms_kept_round_differs": 0,
+   "fires_stored": 2,
+   "fires_drawn": 2,
+   "worst_test_gain_stored": 0.04745345576667179,
+   "worst_test_arm_stored": "double/parallel",
+   "worst_test_gain_drawn": 0.04745345576667179,
+   "worst_test_arm_drawn": "double/parallel",
+   "arms_hurt_test_stored": 0,
+   "arms_hurt_test_drawn": 0,
+   "per_run_test_gain_stored": 0.08889647122279082,
+   "per_run_test_gain_drawn": 0.08889647122279082,
+   "per_run_validation_gain_stored": 0.12006953685908653
+  },
+  {
+   "stage": "all",
+   "arms": 83,
+   "validation_fixed": 0.0784959830409317,
+   "validation_gain": 0.011913926255545042,
+   "validation_gain_drawn": 0.009188707346855333,
+   "test_fixed": 0.08428444297746393,
+   "test_gain_stored": 0.008489580651029732,
+   "test_gain_drawn": 0.008338375837230518,
+   "test_oracle_gain": 0.017668508032315098,
+   "mean_abs_kept_difference": 16.19277108433735,
+   "arms_kept_round_differs": 58,
+   "fires_stored": 50,
+   "fires_drawn": 64,
+   "worst_test_gain_stored": -0.0039497683844272186,
+   "worst_test_arm_stored": "weight_q0_hybrid_seq_mix0p5/parallel",
+   "worst_test_gain_drawn": -0.023047329225188956,
+   "worst_test_arm_drawn": "hybrid_mix0p75/cyclic",
+   "arms_hurt_test_stored": 12,
+   "arms_hurt_test_drawn": 18,
+   "per_run_test_gain_stored": 0.00774965079323002,
+   "per_run_test_gain_drawn": 0.006334372216959355,
+   "per_run_validation_gain_stored": 0.018291509046821714
+  }
+ ],
+ "arms": [
+  {
+   "stage": "aggfull",
+   "cell": "anchor_h2",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 86,
+    "kept_round": 66
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 97,
+    "kept_round": 77
+   },
+   "kept_round_difference": 11,
+   "validation": {
+    "final": 0.07584345803837456,
+    "at_stored_kept": 0.08097737650318781,
+    "at_drawn_kept": 0.07701694899611633,
+    "gain_stored": 0.0051339184648132585,
+    "gain_drawn": 0.001173490957741774
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.07731303222217964,
+    "at_stored_kept": 0.08459004402907515,
+    "at_drawn_kept": 0.08429308678252714,
+    "gain_stored": 0.007277011806895509,
+    "gain_drawn": 0.006980054560347504,
+    "oracle": 0.09701029467773892,
+    "oracle_round": 41,
+    "cohort_at_stored_kept": 0.9235268560468833,
+    "source_at_stored_kept": 0.9821338757512079,
+    "cohort_final": 0.9215454558543758,
+    "source_final": 0.97683826413682,
+    "final_evaluation_score": 0.07469664799011896
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      49,
+      47,
+      37,
+      16,
+      23
+     ],
+     "test_gain": 0.014214367220860225,
+     "validation_gain": 0.015292947777480182,
+     "test_gain_per_fold": [
+      0.024124894460308965,
+      0.014975722673893244,
+      0.020581156033069314,
+      0.00031924789599124814,
+      0.011070815041038351
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      44,
+      33,
+      100,
+      24,
+      23
+     ],
+     "test_gain": 0.012697782498080068,
+     "validation_gain": 0.00925321634187153,
+     "test_gain_per_fold": [
+      0.026875648699374532,
+      0.011679934507678347,
+      0.0,
+      0.01386251424230911,
+      0.011070815041038351
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "control_fedavg",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 68,
+    "kept_round": 48
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 89,
+    "kept_round": 69
+   },
+   "kept_round_difference": 21,
+   "validation": {
+    "final": 0.061858533983967456,
+    "at_stored_kept": 0.08147576446287286,
+    "at_drawn_kept": 0.07875323299896853,
+    "gain_stored": 0.0196172304789054,
+    "gain_drawn": 0.01689469901500107
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06792888157623297,
+    "at_stored_kept": 0.08599336279893174,
+    "at_drawn_kept": 0.07959442494024782,
+    "gain_stored": 0.01806448122269877,
+    "gain_drawn": 0.011665543364014846,
+    "oracle": 0.09378096571792931,
+    "oracle_round": 27,
+    "cohort_at_stored_kept": 0.9243539844100305,
+    "source_at_stored_kept": 0.9827100661579173,
+    "cohort_final": 0.9197410635864012,
+    "source_final": 0.9692585057588479,
+    "final_evaluation_score": 0.06772559201325927
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      48,
+      43,
+      58,
+      31,
+      36
+     ],
+     "test_gain": 0.020248051719054683,
+     "validation_gain": 0.02950006536521401,
+     "test_gain_per_fold": [
+      0.018744386901784926,
+      0.018920788166215008,
+      0.0257386542016953,
+      0.02561322200021654,
+      0.01222320732536164
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      49,
+      12,
+      58,
+      33,
+      39
+     ],
+     "test_gain": 0.017799084048102154,
+     "validation_gain": 0.026394859190763963,
+     "test_gain_per_fold": [
+      0.025539260765048533,
+      0.006768010388437218,
+      0.0257386542016953,
+      0.01386251424230922,
+      0.0170869806430205
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "control_fedavg",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 87,
+    "kept_round": 67
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 70,
+    "kept_round": 50
+   },
+   "kept_round_difference": -17,
+   "validation": {
+    "final": 0.06391044824394299,
+    "at_stored_kept": 0.0794422305192698,
+    "at_drawn_kept": 0.076782822954923,
+    "gain_stored": 0.015531782275326811,
+    "gain_drawn": 0.012872374710980017
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06933953668673913,
+    "at_stored_kept": 0.07816195317503834,
+    "at_drawn_kept": 0.07954945564751999,
+    "gain_stored": 0.008822416488299206,
+    "gain_drawn": 0.010209918960780856,
+    "oracle": 0.09270644406680444,
+    "oracle_round": 44,
+    "cohort_at_stored_kept": 0.9215139735992183,
+    "source_at_stored_kept": 0.9777186673448361,
+    "cohort_final": 0.9206195299284499,
+    "source_final": 0.9697906945273054,
+    "final_evaluation_score": 0.06643713345369276
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      28,
+      43,
+      24,
+      31,
+      49
+     ],
+     "test_gain": 0.01307973154642823,
+     "validation_gain": 0.02501700319804532,
+     "test_gain_per_fold": [
+      0.016722327089685907,
+      0.005222448057813911,
+      0.016705619702096497,
+      0.014242309153057353,
+      0.012505953729487485
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      54,
+      43,
+      68,
+      26,
+      49
+     ],
+     "test_gain": 0.012668725022904014,
+     "validation_gain": 0.022741438645010194,
+     "test_gain_per_fold": [
+      0.014431376345126923,
+      0.005222448057813911,
+      0.014282973453797032,
+      0.016900873528294724,
+      0.012505953729487485
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "control_fedavg_earlystop",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 58,
+    "kept_round": 38
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 61,
+    "kept_round": 41
+   },
+   "kept_round_difference": 3,
+   "validation": {
+    "final": 0.07081173984297584,
+    "at_stored_kept": 0.08400363003472833,
+    "at_drawn_kept": 0.08361450337306475,
+    "gain_stored": 0.013191890191752487,
+    "gain_drawn": 0.012802763530088912
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06251221528407325,
+    "at_stored_kept": 0.09095014249738309,
+    "at_drawn_kept": 0.08735447683108762,
+    "gain_stored": 0.028437927213309844,
+    "gain_drawn": 0.02484226154701437,
+    "oracle": 0.09377580522141153,
+    "oracle_round": 39,
+    "cohort_at_stored_kept": 0.9252769373178693,
+    "source_at_stored_kept": 0.9867438929485298,
+    "cohort_final": 0.9141002874759191,
+    "source_final": 0.9694826155771702,
+    "final_evaluation_score": 0.06202252479931305
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      26,
+      55,
+      38,
+      41,
+      36
+     ],
+     "test_gain": 0.027233158697179773,
+     "validation_gain": 0.022972993735926296,
+     "test_gain_per_fold": [
+      0.021113316016757255,
+      0.021207373532068585,
+      0.0417814909128964,
+      0.022195067803482682,
+      0.02986854522069393
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      26,
+      26,
+      28,
+      17,
+      36
+     ],
+     "test_gain": 0.027102133631907565,
+     "validation_gain": 0.015038163743231681,
+     "test_gain_per_fold": [
+      0.021113316016757255,
+      0.02128500451671178,
+      0.04520354414483552,
+      0.018040258260539344,
+      0.02986854522069393
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "control_fedavg_earlystop",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 68,
+    "kept_round": 48
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 72,
+    "kept_round": 52
+   },
+   "kept_round_difference": 4,
+   "validation": {
+    "final": 0.06368340677002926,
+    "at_stored_kept": 0.08157378822572481,
+    "at_drawn_kept": 0.07984356680946991,
+    "gain_stored": 0.017890381455695548,
+    "gain_drawn": 0.016160160039440652
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06597046103417445,
+    "at_stored_kept": 0.08583564884417505,
+    "at_drawn_kept": 0.08231295364392707,
+    "gain_stored": 0.0198651878100006,
+    "gain_drawn": 0.016342492609752624,
+    "oracle": 0.0991880322182622,
+    "oracle_round": 33,
+    "cohort_at_stored_kept": 0.9243134461005468,
+    "source_at_stored_kept": 0.9825928905126443,
+    "cohort_final": 0.9196490805371421,
+    "source_final": 0.9673920682660484,
+    "final_evaluation_score": 0.06465308267661289
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      26,
+      51,
+      38,
+      20,
+      38
+     ],
+     "test_gain": 0.025819312905612346,
+     "validation_gain": 0.031366553583038505,
+     "test_gain_per_fold": [
+      0.027335452193881227,
+      0.011489385727190604,
+      0.033889140823943786,
+      0.02126851500189897,
+      0.035114070781147144
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      55,
+      33,
+      32,
+      18,
+      38
+     ],
+     "test_gain": 0.024112716348967788,
+     "validation_gain": 0.023983118907041124,
+     "test_gain_per_fold": [
+      0.03328869743854501,
+      0.014291158536585358,
+      0.028731642655317913,
+      0.009138012333243517,
+      0.035114070781147144
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "eta_0p95",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 65,
+    "kept_round": 45
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 49,
+    "kept_round": 29
+   },
+   "kept_round_difference": -16,
+   "validation": {
+    "final": 0.06635104435545702,
+    "at_stored_kept": 0.08229542739889328,
+    "at_drawn_kept": 0.0823057193547505,
+    "gain_stored": 0.01594438304343626,
+    "gain_drawn": 0.015954674999293483
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06383461996641693,
+    "at_stored_kept": 0.08526700821980197,
+    "at_drawn_kept": 0.0863138518253925,
+    "gain_stored": 0.021432388253385046,
+    "gain_drawn": 0.022479231858975574,
+    "oracle": 0.09474965437971221,
+    "oracle_round": 37,
+    "cohort_at_stored_kept": 0.9234752374074514,
+    "source_at_stored_kept": 0.9828624585813667,
+    "cohort_final": 0.9168694486399621,
+    "source_final": 0.9680358590954709,
+    "final_evaluation_score": 0.077542542515876
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      27,
+      17,
+      17,
+      20,
+      48
+     ],
+     "test_gain": 0.01892360427264663,
+     "validation_gain": 0.027418638067563884,
+     "test_gain_per_fold": [
+      0.026536846124475044,
+      -0.000663392050587075,
+      0.03426936896082611,
+      0.030360658384568917,
+      0.004114539943950168
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      27,
+      21,
+      33,
+      29,
+      48
+     ],
+     "test_gain": 0.022845313258152845,
+     "validation_gain": 0.019846421310562756,
+     "test_gain_per_fold": [
+      0.026536846124475044,
+      0.01823622402890701,
+      0.0507168521296264,
+      0.014622104063805597,
+      0.004114539943950168
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "fedadam_lr0p001_tau1em06",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 54,
+    "kept_round": 34
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 54,
+    "kept_round": 34
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.03471107656198669,
+    "at_stored_kept": 0.07306748295910259,
+    "at_drawn_kept": 0.07306748295910259,
+    "gain_stored": 0.038356406397115905,
+    "gain_drawn": 0.038356406397115905
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.03560644286270413,
+    "at_stored_kept": 0.06265802948857527,
+    "at_drawn_kept": 0.06265802948857527,
+    "gain_stored": 0.027051586625871135,
+    "gain_drawn": 0.027051586625871135,
+    "oracle": 0.08383823693685144,
+    "oracle_round": 15,
+    "cohort_at_stored_kept": 0.914127503914648,
+    "source_at_stored_kept": 0.9696012133429432,
+    "cohort_final": 0.9113797568136253,
+    "source_final": 0.9452973738180949,
+    "final_evaluation_score": 0.029311758656577
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      24,
+      13,
+      53,
+      34,
+      18
+     ],
+     "test_gain": 0.03289396755156089,
+     "validation_gain": 0.054002853981425104,
+     "test_gain_per_fold": [
+      0.0316135069293193,
+      0.04788420280036121,
+      0.019820699759305116,
+      0.024876566654006838,
+      0.040274861614811974
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      25,
+      30,
+      17,
+      34,
+      30
+     ],
+     "test_gain": 0.04267952677289313,
+     "validation_gain": 0.04513602657193867,
+     "test_gain_per_fold": [
+      0.038790205916676035,
+      0.0434239498644986,
+      0.06060278368856176,
+      0.024876566654006838,
+      0.04570412774072241
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "fedavgm_b0p3",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 58,
+    "kept_round": 38
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 44,
+    "kept_round": 24
+   },
+   "kept_round_difference": -14,
+   "validation": {
+    "final": 0.05074250367608513,
+    "at_stored_kept": 0.08301903496178753,
+    "at_drawn_kept": 0.07906276037582172,
+    "gain_stored": 0.0322765312857024,
+    "gain_drawn": 0.02832025669973659
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.05757418554151892,
+    "at_stored_kept": 0.0861951890957863,
+    "at_drawn_kept": 0.08667087177808375,
+    "gain_stored": 0.02862100355426738,
+    "gain_drawn": 0.029096686236564827,
+    "oracle": 0.09387917836963688,
+    "oracle_round": 29,
+    "cohort_at_stored_kept": 0.9271101043638491,
+    "source_at_stored_kept": 0.9801557725009532,
+    "cohort_final": 0.9187187669143183,
+    "source_final": 0.9599261063962167,
+    "final_evaluation_score": 0.05363307156079413
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      20,
+      20,
+      33,
+      16,
+      33
+     ],
+     "test_gain": 0.03296907196498675,
+     "validation_gain": 0.04203442155559547,
+     "test_gain_per_fold": [
+      0.035926517485977416,
+      0.03669828364950323,
+      0.02989674538668141,
+      0.03426502345738136,
+      0.02805878984539034
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      31,
+      30,
+      33,
+      19,
+      57
+     ],
+     "test_gain": 0.030370862654131203,
+     "validation_gain": 0.03252179578471481,
+     "test_gain_per_fold": [
+      0.04218360948432098,
+      0.02558999548328822,
+      0.02989674538668141,
+      0.037386864233410644,
+      0.01679709868295476
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "fedyogi_lr0p001_tau1em08",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 53,
+    "kept_round": 33
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 51,
+    "kept_round": 31
+   },
+   "kept_round_difference": -2,
+   "validation": {
+    "final": 0.03639930352044729,
+    "at_stored_kept": 0.07606989437260081,
+    "at_drawn_kept": 0.07581088529810809,
+    "gain_stored": 0.03967059085215352,
+    "gain_drawn": 0.0394115817776608
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.038809769587562395,
+    "at_stored_kept": 0.07495769948115735,
+    "at_drawn_kept": 0.07253061283786899,
+    "gain_stored": 0.03614792989359496,
+    "gain_drawn": 0.033720843250306595,
+    "oracle": 0.09423172644529591,
+    "oracle_round": 16,
+    "cohort_at_stored_kept": 0.9253557572764347,
+    "source_at_stored_kept": 0.9706726299737387,
+    "cohort_final": 0.9066994139215009,
+    "source_final": 0.9531810434350776,
+    "final_evaluation_score": 0.03896888591959895
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      22,
+      14,
+      33,
+      48,
+      27
+     ],
+     "test_gain": 0.038271387264837656,
+     "validation_gain": 0.05179069078831504,
+     "test_gain_per_fold": [
+      0.06619556975299679,
+      0.0679059394760615,
+      0.030325810164998024,
+      0.0013522166629054144,
+      0.025577400267226547
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      24,
+      14,
+      53,
+      30,
+      28
+     ],
+     "test_gain": 0.038940707709883934,
+     "validation_gain": 0.048579689304190724,
+     "test_gain_per_fold": [
+      0.07279953105421377,
+      0.0679059394760615,
+      0.01832420553249381,
+      0.02154189394731676,
+      0.01413196853933385
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "median",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 86,
+    "kept_round": 66
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 65,
+    "kept_round": 45
+   },
+   "kept_round_difference": -21,
+   "validation": {
+    "final": 0.049500593162980944,
+    "at_stored_kept": 0.0747281484471759,
+    "at_drawn_kept": 0.08189933305515329,
+    "gain_stored": 0.025227555284194958,
+    "gain_drawn": 0.032398739892172346
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.05428178435971509,
+    "at_stored_kept": 0.07679854530446131,
+    "at_drawn_kept": 0.07920757716873503,
+    "gain_stored": 0.022516760944746222,
+    "gain_drawn": 0.024925792809019937,
+    "oracle": 0.08976624986378504,
+    "oracle_round": 31,
+    "cohort_at_stored_kept": 0.9235124001578482,
+    "source_at_stored_kept": 0.9743568329156291,
+    "cohort_final": 0.9083705382338566,
+    "source_final": 0.9669819338948745,
+    "final_evaluation_score": 0.058159902563840515
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      35,
+      43,
+      36,
+      17,
+      37
+     ],
+     "test_gain": 0.030942341992749055,
+     "validation_gain": 0.04399844839140785,
+     "test_gain_per_fold": [
+      0.03386143512468476,
+      0.02937979900632326,
+      0.019201520912547565,
+      0.04536255735912276,
+      0.02690639756106694
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      49,
+      10,
+      62,
+      34,
+      45
+     ],
+     "test_gain": 0.019724081155544738,
+     "validation_gain": 0.03624514627640914,
+     "test_gain_per_fold": [
+      0.028706795949427044,
+      -0.005427111562782416,
+      0.018085254822618357,
+      0.045802899284627885,
+      0.011452567283832815
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "seq_delta_capped",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 94,
+    "kept_round": 74
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 73,
+    "kept_round": 53
+   },
+   "kept_round_difference": -21,
+   "validation": {
+    "final": 0.0698485795999606,
+    "at_stored_kept": 0.08100593409300283,
+    "at_drawn_kept": 0.07921477901767182,
+    "gain_stored": 0.011157354493042226,
+    "gain_drawn": 0.009366199417711218
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.0671228890347815,
+    "at_stored_kept": 0.07760350262385096,
+    "at_drawn_kept": 0.08804440313091233,
+    "gain_stored": 0.01048061358906946,
+    "gain_drawn": 0.020921514096130828,
+    "oracle": 0.10047236621204755,
+    "oracle_round": 32,
+    "cohort_at_stored_kept": 0.9197767747583956,
+    "source_at_stored_kept": 0.9788974156344714,
+    "cohort_final": 0.916001331150581,
+    "source_final": 0.9721922456532165,
+    "final_evaluation_score": 0.07019097193893827
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      34,
+      15,
+      52,
+      38,
+      35
+     ],
+     "test_gain": 0.02833432095762962,
+     "validation_gain": 0.017903452369894435,
+     "test_gain_per_fold": [
+      0.010309278350515427,
+      0.035936088527552035,
+      0.036814106812711356,
+      0.02569670349026021,
+      0.03291542760710908
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      48,
+      46,
+      36,
+      25,
+      56
+     ],
+     "test_gain": 0.024324299784851067,
+     "validation_gain": 0.01599883835531859,
+     "test_gain_per_fold": [
+      0.0012234537426929482,
+      0.04016344850948517,
+      0.04270764293438445,
+      0.013292821876186856,
+      0.024234131861505914
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "seq_delta_scaled",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 63,
+    "kept_round": 43
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 59,
+    "kept_round": 39
+   },
+   "kept_round_difference": -4,
+   "validation": {
+    "final": 0.061955667761285804,
+    "at_stored_kept": 0.08771270612609117,
+    "at_drawn_kept": 0.08933692079878264,
+    "gain_stored": 0.025757038364805362,
+    "gain_drawn": 0.027381253037496833
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.07177202941165206,
+    "at_stored_kept": 0.09503362056930391,
+    "at_drawn_kept": 0.09233440500972026,
+    "gain_stored": 0.023261591157651848,
+    "gain_drawn": 0.0205623755980682,
+    "oracle": 0.09870362591160178,
+    "oracle_round": 45,
+    "cohort_at_stored_kept": 0.9307681874834823,
+    "source_at_stored_kept": 0.9853361208548376,
+    "cohort_final": 0.921565857779585,
+    "source_final": 0.9712768594010831,
+    "final_evaluation_score": 0.07002155367622069
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      34,
+      38,
+      52,
+      36,
+      43
+     ],
+     "test_gain": 0.021499565455638713,
+     "validation_gain": 0.03377004025696813,
+     "test_gain_per_fold": [
+      0.010309278350515427,
+      0.02717084462511299,
+      0.021175916559109664,
+      0.01926312448282752,
+      0.02957866326062797
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      34,
+      39,
+      24,
+      9,
+      31
+     ],
+     "test_gain": 0.01596012239632578,
+     "validation_gain": 0.02372693580837215,
+     "test_gain_per_fold": [
+      0.010309278350515427,
+      0.02444670280036132,
+      0.014234136812362519,
+      0.009814120664696113,
+      0.02099637335369353
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "seq_equal",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 58,
+    "kept_round": 38
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 63,
+    "kept_round": 43
+   },
+   "kept_round_difference": 5,
+   "validation": {
+    "final": 0.047847123434282435,
+    "at_stored_kept": 0.08168444771563432,
+    "at_drawn_kept": 0.07416354960383431,
+    "gain_stored": 0.03383732428135189,
+    "gain_drawn": 0.026316426169551876
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.049736494453555505,
+    "at_stored_kept": 0.07768878607765543,
+    "at_drawn_kept": 0.06818220801596593,
+    "gain_stored": 0.02795229162409993,
+    "gain_drawn": 0.018445713562410426,
+    "oracle": 0.09727979599957412,
+    "oracle_round": 18,
+    "cohort_at_stored_kept": 0.9233688353687489,
+    "source_at_stored_kept": 0.9753906384779226,
+    "cohort_final": 0.9168956898404718,
+    "source_final": 0.9539114923820998,
+    "final_evaluation_score": 0.04783873436601913
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      13,
+      23,
+      48,
+      15,
+      19
+     ],
+     "test_gain": 0.03471015427219759,
+     "validation_gain": 0.04901148363254939,
+     "test_gain_per_fold": [
+      0.037948577298076436,
+      0.060686257904245644,
+      0.021317193986116534,
+      0.028021341905322794,
+      0.025577400267226547
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      13,
+      50,
+      48,
+      43,
+      19
+     ],
+     "test_gain": 0.03167908162328301,
+     "validation_gain": 0.039656842200548284,
+     "test_gain_per_fold": [
+      0.037948577298076436,
+      0.037707486449864436,
+      0.021317193986116534,
+      0.03584475011513111,
+      0.025577400267226547
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "seq_fedavg",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 62,
+    "kept_round": 42
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 51,
+    "kept_round": 31
+   },
+   "kept_round_difference": -11,
+   "validation": {
+    "final": 0.06897075042573975,
+    "at_stored_kept": 0.0836630109657488,
+    "at_drawn_kept": 0.08434508240534655,
+    "gain_stored": 0.01469226054000905,
+    "gain_drawn": 0.015374331979606803
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.0637678186046792,
+    "at_stored_kept": 0.08887089059787982,
+    "at_drawn_kept": 0.09125442148874943,
+    "gain_stored": 0.025103071993200624,
+    "gain_drawn": 0.027486602884070233,
+    "oracle": 0.09788139508347786,
+    "oracle_round": 27,
+    "cohort_at_stored_kept": 0.9243008443309139,
+    "source_at_stored_kept": 0.985640734035982,
+    "cohort_final": 0.9149346697931774,
+    "source_final": 0.9699038365805179,
+    "final_evaluation_score": 0.06997623629032441
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      31,
+      31,
+      22,
+      34,
+      35
+     ],
+     "test_gain": 0.028107352243860562,
+     "validation_gain": 0.022716229387525468,
+     "test_gain_per_fold": [
+      0.021686053702897,
+      0.020007621951219523,
+      0.020722433460075962,
+      0.032996288284519504,
+      0.04512436382059082
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      100,
+      31,
+      74,
+      23,
+      35
+     ],
+     "test_gain": 0.01863279099702415,
+     "validation_gain": 0.015481507071091128,
+     "test_gain_per_fold": [
+      0.0,
+      0.020007621951219523,
+      -0.0009994069836397612,
+      0.029031376196950176,
+      0.04512436382059082
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "seq_incremental",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 74,
+    "kept_round": 54
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 46,
+    "kept_round": 26
+   },
+   "kept_round_difference": -28,
+   "validation": {
+    "final": 0.03838800192259817,
+    "at_stored_kept": 0.06526797268620599,
+    "at_drawn_kept": 0.06929900034580849,
+    "gain_stored": 0.02687997076360782,
+    "gain_drawn": 0.030910998423210323
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.05319295704269682,
+    "at_stored_kept": 0.06280941004761449,
+    "at_drawn_kept": 0.08139862886018859,
+    "gain_stored": 0.009616453004917674,
+    "gain_drawn": 0.02820567181749177,
+    "oracle": 0.09248177396733556,
+    "oracle_round": 17,
+    "cohort_at_stored_kept": 0.9158403374543594,
+    "source_at_stored_kept": 0.968039760362271,
+    "cohort_final": 0.9179637658766862,
+    "source_final": 0.9562998789350267,
+    "final_evaluation_score": 0.036425332249366595
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      26,
+      48,
+      16,
+      29,
+      41
+     ],
+     "test_gain": 0.03024512315312964,
+     "validation_gain": 0.04602401514596286,
+     "test_gain_per_fold": [
+      0.01565483008781976,
+      0.041765469738030636,
+      0.061767886419925366,
+      0.023440868501057754,
+      0.008596561018814675
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      26,
+      48,
+      38,
+      29,
+      21
+     ],
+     "test_gain": 0.025562589835616545,
+     "validation_gain": 0.04234263724318281,
+     "test_gain_per_fold": [
+      0.01565483008781976,
+      0.041765469738030636,
+      0.013166707363867824,
+      0.023440868501057754,
+      0.03378507348730675
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "seq_mix_r0p3",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 62,
+    "kept_round": 42
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 53,
+    "kept_round": 33
+   },
+   "kept_round_difference": -9,
+   "validation": {
+    "final": 0.06664087762756388,
+    "at_stored_kept": 0.08732887160490632,
+    "at_drawn_kept": 0.08833514291235434,
+    "gain_stored": 0.020687993977342445,
+    "gain_drawn": 0.02169426528479046
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06411016313914364,
+    "at_stored_kept": 0.0901383550246726,
+    "at_drawn_kept": 0.09025824728741468,
+    "gain_stored": 0.026028191885528962,
+    "gain_drawn": 0.026148084148271036,
+    "oracle": 0.09766962045771692,
+    "oracle_round": 36,
+    "cohort_at_stored_kept": 0.9272063163299451,
+    "source_at_stored_kept": 0.9840027264637435,
+    "cohort_final": 0.9140600298269658,
+    "source_final": 0.9711208210811939,
+    "final_evaluation_score": 0.06533805791189348
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      36,
+      31,
+      35,
+      43,
+      43
+     ],
+     "test_gain": 0.03172181103703982,
+     "validation_gain": 0.030631631470603972,
+     "test_gain_per_fold": [
+      0.027639298947560897,
+      0.03604900632339658,
+      0.030135696096556974,
+      0.029388236632411635,
+      0.03539681718527299
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      64,
+      31,
+      35,
+      49,
+      43
+     ],
+     "test_gain": 0.0303104792272366,
+     "validation_gain": 0.026056393482067765,
+     "test_gain_per_fold": [
+      0.021911922086163438,
+      0.03604900632339658,
+      0.030135696096556974,
+      0.028058954444793005,
+      0.03539681718527299
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "seq_order_shuffle",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 88,
+    "kept_round": 68
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 65,
+    "kept_round": 45
+   },
+   "kept_round_difference": -23,
+   "validation": {
+    "final": 0.059188453582485145,
+    "at_stored_kept": 0.08023880150328866,
+    "at_drawn_kept": 0.07873564649220666,
+    "gain_stored": 0.021050347920803514,
+    "gain_drawn": 0.01954719290972151
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06760655920798439,
+    "at_stored_kept": 0.07522103163891129,
+    "at_drawn_kept": 0.082157300847849,
+    "gain_stored": 0.007614472430926902,
+    "gain_drawn": 0.014550741639864612,
+    "oracle": 0.09685698119460677,
+    "oracle_round": 30,
+    "cohort_at_stored_kept": 0.919834461314471,
+    "source_at_stored_kept": 0.9764572580934563,
+    "cohort_final": 0.9186932458149305,
+    "source_final": 0.96998400116207,
+    "final_evaluation_score": 0.0674191199933208
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      59,
+      66,
+      58,
+      31,
+      39
+     ],
+     "test_gain": 0.015934145128772913,
+     "validation_gain": 0.031568802108085436,
+     "test_gain_per_fold": [
+      0.004772814051164587,
+      -0.006972673893405612,
+      0.0050842432064743814,
+      0.03557137116971332,
+      0.0412149711099179
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      35,
+      34,
+      37,
+      40,
+      43
+     ],
+     "test_gain": 0.028668193706932764,
+     "validation_gain": 0.02311642045860769,
+     "test_gain_per_fold": [
+      0.028021124071654135,
+      0.018920788166215008,
+      0.027995604702270915,
+      0.032533011883727814,
+      0.035870439710795954
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "trimmed_t3",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 94,
+    "kept_round": 74
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 80,
+    "kept_round": 60
+   },
+   "kept_round_difference": -14,
+   "validation": {
+    "final": 0.05330627432906454,
+    "at_stored_kept": 0.07656180742372154,
+    "at_drawn_kept": 0.07447762076959596,
+    "gain_stored": 0.023255533094657,
+    "gain_drawn": 0.021171346440531424
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06683468470943743,
+    "at_stored_kept": 0.08221270518083024,
+    "at_drawn_kept": 0.07932980760927921,
+    "gain_stored": 0.015378020471392806,
+    "gain_drawn": 0.012495122899841782,
+    "oracle": 0.09074528793379281,
+    "oracle_round": 32,
+    "cohort_at_stored_kept": 0.9272495469969855,
+    "source_at_stored_kept": 0.9760338459528608,
+    "cohort_final": 0.9216603895259353,
+    "source_final": 0.9662449829525181,
+    "final_evaluation_score": 0.051214657456079185
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      53,
+      66,
+      54,
+      17,
+      38
+     ],
+     "test_gain": 0.009504321437410979,
+     "validation_gain": 0.031769142144384935,
+     "test_gain_per_fold": [
+      0.030086206432946683,
+      0.020501637308039777,
+      0.002208113859141214,
+      -0.01786503886934876,
+      0.012590688456275978
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      48,
+      48,
+      54,
+      37,
+      60
+     ],
+     "test_gain": 0.00393467594734076,
+     "validation_gain": 0.020847821626900596,
+     "test_gain_per_fold": [
+      0.023135375828856275,
+      0.012385670731707377,
+      0.002208113859141214,
+      -0.020819916665290594,
+      0.0027641359822895284
+     ]
+    }
+   }
+  },
+  {
+   "stage": "aggfull",
+   "cell": "weight_q0",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 64,
+    "kept_round": 44
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 67,
+    "kept_round": 47
+   },
+   "kept_round_difference": 3,
+   "validation": {
+    "final": 0.06643653855446863,
+    "at_stored_kept": 0.0881125639363316,
+    "at_drawn_kept": 0.0850418563905041,
+    "gain_stored": 0.021676025381862973,
+    "gain_drawn": 0.018605317836035473
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06642893066062076,
+    "at_stored_kept": 0.09547229596696223,
+    "at_drawn_kept": 0.09091099667247124,
+    "gain_stored": 0.029043365306341468,
+    "gain_drawn": 0.024482066011850476,
+    "oracle": 0.09938561600758,
+    "oracle_round": 40,
+    "cohort_at_stored_kept": 0.9299902509431454,
+    "source_at_stored_kept": 0.986552732792833,
+    "cohort_final": 0.9178212982062756,
+    "source_final": 0.9696783202233612,
+    "final_evaluation_score": 0.07265039107899074
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      38,
+      22,
+      17,
+      31,
+      34
+     ],
+     "test_gain": 0.024414637831826402,
+     "validation_gain": 0.02814456832205108,
+     "test_gain_per_fold": [
+      0.02237172558066991,
+      0.010120257452574388,
+      0.045915163777165424,
+      0.02200517034810856,
+      0.02166087200061373
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      34,
+      15,
+      47,
+      31,
+      38
+     ],
+     "test_gain": 0.016802860614444092,
+     "validation_gain": 0.024945336247186624,
+     "test_gain_per_fold": [
+      0.019776928082431144,
+      -0.007636065943992798,
+      0.036789688491994266,
+      0.02200517034810856,
+      0.013078582093679292
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "blend_lam0p1_T0p25_mix0p5",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.08063126308198587,
+    "at_stored_kept": 0.08063126308198587,
+    "at_drawn_kept": 0.08063126308198587,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09439322826240193,
+    "at_stored_kept": 0.09439322826240193,
+    "at_drawn_kept": 0.09439322826240193,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.09750095424793907,
+    "oracle_round": 94,
+    "cohort_at_stored_kept": 0.9242263270883687,
+    "source_at_stored_kept": 0.9912375889430493,
+    "cohort_final": 0.9242263270883687,
+    "source_final": 0.9912375889430493,
+    "final_evaluation_score": 0.09449727640311575
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      100,
+      30,
+      64,
+      8,
+      100
+     ],
+     "test_gain": -0.011397891098180457,
+     "validation_gain": -0.005191046487569584,
+     "test_gain_per_fold": [
+      0.0,
+      -0.012039859981933132,
+      -0.01891896605853416,
+      -0.026030629450434994,
+      0.0
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      56,
+      38,
+      100,
+      36,
+      79
+     ],
+     "test_gain": -0.005150701246711531,
+     "validation_gain": -0.007779002709953154,
+     "test_gain_per_fold": [
+      -0.00690780805489688,
+      -0.014135896567299078,
+      0.0,
+      0.008545385491834367,
+      -0.013255187103196064
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "blend_lam0p1_T0p5_mix0p25",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 91,
+    "kept_round": 71
+   },
+   "kept_round_difference": -29,
+   "validation": {
+    "final": 0.08245576054066284,
+    "at_stored_kept": 0.08245576054066284,
+    "at_drawn_kept": 0.07702658687105002,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.005429173669612819
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.0931614762038346,
+    "at_stored_kept": 0.0931614762038346,
+    "at_drawn_kept": 0.09042110207152847,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.002740374132306128,
+    "oracle": 0.10066409334291464,
+    "oracle_round": 75,
+    "cohort_at_stored_kept": 0.9225791135169372,
+    "source_at_stored_kept": 0.9916530504559133,
+    "cohort_final": 0.9225791135169372,
+    "source_final": 0.9916530504559133,
+    "final_evaluation_score": 0.09646009007829667
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      64,
+      47,
+      100,
+      51,
+      40
+     ],
+     "test_gain": -0.0030258882886068593,
+     "validation_gain": 0.0021786770378249944,
+     "test_gain_per_fold": [
+      0.013017010040387467,
+      -0.008306515356820254,
+      0.0,
+      -0.012593779069447475,
+      -0.007246157057154035
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      100,
+      21,
+      62,
+      34,
+      42
+     ],
+     "test_gain": -0.009228676401469672,
+     "validation_gain": -0.0047887141777519515,
+     "test_gain_per_fold": [
+      0.0,
+      -0.02301405826558267,
+      0.021795095405867437,
+      -0.02537745559426896,
+      -0.01954696355336416
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "feature_l2_lam0p001",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 84,
+    "kept_round": 64
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 86,
+    "kept_round": 66
+   },
+   "kept_round_difference": 2,
+   "validation": {
+    "final": 0.06944881100327815,
+    "at_stored_kept": 0.08541220218946721,
+    "at_drawn_kept": 0.08144530844472053,
+    "gain_stored": 0.015963391186189058,
+    "gain_drawn": 0.011996497441442378
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06843226471662944,
+    "at_stored_kept": 0.08731720845965593,
+    "at_drawn_kept": 0.08252990258481163,
+    "gain_stored": 0.01888494374302649,
+    "gain_drawn": 0.014097637868182189,
+    "oracle": 0.09844695078901997,
+    "oracle_round": 40,
+    "cohort_at_stored_kept": 0.9263291427862379,
+    "source_at_stored_kept": 0.9820587534424341,
+    "cohort_final": 0.9149474303428712,
+    "source_final": 0.9745555221427743,
+    "final_evaluation_score": 0.0818978866434602
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      43,
+      50,
+      35,
+      30,
+      42
+     ],
+     "test_gain": 0.016354248453117438,
+     "validation_gain": 0.024939729645671416,
+     "test_gain_per_fold": [
+      0.015385939155359907,
+      -0.0004940153568202543,
+      0.020581156033069314,
+      0.013672616786934988,
+      0.03262554564704323
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      70,
+      50,
+      60,
+      30,
+      44
+     ],
+     "test_gain": 0.012292184920823446,
+     "validation_gain": 0.022780069873760446,
+     "test_gain_per_fold": [
+      0.008816933675362626,
+      -0.0004940153568202543,
+      0.01580388600132554,
+      0.013672616786934988,
+      0.02366150349731433
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "feature_l2_lam0p01",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 95,
+    "kept_round": 75
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 60,
+    "kept_round": 40
+   },
+   "kept_round_difference": -35,
+   "validation": {
+    "final": 0.0775986842311176,
+    "at_stored_kept": 0.08663644113961744,
+    "at_drawn_kept": 0.08583216756638923,
+    "gain_stored": 0.009037756908499839,
+    "gain_drawn": 0.00823348333527163
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09763670647220893,
+    "at_stored_kept": 0.10116851038980604,
+    "at_drawn_kept": 0.09834412191710276,
+    "gain_stored": 0.0035318039175971094,
+    "gain_drawn": 0.000707415444893833,
+    "oracle": 0.10386805333051023,
+    "oracle_round": 70,
+    "cohort_at_stored_kept": 0.9365998660864716,
+    "source_at_stored_kept": 0.9856393320723504,
+    "cohort_final": 0.9356195072830877,
+    "source_final": 0.9830878869581372,
+    "final_evaluation_score": 0.09011802010909183
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      50,
+      51,
+      29,
+      23,
+      51
+     ],
+     "test_gain": 0.002214466903469181,
+     "validation_gain": 0.01536902897931347,
+     "test_gain_per_fold": [
+      -0.00030384675367967073,
+      0.0022865853658536883,
+      0.012737642585551434,
+      -0.007656445229720976,
+      0.00400839854934143
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      58,
+      40,
+      24,
+      28,
+      57
+     ],
+     "test_gain": 0.0015854680002855615,
+     "validation_gain": 0.011492450117919639,
+     "test_gain_per_fold": [
+      -0.00030384675367967073,
+      0.001086833785004515,
+      0.007770258485366499,
+      -0.00301542481069883,
+      0.002389519295435294
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "fisher_lam0p1",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.08133821631013838,
+    "at_stored_kept": 0.08133821631013838,
+    "at_drawn_kept": 0.08133821631013838,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09385303177394369,
+    "at_stored_kept": 0.09385303177394369,
+    "at_drawn_kept": 0.09385303177394369,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.1021659413918583,
+    "oracle_round": 83,
+    "cohort_at_stored_kept": 0.9235353507801487,
+    "source_at_stored_kept": 0.991388368762811,
+    "cohort_final": 0.9235353507801487,
+    "source_final": 0.991388368762811,
+    "final_evaluation_score": 0.09404950479587462
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      59,
+      29,
+      100,
+      100,
+      55
+     ],
+     "test_gain": 0.0011832547164559505,
+     "validation_gain": -0.0012921482014052633,
+     "test_gain_per_fold": [
+      0.005840311053030622,
+      -0.015469738030713609,
+      0.0,
+      0.0,
+      0.015545700559962738
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      60,
+      29,
+      100,
+      29,
+      80
+     ],
+     "test_gain": -0.008354966732357494,
+     "validation_gain": -0.004537234980161409,
+     "test_gain_per_fold": [
+      -0.011984468859741249,
+      -0.015469738030713609,
+      0.0,
+      -0.02404817340665033,
+      0.009727546635317719
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "fisher_lam8",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.08004331926440744,
+    "at_stored_kept": 0.08004331926440744,
+    "at_drawn_kept": 0.08004331926440744,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09362577937431464,
+    "at_stored_kept": 0.09362577937431464,
+    "at_drawn_kept": 0.09362577937431464,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.09963129993247169,
+    "oracle_round": 69,
+    "cohort_at_stored_kept": 0.924296615414077,
+    "source_at_stored_kept": 0.9903998517292537,
+    "cohort_final": 0.924296615414077,
+    "source_final": 0.9903998517292537,
+    "final_evaluation_score": 0.09129799687662563
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      100,
+      100,
+      59,
+      41,
+      55
+     ],
+     "test_gain": 8.602804112645135e-05,
+     "validation_gain": 0.0017718220586278477,
+     "test_gain_per_fold": [
+      0.0,
+      0.0,
+      -0.00154533086824582,
+      0.00626661602734524,
+      -0.004291144953467163
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      100,
+      100,
+      59,
+      41,
+      48
+     ],
+     "test_gain": -0.0007340257252875793,
+     "validation_gain": 0.0010983584309168127,
+     "test_gain_per_fold": [
+      0.0,
+      0.0,
+      -0.00154533086824582,
+      0.00626661602734524,
+      -0.008391413785537316
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "fisher_scaled_lam0p1",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 97,
+    "kept_round": 77
+   },
+   "kept_round_difference": -23,
+   "validation": {
+    "final": 0.08183472591775587,
+    "at_stored_kept": 0.08183472591775587,
+    "at_drawn_kept": 0.07682350768123059,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.005011218236525283
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09485668478866642,
+    "at_stored_kept": 0.09485668478866642,
+    "at_drawn_kept": 0.09793694125205235,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0030802564633859303,
+    "oracle": 0.1034036003243655,
+    "oracle_round": 66,
+    "cohort_at_stored_kept": 0.9244612767060746,
+    "source_at_stored_kept": 0.9914660958516078,
+    "cohort_final": 0.9244612767060746,
+    "source_final": 0.9914660958516078,
+    "final_evaluation_score": 0.09165766957306984
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      57,
+      30,
+      100,
+      65,
+      27
+     ],
+     "test_gain": -0.008823341205365964,
+     "validation_gain": 0.001632138473932221,
+     "test_gain_per_fold": [
+      0.005458485928937384,
+      -0.020289916440831002,
+      0.0,
+      0.002088872009115117,
+      -0.03137414752405132
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      39,
+      29,
+      23,
+      7,
+      59
+     ],
+     "test_gain": -0.01979208369487919,
+     "validation_gain": -0.015266842310916195,
+     "test_gain_per_fold": [
+      -0.009884430677228884,
+      -0.023395155826558267,
+      -0.014356228415948635,
+      -0.051324603554660175,
+      0.0
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "fisher_scaled_lam50",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.07308078926334327,
+    "at_stored_kept": 0.07308078926334327,
+    "at_drawn_kept": 0.07308078926334327,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.07916112197381642,
+    "at_stored_kept": 0.07916112197381642,
+    "at_drawn_kept": 0.07916112197381642,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.09389818817319277,
+    "oracle_round": 99,
+    "cohort_at_stored_kept": 0.9104069695244746,
+    "source_at_stored_kept": 0.9898248402183578,
+    "cohort_final": 0.9104069695244746,
+    "source_final": 0.9898248402183578,
+    "final_evaluation_score": 0.08948657051251023
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      80,
+      30,
+      59,
+      63,
+      29
+     ],
+     "test_gain": 0.0053072371854552495,
+     "validation_gain": 0.012806482725936385,
+     "test_gain_per_fold": [
+      0.005649398490984225,
+      0.03648656278229456,
+      0.004016813757979576,
+      0.01042142557028869,
+      -0.030038014674270808
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      48,
+      30,
+      100,
+      68,
+      44
+     ],
+     "test_gain": 0.0027874453820086577,
+     "validation_gain": 0.006283141792609403,
+     "test_gain_per_fold": [
+      -0.0016402346880057816,
+      0.03648656278229456,
+      0.0,
+      0.0035016356867775267,
+      -0.02441073687102302
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_mix0p25",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 81,
+    "kept_round": 61
+   },
+   "kept_round_difference": -39,
+   "validation": {
+    "final": 0.08678578776670642,
+    "at_stored_kept": 0.08678578776670642,
+    "at_drawn_kept": 0.07637459523824819,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.010411192528458235
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09483100255682393,
+    "at_stored_kept": 0.09483100255682393,
+    "at_drawn_kept": 0.09266125021496259,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.002169752341861342,
+    "oracle": 0.09906744530988502,
+    "oracle_round": 82,
+    "cohort_at_stored_kept": 0.9243599824653919,
+    "source_at_stored_kept": 0.9915417078604482,
+    "cohort_final": 0.9243599824653919,
+    "source_final": 0.9915417078604482,
+    "final_evaluation_score": 0.09249967212031718
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      42,
+      44,
+      55,
+      100,
+      28
+     ],
+     "test_gain": -0.005519027296660761,
+     "validation_gain": -0.003967633729621301,
+     "test_gain_per_fold": [
+      -0.01160264373564801,
+      0.016747120596205867,
+      -0.012810897547703037,
+      0.0,
+      -0.019928715796158625
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      42,
+      51,
+      41,
+      65,
+      61
+     ],
+     "test_gain": -0.006858543608143175,
+     "validation_gain": -0.007182882154105607,
+     "test_gain_per_fold": [
+      -0.01160264373564801,
+      0.005582373532068585,
+      -0.025431681026964914,
+      -0.0014127636776624097,
+      -0.0014280031325091258
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_mix0p25",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.0851718788052358,
+    "at_stored_kept": 0.0851718788052358,
+    "at_drawn_kept": 0.0851718788052358,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.0925207816721946,
+    "at_stored_kept": 0.0925207816721946,
+    "at_drawn_kept": 0.0925207816721946,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.10104115638360747,
+    "oracle_round": 61,
+    "cohort_at_stored_kept": 0.9223526217329051,
+    "source_at_stored_kept": 0.9912388477083056,
+    "cohort_final": 0.9223526217329051,
+    "source_final": 0.9912388477083056,
+    "final_evaluation_score": 0.09214589208649678
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      42,
+      46,
+      23,
+      68,
+      100
+     ],
+     "test_gain": -0.00660797853578623,
+     "validation_gain": 0.0023155064480407496,
+     "test_gain_per_fold": [
+      -0.017252042226632014,
+      -0.0040579832881662,
+      -0.031539749537796036,
+      0.0198098823736631,
+      0.0
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      42,
+      61,
+      100,
+      78,
+      61
+     ],
+     "test_gain": 0.0041199068413501514,
+     "validation_gain": -0.0003861546099986013,
+     "test_gain_per_fold": [
+      -0.017252042226632014,
+      0.006344568654019889,
+      0.0,
+      0.011097533901741286,
+      0.020409473877621598
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_mix0p5",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 93,
+    "kept_round": 73
+   },
+   "kept_round_difference": -27,
+   "validation": {
+    "final": 0.094553898541207,
+    "at_stored_kept": 0.094553898541207,
+    "at_drawn_kept": 0.074409356125137,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.02014454241607
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.0951136233250586,
+    "at_stored_kept": 0.0951136233250586,
+    "at_drawn_kept": 0.09509897528609448,
+    "gain_stored": 0.0,
+    "gain_drawn": -1.4648038964115706e-05,
+    "oracle": 0.09797507737078678,
+    "oracle_round": 88,
+    "cohort_at_stored_kept": 0.924336751182561,
+    "source_at_stored_kept": 0.9918475599115136,
+    "cohort_final": 0.924336751182561,
+    "source_final": 0.9918475599115136,
+    "final_evaluation_score": 0.08833753149663526
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      46,
+      32,
+      33,
+      44,
+      24
+     ],
+     "test_gain": -0.01499090636736713,
+     "validation_gain": -0.014626952572794538,
+     "test_gain_per_fold": [
+      -0.013511769356113756,
+      -0.002343044263775962,
+      -0.015877140963477143,
+      0.005507026205848864,
+      -0.04872960345931765
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      73,
+      24,
+      76,
+      57,
+      36
+     ],
+     "test_gain": -0.005048944764195018,
+     "validation_gain": -0.016937940258924346,
+     "test_gain_per_fold": [
+      0.009962409047642118,
+      -0.004495539747064181,
+      -0.015116684689712834,
+      0.009388456803374523,
+      -0.024983365235214716
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_mix0p5",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.07985457510067695,
+    "at_stored_kept": 0.07985457510067695,
+    "at_drawn_kept": 0.07985457510067695,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.08642517816384662,
+    "at_stored_kept": 0.08642517816384662,
+    "at_drawn_kept": 0.08642517816384662,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.09707824320603926,
+    "oracle_round": 96,
+    "cohort_at_stored_kept": 0.916865781044186,
+    "source_at_stored_kept": 0.9906300848886767,
+    "cohort_final": 0.916865781044186,
+    "source_final": 0.9906300848886767,
+    "final_evaluation_score": 0.09407614173072479
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      64,
+      43,
+      100,
+      42,
+      24
+     ],
+     "test_gain": -0.00043884282468069634,
+     "validation_gain": 0.0055628049082850906,
+     "test_gain_per_fold": [
+      0.005649398490984114,
+      0.011489385727190604,
+      0.0,
+      0.013186405910856402,
+      -0.0325194042524346
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      100,
+      35,
+      100,
+      57,
+      39
+     ],
+     "test_gain": 0.00034525549273252133,
+     "validation_gain": 0.00026958026304830797,
+     "test_gain_per_fold": [
+      0.0,
+      0.0024206752484190464,
+      0.0,
+      0.020379574739785467,
+      -0.021073972524541906
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_mix0p75",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 46,
+    "kept_round": 26
+   },
+   "kept_round_difference": -74,
+   "validation": {
+    "final": 0.08285359706929052,
+    "at_stored_kept": 0.08285359706929052,
+    "at_drawn_kept": 0.05751490199912468,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.02533869507016584
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09941192173597482,
+    "at_stored_kept": 0.09941192173597482,
+    "at_drawn_kept": 0.07636459251078587,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.023047329225188956,
+    "oracle": 0.10368920066044311,
+    "oracle_round": 91,
+    "cohort_at_stored_kept": 0.9281783391801247,
+    "source_at_stored_kept": 0.9923042703248661,
+    "cohort_final": 0.9281783391801247,
+    "source_final": 0.9923042703248661,
+    "final_evaluation_score": 0.0992740816345585
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      77,
+      27,
+      100,
+      21,
+      41
+     ],
+     "test_gain": -0.017046974815482185,
+     "validation_gain": -0.0018520365951442796,
+     "test_gain_per_fold": [
+      -0.009389671361502372,
+      -0.01604138437217706,
+      0.0,
+      -0.03892072194058693,
+      -0.020883096403144563
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      71,
+      62,
+      49,
+      26,
+      35
+     ],
+     "test_gain": -0.01397381453317672,
+     "validation_gain": -0.01031754815041932,
+     "test_gain_per_fold": [
+      -0.0039311854325647655,
+      -0.010077913279132877,
+      -0.005372030557784235,
+      -0.03465949643231314,
+      -0.015828446964088583
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_mix0p75",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.07969781653549135,
+    "at_stored_kept": 0.07969781653549135,
+    "at_drawn_kept": 0.07969781653549135,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09025579728624326,
+    "at_stored_kept": 0.09025579728624326,
+    "at_drawn_kept": 0.09025579728624326,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.10017745645076878,
+    "oracle_round": 57,
+    "cohort_at_stored_kept": 0.9189068551687994,
+    "source_at_stored_kept": 0.9924196298864599,
+    "cohort_final": 0.9189068551687994,
+    "source_final": 0.9924196298864599,
+    "final_evaluation_score": 0.09623988801038248
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      100,
+      27,
+      100,
+      65,
+      44
+     ],
+     "test_gain": -0.0027150587068175635,
+     "validation_gain": 0.0026447608296813916,
+     "test_gain_per_fold": [
+      0.0,
+      -0.012555047425474197,
+      0.0,
+      -0.0035016356867774157,
+      0.002481389578163795
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      30,
+      40,
+      60,
+      34,
+      40
+     ],
+     "test_gain": -0.012034888778980134,
+     "validation_gain": -0.006521053238868623,
+     "test_gain_per_fold": [
+      -0.027214451274274132,
+      0.007297312556458935,
+      0.004372623574144474,
+      -0.027656225058758088,
+      -0.016973703692471864
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_seq_mix0p25",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 56,
+    "kept_round": 36
+   },
+   "kept_round_difference": -64,
+   "validation": {
+    "final": 0.08647566709981347,
+    "at_stored_kept": 0.08647566709981347,
+    "at_drawn_kept": 0.07645082573034612,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.010024841369467352
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10051660298255952,
+    "at_stored_kept": 0.10051660298255952,
+    "at_drawn_kept": 0.08976586464069039,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.010750738341869126,
+    "oracle": 0.10332888031507644,
+    "oracle_round": 77,
+    "cohort_at_stored_kept": 0.9299684343391252,
+    "source_at_stored_kept": 0.9916188564124503,
+    "cohort_final": 0.9299684343391252,
+    "source_final": 0.9916188564124503,
+    "final_evaluation_score": 0.09617380003322293
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      28,
+      15,
+      27,
+      61,
+      100
+     ],
+     "test_gain": -0.013017854441449627,
+     "validation_gain": 0.0017435228389549584,
+     "test_gain_per_fold": [
+      0.00755852411144986,
+      -0.029168078139114817,
+      -0.02065441099522114,
+      -0.022825307184362043,
+      0.0
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      100,
+      36,
+      17,
+      33,
+      36
+     ],
+     "test_gain": -0.01306068378896954,
+     "validation_gain": -0.010703567180959949,
+     "test_gain_per_fold": [
+      0.0,
+      -0.006591576332430016,
+      -0.02773746816897482,
+      -0.015145927479354393,
+      -0.015828446964088472
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_seq_mix0p25",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 53,
+    "kept_round": 33
+   },
+   "kept_round_difference": -67,
+   "validation": {
+    "final": 0.08626316615262886,
+    "at_stored_kept": 0.08626316615262886,
+    "at_drawn_kept": 0.06810773976067341,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.018155426391955443
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09204224862874244,
+    "at_stored_kept": 0.09204224862874244,
+    "at_drawn_kept": 0.08419439979477225,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.007847848833970189,
+    "oracle": 0.10367295437368433,
+    "oracle_round": 79,
+    "cohort_at_stored_kept": 0.922484581770587,
+    "source_at_stored_kept": 0.9906283546271715,
+    "cohort_final": 0.922484581770587,
+    "source_final": 0.9906283546271715,
+    "final_evaluation_score": 0.09450317030472528
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      38,
+      26,
+      34,
+      39,
+      51
+     ],
+     "test_gain": -0.005666598233771647,
+     "validation_gain": -0.0012162204139875455,
+     "test_gain_per_fold": [
+      -0.015915654292305903,
+      -0.003161698283649428,
+      -0.0005947605260403499,
+      -0.0010329687669141663,
+      -0.007627909299948388
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      38,
+      28,
+      39,
+      33,
+      36
+     ],
+     "test_gain": -0.009458533441096506,
+     "validation_gain": -0.007059180699604983,
+     "test_gain_per_fold": [
+      -0.015915654292305903,
+      -0.007981876693766932,
+      -0.006892943105312743,
+      -0.012783676524821375,
+      -0.003718516589275578
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_seq_mix0p5",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.08893977938614017,
+    "at_stored_kept": 0.08893977938614017,
+    "at_drawn_kept": 0.08893977938614017,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.1045761744792777,
+    "at_stored_kept": 0.1045761744792777,
+    "at_drawn_kept": 0.1045761744792777,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.10832591751640235,
+    "oracle_round": 85,
+    "cohort_at_stored_kept": 0.9327722945373517,
+    "source_at_stored_kept": 0.9928745677109421,
+    "cohort_final": 0.9327722945373517,
+    "source_final": 0.9928745677109421,
+    "final_evaluation_score": 0.103090269921761
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      68,
+      28,
+      56,
+      46,
+      100
+     ],
+     "test_gain": -0.005512119439906704,
+     "validation_gain": 0.005915051423826534,
+     "test_gain_per_fold": [
+      0.005458485928937495,
+      -0.02086156278229445,
+      -0.0023057871420101295,
+      -0.009851733204166435,
+      0.0
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      100,
+      29,
+      100,
+      46,
+      66
+     ],
+     "test_gain": -0.008679170945093073,
+     "validation_gain": 0.004917082467104916,
+     "test_gain_per_fold": [
+      0.0,
+      -0.02086156278229445,
+      0.0,
+      -0.009851733204166435,
+      -0.01268255873900448
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_seq_mix0p5",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.08866060524214958,
+    "at_stored_kept": 0.08866060524214958,
+    "at_drawn_kept": 0.08866060524214958,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09950948784236704,
+    "at_stored_kept": 0.09950948784236704,
+    "at_drawn_kept": 0.09950948784236704,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.10442287091085892,
+    "oracle_round": 84,
+    "cohort_at_stored_kept": 0.9271717760758228,
+    "source_at_stored_kept": 0.9934083995355603,
+    "cohort_final": 0.9271717760758228,
+    "source_final": 0.9934083995355603,
+    "final_evaluation_score": 0.10428455680701294
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      78,
+      100,
+      35,
+      58,
+      67
+     ],
+     "test_gain": -0.001931567273194612,
+     "validation_gain": 0.007574258599085693,
+     "test_gain_per_fold": [
+      0.0024038849361922576,
+      0.0,
+      -0.004397041894861675,
+      0.005590507695892644,
+      -0.013255187103196286
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      37,
+      29,
+      35,
+      43,
+      100
+     ],
+     "test_gain": -0.007619861514035176,
+     "validation_gain": -0.002728099377020099,
+     "test_gain_per_fold": [
+      -0.0045039231187046225,
+      -0.014135896567298967,
+      -0.004397041894861675,
+      -0.015062445989310613,
+      0.0
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_seq_mix0p75",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.09054929419806423,
+    "at_stored_kept": 0.09054929419806423,
+    "at_drawn_kept": 0.09054929419806423,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10637310656738834,
+    "at_stored_kept": 0.10637310656738834,
+    "at_drawn_kept": 0.10637310656738834,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.11083890126502109,
+    "oracle_round": 98,
+    "cohort_at_stored_kept": 0.9353641557401725,
+    "source_at_stored_kept": 0.9920796385962318,
+    "cohort_final": 0.9353641557401725,
+    "source_final": 0.9920796385962318,
+    "final_evaluation_score": 0.10687408939708654
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      38,
+      72,
+      44,
+      38,
+      100
+     ],
+     "test_gain": -0.0078878851688303,
+     "validation_gain": 0.008166684159345561,
+     "test_gain_per_fold": [
+      -0.028550839208600243,
+      0.008306515356820254,
+      -0.040714061464401485,
+      0.021518959472029975,
+      0.0
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      38,
+      14,
+      47,
+      43,
+      48
+     ],
+     "test_gain": -0.021019223827134236,
+     "validation_gain": -0.0007696298298191628,
+     "test_gain_per_fold": [
+      -0.028550839208600243,
+      -0.051744579945799396,
+      -0.032110091743119296,
+      0.021518959472029975,
+      -0.014209567710182225
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "hybrid_seq_mix0p75",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.08192807030753169,
+    "at_stored_kept": 0.08192807030753169,
+    "at_drawn_kept": 0.08192807030753169,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09539713641028576,
+    "at_stored_kept": 0.09539713641028576,
+    "at_drawn_kept": 0.09539713641028576,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.1067536341433575,
+    "oracle_round": 92,
+    "cohort_at_stored_kept": 0.9252667472452627,
+    "source_at_stored_kept": 0.9912010769340391,
+    "cohort_final": 0.9252667472452627,
+    "source_final": 0.9912010769340391,
+    "final_evaluation_score": 0.10498019601773437
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      43,
+      43,
+      40,
+      70,
+      100
+     ],
+     "test_gain": 0.00027907455830815663,
+     "validation_gain": 0.012146344293147582,
+     "test_gain_per_fold": [
+      0.0036273386788850948,
+      -0.00868761291779585,
+      -0.0007604562737641984,
+      0.007216103304215737,
+      0.0
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      64,
+      33,
+      71,
+      27,
+      26
+     ],
+     "test_gain": -0.007099721669632753,
+     "validation_gain": 0.0031482609159403374,
+     "test_gain_per_fold": [
+      -0.011029906049508265,
+      -0.019718270099367552,
+      0.0019011406844107182,
+      0.0002128319306609061,
+      -0.00686440481435957
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "kd_T0p25_a0p9",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 79,
+    "kept_round": 59
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 81,
+    "kept_round": 61
+   },
+   "kept_round_difference": 2,
+   "validation": {
+    "final": 0.07341853718829972,
+    "at_stored_kept": 0.0873746472283824,
+    "at_drawn_kept": 0.08455092127550978,
+    "gain_stored": 0.013956110040082681,
+    "gain_drawn": 0.011132384087210068
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.07625696215873283,
+    "at_stored_kept": 0.08916729957253593,
+    "at_drawn_kept": 0.08427700882402414,
+    "gain_stored": 0.012910337413803097,
+    "gain_drawn": 0.008020046665291311,
+    "oracle": 0.09685968241059968,
+    "oracle_round": 58,
+    "cohort_at_stored_kept": 0.9262772955054627,
+    "source_at_stored_kept": 0.9839606918360893,
+    "cohort_final": 0.9206053546999451,
+    "source_final": 0.9767222952278037,
+    "final_evaluation_score": 0.0798436802191704
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      38,
+      9,
+      46,
+      47,
+      43
+     ],
+     "test_gain": 0.0062327633329185336,
+     "validation_gain": 0.01897579509132461,
+     "test_gain_per_fold": [
+      0.0018741697992460393,
+      -0.017410512646793053,
+      0.013522517180032834,
+      0.020106195794367676,
+      0.013071446537739173
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      38,
+      63,
+      44,
+      68,
+      33
+     ],
+     "test_gain": 0.015201716871736127,
+     "validation_gain": 0.020881340324598673,
+     "test_gain_per_fold": [
+      0.0018741697992460393,
+      0.01764340560072264,
+      0.017729445006453348,
+      0.012236918633986016,
+      0.02652464531827259
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "kd_T2_a0p99",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 66,
+    "kept_round": 46
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 73,
+    "kept_round": 53
+   },
+   "kept_round_difference": 7,
+   "validation": {
+    "final": 0.07653717527117188,
+    "at_stored_kept": 0.09090619114852094,
+    "at_drawn_kept": 0.08926906935167289,
+    "gain_stored": 0.014369015877349067,
+    "gain_drawn": 0.012731894080501016
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.08879669855191556,
+    "at_stored_kept": 0.09491022284674071,
+    "at_drawn_kept": 0.09517246574061713,
+    "gain_stored": 0.006113524294825146,
+    "gain_drawn": 0.006375767188701573,
+    "oracle": 0.10120312104062161,
+    "oracle_round": 40,
+    "cohort_at_stored_kept": 0.9271058754470123,
+    "source_at_stored_kept": 0.9888750351687444,
+    "cohort_final": 0.9290324033214704,
+    "source_final": 0.9808349829994611,
+    "final_evaluation_score": 0.08636426546047649
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      37,
+      21,
+      46,
+      27,
+      46
+     ],
+     "test_gain": 0.007294403737897981,
+     "validation_gain": 0.02112187589636192,
+     "test_gain_per_fold": [
+      0.018553474339738307,
+      -0.0157732046070459,
+      0.018489901280217658,
+      -0.0014962451677061894,
+      0.016698092844286028
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      36,
+      21,
+      43,
+      71,
+      68
+     ],
+     "test_gain": 0.002327897708850246,
+     "validation_gain": 0.01646631148156843,
+     "test_gain_per_fold": [
+      0.004850792421578043,
+      -0.0157732046070459,
+      0.014853315659120181,
+      -0.011181015391785176,
+      0.018889600462384082
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "logit_l2_lam0p001",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 96,
+    "kept_round": 76
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 72,
+    "kept_round": 52
+   },
+   "kept_round_difference": -24,
+   "validation": {
+    "final": 0.09242299189275571,
+    "at_stored_kept": 0.10142751586589194,
+    "at_drawn_kept": 0.09596710131114461,
+    "gain_stored": 0.009004523973136225,
+    "gain_drawn": 0.0035441094183888966
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10167848057710331,
+    "at_stored_kept": 0.10146643557817167,
+    "at_drawn_kept": 0.10059378485058997,
+    "gain_stored": -0.0002120449989316403,
+    "gain_drawn": -0.0010846957265133461,
+    "oracle": 0.1066879645086225,
+    "oracle_round": 74,
+    "cohort_at_stored_kept": 0.9337387587727612,
+    "source_at_stored_kept": 0.9887983645744265,
+    "cohort_final": 0.9346330805630603,
+    "source_final": 0.988116087783059,
+    "final_evaluation_score": 0.10223658832459362
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      52,
+      64,
+      68,
+      25,
+      74
+     ],
+     "test_gain": 8.958619662897682e-05,
+     "validation_gain": 0.018855891874078788,
+     "test_gain_per_fold": [
+      0.003054600992745349,
+      -0.004248532068654054,
+      -2.441832071720107e-05,
+      -0.004724501909065704,
+      0.006390782288836494
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      52,
+      64,
+      100,
+      37,
+      100
+     ],
+     "test_gain": -0.0016014609988179052,
+     "validation_gain": 0.009921501641360787,
+     "test_gain_per_fold": [
+      0.003054600992745349,
+      -0.004248532068654054,
+      0.0,
+      -0.006813373918180821,
+      0.0
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "logit_l2_lam0p003",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 69,
+    "kept_round": 49
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 69,
+    "kept_round": 49
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.08881685692374275,
+    "at_stored_kept": 0.0973045380029367,
+    "at_drawn_kept": 0.0973045380029367,
+    "gain_stored": 0.008487681079193954,
+    "gain_drawn": 0.008487681079193954
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.102943279499468,
+    "at_stored_kept": 0.10734673261795002,
+    "at_drawn_kept": 0.10734673261795002,
+    "gain_stored": 0.004403453118482031,
+    "gain_drawn": 0.004403453118482031,
+    "oracle": 0.11071875436357784,
+    "oracle_round": 99,
+    "cohort_at_stored_kept": 0.9364176171072909,
+    "source_at_stored_kept": 0.9919998032796752,
+    "cohort_final": 0.9346415752963256,
+    "source_final": 0.9893723919721584,
+    "final_evaluation_score": 0.10669408435997338
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      38,
+      49,
+      49,
+      22,
+      40
+     ],
+     "test_gain": 0.0037522553673304372,
+     "validation_gain": 0.010493130562290464,
+     "test_gain_per_fold": [
+      0.008894912045776082,
+      0.0013338414634146423,
+      0.010695224474133957,
+      -0.001116450256957835,
+      -0.0010462508897146616
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      45,
+      50,
+      71,
+      46,
+      57
+     ],
+     "test_gain": 0.003880535973246535,
+     "validation_gain": 0.007143082586454486,
+     "test_gain_per_fold": [
+      0.008513086921682844,
+      -0.0029146906052393007,
+      0.0005703422053232599,
+      0.005507026205848864,
+      0.007726915138617008
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "ntd_b0p01_t0p5",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 90,
+    "kept_round": 70
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 74,
+    "kept_round": 54
+   },
+   "kept_round_difference": -16,
+   "validation": {
+    "final": 0.08588711819568162,
+    "at_stored_kept": 0.09473899565939048,
+    "at_drawn_kept": 0.09369679627639405,
+    "gain_stored": 0.008851877463708857,
+    "gain_drawn": 0.007809678080712423
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09411718026094404,
+    "at_stored_kept": 0.09368757957594027,
+    "at_drawn_kept": 0.09914530137588606,
+    "gain_stored": -0.00042960068500376425,
+    "gain_drawn": 0.005028121114942025,
+    "oracle": 0.104319427351063,
+    "oracle_round": 53,
+    "cohort_at_stored_kept": 0.928164005171559,
+    "source_at_stored_kept": 0.9865942621733973,
+    "cohort_final": 0.9300056669508042,
+    "source_final": 0.9851822010791559,
+    "final_evaluation_score": 0.09004925768946967
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      27,
+      54,
+      52,
+      26,
+      30
+     ],
+     "test_gain": 0.00424424807727466,
+     "validation_gain": 0.01599631723284034,
+     "test_gain_per_fold": [
+      0.015498873346992958,
+      -0.008306515356820143,
+      0.009554540063487549,
+      0.005803339626553328,
+      -0.0013289972938403949
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      76,
+      54,
+      70,
+      32,
+      67
+     ],
+     "test_gain": 0.0026569543400106975,
+     "validation_gain": 0.015461013470181407,
+     "test_gain_per_fold": [
+      0.0015273004963726189,
+      -0.008306515356820143,
+      0.00021453238915825068,
+      0.01660456010759015,
+      0.0032448940637526125
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "ntd_b0p01_t2",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 99,
+    "kept_round": 79
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 95,
+    "kept_round": 75
+   },
+   "kept_round_difference": -4,
+   "validation": {
+    "final": 0.09661570665455255,
+    "at_stored_kept": 0.10151684597496247,
+    "at_drawn_kept": 0.09793542413025036,
+    "gain_stored": 0.00490113932040992,
+    "gain_drawn": 0.0013197174756978125
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10265311252903704,
+    "at_stored_kept": 0.10296580974859201,
+    "at_drawn_kept": 0.10114076499700138,
+    "gain_stored": 0.0003126972195549721,
+    "gain_drawn": -0.0015123475320356627,
+    "oracle": 0.1092728186748072,
+    "oracle_round": 52,
+    "cohort_at_stored_kept": 0.9328357834691358,
+    "source_at_stored_kept": 0.9912007140484723,
+    "cohort_final": 0.9328659729259519,
+    "source_final": 0.9908578273721012,
+    "final_evaluation_score": 0.10223006485763889
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      38,
+      64,
+      50,
+      45,
+      55
+     ],
+     "test_gain": -3.7561105947969685e-05,
+     "validation_gain": 0.00806974349321008,
+     "test_gain_per_fold": [
+      -0.00038182512409312697,
+      0.006725666214995485,
+      -0.004397041894861786,
+      -0.007952758650425329,
+      0.005818153924644909
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      55,
+      21,
+      39,
+      45,
+      60
+     ],
+     "test_gain": -0.0018526947970355146,
+     "validation_gain": -0.002457650502306885,
+     "test_gain_per_fold": [
+      0.005649398490984114,
+      0.0026112240289069,
+      -0.011480099068615468,
+      -0.007952758650425329,
+      0.0019087612139722099
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "param_l2_mu0",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 95,
+    "kept_round": 75
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 52,
+    "kept_round": 32
+   },
+   "kept_round_difference": -43,
+   "validation": {
+    "final": 0.06468759688369541,
+    "at_stored_kept": 0.0781996163512837,
+    "at_drawn_kept": 0.0813586009495525,
+    "gain_stored": 0.013512019467588288,
+    "gain_drawn": 0.016671004065857087
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.06081925324401385,
+    "at_stored_kept": 0.0746582440868078,
+    "at_drawn_kept": 0.09622171018807031,
+    "gain_stored": 0.013838990842793948,
+    "gain_drawn": 0.035402456944056464,
+    "oracle": 0.09622171018807031,
+    "oracle_round": 32,
+    "cohort_at_stored_kept": 0.9197280223761769,
+    "source_at_stored_kept": 0.976000909479647,
+    "cohort_final": 0.9149562426362586,
+    "source_final": 0.9669336983767712,
+    "final_evaluation_score": 0.06529716016115683
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      29,
+      40,
+      19,
+      37,
+      18
+     ],
+     "test_gain": 0.02990822860947091,
+     "validation_gain": 0.02353200985739634,
+     "test_gain_per_fold": [
+      0.015082092401680014,
+      0.047538392050587186,
+      0.025309589423378798,
+      0.03622454502587924,
+      0.025386524145829314
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      32,
+      27,
+      42,
+      29,
+      47
+     ],
+     "test_gain": 0.028115239345470954,
+     "validation_gain": 0.018875238592901432,
+     "test_gain_per_fold": [
+      0.025808151697508497,
+      0.04380504742547431,
+      0.030111277775839884,
+      0.031583524606857094,
+      0.00926819522167499
+     ]
+    }
+   }
+  },
+  {
+   "stage": "regfull",
+   "cell": "param_l2_mu0p0001",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 97,
+    "kept_round": 77
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 97,
+    "kept_round": 77
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.07558085707702744,
+    "at_stored_kept": 0.08989383334489964,
+    "at_drawn_kept": 0.08989383334489964,
+    "gain_stored": 0.014312976267872202,
+    "gain_drawn": 0.014312976267872202
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.08719042575819644,
+    "at_stored_kept": 0.08382655380940958,
+    "at_drawn_kept": 0.08382655380940958,
+    "gain_stored": -0.003363871948786859,
+    "gain_drawn": -0.003363871948786859,
+    "oracle": 0.10115196048853496,
+    "oracle_round": 81,
+    "cohort_at_stored_kept": 0.9187618388012976,
+    "source_at_stored_kept": 0.986135402777128,
+    "cohort_final": 0.9233807576802883,
+    "source_final": 0.9848803558469241,
+    "final_evaluation_score": 0.09075791730733465
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      45,
+      64,
+      23,
+      35,
+      59
+     ],
+     "test_gain": 0.0014752272571190383,
+     "validation_gain": 0.017892959438204792,
+     "test_gain_per_fold": [
+      0.011376775352381463,
+      0.011792852303523116,
+      -0.020464296926779868,
+      0.0033346727066899673,
+      0.0013361328497805136
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      45,
+      41,
+      100,
+      29,
+      68
+     ],
+     "test_gain": 0.007345369145593694,
+     "validation_gain": 0.009992314508693423,
+     "test_gain_per_fold": [
+      0.011376775352381463,
+      0.015222730352303593,
+      0.0,
+      0.000972421752157282,
+      0.009154918271126133
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "anchor_h2_hybrid_seq_mix0p5",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 51,
+    "kept_round": 31
+   },
+   "kept_round_difference": -69,
+   "validation": {
+    "final": 0.08443181471422834,
+    "at_stored_kept": 0.08443181471422834,
+    "at_drawn_kept": 0.07166518244267583,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.012766632271552503
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09020789355233812,
+    "at_stored_kept": 0.09020789355233812,
+    "at_drawn_kept": 0.08519310245800901,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.005014791094329105,
+    "oracle": 0.1043308520547658,
+    "oracle_round": 99,
+    "cohort_at_stored_kept": 0.9205693628674203,
+    "source_at_stored_kept": 0.9907092184539338,
+    "cohort_final": 0.9205693628674203,
+    "source_final": 0.9907092184539338,
+    "final_evaluation_score": 0.10342361863081402
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      37,
+      58,
+      53,
+      27,
+      100
+     ],
+     "test_gain": 0.002401793876240221,
+     "validation_gain": 0.0020501136989712785,
+     "test_gain_per_fold": [
+      -0.01763386735072514,
+      0.0026676829268292845,
+      0.007248752921477641,
+      0.01972640088361932,
+      0.0
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      26,
+      29,
+      31,
+      12,
+      19
+     ],
+     "test_gain": -0.007973991005575987,
+     "validation_gain": -0.011540172806914528,
+     "test_gain_per_fold": [
+      -0.009007846237409245,
+      -0.008362974254742417,
+      -0.008628388041999502,
+      -0.0034787012114908533,
+      -0.010392045282237916
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "anchor_h2_logit_l2_lam0p001",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.09064512046166828,
+    "at_stored_kept": 0.09064512046166828,
+    "at_drawn_kept": 0.09064512046166828,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10281088944305197,
+    "at_stored_kept": 0.10281088944305197,
+    "at_drawn_kept": 0.10281088944305197,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.11030369506810007,
+    "oracle_round": 85,
+    "cohort_at_stored_kept": 0.9345443511924187,
+    "source_at_stored_kept": 0.9893372260196492,
+    "cohort_final": 0.9345443511924187,
+    "source_final": 0.9893372260196492,
+    "final_evaluation_score": 0.1004808993425375
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      30,
+      100,
+      74,
+      24,
+      70
+     ],
+     "test_gain": -0.0014410370518811,
+     "validation_gain": 0.012590439455736901,
+     "test_gain_per_fold": [
+      -0.0014493221259592737,
+      0.0,
+      -0.012050441273938617,
+      0.0023851854298195807,
+      0.00390939271067281
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      62,
+      100,
+      39,
+      52,
+      76
+     ],
+     "test_gain": -0.0008609024369193641,
+     "validation_gain": 0.00413414590880985,
+     "test_gain_per_fold": [
+      -0.007671458303083134,
+      0.0,
+      -0.008818502110440551,
+      0.004557538928978366,
+      0.007627909299948499
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "anchor_h2_ntd_b0p01_t0p5",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 43,
+    "kept_round": 23
+   },
+   "kept_round_difference": -77,
+   "validation": {
+    "final": 0.09470281446085782,
+    "at_stored_kept": 0.09470281446085782,
+    "at_drawn_kept": 0.08398187173324645,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.010720942727611371
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09821211842254865,
+    "at_stored_kept": 0.09821211842254865,
+    "at_drawn_kept": 0.10090855341226872,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0026964349897200673,
+    "oracle": 0.10733612717323959,
+    "oracle_round": 81,
+    "cohort_at_stored_kept": 0.9318147275762071,
+    "source_at_stored_kept": 0.9874680786153576,
+    "cohort_final": 0.9318147275762071,
+    "source_final": 0.9874680786153576,
+    "final_evaluation_score": 0.10214998378895276
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      23,
+      67,
+      46,
+      32,
+      43
+     ],
+     "test_gain": -0.002627160447400234,
+     "validation_gain": 0.008483925925314818,
+     "test_gain_per_fold": [
+      7.797837041334521e-05,
+      -0.017699864498644913,
+      -0.004421460215578765,
+      -0.003775014632195317,
+      0.01268255873900448
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      23,
+      26,
+      100,
+      23,
+      58
+     ],
+     "test_gain": -0.00015119807427774746,
+     "validation_gain": -0.0018078229453721173,
+     "test_gain_per_fold": [
+      7.797837041334521e-05,
+      -0.02200485546522135,
+      0.0,
+      0.0033346727066899673,
+      0.0178362140167293
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "eta_0p95_hybrid_seq_mix0p5",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 54,
+    "kept_round": 34
+   },
+   "kept_round_difference": -66,
+   "validation": {
+    "final": 0.08384790083493543,
+    "at_stored_kept": 0.08384790083493543,
+    "at_drawn_kept": 0.07614716800402421,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.007700732830911217
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10174088820628102,
+    "at_stored_kept": 0.10174088820628102,
+    "at_drawn_kept": 0.08702035333309777,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.014720534873183255,
+    "oracle": 0.10236572768759374,
+    "oracle_round": 64,
+    "cohort_at_stored_kept": 0.9299731026965535,
+    "source_at_stored_kept": 0.9928384732787435,
+    "cohort_final": 0.9299731026965535,
+    "source_final": 0.9928384732787435,
+    "final_evaluation_score": 0.1008827006287695
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      58,
+      25,
+      34,
+      53,
+      26
+     ],
+     "test_gain": -0.018062129443769438,
+     "validation_gain": 0.003773315750990469,
+     "test_gain_per_fold": [
+      -0.025765129148314858,
+      -0.022195404245709094,
+      -0.021034639132103128,
+      -0.004914399364439936,
+      -0.016401075328280168
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      58,
+      22,
+      48,
+      42,
+      30
+     ],
+     "test_gain": -0.01912197547641108,
+     "validation_gain": -0.0026457946981157444,
+     "test_gain_per_fold": [
+      -0.025765129148314858,
+      -0.024919546070460763,
+      -0.012430669410820938,
+      -0.016475209666973134,
+      -0.016019323085485704
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "eta_0p95_logit_l2_lam0p001",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 87,
+    "kept_round": 67
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 84,
+    "kept_round": 64
+   },
+   "kept_round_difference": -3,
+   "validation": {
+    "final": 0.09269265829102091,
+    "at_stored_kept": 0.10097391487742036,
+    "at_drawn_kept": 0.09933974398154843,
+    "gain_stored": 0.008281256586399444,
+    "gain_drawn": 0.006647085690527521
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10022394943816473,
+    "at_stored_kept": 0.10204187006641471,
+    "at_drawn_kept": 0.10160248392424995,
+    "gain_stored": 0.0018179206282499805,
+    "gain_drawn": 0.0013785344860852144,
+    "oracle": 0.10785651751800711,
+    "oracle_round": 96,
+    "cohort_at_stored_kept": 0.9327496245755815,
+    "source_at_stored_kept": 0.9903629332598493,
+    "cohort_final": 0.9318851746819765,
+    "source_final": 0.9894094625252042,
+    "final_evaluation_score": 0.10408042480858695
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      34,
+      75,
+      57,
+      29,
+      67
+     ],
+     "test_gain": 0.001639771549337543,
+     "validation_gain": 0.01807119797968477,
+     "test_gain_per_fold": [
+      0.006109201985490587,
+      0.0025335930442637045,
+      0.006868524784595431,
+      -0.017994389309965775,
+      0.010681927242303768
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      55,
+      67,
+      64,
+      14,
+      46
+     ],
+     "test_gain": -0.0037392277352107373,
+     "validation_gain": 0.007991645615864717,
+     "test_gain_per_fold": [
+      0.00420007636502473,
+      -0.011736393405600842,
+      0.0001901140684410496,
+      -0.010968183461124159,
+      -0.0003817522427944642
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "eta_0p95_ntd_b0p01_t0p5",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 92,
+    "kept_round": 72
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 85,
+    "kept_round": 65
+   },
+   "kept_round_difference": -7,
+   "validation": {
+    "final": 0.08971168171716748,
+    "at_stored_kept": 0.09746096289355455,
+    "at_drawn_kept": 0.09339303513096442,
+    "gain_stored": 0.007749281176387068,
+    "gain_drawn": 0.0036813534137969395
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09099588590153544,
+    "at_stored_kept": 0.09256531174553309,
+    "at_drawn_kept": 0.09892859870453818,
+    "gain_stored": 0.0015694258439976488,
+    "gain_drawn": 0.007932712803002742,
+    "oracle": 0.10671807389683616,
+    "oracle_round": 43,
+    "cohort_at_stored_kept": 0.9262443985714944,
+    "source_at_stored_kept": 0.9873916009430547,
+    "cohort_final": 0.9271877534045425,
+    "source_final": 0.9848788202660089,
+    "final_evaluation_score": 0.09776934323071149
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      40,
+      74,
+      55,
+      28,
+      71
+     ],
+     "test_gain": 0.008873654967428224,
+     "validation_gain": 0.017019216232201817,
+     "test_gain_per_fold": [
+      -0.0012584095639126547,
+      -0.00868761291779585,
+      0.014877733979837493,
+      0.024937113668763944,
+      0.014499449670248188
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      40,
+      74,
+      78,
+      40,
+      65
+     ],
+     "test_gain": 0.006803717352923733,
+     "validation_gain": 0.011187042432341476,
+     "test_gain_per_fold": [
+      -0.0012584095639126547,
+      -0.00868761291779585,
+      0.014877733979837493,
+      0.01687793905300805,
+      0.012208936213481625
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "seq_delta_capped_hybrid_mix0p5",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.0810541821646652,
+    "at_stored_kept": 0.0810541821646652,
+    "at_drawn_kept": 0.0810541821646652,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09434193410098109,
+    "at_stored_kept": 0.09434193410098109,
+    "at_drawn_kept": 0.09434193410098109,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.10078412359100104,
+    "oracle_round": 78,
+    "cohort_at_stored_kept": 0.923529707184501,
+    "source_at_stored_kept": 0.991882914685496,
+    "cohort_final": 0.923529707184501,
+    "source_final": 0.991882914685496,
+    "final_evaluation_score": 0.09110953383668843
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      33,
+      27,
+      100,
+      48,
+      73
+     ],
+     "test_gain": -0.009654575954898003,
+     "validation_gain": 0.002359939400125577,
+     "test_gain_per_fold": [
+      -0.03316769651893814,
+      -5.645889792216252e-05,
+      0.0,
+      -0.0016026611330364204,
+      -0.013446063224593297
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      47,
+      28,
+      49,
+      9,
+      23
+     ],
+     "test_gain": -0.015153215595213276,
+     "validation_gain": -0.015781530386654242,
+     "test_gain_per_fold": [
+      0.0002688909324598532,
+      0.006478658536585358,
+      0.011645794816339206,
+      -0.049911839876997766,
+      -0.04424758238445303
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "seq_delta_capped_logit_l2_lam0p003",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 77,
+    "kept_round": 57
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 85,
+    "kept_round": 65
+   },
+   "kept_round_difference": 8,
+   "validation": {
+    "final": 0.08823183290796333,
+    "at_stored_kept": 0.09627242367674527,
+    "at_drawn_kept": 0.09375913194847463,
+    "gain_stored": 0.008040590768781941,
+    "gain_drawn": 0.005527299040511302
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10390421030564703,
+    "at_stored_kept": 0.1036913846575751,
+    "at_drawn_kept": 0.105573692430592,
+    "gain_stored": -0.00021282564807192927,
+    "gain_drawn": 0.001669482124944971,
+    "oracle": 0.10979675129960753,
+    "oracle_round": 81,
+    "cohort_at_stored_kept": 0.9327627876662753,
+    "source_at_stored_kept": 0.9919992847603158,
+    "cohort_final": 0.9346100930411682,
+    "source_final": 0.9903648050334949,
+    "final_evaluation_score": 0.1046682986027581
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      33,
+      72,
+      54,
+      30,
+      60
+     ],
+     "test_gain": -0.0011916668091295657,
+     "validation_gain": 0.01451154906214116,
+     "test_gain_per_fold": [
+      -0.00030384675367967073,
+      -0.010783649503161574,
+      -0.004016813757979687,
+      0.004663954894308708,
+      0.004482021074864395
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      33,
+      38,
+      10,
+      26,
+      60
+     ],
+     "test_gain": -0.010391550472305666,
+     "validation_gain": 0.001418179828159638,
+     "test_gain_per_fold": [
+      -0.00030384675367967073,
+      -0.025244184733513975,
+      -0.03479610702201141,
+      0.0039043650728123325,
+      0.004482021074864395
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "seq_delta_capped_ntd_b0p01_t2",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 87,
+    "kept_round": 67
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 69,
+    "kept_round": 49
+   },
+   "kept_round_difference": -18,
+   "validation": {
+    "final": 0.09366902873833693,
+    "at_stored_kept": 0.09781711830319151,
+    "at_drawn_kept": 0.0943310831522074,
+    "gain_stored": 0.0041480895648545735,
+    "gain_drawn": 0.0006620544138704609
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10472730813941675,
+    "at_stored_kept": 0.10249973889135862,
+    "at_drawn_kept": 0.10450406554986327,
+    "gain_stored": -0.0022275692480581283,
+    "gain_drawn": -0.00022324258955347398,
+    "oracle": 0.10813775138647633,
+    "oracle_round": 97,
+    "cohort_at_stored_kept": 0.9327897234444739,
+    "source_at_stored_kept": 0.9907807032159008,
+    "cohort_final": 0.9355891959458024,
+    "source_final": 0.9902087999626304,
+    "final_evaluation_score": 0.10661366053326682
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      39,
+      58,
+      59,
+      40,
+      31
+     ],
+     "test_gain": -0.004703933310246699,
+     "validation_gain": 0.0060101696710821665,
+     "test_gain_per_fold": [
+      -0.0039311854325649875,
+      0.004382621951219523,
+      0.0,
+      -0.008142656105799562,
+      -0.015828446964088472
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      48,
+      55,
+      59,
+      49,
+      78
+     ],
+     "test_gain": -0.0032950744197687066,
+     "validation_gain": 0.004746369328664168,
+     "test_gain_per_fold": [
+      0.00038182512409312697,
+      0.003810975609756073,
+      0.0,
+      -0.0031218407760292832,
+      -0.01754633205666345
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "seq_fedavg_hybrid_mix0p5",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.07919177560693169,
+    "at_stored_kept": 0.07919177560693169,
+    "at_drawn_kept": 0.07919177560693169,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09420182167562874,
+    "at_stored_kept": 0.09420182167562874,
+    "at_drawn_kept": 0.09420182167562874,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.10092086575893403,
+    "oracle_round": 64,
+    "cohort_at_stored_kept": 0.9243408213193368,
+    "source_at_stored_kept": 0.990931688125308,
+    "cohort_final": 0.9243408213193368,
+    "source_final": 0.990931688125308,
+    "final_evaluation_score": 0.08729502727418773
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      53,
+      59,
+      37,
+      62,
+      23
+     ],
+     "test_gain": -0.003858124132048202,
+     "validation_gain": 0.0023837746722895404,
+     "test_gain_per_fold": [
+      -0.010838993487461757,
+      0.008631154019873577,
+      -0.0072731712421948425,
+      0.01421937467777068,
+      -0.024028984628228667
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      100,
+      13,
+      74,
+      70,
+      40
+     ],
+     "test_gain": -0.010876096444376548,
+     "validation_gain": -0.00445765722578253,
+     "test_gain_per_fold": [
+      0.0,
+      -0.02650039521228542,
+      -0.0072731712421948425,
+      0.002658564375237371,
+      -0.02326548014263985
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "seq_fedavg_logit_l2_lam0p003",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 72,
+    "kept_round": 52
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 69,
+    "kept_round": 49
+   },
+   "kept_round_difference": -3,
+   "validation": {
+    "final": 0.08940734274145823,
+    "at_stored_kept": 0.09756855905823536,
+    "at_drawn_kept": 0.09444705082761162,
+    "gain_stored": 0.008161216316777131,
+    "gain_drawn": 0.005039708086153394
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10888880365487641,
+    "at_stored_kept": 0.10601057101250196,
+    "at_drawn_kept": 0.10192061649677771,
+    "gain_stored": -0.0028782326423744536,
+    "gain_drawn": -0.0069681871580987015,
+    "oracle": 0.11048832899618881,
+    "oracle_round": 74,
+    "cohort_at_stored_kept": 0.9346244270497338,
+    "source_at_stored_kept": 0.9924568317317841,
+    "cohort_final": 0.9384561425348131,
+    "source_final": 0.9915033488890793,
+    "final_evaluation_score": 0.10633980869310984
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      49,
+      29,
+      39,
+      32,
+      49
+     ],
+     "test_gain": -0.008446383136214087,
+     "validation_gain": 0.013699741652649111,
+     "test_gain_per_fold": [
+      -0.007480545741036515,
+      -0.013507791327913354,
+      0.002851711026615966,
+      -0.017994389309965775,
+      -0.006100900328770753
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      55,
+      44,
+      45,
+      30,
+      49
+     ],
+     "test_gain": -0.004676168711443274,
+     "validation_gain": 0.008508055290420957,
+     "test_gain_per_fold": [
+      0.001336387934326111,
+      -0.00825005645889787,
+      0.006868524784595542,
+      -0.0172347994884694,
+      -0.006100900328770753
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "seq_fedavg_ntd_b0p01_t2",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 88,
+    "kept_round": 68
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 98,
+    "kept_round": 78
+   },
+   "kept_round_difference": 10,
+   "validation": {
+    "final": 0.09384362268613788,
+    "at_stored_kept": 0.09822540901313837,
+    "at_drawn_kept": 0.09522664548199422,
+    "gain_stored": 0.004381786327000481,
+    "gain_drawn": 0.0013830227958563368
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10480477089843318,
+    "at_stored_kept": 0.10262210571606671,
+    "at_drawn_kept": 0.09962734117858738,
+    "gain_stored": -0.0021826651823664694,
+    "gain_drawn": -0.005177429719845805,
+    "oracle": 0.10566764990687809,
+    "oracle_round": 38,
+    "cohort_at_stored_kept": 0.9327194351187654,
+    "source_at_stored_kept": 0.9909733583663173,
+    "cohort_final": 0.9347134370809058,
+    "source_final": 0.9911620215865434,
+    "final_evaluation_score": 0.10524949809519901
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      29,
+      43,
+      61,
+      37,
+      62
+     ],
+     "test_gain": -0.005727111761212811,
+     "validation_gain": 0.0069878970512476934,
+     "test_gain_per_fold": [
+      -0.010726059295828372,
+      -0.0007621951219511924,
+      0.009554540063487549,
+      -0.027656225058758088,
+      0.0009543806069860494
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      32,
+      66,
+      69,
+      49,
+      74
+     ],
+     "test_gain": -0.00849393070058484,
+     "validation_gain": 0.0030533722926904703,
+     "test_gain_per_fold": [
+      -0.01312994423202063,
+      -0.0015243902439024959,
+      -0.006298182579272393,
+      -0.018943876586836383,
+      -0.0025732598608922963
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "seq_mix_r0p3_hybrid_mix0p5",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.08059750909254404,
+    "at_stored_kept": 0.08059750909254404,
+    "at_drawn_kept": 0.08059750909254404,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09461904417150084,
+    "at_stored_kept": 0.09461904417150084,
+    "at_drawn_kept": 0.09461904417150084,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.1023314707693402,
+    "oracle_round": 61,
+    "cohort_at_stored_kept": 0.9243751178125204,
+    "source_at_stored_kept": 0.9913146141279965,
+    "cohort_final": 0.9243751178125204,
+    "source_final": 0.9913146141279965,
+    "final_evaluation_score": 0.09634365518374877
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      100,
+      47,
+      61,
+      38,
+      55
+     ],
+     "test_gain": -0.0017124215021047551,
+     "validation_gain": 0.0037674547093387023,
+     "test_gain_per_fold": [
+      0.0,
+      -0.016422481933152655,
+      0.01834862385321101,
+      0.0023851854298195807,
+      -0.012873434860401711
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      100,
+      17,
+      17,
+      54,
+      55
+     ],
+     "test_gain": -0.011111955401431683,
+     "validation_gain": -0.0053471446415641385,
+     "test_gain_per_fold": [
+      0.0,
+      -0.03728404471544722,
+      -0.010529528726410109,
+      0.0051272312951006205,
+      -0.012873434860401711
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "seq_mix_r0p3_logit_l2_lam0p003",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 70,
+    "kept_round": 50
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 63,
+    "kept_round": 43
+   },
+   "kept_round_difference": -7,
+   "validation": {
+    "final": 0.09238659989705367,
+    "at_stored_kept": 0.09827095796920193,
+    "at_drawn_kept": 0.08920937739655865,
+    "gain_stored": 0.005884358072148266,
+    "gain_drawn": -0.003177222500495014
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10880401760194398,
+    "at_stored_kept": 0.10876110157841994,
+    "at_drawn_kept": 0.09898554888485149,
+    "gain_stored": -4.2916023524047775e-05,
+    "gain_drawn": -0.009818468717092493,
+    "oracle": 0.11135741137845453,
+    "oracle_round": 83,
+    "cohort_at_stored_kept": 0.9374112977814295,
+    "source_at_stored_kept": 0.9924204915660064,
+    "cohort_final": 0.9393609719578407,
+    "source_final": 0.9905137334131192,
+    "final_evaluation_score": 0.10656626144749462
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      52,
+      29,
+      43,
+      27,
+      57
+     ],
+     "test_gain": -0.006473033105251535,
+     "validation_gain": 0.00855629261967894,
+     "test_gain_per_fold": [
+      -0.0037402728705182575,
+      -0.0025335930442638155,
+      -0.015116684689712834,
+      -0.011264496881828623,
+      0.000289881960065852
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      21,
+      29,
+      49,
+      35,
+      63
+     ],
+     "test_gain": -0.00552087233203129,
+     "validation_gain": 0.0045084544519771175,
+     "test_gain_per_fold": [
+      -0.007671458303083134,
+      -0.0025335930442638155,
+      -0.009959186521086849,
+      -0.012593779069447364,
+      0.005153655277724711
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "seq_mix_r0p3_ntd_b0p01_t2",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 99,
+    "kept_round": 79
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 52,
+    "kept_round": 32
+   },
+   "kept_round_difference": -47,
+   "validation": {
+    "final": 0.0921147793664141,
+    "at_stored_kept": 0.09678867037181749,
+    "at_drawn_kept": 0.09332981369047544,
+    "gain_stored": 0.0046738910054033855,
+    "gain_drawn": 0.001215034324061337
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10448678293725726,
+    "at_stored_kept": 0.10368847294389394,
+    "at_drawn_kept": 0.1034894344998806,
+    "gain_stored": -0.0007983099933633192,
+    "gain_drawn": -0.0009973484373766578,
+    "oracle": 0.11070656805892246,
+    "oracle_round": 40,
+    "cohort_at_stored_kept": 0.9347033688887687,
+    "source_at_stored_kept": 0.9900557918241413,
+    "cohort_final": 0.9356524042170561,
+    "source_final": 0.9899050664892172,
+    "final_evaluation_score": 0.10201245557848246
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      33,
+      22,
+      39,
+      30,
+      32
+     ],
+     "test_gain": -0.0011109841141709875,
+     "validation_gain": 0.006492731708565036,
+     "test_gain_per_fold": [
+      0.006603961301216987,
+      -0.009562725835591812,
+      0.0032319391634980654,
+      -0.011264496881828734,
+      0.005436401681850556
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      42,
+      31,
+      39,
+      32,
+      49
+     ],
+     "test_gain": -0.0018183959314553855,
+     "validation_gain": 0.0030242393735272046,
+     "test_gain_per_fold": [
+      0.0019091256204658569,
+      -0.001637308039747154,
+      0.0032319391634980654,
+      -0.012213984158699231,
+      -0.0003817522427944642
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "weight_q0_hybrid_seq_mix0p5",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 74,
+    "kept_round": 54
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 84,
+    "kept_round": 64
+   },
+   "kept_round_difference": 10,
+   "validation": {
+    "final": 0.08911529061545997,
+    "at_stored_kept": 0.08413973264456764,
+    "at_drawn_kept": 0.07750512214352911,
+    "gain_stored": -0.00497555797089233,
+    "gain_drawn": -0.01161016847193086
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09791251586238467,
+    "at_stored_kept": 0.09396274747795745,
+    "at_drawn_kept": 0.09931643008771907,
+    "gain_stored": -0.0039497683844272186,
+    "gain_drawn": 0.0014039142253343961,
+    "oracle": 0.10146759814981524,
+    "oracle_round": 58,
+    "cohort_at_stored_kept": 0.9197597852918648,
+    "source_at_stored_kept": 0.9952736499551087,
+    "cohort_final": 0.9271359061237674,
+    "source_final": 0.9918472975076333,
+    "final_evaluation_score": 0.09853495609960775
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      67,
+      18,
+      60,
+      51,
+      61
+     ],
+     "test_gain": -0.012927922056220908,
+     "validation_gain": 0.0018722628753224725,
+     "test_gain_per_fold": [
+      -0.02137414022124351,
+      -0.0440097109304427,
+      0.00781909512680079,
+      0.0037979491074819904,
+      -0.010872803363701111
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      61,
+      20,
+      100,
+      33,
+      69
+     ],
+     "test_gain": -0.012725101720226385,
+     "validation_gain": -0.0007917871516677,
+     "test_gain_per_fold": [
+      -0.012557206545880994,
+      -0.03322606142728102,
+      0.0,
+      -0.012024086703324999,
+      -0.005818153924644909
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "weight_q0_logit_l2_lam0p001",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 97,
+    "kept_round": 77
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 77,
+    "kept_round": 57
+   },
+   "kept_round_difference": -20,
+   "validation": {
+    "final": 0.0883654846823132,
+    "at_stored_kept": 0.09645389734765897,
+    "at_drawn_kept": 0.09299755511323082,
+    "gain_stored": 0.008088412665345768,
+    "gain_drawn": 0.004632070430917623
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10297012800437659,
+    "at_stored_kept": 0.09960653546120632,
+    "at_drawn_kept": 0.1077950317438614,
+    "gain_stored": -0.0033635925431702712,
+    "gain_drawn": 0.004824903739484812,
+    "oracle": 0.10914860454131474,
+    "oracle_round": 91,
+    "cohort_at_stored_kept": 0.9319153641387926,
+    "source_at_stored_kept": 0.9887618590914298,
+    "cohort_final": 0.9356208000814292,
+    "source_final": 0.9884200156919634,
+    "final_evaluation_score": 0.09704231435191193
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      46,
+      48,
+      66,
+      33,
+      100
+     ],
+     "test_gain": 0.0006658120904332598,
+     "validation_gain": 0.013760983109848413,
+     "test_gain_per_fold": [
+      0.002290950744558984,
+      0.010021454381210382,
+      0.0020912547528516567,
+      -0.011074599426454723,
+      0.0
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      50,
+      57,
+      66,
+      16,
+      38
+     ],
+     "test_gain": -0.004328914272185536,
+     "validation_gain": 0.009803128455621923,
+     "test_gain_per_fold": [
+      0.004772814051164587,
+      -0.0005716463414634498,
+      0.0020912547528516567,
+      -0.011917670737994768,
+      -0.016019323085485704
+     ]
+    }
+   }
+  },
+  {
+   "stage": "combo",
+   "cell": "weight_q0_ntd_b0p01_t0p5",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 82,
+    "kept_round": 62
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 91,
+    "kept_round": 71
+   },
+   "kept_round_difference": 9,
+   "validation": {
+    "final": 0.09151943344160707,
+    "at_stored_kept": 0.09251130861218204,
+    "at_drawn_kept": 0.09046176940355011,
+    "gain_stored": 0.000991875170574974,
+    "gain_drawn": -0.0010576640380569602
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09846241962771171,
+    "at_stored_kept": 0.09765795141443148,
+    "at_drawn_kept": 0.10137722199365587,
+    "gain_stored": -0.0008044682132802294,
+    "gain_drawn": 0.002914802365944158,
+    "oracle": 0.10800430719787801,
+    "oracle_round": 29,
+    "cohort_at_stored_kept": 0.9309188323270363,
+    "source_at_stored_kept": 0.9878098068564113,
+    "cohort_final": 0.9346544577264889,
+    "source_final": 0.9848786496702389,
+    "final_evaluation_score": 0.08988233590896315
+   },
+   "drawn_clients_per_round": [
+    8
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      34,
+      40,
+      52,
+      30,
+      25
+     ],
+     "test_gain": 0.0029716427836304236,
+     "validation_gain": 0.006607137778766314,
+     "test_gain_per_fold": [
+      0.010040387418055352,
+      -0.0027806007226738316,
+      -0.0011651027313634987,
+      0.006183134537301571,
+      0.002580395416832526
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      37,
+      31,
+      52,
+      30,
+      68
+     ],
+     "test_gain": 0.0020169129713453193,
+     "validation_gain": 0.007011132986051383,
+     "test_gain_per_fold": [
+      0.009467649731915606,
+      -0.0018278568202347856,
+      -0.0011651027313634987,
+      0.006183134537301571,
+      -0.0025732598608922963
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c10d10",
+   "cell": "balanced",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 77,
+    "kept_round": 57
+   },
+   "kept_round_difference": -43,
+   "validation": {
+    "final": 0.08083552525091076,
+    "at_stored_kept": 0.08083552525091076,
+    "at_drawn_kept": 0.0821200663070456,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.001284541056134847
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10219641890882676,
+    "at_stored_kept": 0.10219641890882676,
+    "at_drawn_kept": 0.09578267563586854,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.006413743272958225,
+    "oracle": 0.10426679785961317,
+    "oracle_round": 90,
+    "cohort_at_stored_kept": 0.9300073991897371,
+    "source_at_stored_kept": 0.9932597074881057,
+    "cohort_final": 0.9300073991897371,
+    "source_final": 0.9932597074881057,
+    "final_evaluation_score": 0.10005656197085847
+   },
+   "drawn_clients_per_round": [
+    9
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      38,
+      25,
+      40,
+      29,
+      23
+     ],
+     "test_gain": -0.02481704605856454,
+     "validation_gain": 0.00437672075521649,
+     "test_gain_per_fold": [
+      -0.03141452763929886,
+      -0.016231933152664912,
+      -0.010339414657968948,
+      -0.024997660683520828,
+      -0.04110169415936915
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      62,
+      27,
+      40,
+      47,
+      72
+     ],
+     "test_gain": -0.012479841668025493,
+     "validation_gain": 0.009769496058809146,
+     "test_gain_per_fold": [
+      -0.019048233655464597,
+      -0.012364498644986455,
+      -0.010339414657968948,
+      -0.005673989185936312,
+      -0.014973072195771153
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c10d10",
+   "cell": "control",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 83,
+    "kept_round": 63
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 84,
+    "kept_round": 64
+   },
+   "kept_round_difference": 1,
+   "validation": {
+    "final": 0.06242915690342887,
+    "at_stored_kept": 0.0792037086240065,
+    "at_drawn_kept": 0.07568439190873733,
+    "gain_stored": 0.016774551720577624,
+    "gain_drawn": 0.013255235005308452
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.05821171831742169,
+    "at_stored_kept": 0.08018478387804207,
+    "at_drawn_kept": 0.077273971923981,
+    "gain_stored": 0.021973065560620376,
+    "gain_drawn": 0.01906225360655931,
+    "oracle": 0.0950491365109496,
+    "oracle_round": 28,
+    "cohort_at_stored_kept": 0.921597461915212,
+    "source_at_stored_kept": 0.9796580097318461,
+    "cohort_final": 0.9112838255080598,
+    "source_final": 0.967998580578378,
+    "final_evaluation_score": 0.06524178284491881
+   },
+   "drawn_clients_per_round": [
+    9
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      26,
+      56,
+      27,
+      24,
+      43
+     ],
+     "test_gain": 0.02737432729893774,
+     "validation_gain": 0.022874285056974177,
+     "test_gain_per_fold": [
+      0.010005431596835757,
+      0.027608401084010747,
+      0.045939582097882736,
+      0.02173179140269077,
+      0.03158643031326869
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      26,
+      55,
+      27,
+      22,
+      55
+     ],
+     "test_gain": 0.026669464897063434,
+     "validation_gain": 0.019234560674245206,
+     "test_gain_per_fold": [
+      0.010005431596835757,
+      0.03604900632339658,
+      0.045939582097882736,
+      0.027702094009331435,
+      0.013651210457870655
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c10d10",
+   "cell": "control",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 90,
+    "kept_round": 70
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 66,
+    "kept_round": 46
+   },
+   "kept_round_difference": -24,
+   "validation": {
+    "final": 0.06123168916363586,
+    "at_stored_kept": 0.07705744400123349,
+    "at_drawn_kept": 0.0802829799431134,
+    "gain_stored": 0.015825754837597628,
+    "gain_drawn": 0.019051290779477537
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.05749800684711117,
+    "at_stored_kept": 0.07618909979669568,
+    "at_drawn_kept": 0.09140920259087153,
+    "gain_stored": 0.018691092949584508,
+    "gain_drawn": 0.03391119574376036,
+    "oracle": 0.09799723591587879,
+    "oracle_round": 32,
+    "cohort_at_stored_kept": 0.9198126447104509,
+    "source_at_stored_kept": 0.9774471428552608,
+    "cohort_final": 0.9093469118813424,
+    "source_final": 0.9692217827347848,
+    "final_evaluation_score": 0.06893936832817849
+   },
+   "drawn_clients_per_round": [
+    9
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      23,
+      52,
+      40,
+      27,
+      36
+     ],
+     "test_gain": 0.028879894707231225,
+     "validation_gain": 0.02967057102683799,
+     "test_gain_per_fold": [
+      0.019967840644477763,
+      0.0248842592592593,
+      0.0339379774653783,
+      0.036794237392001605,
+      0.02881515877503915
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      56,
+      26,
+      42,
+      48,
+      46
+     ],
+     "test_gain": 0.03122792365603193,
+     "validation_gain": 0.02649045880955638,
+     "test_gain_per_fold": [
+      0.0099274532264223,
+      0.03498334462511299,
+      0.0343426239229776,
+      0.047215662962290295,
+      0.02967053354335647
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c10d10",
+   "cell": "sequential",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 99,
+    "kept_round": 79
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 62,
+    "kept_round": 42
+   },
+   "kept_round_difference": -37,
+   "validation": {
+    "final": 0.0951000427487273,
+    "at_stored_kept": 0.09831566212918108,
+    "at_drawn_kept": 0.09428610373842972,
+    "gain_stored": 0.0032156193804537825,
+    "gain_drawn": -0.0008139390102975819
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.10164649326918465,
+    "at_stored_kept": 0.10168503676090623,
+    "at_drawn_kept": 0.1042336696770011,
+    "gain_stored": 3.854349172158211e-05,
+    "gain_drawn": 0.002587176407816444,
+    "oracle": 0.10796451324147491,
+    "oracle_round": 75,
+    "cohort_at_stored_kept": 0.9319355005230671,
+    "source_at_stored_kept": 0.9908202240068552,
+    "cohort_final": 0.9328112593879635,
+    "source_final": 0.9899059216502372,
+    "final_evaluation_score": 0.10152838520288539
+   },
+   "drawn_clients_per_round": [
+    9
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      32,
+      70,
+      52,
+      24,
+      39
+     ],
+     "test_gain": -0.0010334476202183529,
+     "validation_gain": 0.00811049720517638,
+     "test_gain_per_fold": [
+      -0.007671458303083134,
+      0.005582373532068696,
+      0.0036121673003801646,
+      -0.009935214694210104,
+      0.0032448940637526125
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      36,
+      61,
+      70,
+      24,
+      51
+     ],
+     "test_gain": 0.000895215468171906,
+     "validation_gain": 0.006973748217112674,
+     "test_gain_per_fold": [
+      0.0019091256204657459,
+      0.011926942186088474,
+      0.007248752921477752,
+      -0.009935214694210104,
+      -0.006673528692962338
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c10d10",
+   "cell": "winner",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 83,
+    "kept_round": 63
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 83,
+    "kept_round": 63
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.09107232703520829,
+    "at_stored_kept": 0.09958183903324247,
+    "at_drawn_kept": 0.09958183903324247,
+    "gain_stored": 0.00850951199803418,
+    "gain_drawn": 0.00850951199803418
+   },
+   "test": {
+    "round_0": -4.4408920985006264e-17,
+    "final": 0.09505112987443376,
+    "at_stored_kept": 0.10054583306548329,
+    "at_drawn_kept": 0.10054583306548329,
+    "gain_stored": 0.005494703191049527,
+    "gain_drawn": 0.005494703191049527,
+    "oracle": 0.10575161075972501,
+    "oracle_round": 50,
+    "cohort_at_stored_kept": 0.9319410071186498,
+    "source_at_stored_kept": 0.9896755137158495,
+    "cohort_final": 0.9290726609704237,
+    "source_final": 0.9870491566730261,
+    "final_evaluation_score": 0.09667840703139992
+   },
+   "drawn_clients_per_round": [
+    9
+   ],
+   "cohort_clients": 10,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      26,
+      50,
+      63,
+      22,
+      44
+     ],
+     "test_gain": 0.005594395782282291,
+     "validation_gain": 0.014313877417353616,
+     "test_gain_per_fold": [
+      0.00603122361507713,
+      0.009202800361336916,
+      -0.011480099068615579,
+      0.004663954894308819,
+      0.01955409910930417
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      26,
+      74,
+      50,
+      35,
+      70
+     ],
+     "test_gain": 0.006225146275959203,
+     "validation_gain": 0.011376004690971265,
+     "test_gain_per_fold": [
+      0.00603122361507713,
+      0.0030487804878048808,
+      0.0041825095057034245,
+      0.012426816089360138,
+      0.005436401681850445
+     ]
+    }
+   }
+  },
+  {
+   "stage": "five",
+   "cell": "balanced",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 65,
+    "kept_round": 45
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 89,
+    "kept_round": 69
+   },
+   "kept_round_difference": 24,
+   "validation": {
+    "final": 0.1156809892851508,
+    "at_stored_kept": 0.12875421291239153,
+    "at_drawn_kept": 0.12931639836625752,
+    "gain_stored": 0.013073223627240727,
+    "gain_drawn": 0.01363540908110672
+   },
+   "test": {
+    "round_0": 2.2204460492503132e-17,
+    "final": 0.11760412489740839,
+    "at_stored_kept": 0.11771796713889489,
+    "at_drawn_kept": 0.11887768878310101,
+    "gain_stored": 0.00011384224148650035,
+    "gain_drawn": 0.0012735638856926218,
+    "oracle": 0.12326263201096706,
+    "oracle_round": 60,
+    "cohort_at_stored_kept": 0.926752280106903,
+    "source_at_stored_kept": 0.9927222661147175,
+    "cohort_final": 0.9287771501089526,
+    "source_final": 0.9905835538711816,
+    "final_evaluation_score": 0.11984641886615574
+   },
+   "drawn_clients_per_round": [
+    4
+   ],
+   "cohort_clients": 5,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      42,
+      36,
+      14,
+      46,
+      24
+     ],
+     "test_gain": 0.0007057570313982797,
+     "validation_gain": 0.02062782373010603,
+     "test_gain_per_fold": [
+      0.013717901667055887,
+      -0.008380516840882701,
+      -0.008483391921945582,
+      0.0011393847322446193,
+      0.0055354075205191755
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      20,
+      47,
+      37,
+      40,
+      24
+     ],
+     "test_gain": -0.007424061681308092,
+     "validation_gain": 0.014280838089526982,
+     "test_gain_per_fold": [
+      0.025717590275692537,
+      -0.009904907084785086,
+      -0.026780974244924316,
+      -0.03168742487304277,
+      0.0055354075205191755
+     ]
+    }
+   }
+  },
+  {
+   "stage": "five",
+   "cell": "control",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 45,
+    "kept_round": 25
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 50,
+    "kept_round": 30
+   },
+   "kept_round_difference": 5,
+   "validation": {
+    "final": 0.07355903538451569,
+    "at_stored_kept": 0.13458387113687476,
+    "at_drawn_kept": 0.12905131267271686,
+    "gain_stored": 0.06102483575235906,
+    "gain_drawn": 0.055492277288201164
+   },
+   "test": {
+    "round_0": 2.2204460492503132e-17,
+    "final": 0.07583015257168006,
+    "at_stored_kept": 0.10699500192259906,
+    "at_drawn_kept": 0.1053439468757785,
+    "gain_stored": 0.031164849350918997,
+    "gain_drawn": 0.029513794304098437,
+    "oracle": 0.11438256130876776,
+    "oracle_round": 21,
+    "cohort_at_stored_kept": 0.9212120108457,
+    "source_at_stored_kept": 0.9875395701596247,
+    "cohort_final": 0.9402987090897531,
+    "source_final": 0.9372880225646526,
+    "final_evaluation_score": 0.06625238958949498
+   },
+   "drawn_clients_per_round": [
+    4
+   ],
+   "cohort_clients": 5,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      25,
+      27,
+      25,
+      41,
+      45
+     ],
+     "test_gain": 0.033354935434027254,
+     "validation_gain": 0.068420001000751,
+     "test_gain_per_fold": [
+      0.03578405750360514,
+      0.01773192508710797,
+      0.03467250161417612,
+      0.04766426129889856,
+      0.03092193166634849
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      22,
+      27,
+      25,
+      19,
+      30
+     ],
+     "test_gain": 0.03190747281336317,
+     "validation_gain": 0.06182258386164474,
+     "test_gain_per_fold": [
+      0.03521131981746539,
+      0.01773192508710797,
+      0.03467250161417612,
+      0.05013292821876181,
+      0.021788689329304556
+     ]
+    }
+   }
+  },
+  {
+   "stage": "five",
+   "cell": "control",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 74,
+    "kept_round": 54
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 50,
+    "kept_round": 30
+   },
+   "kept_round_difference": -24,
+   "validation": {
+    "final": 0.07669422492459343,
+    "at_stored_kept": 0.11139274050917702,
+    "at_drawn_kept": 0.10708918381401178,
+    "gain_stored": 0.03469851558458359,
+    "gain_drawn": 0.030394958889418344
+   },
+   "test": {
+    "round_0": 2.2204460492503132e-17,
+    "final": 0.07495127166315611,
+    "at_stored_kept": 0.09174967738630599,
+    "at_drawn_kept": 0.10859503749597291,
+    "gain_stored": 0.016798405723149876,
+    "gain_drawn": 0.033643765832816794,
+    "oracle": 0.11766409062307423,
+    "oracle_round": 20,
+    "cohort_at_stored_kept": 0.9250585203232775,
+    "source_at_stored_kept": 0.9684477361457542,
+    "cohort_final": 0.9346573479473844,
+    "source_final": 0.9420505027984973,
+    "final_evaluation_score": 0.060364308347695704
+   },
+   "drawn_clients_per_round": [
+    4
+   ],
+   "cohort_clients": 5,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      29,
+      36,
+      29,
+      34,
+      29
+     ],
+     "test_gain": 0.027680588043353428,
+     "validation_gain": 0.058691867728740556,
+     "test_gain_per_fold": [
+      -0.000843351609040699,
+      0.02591826364692218,
+      0.035884927182724735,
+      0.04221205085336388,
+      0.03523105014279704
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      22,
+      41,
+      25,
+      25,
+      29
+     ],
+     "test_gain": 0.035176295660309,
+     "validation_gain": 0.05318996414632711,
+     "test_gain_per_fold": [
+      0.011184139799893966,
+      0.02648990998838563,
+      0.060384532606356234,
+      0.042591845764112124,
+      0.03523105014279704
+     ]
+    }
+   }
+  },
+  {
+   "stage": "five",
+   "cell": "sequential",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 64,
+    "kept_round": 44
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 54,
+    "kept_round": 34
+   },
+   "kept_round_difference": -10,
+   "validation": {
+    "final": 0.1289197730578795,
+    "at_stored_kept": 0.1435621111282337,
+    "at_drawn_kept": 0.13486127348251598,
+    "gain_stored": 0.0146423380703542,
+    "gain_drawn": 0.005941500424636481
+   },
+   "test": {
+    "round_0": 2.2204460492503132e-17,
+    "final": 0.11820355886023544,
+    "at_stored_kept": 0.12451185161780483,
+    "at_drawn_kept": 0.11988865824887898,
+    "gain_stored": 0.006308292757569389,
+    "gain_drawn": 0.0016850993886435434,
+    "oracle": 0.13062818943556134,
+    "oracle_round": 87,
+    "cohort_at_stored_kept": 0.9342702358447851,
+    "source_at_stored_kept": 0.9919981948557455,
+    "cohort_final": 0.9345104520393601,
+    "source_final": 0.9854496859036009,
+    "final_evaluation_score": 0.12142366357241803
+   },
+   "drawn_clients_per_round": [
+    4
+   ],
+   "cohort_clients": 5,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      29,
+      36,
+      38,
+      29,
+      16
+     ],
+     "test_gain": 0.0033754770899957045,
+     "validation_gain": 0.019614811814101296,
+     "test_gain_per_fold": [
+      0.014099726791149014,
+      0.0007658246225318299,
+      -0.01259416026974669,
+      -0.009224709378585105,
+      0.023830703684629473
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      49,
+      29,
+      38,
+      18,
+      28
+     ],
+     "test_gain": 0.00478462908512407,
+     "validation_gain": 0.01111125378506359,
+     "test_gain_per_fold": [
+      0.024572114903413045,
+      -0.0005680168408828123,
+      -0.01259416026974669,
+      -0.010553991566203735,
+      0.023067199199040544
+     ]
+    }
+   }
+  },
+  {
+   "stage": "five",
+   "cell": "winner",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 50,
+    "kept_round": 30
+   },
+   "kept_round_difference": -70,
+   "validation": {
+    "final": 0.12543996096838927,
+    "at_stored_kept": 0.12543996096838927,
+    "at_drawn_kept": 0.1223547401587789,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.0030852208096103784
+   },
+   "test": {
+    "round_0": 2.2204460492503132e-17,
+    "final": 0.11186006222719982,
+    "at_stored_kept": 0.11186006222719982,
+    "at_drawn_kept": 0.12081081724838363,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.00895075502118381,
+    "oracle": 0.12540257179219672,
+    "oracle_round": 35,
+    "cohort_at_stored_kept": 0.9327807533518712,
+    "source_at_stored_kept": 0.9808358879580543,
+    "cohort_final": 0.9327807533518712,
+    "source_final": 0.9808358879580543,
+    "final_evaluation_score": 0.11182521785338144
+   },
+   "drawn_clients_per_round": [
+    4
+   ],
+   "cohort_clients": 5,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      18,
+      19,
+      41,
+      19,
+      42
+     ],
+     "test_gain": 0.0102547049502834,
+     "validation_gain": 0.01938126540164904,
+     "test_gain_per_fold": [
+      0.028581278706391267,
+      0.008387775842044198,
+      -0.0010689432527440923,
+      -0.009984299200081481,
+      0.025357712655807108
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      31,
+      17,
+      19,
+      23,
+      37
+     ],
+     "test_gain": 0.006042448033186987,
+     "validation_gain": 0.007589750068840395,
+     "test_gain_per_fold": [
+      0.020972579024825966,
+      0.019435975609756073,
+      -0.011643589927541442,
+      -0.022192552104337904,
+      0.02363982756323224
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c20d10",
+   "cell": "balanced",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.05628003397188319,
+    "at_stored_kept": 0.05628003397188319,
+    "at_drawn_kept": 0.05628003397188319,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": 1.3322676295501878e-16,
+    "final": 0.046371495483208514,
+    "at_stored_kept": 0.046371495483208514,
+    "at_drawn_kept": 0.046371495483208514,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.05077737825842814,
+    "oracle_round": 99,
+    "cohort_at_stored_kept": 0.8930517240408617,
+    "source_at_stored_kept": 0.9959228983508861,
+    "cohort_final": 0.8930517240408617,
+    "source_final": 0.9959228983508861,
+    "final_evaluation_score": 0.047575845200467315
+   },
+   "drawn_clients_per_round": [
+    18
+   ],
+   "cohort_clients": 20,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      100,
+      38,
+      64,
+      46,
+      67
+     ],
+     "test_gain": -0.0038752427691095327,
+     "validation_gain": 0.0001050604648739295,
+     "test_gain_per_fold": [
+      0.0,
+      -0.00906940627504882,
+      -0.01369877482044779,
+      0.0006517244411167189,
+      0.0027402428088322273
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      69,
+      32,
+      64,
+      46,
+      100
+     ],
+     "test_gain": -0.0056305987886955625,
+     "validation_gain": -0.0011883933891414066,
+     "test_gain_per_fold": [
+      -0.010921921750337016,
+      -0.004184021813809724,
+      -0.01369877482044779,
+      0.0006517244411167189,
+      0.0
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c20d10",
+   "cell": "sequential",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.06954278626032262,
+    "at_stored_kept": 0.06954278626032262,
+    "at_drawn_kept": 0.06954278626032262,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": 1.3322676295501878e-16,
+    "final": 0.06036945070065251,
+    "at_stored_kept": 0.06036945070065251,
+    "at_drawn_kept": 0.06036945070065251,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.06156836151902938,
+    "oracle_round": 98,
+    "cohort_at_stored_kept": 0.9094882841855053,
+    "source_at_stored_kept": 0.9934842934236865,
+    "cohort_final": 0.9094882841855053,
+    "source_final": 0.9934842934236865,
+    "final_evaluation_score": 0.06082578805755614
+   },
+   "drawn_clients_per_round": [
+    18
+   ],
+   "cohort_clients": 20,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      38,
+      100,
+      58,
+      34,
+      63
+     ],
+     "test_gain": -0.006354654500718504,
+     "validation_gain": -0.003384912676029206,
+     "test_gain_per_fold": [
+      -0.021652930938627746,
+      0.0,
+      -0.010053161526545673,
+      0.010198263820591857,
+      -0.010265443859010959
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      57,
+      100,
+      36,
+      63,
+      64
+     ],
+     "test_gain": -0.00654197079324923,
+     "validation_gain": -0.0059545792648803,
+     "test_gain_per_fold": [
+      -0.005132418948321282,
+      0.0,
+      -0.013922334882410903,
+      0.0017090770983668735,
+      -0.015364177233880838
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c20d10",
+   "cell": "winner",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 73,
+    "kept_round": 53
+   },
+   "kept_round_difference": -47,
+   "validation": {
+    "final": 0.059431616447946145,
+    "at_stored_kept": 0.059431616447946145,
+    "at_drawn_kept": 0.0598704376403435,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.00043882119239735395
+   },
+   "test": {
+    "round_0": 1.3322676295501878e-16,
+    "final": 0.05826432947922462,
+    "at_stored_kept": 0.05826432947922462,
+    "at_drawn_kept": 0.04475763358195497,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.013506695897269654,
+    "oracle": 0.06216544808763989,
+    "oracle_round": 98,
+    "cohort_at_stored_kept": 0.9081071856560966,
+    "source_at_stored_kept": 0.9927602707316674,
+    "cohort_final": 0.9081071856560966,
+    "source_final": 0.9927602707316674,
+    "final_evaluation_score": 0.0576842381057596
+   },
+   "drawn_clients_per_round": [
+    18
+   ],
+   "cohort_clients": 20,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      59,
+      62,
+      34,
+      53,
+      43
+     ],
+     "test_gain": -0.006437390193770787,
+     "validation_gain": 0.010049351551929653,
+     "test_gain_per_fold": [
+      -0.01452704020228579,
+      0.000701362647429149,
+      -0.004092733417828454,
+      0.00428560939860978,
+      -0.01855414939477862
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      47,
+      26,
+      38,
+      53,
+      74
+     ],
+     "test_gain": -0.008463251616367452,
+     "validation_gain": 0.002937766593959723,
+     "test_gain_per_fold": [
+      -0.015565949180073702,
+      -0.010524912687507215,
+      -0.009672933389663463,
+      0.00428560939860978,
+      -0.010838072223202655
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c20d20",
+   "cell": "balanced",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.05215636612038099,
+    "at_stored_kept": 0.05215636612038099,
+    "at_drawn_kept": 0.05215636612038099,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": 1.3322676295501878e-16,
+    "final": 0.04737242346737416,
+    "at_stored_kept": 0.04737242346737416,
+    "at_drawn_kept": 0.04737242346737416,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.04844267783918219,
+    "oracle_round": 94,
+    "cohort_at_stored_kept": 0.8940153252947278,
+    "source_at_stored_kept": 0.9959602250811856,
+    "cohort_final": 0.8940153252947278,
+    "source_final": 0.9959602250811856,
+    "final_evaluation_score": 0.04183724371532573
+   },
+   "drawn_clients_per_round": [
+    16
+   ],
+   "cohort_clients": 20,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      29,
+      68,
+      59,
+      67,
+      100
+     ],
+     "test_gain": -0.008763115439534452,
+     "validation_gain": 0.0053273515634532755,
+     "test_gain_per_fold": [
+      -0.01452704020228568,
+      -0.002979896656361003,
+      -0.012938318546683703,
+      -0.013370321792341877,
+      0.0
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      29,
+      47,
+      73,
+      69,
+      26
+     ],
+     "test_gain": -0.007098965010082714,
+     "validation_gain": -0.00543110053619662,
+     "test_gain_per_fold": [
+      -0.01452704020228568,
+      -0.007293634776136537,
+      -0.008118574848612892,
+      -0.016516546458707038,
+      0.010960971235328576
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c20d20",
+   "cell": "sequential",
+   "family": "cyclic",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.07042381711019352,
+    "at_stored_kept": 0.07042381711019352,
+    "at_drawn_kept": 0.07042381711019352,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0
+   },
+   "test": {
+    "round_0": 1.3322676295501878e-16,
+    "final": 0.05951895420056865,
+    "at_stored_kept": 0.05951895420056865,
+    "at_drawn_kept": 0.05951895420056865,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.0,
+    "oracle": 0.06001781140599609,
+    "oracle_round": 89,
+    "cohort_at_stored_kept": 0.9081052791271196,
+    "source_at_stored_kept": 0.9940168019819885,
+    "cohort_final": 0.9081052791271196,
+    "source_final": 0.9940168019819885,
+    "final_evaluation_score": 0.06183087504955707
+   },
+   "drawn_clients_per_round": [
+    16
+   ],
+   "cohort_clients": 20,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      69,
+      100,
+      25,
+      64,
+      46
+     ],
+     "test_gain": -0.004324468508129353,
+     "validation_gain": 0.0008331548108802212,
+     "test_gain_per_fold": [
+      -0.001993471788020895,
+      0.0,
+      -0.012021194198000296,
+      -0.007539699445354486,
+      -6.797710927108902e-05
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      44,
+      52,
+      35,
+      73,
+      62
+     ],
+     "test_gain": -0.007852453383143531,
+     "validation_gain": -0.007420000043224628,
+     "test_gain_per_fold": [
+      -0.008355712276176597,
+      -0.009450503836024304,
+      -0.007961906773693905,
+      -0.010685924111719647,
+      -0.0028082199181032053
+     ]
+    }
+   }
+  },
+  {
+   "stage": "c20d20",
+   "cell": "winner",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": false,
+    "fire_round": null,
+    "kept_round": 100
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 98,
+    "kept_round": 78
+   },
+   "kept_round_difference": -22,
+   "validation": {
+    "final": 0.06393797308029736,
+    "at_stored_kept": 0.06393797308029736,
+    "at_drawn_kept": 0.06286989802591791,
+    "gain_stored": 0.0,
+    "gain_drawn": -0.001068075054379447
+   },
+   "test": {
+    "round_0": 1.3322676295501878e-16,
+    "final": 0.05475407900494025,
+    "at_stored_kept": 0.05475407900494025,
+    "at_drawn_kept": 0.05712036798935958,
+    "gain_stored": 0.0,
+    "gain_drawn": 0.002366288984419332,
+    "oracle": 0.05941063686398344,
+    "oracle_round": 92,
+    "cohort_at_stored_kept": 0.9052823178164621,
+    "source_at_stored_kept": 0.9920748880970175,
+    "cohort_final": 0.9052823178164621,
+    "source_final": 0.9920748880970175,
+    "final_evaluation_score": 0.05096808273647831
+   },
+   "drawn_clients_per_round": [
+    16
+   ],
+   "cohort_clients": 20,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      36,
+      78,
+      26,
+      77,
+      34
+     ],
+     "test_gain": -0.00767078858542185,
+     "validation_gain": 0.0035538278131633794,
+     "test_gain_per_fold": [
+      -0.015565949180073702,
+      0.0032393292682927344,
+      -0.006631108294606447,
+      -0.008299289266850862,
+      -0.011096925453870976
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      78,
+      78,
+      27,
+      26,
+      24
+     ],
+     "test_gain": -0.001965565769859956,
+     "validation_gain": -0.00371133864495603,
+     "test_gain_per_fold": [
+      0.00152730049637273,
+      0.0032393292682927344,
+      -0.011070623855795048,
+      0.01171744346358461,
+      -0.015241278221754806
+     ]
+    }
+   }
+  },
+  {
+   "stage": "extreme",
+   "cell": "double",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 56,
+    "kept_round": 36
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 56,
+    "kept_round": 36
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.16075357595467477,
+    "at_stored_kept": 0.22032505900628463,
+    "at_drawn_kept": 0.22032505900628463,
+    "gain_stored": 0.059571483051609864,
+    "gain_drawn": 0.059571483051609864
+   },
+   "test": {
+    "round_0": 4.4408920985006264e-17,
+    "final": 0.1461627940056131,
+    "at_stored_kept": 0.1936162497722849,
+    "at_drawn_kept": 0.1936162497722849,
+    "gain_stored": 0.04745345576667179,
+    "gain_drawn": 0.04745345576667179,
+    "oracle": 0.2111788160231932,
+    "oracle_round": 26,
+    "cohort_at_stored_kept": 0.9674190177638453,
+    "source_at_stored_kept": 0.9837343030082418,
+    "cohort_final": 0.9674190177638453,
+    "source_final": 0.93628084724157,
+    "final_evaluation_score": 0.1471983337390376
+   },
+   "drawn_clients_per_round": [
+    2
+   ],
+   "cohort_clients": 2,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      7,
+      10,
+      27,
+      5,
+      5
+     ],
+     "test_gain": 0.0509551425961952,
+     "validation_gain": 0.06217841714836403,
+     "test_gain_per_fold": [
+      0.02558228331424206,
+      0.07240853658536583,
+      0.07763865215681132,
+      0.07584766295166123,
+      0.0032985779728955666
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      7,
+      10,
+      27,
+      5,
+      5
+     ],
+     "test_gain": 0.0509551425961952,
+     "validation_gain": 0.06217841714836403,
+     "test_gain_per_fold": [
+      0.02558228331424206,
+      0.07240853658536583,
+      0.07763865215681132,
+      0.07584766295166123,
+      0.0032985779728955666
+     ]
+    }
+   }
+  },
+  {
+   "stage": "extreme",
+   "cell": "dual",
+   "family": "parallel",
+   "rounds": 100,
+   "stored": {
+    "fired": true,
+    "fire_round": 28,
+    "kept_round": 8
+   },
+   "drawn_only": {
+    "fired": true,
+    "fire_round": 28,
+    "kept_round": 8
+   },
+   "kept_round_difference": 0,
+   "validation": {
+    "final": 0.05762190501018016,
+    "at_stored_kept": 0.22948574038421832,
+    "at_drawn_kept": 0.22948574038421832,
+    "gain_stored": 0.17186383537403815,
+    "gain_drawn": 0.17186383537403815
+   },
+   "test": {
+    "round_0": 4.4408920985006264e-17,
+    "final": 0.057134718225329964,
+    "at_stored_kept": 0.17810166444085468,
+    "at_drawn_kept": 0.17810166444085468,
+    "gain_stored": 0.12096694621552471,
+    "gain_drawn": 0.12096694621552471,
+    "oracle": 0.20165273079338303,
+    "oracle_round": 15,
+    "cohort_at_stored_kept": 0.9421917450365727,
+    "source_at_stored_kept": 0.9934469904040844,
+    "cohort_final": 0.9743155694879833,
+    "source_final": 0.8403562197371489,
+    "final_evaluation_score": 0.05940788241763362
+   },
+   "drawn_clients_per_round": [
+    1
+   ],
+   "cohort_clients": 1,
+   "per_run": {
+    "stored": {
+     "kept_rounds": [
+      3,
+      8,
+      9,
+      2,
+      3
+     ],
+     "test_gain": 0.12683779984938642,
+     "validation_gain": 0.17796065656980903,
+     "test_gain_per_fold": [
+      0.12352042764413895,
+      0.11070306725794521,
+      0.06133473187360683,
+      0.2028104823395367,
+      0.1358202901317045
+     ]
+    },
+    "drawn_only": {
+     "kept_rounds": [
+      3,
+      8,
+      9,
+      2,
+      3
+     ],
+     "test_gain": 0.12683779984938642,
+     "validation_gain": 0.17796065656980903,
+     "test_gain_per_fold": [
+      0.12352042764413895,
+      0.11070306725794521,
+      0.06133473187360683,
+      0.2028104823395367,
+      0.1358202901317045
+     ]
+    }
+   }
+  }
+ ]
+}

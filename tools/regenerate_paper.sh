@@ -11,6 +11,13 @@
 #     <out dir>/figures/*.pdf      fig_problem, fig_aggs, fig_regs, fig_blends,
 #                                  fig_combo, fig_extremes, fig_baselines
 #
+# and, when FOA_STUDY_DIR names an assembled records tree (docs/REPRODUCE.md
+# section 10), the three revision tools that read the records themselves:
+#
+#     <out dir>/revision/          fold_spread.py, stopping_test_axis.py,
+#                                  sensitivity_counts.py (tables, JSON and the
+#                                  prose macros of revision_numbers.tex)
+#
 # It adds nothing to them. Each script is run exactly as REPRODUCE documents
 # it, with FOA_PAPER_OUT pointing at <out dir>, so the per-script commands there
 # stay the reference and this is only the list typed once. --dry-run prints the
@@ -75,5 +82,32 @@ run env FOA_PAPER_OUT="$out" python tools/paper_figures/make_sensitivity_tables.
 for fig in fig_problem fig_aggs fig_regs fig_blends fig_combo fig_extremes fig_baselines; do
     run env FOA_PAPER_OUT="$out/figures" python "tools/paper_figures/$fig.py"
 done
+
+# THESE THREE READ THE RECORDS, NOT THE VIEWS. The fold spread, the test-axis
+# reading of the stopping rule and the sensitivity counts are all quantities the
+# views fold away - per-fold values, per-round series, the screen's selection
+# groups - so they need the tree of REPRODUCE section 10 and the package
+# environment, which the renderers above do not. They are held to the tables
+# just written: fold_spread.py and stopping_test_axis.py refuse, and write
+# nothing, if a mean they recompute does not round to the number those tables
+# print, or if a macro they emit differs from the shipped revision_numbers.tex. Without FOA_STUDY_DIR they are skipped and the line below says so.
+if [ -n "${FOA_STUDY_DIR:-}" ]; then
+    tabs=$out/tables
+    # The prose macros of revision_numbers.tex are held to the shipped copy:
+    # a recomputed number that no longer equals the one the paper cites stops
+    # the run instead of quietly replacing it.
+    shipped=study/artifacts/Digits_study01/tables/paper/revision_numbers.tex
+    run python tools/fold_spread.py --root "$FOA_STUDY_DIR" --out "$out/revision" \
+        --tex "$tabs/agg_winners.tex" "$tabs/reg_winners.tex" "$tabs/combos.tex" \
+              "$tabs/scaling.tex" "$tabs/selection_axis.tex" \
+              "$tabs/selection_axis_cross.tex" "$tabs/fairness.tex" \
+        --macros "$shipped"
+    run python tools/stopping_test_axis.py --root "$FOA_STUDY_DIR" \
+        --tex "$tabs/plateau.tex" --out "$out/revision" --macros "$shipped"
+    run python tools/sensitivity_counts.py --root "$FOA_STUDY_DIR" --out "$out/revision"
+else
+    echo "FOA_STUDY_DIR is not set: skipped fold_spread.py, stopping_test_axis.py and"
+    echo "sensitivity_counts.py, which read the run records (docs/REPRODUCE.md section 10)"
+fi
 
 [ $dry -eq 1 ] || echo "numbers.tex and tables/ in $out, figures in $out/figures"
