@@ -27,7 +27,7 @@ two hundred retained writers, five-fold cross-validation throughout.
 | `study/jobs/` | the submission chains, one TOML per wave, with a `SHA256SUMS` |
 | `study/artifacts/` | the derived artefacts needed to *check* results, every task file the study ran among them, with a `SHA256SUMS` |
 | `study/UPSTREAM.sha256` | checksums of the source data and the packed cache |
-| `docs/` | how to reproduce a claim, the study record, data path, runbook, verification, prior pipeline |
+| `docs/` | how to reproduce a claim, the study record, data path, runbook, verification |
 
 `study/artifacts/` is the part that makes this checkable without re-running
 anything: the writer pools and their scores, the three cohorts, all four fold
