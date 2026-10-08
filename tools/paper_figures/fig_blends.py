@@ -51,7 +51,7 @@ def main():
             axis.set_xticks([0, 25, 50, 75, 100])
             axis.set_ylim(*ylim)
             axis.set_ylabel("Source accuracy" if key == "src" else "Cohort accuracy")
-            axis.set_title("%s --- %s" % (title, row_title), pad=4,
+            axis.set_title("%s, %s" % (title, row_title), pad=4,
                            loc="left")
         for arm, colour, style, width, z in arms:
             if arm not in series:
