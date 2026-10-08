@@ -20,9 +20,15 @@
 #   p08 p09 p10    the ten-client references, superseded by the per-size
 #                  reference files which cover 5, 10, 20 and the extremes
 #   p20_runs_f1    the fold-1 subset of p20_runs
+#
+# REQUIRED
+#   FOA_PROJECT_DIR   the workspace whose jobs/v4/ holds the task files read
+#                     here, the same root the stage READMEs under
+#                     study/artifacts/Digits_study01/jobs/ write them into.
+#                     The assembled programme goes to results_v5/ beside it.
 set -euo pipefail
 
-P=/user/keshtkar/u25763/.project/dir.lustre-grete/payman_uni
+P=${FOA_PROJECT_DIR:?set FOA_PROJECT_DIR to the workspace holding jobs/v4}
 SRC=$P/jobs/v4
 NEW=$P/results_v5/studies/Digits_study01
 J=$NEW/jobs

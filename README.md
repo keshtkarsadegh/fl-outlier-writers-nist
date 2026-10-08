@@ -295,7 +295,7 @@ exceptions are:
 
 | Variable | Purpose | Default |
 |---|---|---|
-| `FOA_PROJECT_DIR` | writable root for data, results, environments | **required** |
+| `FOA_PROJECT_DIR` | writable root for data, results, environments; `tools/assemble_programme.sh` reads `jobs/v4/` under it | **required** |
 | `FOA_STUDY_DIR` | the one results root a study writes into | `$FOA_RESULTS_DIR/studies/Digits_study01` |
 | `FOA_RESULTS_DIR` | results root | `$FOA_PROJECT_DIR/results` |
 | `FOA_DATA_DIR` | data root | `$FOA_PROJECT_DIR/data` |
