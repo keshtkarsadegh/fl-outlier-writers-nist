@@ -587,6 +587,7 @@ key of twelve on this filesystem, and sometimes leaves the file invalid JSON.
 | every figure in the manuscript | [below](#and-which-command-produces-which-figure) - two commands per figure |
 | every number the manuscript sets | `paper_figures/make_numbers.py` - [below](#and-which-command-produces-the-numbers-and-the-tables) |
 | every table the manuscript sets | `paper_figures/make_paper_tables.py` - [below](#and-which-command-produces-the-numbers-and-the-tables) |
+| all of the last three, one command | `tools/regenerate_paper.sh <dir>` - [below](#all-of-them-at-once) |
 | what this study actually ran, read off disk | `study_record.py --root $FOA_STUDY_DIR` - the tracked copy is **frozen**, see [below](#the-study-record-is-a-frozen-record) |
 | does a task file still regenerate byte for byte? | [§4](#4-regenerating-a-stages-task-file) - every live generator |
 
@@ -903,6 +904,36 @@ g-0 over the two writers' test rows, no training, writing
 `cohort10` because these two writers are two of those ten and hold those folds;
 only the clients file narrows it. `--seed-base` is required by the generator and
 draws nothing here, because a forward pass has nothing to seed.
+
+### All of them at once
+
+Every number, table and figure the manuscript sets, from the shipped views, into
+one directory that is not the clone:
+
+```bash
+tools/regenerate_paper.sh /tmp/paper        # --dry-run prints the commands only
+```
+
+It runs the ten commands below in this order, each exactly as written, and stops
+at the first that fails. `numbers.tex` and `tables/` land in the directory and
+the PDFs in its `figures/`. It refuses before running anything when a views
+directory is missing - the shipped ones, or each one `FOA_PAPER_DATA` names when
+that is set - and needs no dataset, no GPU and no release asset: the records are
+what rebuild the views, not what these scripts read. The two subsections below
+say what each command reads and writes.
+
+```bash
+FOA_PAPER_OUT=/tmp/paper         python tools/paper_figures/make_numbers.py
+FOA_PAPER_OUT=/tmp/paper         python tools/paper_figures/make_paper_tables.py
+FOA_PAPER_OUT=/tmp/paper         python tools/paper_figures/make_sensitivity_tables.py
+FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_problem.py
+FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_aggs.py
+FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_regs.py
+FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_blends.py
+FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_combo.py
+FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_extremes.py
+FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_baselines.py
+```
 
 ### And which command produces which figure
 

@@ -38,8 +38,17 @@ built from — so every figure redraws, and every number and every table
 regenerates, from a clone, with no dataset, no GPU and no release asset:
 
 ```bash
-FOA_PAPER_OUT=/tmp/figures python tools/paper_figures/fig_problem.py
-FOA_PAPER_OUT=/tmp/paper   python tools/paper_figures/make_paper_tables.py
+tools/regenerate_paper.sh /tmp/paper     # numbers.tex, tables/, figures/
+```
+
+That is ten scripts run in order, each of which also runs on its own:
+
+```bash
+FOA_PAPER_OUT=/tmp/paper         python tools/paper_figures/make_numbers.py
+FOA_PAPER_OUT=/tmp/paper         python tools/paper_figures/make_paper_tables.py
+FOA_PAPER_OUT=/tmp/paper         python tools/paper_figures/make_sensitivity_tables.py
+FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_problem.py   # then fig_aggs, fig_regs,
+                                 # fig_blends, fig_combo, fig_extremes, fig_baselines the same way
 ```
 
 The views themselves are built from the published records by
@@ -47,7 +56,7 @@ The views themselves are built from the published records by
 `tools/export_combo_folds.py` and the reporting tools, which is what makes the
 figures evidence rather than pictures; [`docs/REPRODUCE.md`](docs/REPRODUCE.md)
 §6 maps each figure to its views, its export command and its script, and does
-the same for `numbers.tex` and the tables.
+the same for `numbers.tex` and the tables, and lists all ten commands.
 
 **No dataset is redistributed here.** NIST SD19 is downloaded from NIST; this
 repository ships the conversion code, the exact command, and the checksums that
