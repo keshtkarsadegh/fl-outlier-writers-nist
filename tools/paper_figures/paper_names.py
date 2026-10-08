@@ -280,7 +280,7 @@ def _rules():
     rule(r"balanced", "Server step + KD/EWC blend", "Balanced")
     rule(r"sequential", "Cyclic + FedNTD", "Cyclic arm")
     rule(r"control", "FedAvg (control)", "Control")
-    rule(r"double", "Two writers", "Two writers")
+    rule(r"double", "Two-client pair", "Two-client pair")
     rule(r"dual", "Merged pair", "Merged pair")
     return R
 
