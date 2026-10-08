@@ -3906,7 +3906,7 @@
     "gpu_name": "NVIDIA A100-SXM4-40GB MIG 1g.10gb",
     "python_version": "3.12.13",
     "git_commit": "571fc5f3c87f36083caa66e43469831e62fa2ed0",
-    "hostname": "ggpu102",
+    "hostname": "node",
     "started_at": "2026-08-31T23:12:33+00:00",
     "finished_at": "2026-08-31T23:12:59+00:00",
     "wall_seconds": 25.726678390987217,
