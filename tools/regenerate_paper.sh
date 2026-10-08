@@ -4,10 +4,13 @@
 #     tools/regenerate_paper.sh [--dry-run] <out dir>
 #
 # Runs, in the order docs/REPRODUCE.md section 6 gives them, the three
-# generators and the seven figure scripts under tools/paper_figures/:
+# generators and the seven figure scripts under tools/paper_figures/, and the
+# screen-ranking tables of tools/screen_ranking.py:
 #
 #     <out dir>/numbers.tex        make_numbers.py
 #     <out dir>/tables/*.tex       make_paper_tables.py, make_sensitivity_tables.py
+#     <out dir>/tables/screen_ranking_*.tex
+#                                  screen_ranking.py --render
 #     <out dir>/figures/*.pdf      fig_problem, fig_aggs, fig_regs, fig_blends,
 #                                  fig_combo, fig_extremes, fig_baselines
 #
@@ -79,6 +82,9 @@ cd "$repo"
 run env FOA_PAPER_OUT="$out" python tools/paper_figures/make_numbers.py
 run env FOA_PAPER_OUT="$out" python tools/paper_figures/make_paper_tables.py
 run env FOA_PAPER_OUT="$out" python tools/paper_figures/make_sensitivity_tables.py
+# --render reads the screen-ranking views only, never the records, so this step
+# keeps the promise above; rebuilding those views is screen_ranking.py --root.
+run python tools/screen_ranking.py --render --out "$out/tables"
 for fig in fig_problem fig_aggs fig_regs fig_blends fig_combo fig_extremes fig_baselines; do
     run env FOA_PAPER_OUT="$out/figures" python "tools/paper_figures/$fig.py"
 done

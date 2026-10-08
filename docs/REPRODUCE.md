@@ -548,6 +548,7 @@ key of twelve on this filesystem, and sometimes leaves the file invalid JSON.
 | aggregation screen ranking | `report_tables.py --what agg-screen` |
 | aggregation winners, full horizon | `report_tables.py --what agg-winners` |
 | regularisation screen ranking | `report_tables.py --what reg-screen` |
+| both screens' own orderings on the VALIDATION score that selected, every cell ranked per schedule with each method's screen winner and the controls marked; logit matching's swept strengths beside their full-horizon scores | `screen_ranking.py --root $FOA_STUDY_DIR` -> `screen_ranking_{reg,logit,agg}.csv` and `study/artifacts/screen_ranking_*.tex` |
 | regularisation winners, full horizon | `report_tables.py --what reg-winners` |
 | combination scores | `report_tables.py --what combos` |
 | the carried arms at each federation setting | `report_tables.py --what sizes` |
@@ -917,7 +918,7 @@ one directory that is not the clone:
 tools/regenerate_paper.sh /tmp/paper        # --dry-run prints the commands only
 ```
 
-It runs the ten commands below in this order, each exactly as written, and stops
+It runs the eleven commands below in this order, each exactly as written, and stops
 at the first that fails. `numbers.tex` and `tables/` land in the directory and
 the PDFs in its `figures/`. It refuses before running anything when a views
 directory is missing - the shipped ones, or each one `FOA_PAPER_DATA` names when
@@ -939,6 +940,7 @@ macro it emits for the prose differs from the shipped `revision_numbers.tex`.
 FOA_PAPER_OUT=/tmp/paper         python tools/paper_figures/make_numbers.py
 FOA_PAPER_OUT=/tmp/paper         python tools/paper_figures/make_paper_tables.py
 FOA_PAPER_OUT=/tmp/paper         python tools/paper_figures/make_sensitivity_tables.py
+                                 python tools/screen_ranking.py --render --out /tmp/paper/tables
 FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_problem.py
 FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_aggs.py
 FOA_PAPER_OUT=/tmp/paper/figures python tools/paper_figures/fig_regs.py
