@@ -15,11 +15,15 @@
 #                                  fig_combo, fig_extremes, fig_baselines
 #
 # and, when FOA_STUDY_DIR names an assembled records tree (docs/REPRODUCE.md
-# section 10), the three revision tools that read the records themselves:
+# section 10), the four revision tools that read the records themselves and
+# the one that reads what the second of them wrote:
 #
 #     <out dir>/revision/          fold_spread.py, stopping_test_axis.py,
 #                                  sensitivity_counts.py (tables, JSON and the
-#                                  prose macros of revision_numbers.tex)
+#                                  prose macros of revision_numbers.tex),
+#                                  clean_preservation.py (the clean-row table
+#                                  and its macros), stopping_best_vs_best.py
+#                                  (best rule against best penalty, macros)
 #
 # It adds nothing to them. Each script is run exactly as REPRODUCE documents
 # it, with FOA_PAPER_OUT pointing at <out dir>, so the per-script commands there
@@ -89,14 +93,20 @@ for fig in fig_problem fig_aggs fig_regs fig_blends fig_combo fig_extremes fig_b
     run env FOA_PAPER_OUT="$out/figures" python "tools/paper_figures/$fig.py"
 done
 
-# THESE THREE READ THE RECORDS, NOT THE VIEWS. The fold spread, the test-axis
-# reading of the stopping rule and the sensitivity counts are all quantities the
-# views fold away - per-fold values, per-round series, the screen's selection
-# groups - so they need the tree of REPRODUCE section 10 and the package
-# environment, which the renderers above do not. They are held to the tables
-# just written: fold_spread.py and stopping_test_axis.py refuse, and write
-# nothing, if a mean they recompute does not round to the number those tables
-# print, or if a macro they emit differs from the shipped revision_numbers.tex. Without FOA_STUDY_DIR they are skipped and the line below says so.
+# THESE READ THE RECORDS, NOT THE VIEWS. The fold spread, the test-axis
+# reading of the stopping rule, the sensitivity counts and the clean-row
+# preservation are all quantities the views fold away - per-fold values,
+# per-round series, the screen's selection groups, per-source-fold accuracies -
+# so they need the tree of REPRODUCE section 10 and the package environment,
+# which the renderers above do not. They are held to the tables just written:
+# fold_spread.py and stopping_test_axis.py refuse, and write nothing, if a mean
+# they recompute does not round to the number those tables print, or if a macro
+# they emit differs from the shipped revision_numbers.tex; clean_preservation.py
+# fails if any printed row of the eight tables it reads matches no arm or
+# misprints a number, and its two outputs are then compared with the shipped
+# copies; stopping_best_vs_best.py reads the test-axis JSON just written and
+# refuses, writing nothing, if a macro differs from its shipped file. Without
+# FOA_STUDY_DIR they are skipped and the line below says so.
 if [ -n "${FOA_STUDY_DIR:-}" ]; then
     tabs=$out/tables
     # The prose macros of revision_numbers.tex are held to the shipped copy:
@@ -111,9 +121,27 @@ if [ -n "${FOA_STUDY_DIR:-}" ]; then
     run python tools/stopping_test_axis.py --root "$FOA_STUDY_DIR" \
         --tex "$tabs/plateau.tex" --out "$out/revision" --macros "$shipped"
     run python tools/sensitivity_counts.py --root "$FOA_STUDY_DIR" --out "$out/revision"
+    # The clean-row reading is held to the tables the manuscript prints: the
+    # seven written above and the schedule table, which is set by hand and so
+    # ships as printed. Its table and macros are then compared byte for byte
+    # with the shipped ones, so a number that moved stops the run here.
+    paper=study/artifacts/Digits_study01/tables/paper
+    run python tools/clean_preservation.py --root "$FOA_STUDY_DIR" \
+        --tex "$tabs/references.tex" "$tabs/agg_winners.tex" "$tabs/reg_winners.tex" \
+              "$tabs/combos.tex" "$tabs/scaling.tex" "$tabs/selection_axis.tex" \
+              "$tabs/selection_axis_cross.tex" "$paper/schedule_table_as_printed.tex" \
+        --json "$out/revision/clean_preservation.json" \
+        --table "$out/revision/clean_preservation_table.tex" \
+        --numbers "$out/revision/clean_preservation_numbers.tex"
+    run cmp "$out/revision/clean_preservation_table.tex" "$paper/clean_preservation_table.tex"
+    run cmp "$out/revision/clean_preservation_numbers.tex" "$paper/clean_preservation_numbers.tex"
+    run python tools/stopping_best_vs_best.py --json "$out/revision/stopping_test_axis.json" \
+        --out "$out/revision/stopping_best_vs_best.tex" \
+        --macros study/artifacts/Digits_study01/tables/stopping/stopping_best_vs_best.tex
 else
-    echo "FOA_STUDY_DIR is not set: skipped fold_spread.py, stopping_test_axis.py and"
-    echo "sensitivity_counts.py, which read the run records (docs/REPRODUCE.md section 10)"
+    echo "FOA_STUDY_DIR is not set: skipped fold_spread.py, stopping_test_axis.py,"
+    echo "sensitivity_counts.py, clean_preservation.py and stopping_best_vs_best.py,"
+    echo "which read the run records (docs/REPRODUCE.md section 10)"
 fi
 
 [ $dry -eq 1 ] || echo "numbers.tex and tables/ in $out, figures in $out/figures"

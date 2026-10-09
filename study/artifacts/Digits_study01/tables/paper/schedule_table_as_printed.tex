@@ -1,0 +1,31 @@
+% The schedule table (tab:schedule) exactly as the manuscript sets it.
+% It is set by hand and no generator writes it, so it ships as printed for
+% tools/clean_preservation.py, which reads it beside the seven tables that
+% tools/regenerate_paper.sh writes and holds every number on every row to
+% the run records. Do not edit; replace it when the page changes.
+\begin{table}[t]
+\caption{The schedule's effect, family by family, on the test axis. Every arm is one that a selection record names, except the composite row, which keeps the cyclic-tuned blend at $m{=}0.75$, the test-leading composite, fixed on both sides so that only the schedule varies. Each pair shows the selected arm under the parallel schedule and its counterpart under the cyclic one, as five-fold means. The rule row carries the crowned pair's rule and its cyclic sibling's rule instead of the cyclic rule stage's own winner. The last column pairs them by fold, cyclic minus parallel in points of score, with the folds won by cyclic. The control is identical on both sides. Logit matching and not-true distillation appear at each schedule's own selected setting.
+}
+\label{tab:schedule}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\fittable{%
+\begin{tabular}{@{}l cc cc cc c@{}}
+\toprule
+ & \multicolumn{2}{c}{Parallel} & \multicolumn{2}{c}{Cyclic} & \multicolumn{2}{c}{Score} & Cyclic $-$ parallel \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Family, arm & Adapt. & Pres. & Adapt. & Pres. & Par. & Cyc. & mean (folds won) \\
+\midrule
+No-penalty control (FedAvg) & 91.87{\scriptsize±1.97} & 96.88{\scriptsize±0.72} & 91.97{\scriptsize±2.13} & 96.91{\scriptsize±0.34} & 6.64{\scriptsize±2.35} & 6.77{\scriptsize±1.97} & $+0.13${\scriptsize±1.38} (2/5) \\
+Rule alone (anchor $h{=}2R$ / cyclic FedAvg) & 91.88{\scriptsize±2.17} & 97.70{\scriptsize±0.32} & 91.96{\scriptsize±1.24} & 97.14{\scriptsize±0.26} & 7.47{\scriptsize±1.92} & 7.00{\scriptsize±1.05} & $-0.47${\scriptsize±1.05} (2/5) \\
+KD+EWC composite, cyclic-tuned, $m{=}0.75$ & 93.37{\scriptsize±1.62} & 99.24{\scriptsize±0.19} & 93.55{\scriptsize±1.38} & 99.25{\scriptsize±0.10} & 10.50{\scriptsize±1.65} & 10.69{\scriptsize±1.43} & $+0.19${\scriptsize±0.55} (3/5) \\
+Logit matching, own strength & 93.56{\scriptsize±1.49} & 98.77{\scriptsize±0.39} & 93.74{\scriptsize±1.62} & 99.03{\scriptsize±0.27} & 10.22{\scriptsize±1.27} & 10.67{\scriptsize±1.46} & $+0.45${\scriptsize±0.59} (4/5) \\
+Not-true distillation, own temperature & 92.63{\scriptsize±2.12} & 98.48{\scriptsize±0.21} & 93.29{\scriptsize±2.25} & 99.04{\scriptsize±0.13} & 9.00{\scriptsize±1.99} & 10.22{\scriptsize±2.13} & $+1.22${\scriptsize±0.83} (5/5) \\
+Crowned pair / its cyclic sibling & 93.47{\scriptsize±1.86} & 98.85{\scriptsize±0.27} & 93.56{\scriptsize±1.80} & 99.07{\scriptsize±0.20} & 10.21{\scriptsize±1.62} & 10.52{\scriptsize±1.67} & $+0.31${\scriptsize±0.54} (3/5) \\
+\bottomrule
+\end{tabular}}
+
+\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize $\pm$ is the sample standard deviation over the five folds.\end{minipage}
+\end{table}

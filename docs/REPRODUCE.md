@@ -571,6 +571,8 @@ key of twelve on this filesystem, and sometimes leaves the file invalid JSON.
 | what the appendix's `w` counts count, and which methods move at each `w` | `sensitivity_counts.py --root $FOA_STUDY_DIR` -> `w_sensitivity_table.tex` |
 | the five folds behind every mean of Tables 2-7 and B1-B3, and every fold-paired column | `fold_spread.py --root $FOA_STUDY_DIR --tex <manuscript or tables/*.tex>` -> `fold_spread.json`, `fold_spread_tables.tex`, its block of `revision_numbers.tex` |
 | the plateau rule's kept round scored on test, and fired on the drawn clients' trace only | `stopping_test_axis.py --root $FOA_STUDY_DIR` -> `stopping_test_axis.json`, `stopping_test_axis_table.tex`, its block of `revision_numbers.tex` |
+| the best server rule against the best penalty on test, at the fixed budget and at the plateau rule's kept round, with each winner's kept round and source accuracy | `stopping_best_vs_best.py` (reads `stopping_test_axis.json`, not the records) -> `stopping_best_vs_best.tex` |
+| preservation on the one source fold the shipped model never trained on, for every arm the manuscript's tables print, and what it changes | `clean_preservation.py --root $FOA_STUDY_DIR --tex <manuscript, or tables/*.tex and tables/paper/schedule_table_as_printed.tex> --json --table --numbers` -> `clean_preservation.json`, `clean_preservation_table.tex`, `clean_preservation_numbers.tex` |
 | are all eight signals present? | `check_signals.py --all` |
 | are the cohorts label-skewed? | `describe_cohort.py --all` (reads the dataset: needs `FOA_NIST28_DIR`) |
 | are the seeds sound? | `check_seeds.py $FOA_STUDY_DIR/jobs/*.txt` |
@@ -926,15 +928,24 @@ that is set - and needs no dataset, no GPU and no release asset: the records are
 what rebuild the views, not what these scripts read. The two subsections below
 say what each command reads and writes.
 
-Three more commands run after them when `FOA_STUDY_DIR` names the assembled
+Five more commands run after them when `FOA_STUDY_DIR` names the assembled
 tree of [§10](#10-the-published-records), and are skipped with a line saying so
-when it does not: `fold_spread.py`, `stopping_test_axis.py` and
-`sensitivity_counts.py` read per-fold values, per-round series and the screens'
-selection groups, which the views fold away, so they need the records and the
-package environment. They write into `<dir>/revision/`, and the first two are
-held to the tables just written - each refuses, and writes nothing, when a mean
-it recomputes does not round to the number `tables/*.tex` prints, or when a
-macro it emits for the prose differs from the shipped `revision_numbers.tex`.
+when it does not: `fold_spread.py`, `stopping_test_axis.py`,
+`sensitivity_counts.py` and `clean_preservation.py` read per-fold values,
+per-round series, the screens' selection groups and per-source-fold
+accuracies, which the views fold away, so they need the records and the
+package environment; `stopping_best_vs_best.py` reads the
+`stopping_test_axis.json` written just before it. They write into
+`<dir>/revision/`, and each is held to something shipped. `fold_spread.py` and
+`stopping_test_axis.py` refuse, and write nothing, when a mean they recompute
+does not round to the number `tables/*.tex` prints, or when a macro they emit
+for the prose differs from the shipped `revision_numbers.tex`.
+`clean_preservation.py` reads the seven tables just written and the schedule
+table, which the manuscript sets by hand and which therefore ships as printed
+in `tables/paper/schedule_table_as_printed.tex`; it fails when any printed row
+matches no arm or misprints a number, and its table and macros are then
+compared byte for byte with the shipped copies. `stopping_best_vs_best.py`
+refuses when a macro differs from the shipped `stopping_best_vs_best.tex`.
 
 ```bash
 FOA_PAPER_OUT=/tmp/paper         python tools/paper_figures/make_numbers.py
@@ -1084,6 +1095,7 @@ already and now feeds `tables/kholdout.tex` rather than a hand-typed float.
 | `tables/stopping/` | `stopping_all.csv`, `stopping_extreme.csv` and the per-stage rest; the four `plateau_*.csv` beside them, three of which the generators read - `plateau_stages.csv` builds `plateau.tex`, `plateau_arms.csv` and `plateau_extremes.csv` fill macros, and `fig_extremes.py` marks its stopping rounds from the last - while `docs/STOPPING.md` reads all four; of the three `plateau_holdout_*.csv` beside them, `plateau_holdout_protocols.csv` now builds `kholdout.tex` and fills five macros, and the other two answer that rule's own objection and feed neither generator and no figure | `stopping_table.py --csv`, `plateau_rule.py --out`, `plateau_holdout.py --out` |
 | `tables/` | `blends.csv`, `composition.csv`, `weight_sensitivity_*.csv`, `cohort_composition.csv`, `cohort_table.csv` | `compare_arms.py --csv`, `weight_sensitivity.py --csv`, `describe_cohort.py --all --csv`, and `foa cohort-table` for the last - [above](#the-one-view-a-stage-writes) |
 | `tables/paper/`, `tables/stopping/`, `tables/` | `fold_spread.json`, `fold_spread_tables.tex` and `revision_numbers.tex` (the prose macros, one block per tool); `stopping_test_axis.json` and `stopping_test_axis_table.tex`; `w_sensitivity_table.tex` - the revision's three, which no generator reads | `fold_spread.py`, `stopping_test_axis.py`, `sensitivity_counts.py`, each with its default `--out` |
+| `tables/paper/`, `tables/stopping/` | `clean_preservation.json`, `clean_preservation_table.tex` and `clean_preservation_numbers.tex`, beside `schedule_table_as_printed.tex`, the one input it reads that no generator writes; `stopping_best_vs_best.tex` - the revision's other two, which no generator reads either | `clean_preservation.py` with the paths of [§6](#all-of-them-at-once)'s `regenerate_paper.sh`, `stopping_best_vs_best.py` with its default `--out` |
 
 `tables/paper/` also holds the extension's four views. They feed neither
 generator and no figure, they are named `extension_*` for that reason, and the
