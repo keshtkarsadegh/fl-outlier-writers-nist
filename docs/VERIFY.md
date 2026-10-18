@@ -35,10 +35,10 @@ the plumbing. The ones that matter most to a reader of the paper:
 | `test_study_runner.py` | the array runner's checks fire in an order where the variables they read exist — it *executes* the script body rather than only parsing it |
 | `test_nist28_pipeline.py` | the 28x28 conversion and the packed cache contract |
 | `test_selection.py`, `test_outlier_selection.py` | the two-phase g-init/g-0 selection and its no-leakage property |
-| `test_release_artifacts.py` | that no absolute machine path survives in the release; that the fetcher's checksums are the documented ones; that the scaling table pins fold 1 explicitly and carries no spread on a single-fold cell |
+| `test_release_artifacts.py` | that no absolute machine path survives in the release; that the fetcher's checksums are the documented ones; that the scaling table pins split 1 explicitly and carries no spread on a single-fold cell |
 | `test_paper_figures.py` | that every CSV view a figure, `numbers.tex` or a table reads is shipped and resolves, that round 0 of every trace is one shared point, that no view carries a column its tool no longer writes, and that the signals table's delta column is the difference of the two numbers printed beside it - the one column in the paper not rounded once from full precision, and the reason three of its rows used to be a hundredth away from the subtraction a reader does |
 | `test_plateau.py` | what the plateau stopping rule means, on synthetic traces; that its basis is `stopping_table.py`'s own rather than a copy; and that the shipped view still says +1.19p over the fixed horizon on all 83 arms, so a silently regenerated table is a failure and not a diff |
-| `test_plateau_holdout.py` | that the plateau's setting is what all 28 hold-out protocols choose - held out by fold, by stage and by seeded random halves of the arms - that none of them loses on the set it did not see, that the two extremes keep the published rounds under every one, and that the three shipped views regenerate byte for byte from an assembled root |
+| `test_plateau_holdout.py` | that the plateau's setting is what all 28 hold-out protocols choose - held out by split, by stage and by seeded random halves of the arms - that none of them loses on the set it did not see, that the two extremes keep the published rounds under every one, and that the three shipped views regenerate byte for byte from an assembled root |
 | `test_reviewer_tree.py` | that all twenty-four task files regenerate from their generators byte for byte, and - against an assembled root - that the signals pass over the population `signals_population.txt` names reproduces the two shipped signal extracts byte for byte. Both were promises the documents made and nothing checked |
 | `test_shipped_view_membership.py` | that the blend's finals reach every regularisation view a reg-full arm belongs in, that no core view carries an arm of the joint-tuning extension, and that the record generator counts a stage's folders without the ones a later stage lodged under its prefix |
 | `test_appendix_tables.py` | the four things an appendix table can say about itself and not keep: that the fairness table's Mean column is the same cohort accuracy the score tables print for the same arm (it was an unweighted mean over clients, and disagreed by up to a point), that it lists every carried arm at every setting (there was no five-client block and one arm of three at twenty), that the selection-axis ranks are computed on the selection score rather than on the stored adaptation ordering and that each shortlist is the first three distinct methods of that ordering, that both schedule blocks of the regularisation table print a no-penalty control, and that all 28 hold-out protocols reach the page |
@@ -62,7 +62,7 @@ artefacts of `study/artifacts`, which grows whenever a view or a record is added
 and is therefore not quoted here. **No model checkpoint is among them**, because
 this study ships no weights (`study/UPSTREAM.sha256` says so, and the metadata
 core's own README names them as the one thing it excludes). What the manifests
-prove is that you hold the fold assignments, writer lists, selection records,
+prove is that you hold the split assignments, writer lists, selection records,
 task files and experiment definitions that produced the published numbers.
 
 **No rendered image is in either manifest, on purpose.** Every `*.png` under
@@ -78,7 +78,7 @@ the pictures are checked by redrawing them and diffing their views
 (`docs/REPRODUCE.md` [section 6](REPRODUCE.md#6-which-command-produces-which-claim)).
 
 Six run records are in there too, which looks like an exception and is not:
-`signalcheck_*` and the five `d01_extreme_single_*` folds are the six runs of
+`signalcheck_*` and the five `d01_extreme_single_*` splits are the six runs of
 the frozen signals population that the records asset does not carry, and a pass
 cannot be reproduced without the runs it was taken over.
 `study/artifacts/Digits_study01/signals_population.txt` says which runs those
@@ -180,7 +180,7 @@ PY
 ## Level 3 — verify a released model reproduces a published row (minutes, 1 GPU)
 
 This is the strongest check that does not re-run training. `foa evaluate-book`
-scores a saved model on one part of one fold of a fold book — exactly the
+scores a saved model on one part of one split of a fold book — exactly the
 command that produced the study's do-nothing baseline row.
 
 **Verify the g-0 preservation row** (g-0 on the old writers' test rows):
@@ -217,7 +217,7 @@ the shipped model's accuracy on the writers a setting federates, so it moves whe
 the writers do; `P0` is its accuracy on the source population, which is one
 population and so one number — 0.9986, from `g0_evaluations.json` — everywhere.
 
-| book | cohort | keys | fold-mean accuracy | the `A0` of |
+| book | cohort | keys | split-mean accuracy | the `A0` of |
 |---|---|---|---|---|
 | `g0_perfold_evaluations.json` | worst ten | `cohort_fold1`..`cohort_fold5` | 0.8225 | every search stage, and the ten-client carry setting |
 | `g0_c5_evaluations.json` | worst five | `c5_cohort_fold1`..`c5_cohort_fold5` | 0.8032 | five clients, one dropped |
@@ -243,7 +243,7 @@ foa evaluate-book --results-dir "$FOA_STUDY_DIR" --resolution 28 --classes digit
 
 Compare against
 `study/artifacts/Digits_study01/g0_extreme_evaluations.json`, key
-`extreme_cohort_fold1`; the five folds mean **0.7590**, which is the number both
+`extreme_cohort_fold1`; the five splits mean **0.7590**, which is the number both
 extreme arrangements' scores subtract. Those five lines were emitted by
 `tools/make_size_references.py --only do-nothing` into
 `jobs/d01_extreme_references.txt` — `docs/REPRODUCE.md` §6 has the invocation.
@@ -277,7 +277,7 @@ study does not publish - and no stage anywhere in the programme runs a federated
 round without g-0, so no cheaper federated rung exists. The shipped model comes
 from three short stages first: `s01a_book.txt` (2 tasks, ~1 min),
 `s01b_detector.txt` (2 tasks, ~21 min, trains g-init) and `s02_selection.txt`
-(29 tasks, ~23 min, trains the five g-0 folds and crowns one). Those are the
+(29 tasks, ~23 min, trains the five g-0 splits and crowns one). Those are the
 scheduler's measured times for the array that produced this study, on one A100.
 About **1.75 GPU-hours and 43 tasks** to the cheapest real result. The README's
 Quickstart carries the same table.
@@ -299,7 +299,7 @@ file and its task count, and §9 the GPU-hours quoted here.
 - Every task file parses and passes the runner's guard.
 - Every derived artefact matches its checksum.
 - The cohort chain: worst-5 ⊂ worst-10 ⊂ worst-20, all cut from one ranking.
-- The fold books: coverage, and no empty partition in any fold.
+- The fold books: coverage, and no empty partition in any split.
 - The participation rule and the trimmed-mean survivor counts, against the
   real functions.
 - With the cache built (CPU only): that the data is byte-identical to ours.

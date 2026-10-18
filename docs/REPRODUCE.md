@@ -34,7 +34,7 @@ Three things ARE bit-exact and are checked as such:
 Python 3.12, PyTorch 2.3.1 / CUDA 12.1.
 
 ```bash
-git clone <repo> && cd federated-outlier-adaptation
+git clone <repo> && cd fl-outlier-writers-nist
 pip install torch==2.3.1 torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cu121
 pip install -r requirements.txt && pip install -e . --no-deps
 
@@ -479,7 +479,7 @@ already on disk stopped matching the file that claimed to emit them. The runs
 were fine and the file was fine; they had simply come apart, and nothing said so.
 Hashing the pair's identity means a shortlist can be re-ranked, extended or
 trimmed and every pair keeps the seed it always had - the same reasoning that
-puts the fold split on a hash of its inputs rather than on a position in a book.
+puts the split on a hash of its inputs rather than on a position in a book.
 
 Check before every submission, **passing every live task file at once**:
 
@@ -495,22 +495,22 @@ a re-run subset - is not a collision.
 
 ### The accumulator race, and why both files were deleted
 
-A reference stage scores every fold of a cohort with its own `evaluate-book`
+A reference stage scores every split of a cohort with its own `evaluate-book`
 task and points all of them at one accumulator JSON. Those tasks are the
 elements of one array, so several of them performed the same read-modify-write
 on the same file at the same moment. Without a lock the merge loses whatever
-landed between a reader's read and its write: each element adds its own fold to
+landed between a reader's read and its write: each element adds its own split to
 the file *as it found it*, and the last to write puts back a copy that never saw
 the others.
 
 Nothing fails when this happens. Every task exits zero, every task prints its
-own accuracy, and the file simply holds fewer folds than the stage ran.
-`g0_c5_evaluations.json` ended up with folds 1, 3 and 5; folds 2 and 4 were
+own accuracy, and the file simply holds fewer splits than the stage ran.
+`g0_c5_evaluations.json` ended up with splits 1, 3 and 5; splits 2 and 4 were
 computed, printed, and overwritten. `g0_c20_evaluations.json` next to it held
 all five - **by luck**, which is the more dangerous artefact of the two, because
 it looked exactly like evidence the pattern was sound. Both were deleted and
 both were re-scored by stage 19 rather than only the one that visibly lost
-folds.
+splits.
 
 `write_evaluation` now takes an exclusive `flock` on a sidecar `.lock` file
 around the whole read-modify-write and swaps the accumulator in with
@@ -569,10 +569,10 @@ key of twelve on this filesystem, and sometimes leaves the file invalid JSON.
 | does a blend beat the two cells it was built from? | `compare_arms.py --what blends` |
 | do the winners depend on `w`? | `weight_sensitivity.py --grid both` |
 | what the appendix's `w` counts count, and which methods move at each `w` | `sensitivity_counts.py --root $FOA_STUDY_DIR` -> `w_sensitivity_table.tex` |
-| the five folds behind every mean of Tables 2-7 and B1-B3, and every fold-paired column | `fold_spread.py --root $FOA_STUDY_DIR --tex <manuscript or tables/*.tex>` -> `fold_spread.json`, `fold_spread_tables.tex`, its block of `revision_numbers.tex` |
+| the five splits behind every mean of Tables 2-7 and B1-B3, and every split-paired column | `fold_spread.py --root $FOA_STUDY_DIR --tex <manuscript or tables/*.tex>` -> `fold_spread.json`, `fold_spread_tables.tex`, its block of `revision_numbers.tex` |
 | the plateau rule's kept round scored on test, and fired on the drawn clients' trace only | `stopping_test_axis.py --root $FOA_STUDY_DIR` -> `stopping_test_axis.json`, `stopping_test_axis_table.tex`, its block of `revision_numbers.tex` |
 | the best server rule against the best penalty on test, at the fixed budget and at the plateau rule's kept round, with each winner's kept round and source accuracy | `stopping_best_vs_best.py` (reads `stopping_test_axis.json`, not the records) -> `stopping_best_vs_best.tex` |
-| preservation on the one source fold the shipped model never trained on, for every arm the manuscript's tables print, and what it changes | `clean_preservation.py --root $FOA_STUDY_DIR --tex <manuscript, or tables/*.tex and tables/paper/schedule_table_as_printed.tex> --json --table --numbers` -> `clean_preservation.json`, `clean_preservation_table.tex`, `clean_preservation_numbers.tex` |
+| preservation on the one source split the shipped model never trained on, for every arm the manuscript's tables print, and what it changes | `clean_preservation.py --root $FOA_STUDY_DIR --tex <manuscript, or tables/*.tex and tables/paper/schedule_table_as_printed.tex> --json --table --numbers` -> `clean_preservation.json`, `clean_preservation_table.tex`, `clean_preservation_numbers.tex` |
 | are all eight signals present? | `check_signals.py --all` |
 | are the cohorts label-skewed? | `describe_cohort.py --all` (reads the dataset: needs `FOA_NIST28_DIR`) |
 | are the seeds sound? | `check_seeds.py $FOA_STUDY_DIR/jobs/*.txt` |
@@ -583,8 +583,8 @@ key of twelve on this filesystem, and sometimes leaves the file invalid JSON.
 | the whole paper bundle, one command | `report_tables.py --what all --csv $FOA_STUDY_DIR/tables/paper/` |
 | the six per-round views, and the two rounds the extreme figure marks | `export_traces.py --root $FOA_STUDY_DIR --out <dir>` |
 | g-0's own training history, and the isolated clients | `export_baseline_views.py --root $FOA_STUDY_DIR --out <dir>` |
-| each combination against BOTH of its halves, by fold | `export_combo_folds.py --root $FOA_STUDY_DIR --out <dir>` |
-| does the schedule matter? six pairs, each schedule's own selected arm against the other's, cyclic minus parallel and paired by fold | `export_schedule_views.py --root $FOA_STUDY_DIR --csv <dir>` -> `schedule_pairs.csv` |
+| each combination against BOTH of its halves, by split | `export_combo_folds.py --root $FOA_STUDY_DIR --out <dir>` |
+| does the schedule matter? six pairs, each schedule's own selected arm against the other's, cyclic minus parallel and paired by split | `export_schedule_views.py --root $FOA_STUDY_DIR --csv <dir>` -> `schedule_pairs.csv` |
 | the study's eight strongest arms across the three reporting stages, and which schedule ran each | the same command -> `schedule_top.csv` |
 | what each selection saw: every arm each record ranked, on the VALIDATION score that cut the shortlist and on the test score that reports it, per schedule | `export_selection_axis.py --root $FOA_STUDY_DIR --csv <dir>` -> `selection_axis.csv` |
 | the client recipe the methods section states, read back off every stored payload | `export_recipe_view.py --root $FOA_STUDY_DIR --csv <dir>` -> `recipe.csv` |
@@ -810,10 +810,10 @@ per-client reading, which is what the table is for.
 `plateau_holdout.py` all read the **validation** columns, because the round they
 report is the round the study's own selection rule would have picked, and a
 selection may only see what a selection is allowed to see. All four say so in
-their own header lines. `stopping_table.py` imports the fold mean, the oracle
+their own header lines. `stopping_table.py` imports the split mean, the oracle
 round and the score from `extreme_stopping.py`, and the drift and stopping
 semantics from `analysis/forgetting_signals.py`; `plateau_rule.py` imports its
-whole basis - arm reader, fold mean, score, oracle round and the one-signal
+whole basis - arm reader, split mean, score, oracle round and the one-signal
 rule - from `stopping_table.py`; `plateau_holdout.py` imports the rule and its
 sixteen-cell grid from `plateau_rule.py`, and the arm reader from
 `stopping_table.py` through it. So the five cannot come apart:
@@ -903,11 +903,11 @@ python tools/make_size_references.py --study-dir "$FOA_STUDY_DIR" \
 ```
 
 Five `foa evaluate-book` lines into
-`$FOA_STUDY_DIR/jobs/d01_extreme_references.txt`, one per fold: forward passes of
+`$FOA_STUDY_DIR/jobs/d01_extreme_references.txt`, one per split: forward passes of
 g-0 over the two writers' test rows, no training, writing
 `g0_extreme_evaluations.json` - which ships, at
 `study/artifacts/Digits_study01/g0_extreme_evaluations.json`. The book is
-`cohort10` because these two writers are two of those ten and hold those folds;
+`cohort10` because these two writers are two of those ten and hold those splits;
 only the clients file narrows it. `--seed-base` is required by the generator and
 draws nothing here, because a forward pass has nothing to seed.
 
@@ -933,7 +933,7 @@ tree of [§10](#10-the-published-records), and are skipped with a line saying so
 when it does not: `fold_spread.py`, `stopping_test_axis.py`,
 `sensitivity_counts.py` and `clean_preservation.py` read per-fold values,
 per-round series, the screens' selection groups and per-source-fold
-accuracies, which the views fold away, so they need the records and the
+accuracies, which the views average away, so they need the records and the
 package environment; `stopping_best_vs_best.py` reads the
 `stopping_test_axis.json` written just before it. They write into
 `<dir>/revision/`, and each is held to something shipped. `fold_spread.py` and
@@ -1129,7 +1129,7 @@ and `numbers.tex` says which is which in a comment of its own:
 There were fifty-nine on 2026-09-20, and the fifty-three that have gone were
 retired rather than moved. The forty-six `\pub...` macros were facts of the
 earlier published single-seed runs; this programme re-ran every quantity they
-carried, five folds deep, and no page of the manuscript called one. The learning
+carried, five splits deep, and no page of the manuscript called one. The learning
 rate and the weight decay moved INTO the generated block when `recipe.csv`
 landed, and the rest - the proxy-set constants, the good pool, the per-writer
 sample counts - were macros nothing set. A macro no page calls is a macro no
@@ -1208,15 +1208,15 @@ point is the same run. A winner among those is an arbitrary pick between
 duplicates, not a tuned value.
 
 **A combination that beats both halves on the means.** Seven of eighteen do;
-two of eighteen are positive on every fold. The gains are smaller than the fold
+two of eighteen are positive on every split. The gains are smaller than the split
 spread. Always read `compare_arms.py`, never a table of means, for a claim of the
 form "A beats B".
 
 **A kd+fisher blend that beats both of its parents on the means.** Six of six
-do. Paired by fold, five of six clear their KD parent on every fold and **none**
-clears its Fisher parent - the three concurrent blends each lose fold 1 to
+do. Paired by split, five of six clear their KD parent on every split and **none**
+clears its Fisher parent - the three concurrent blends each lose split 1 to
 `fisher_lam8` by more than their whole mean gain. The blends do hold the best
-mean score and the best preservation in their table; that is the claim the folds
+mean score and the best preservation in their table; that is the claim the splits
 support, and `compare_arms.py --what blends` is where it is checked.
 
 ---
@@ -1308,7 +1308,9 @@ packed.
 
 published beside the archive as `Digits_study01_records.tar.gz.sha256`. Both are
 attached to the repository's records release, which carries no version number:
-<https://github.com/keshtkarsadegh/federated-outlier-adaptation/releases/tag/records>.
+<https://github.com/keshtkarsadegh/fl-outlier-writers-nist/releases/tag/records>.
+(The repository was renamed from `federated-outlier-adaptation`; the old
+release and download URLs redirect here.)
 The records are not the source and do not move with it: whenever a stage adds
 records, the archive is replaced in place and its checksum with it. So the
 sha256 above is the one to verify against, and a copy that fails it was fetched
@@ -1338,8 +1340,8 @@ study root, so assembling one is two copies into an empty directory:
 export FOA_STUDY_DIR=/path/to/Digits_study01        # any empty directory
 mkdir -p "$FOA_STUDY_DIR"
 
-curl -fLO https://github.com/keshtkarsadegh/federated-outlier-adaptation/releases/download/records/Digits_study01_records.tar.gz
-curl -fLO https://github.com/keshtkarsadegh/federated-outlier-adaptation/releases/download/records/Digits_study01_records.tar.gz.sha256
+curl -fLO https://github.com/keshtkarsadegh/fl-outlier-writers-nist/releases/download/records/Digits_study01_records.tar.gz
+curl -fLO https://github.com/keshtkarsadegh/fl-outlier-writers-nist/releases/download/records/Digits_study01_records.tar.gz.sha256
 sha256sum -c Digits_study01_records.tar.gz.sha256   # 151,177,192 bytes
 tar -xzf Digits_study01_records.tar.gz -C "$FOA_STUDY_DIR"
 cp -r study/artifacts/Digits_study01/. "$FOA_STUDY_DIR/"
@@ -1380,7 +1382,7 @@ beside the names.
 
 **Six of those 2,471 runs are not in the asset**, and ship in the metadata core
 instead: a one-task smoke run that predates the stage and was never part of it,
-and the five folds of the one-client extreme arrangement the study no longer
+and the five splits of the one-client extreme arrangement the study no longer
 defines. `report_tables.in_study` keeps the latter out of every table, every
 stage total and every all-arms mean, and the same predicate is what decides what
 `build_records_asset.py` packs - so they are excluded from the asset for the
@@ -1394,7 +1396,7 @@ records do not. Every stage that consumes them is reproducible from §3 onwards.
 
 **`compare_arms.py --what blends` exists, and needs both halves of the above.**
 It differences each kd+fisher blend against each of the two cells it was built
-from, fold by fold. The parents come from `tables/p14_hybrid_construction.json`
+from, split by split. The parents come from `tables/p14_hybrid_construction.json`
 and `tables/p14_hybrid_construction_sequential.json`, which are in the tree; the
 scores come from the `d01_regfull_*` records, which are in the asset. Unpack the
 asset and
@@ -1402,5 +1404,5 @@ asset and
     python tools/compare_arms.py --root "$FOA_STUDY_DIR" --what blends
 
 reproduces the claim `docs/REG_GRID_RANGES.md` now makes: best mean score and
-best preservation, five of six blends clearing their KD parent on every fold, and
+best preservation, five of six blends clearing their KD parent on every split, and
 none of the six clearing its Fisher parent.

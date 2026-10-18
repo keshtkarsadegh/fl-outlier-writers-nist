@@ -11,7 +11,7 @@ That is the only question this stage asks, so it is a cross and not another
 sweep: the top three server rules by the top three penalties, per schedule, at
 the reporting horizon.
 
-    3 rules x 3 penalties x 2 schedules x 5 folds = 90 tasks, 100 rounds
+    3 rules x 3 penalties x 2 schedules x 5 splits = 90 tasks, 100 rounds
 
 The shortlists are read from `tables/p12_agg_top3.json` and
 `tables/p13_reg_top3.json`, which are themselves selected from the full-horizon
@@ -51,15 +51,15 @@ rows of the stage look like a clean positive: the two mechanisms compose.
 
 **That reading is wrong, and it is wrong in a way a table of means cannot show.**
 
-## The result, paired by fold
+## The result, paired by split
 
-The five folds are the same five partitions for every arm, so a fold that is
-hard for one arm is hard for all of them. Differencing within a fold removes
+The five splits are the same five re-draws for every arm, so a split that is
+hard for one arm is hard for all of them. Differencing within a split removes
 that shared difficulty. Doing so:
 
 Differencing each pair against its better half:
 
-| | gains | fold sd | positive on every fold |
+| | gains | split sd | positive on every split |
 |---|---|---|---|
 | concurrent | -0.57 to +1.21 | 0.40 to 1.46 | **2 of 9** |
 | sequential | -0.20 to +0.80 | 0.24 to 1.43 | **0 of 9** |
@@ -71,21 +71,21 @@ hiding:
     seq_delta_capped x ntd_b0p01_t2    +0.44 mean   +1.3  +0.6  +0.5  -1.0  +0.9
     seq_delta_capped x hybrid_mix0p5   +0.28 mean   +1.8  +1.0  -1.8  -0.5  +1.0
 
-Each is carried by one or two folds and contradicted by another.
+Each is carried by one or two splits and contradicted by another.
 
 The two survivors are both the same penalty under two different rules:
 `anchor_h2 x ntd_b0p01_t0p5` at +1.21, sd 0.58, and `eta_0p95 x ntd_b0p01_t0p5`
-at +0.77, sd 0.40, positive on all five folds. They are the same two rows that
-clear **both** halves on every fold in `tables/paper_figures/combos_folds.csv`.
+at +0.77, sd 0.40, positive on all five splits. They are the same two rows that
+clear **both** halves on every split in `tables/paper_figures/combos_folds.csv`.
 
-No row is negative on every fold. Four are negative on the mean, the worst of
+No row is negative on every split. Four are negative on the mean, the worst of
 them `weight_q0 x hybrid_seq_mix0p5` at -0.57: adding that server rule to that
-penalty does not help, and the folds do not agree that it hurts either.
+penalty does not help, and the splits do not agree that it hurts either.
 
-**Conclusion: the two halves do not measurably compose at five folds.** The best
+**Conclusion: the two halves do not measurably compose at five splits.** The best
 combination is still the best single number in the study -
 `seq_delta_capped x ntd_b0p01_t2`, 0.9375 adaptation / 0.9902 preservation,
-score 10.661 - but its margin over the penalty alone is +0.44 against a fold sd
+score 10.661 - but its margin over the penalty alone is +0.44 against a split sd
 of 0.89 and must not be reported as a gain.
 
 ## What does survive: the penalty is the mechanism
@@ -93,16 +93,16 @@ of 0.89 and must not be reported as a gain.
 The same paired test applied to the two halves themselves gives an effect three
 times larger, and it holds:
 
-| | difference | positive on every fold |
+| | difference | positive on every split |
 |---|---|---|
 | concurrent | +1.25 to +3.16 | **9 of 9** |
 | sequential | +1.81 to +4.14 | 6 of 9 (all 9 positive on the mean) |
 
 Every client penalty beats every server rule, by one and a quarter to four
 points, and every one of the eighteen rows is positive on the mean. On the
-parallel schedule it is unconditional: nine rows, forty-five folds, no
+parallel schedule it is unconditional: nine rows, forty-five splits, no
 exception. On the cyclic schedule the three rows that fall out of the consistent
-column are all the same penalty - the `hybrid_mix0p5` blend, whose fold spread
+column are all the same penalty - the `hybrid_mix0p5` blend, whose split spread
 is twice the other two penalties' - and not the same rule.
 
 So the honest statement of what this study found is:
@@ -116,7 +116,7 @@ half of the update to spend effort on.
 
 ## What would settle the margins
 
-The gains are ~0.4 points against a fold sd of ~1.0 at n=5. Ten folds would
+The gains are ~0.4 points against a split sd of ~1.0 at n=5. Ten splits would
 roughly halve the standard error and would settle whether the ~0.4 effects are
 real - about 250 extra tasks (the 18 combinations and their halves), ~30
 GPU-hours. Worth it only if the composition claim has to appear in the paper;
@@ -147,7 +147,7 @@ Neither failure would have raised an error.
 ## Addendum, 2026-09-09: an extension that tunes the pair jointly
 
 **Nothing above is superseded, and nothing above is re-emitted.** The shortlists,
-the eighteen combinations, the fold-paired reading and the conclusion this
+the eighteen combinations, the split-paired reading and the conclusion this
 document draws all stand exactly as they are. This paragraph records that an
 **extension** now exists beside them, and says what it screens.
 
@@ -156,7 +156,7 @@ is a server rule at the coefficients it won on *alone* beside a penalty at the
 coefficients it won on *alone*: the two shortlists were selected independently -
 one under plain FedAvg, the other with no penalty - and no stage of the
 programme ever moved the two together. So the conclusion recorded above, that
-the two halves do not measurably compose at five folds, is measured at one point
+the two halves do not measurably compose at five splits, is measured at one point
 of a joint grid: the point at which each half is best in the other's absence.
 That is what was run, and it is what the sentence should be read as saying.
 
@@ -187,17 +187,17 @@ halves, the tuned pair, and the pair the stage above crowned - the arm the
 programme shipped, rather than whichever of the eighteen leads the column it
 would be read in.
 
-    concurrent  tuned pair  9.34p   vs untuned -0.75 (2 of 5 folds)
+    concurrent  tuned pair  9.34p   vs untuned -0.75 (2 of 5 splits)
                                     vs penalty alone -1.16 (1 of 5)
                                     vs crowned pair -0.88 (1 of 5)
-    sequential  tuned pair  9.14p   vs untuned +0.03 (3 of 5 folds)
+    sequential  tuned pair  9.14p   vs untuned +0.03 (3 of 5 splits)
                                     vs penalty alone -1.55 (0 of 5)
                                     vs crowned pair -1.38 (0 of 5)
 
 **Moving the two halves together did not find a pair that beats the point where
 each half is best alone.** On neither schedule does the tuned pair clear the
 penalty on its own, and on neither does it clear the pair the stage crowned;
-the one difference that is even positive is +0.03 on three folds of five, which
+the one difference that is even positive is +0.03 on three splits of five, which
 is the same shape of non-result as every row of the paired table above. So the
 sentence this document draws - that the two halves do not measurably compose -
 is now measured at more than one point of the joint grid rather than at one, and

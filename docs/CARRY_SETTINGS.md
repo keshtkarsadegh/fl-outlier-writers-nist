@@ -191,7 +191,7 @@ where the federation is smallest.
 
 Doubling the dropout at twenty clients moves the sequential arm by +0.10p
 (6.08p to 6.18p), the winner by -0.67p and the balanced arm by -0.57p. Against
-fold spreads of 0.004-0.010 in adaptation these are small, and the ordering is
+split spreads of 0.004-0.010 in adaptation these are small, and the ordering is
 identical: sequential, winner, balanced, at both rates.
 
 Eighteen of twenty and sixteen of twenty are, for these arms, the same setting.

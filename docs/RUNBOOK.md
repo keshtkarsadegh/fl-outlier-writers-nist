@@ -53,13 +53,13 @@ python tools/make_digits_p02.py --jobs-dir "$FOA_STUDY_DIR/jobs"
 
 Four tasks: the census, the fold book, one model, one scoring pass.
 
-One fold, deliberately. The detector only has to put the badly served writers
+One split, deliberately. The detector only has to put the badly served writers
 inside a net of about a thousand; the study's clients are cut from that net
-later, by g-0. With five folds one had to be crowned, and the five sat within
+later, by g-0. With five splits one had to be crowned, and the five sat within
 six ten-thousandths of a point of each other, so floating-point accumulation
-order chose the study's clients. With one fold there is nothing to crown.
+order chose the study's clients. With one split there is nothing to crown.
 
-The experiments remain five-fold. This is the detector alone.
+The experiments remain five-split. This is the detector alone.
 
 ## 3. Cohorts and the shipped model
 
@@ -68,15 +68,15 @@ python tools/make_digits_p05v2.py --jobs-dir "$FOA_STUDY_DIR/jobs"
 ```
 
 Thirty tasks. Splits the ranking, draws the 200 source writers, trains g-0 once
-per fold, crowns one, scores the bad pool with it, and cuts the worst 5, 10 and
+per split, crowns one, scores the bad pool with it, and cuts the worst 5, 10 and
 20 from that single ranking - three cuts of one list, each with its own
-five-fold book.
+five-split fold book.
 
 The three books agree by construction: a writer's split is seeded on
 `sha256(seed | fold | writer)`, so it does not depend on who else is in the
 book, and the worst five hold the same rows in all three.
 
-`select-fold` promotes the winning fold's Fisher beside its checkpoint. A Fisher
+`select-fold` promotes the winning split's Fisher beside its checkpoint. A Fisher
 belongs to one set of weights, and leaving it behind is enough to make the two
 Fisher-weighted signals record nothing.
 
@@ -219,10 +219,10 @@ python tools/compare_arms.py  --root "$FOA_STUDY_DIR" --what all --csv out/
 - **report_tables** - what each arm scored. The manuscript's numbers come from
   here and from nowhere else.
 - **compare_arms** - what the DIFFERENCE between two arms is worth, paired by
-  fold. Use it for any claim of the form "A beats B": on the combination stage,
+  split. Use it for any claim of the form "A beats B": on the combination stage,
   eleven of eighteen pairs beat both their halves on the means and only one of
-  the eighteen is positive on every fold. A mean difference smaller than its own
-  fold spread is not a finding, and only the paired view shows that.
+  the eighteen is positive on every split. A mean difference smaller than its own
+  split spread is not a finding, and only the paired view shows that.
 - **weight_sensitivity** - which winners depend on `w`, the one number in the
   selection rule that is not read off disk. The study selects and reports at
   `w = 1`; this exists because the repository once asserted the winners do not

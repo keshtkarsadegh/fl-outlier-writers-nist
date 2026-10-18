@@ -29,15 +29,15 @@ is the score table's adaptation column, opened up.
 
 | column | what it is |
 |---|---|
-| `cohort` | the fold-mean of `final_evaluation.clients.accuracy`: the cohort accuracy pooled over the cohort's test ROWS, and the exact column `report_tables.py` reports as `adaptation`. `tab:fairness` prints this one, so an arm that appears in two tables prints one adaptation in both |
-| `min` `p25` `med` `mean` `max` | the fold-mean of each order statistic of the cohort's client accuracies. `mean` is the unweighted mean over CLIENTS and is *not* `cohort`: the writers hold between seventy and two hundred-odd digit rows apiece, so pooling over rows and averaging over clients give different numbers, by up to a point at twenty clients |
+| `cohort` | the split-mean of `final_evaluation.clients.accuracy`: the cohort accuracy pooled over the cohort's test ROWS, and the exact column `report_tables.py` reports as `adaptation`. `tab:fairness` prints this one, so an arm that appears in two tables prints one adaptation in both |
+| `min` `p25` `med` `mean` `max` | the split-mean of each order statistic of the cohort's client accuracies. `mean` is the unweighted mean over CLIENTS and is *not* `cohort`: the writers hold between seventy and two hundred-odd digit rows apiece, so pooling over rows and averaging over clients give different numbers, by up to a point at twenty clients |
 | `gap` | `mean - min`: how far the cohort's average sits above the client it served worst |
 | `d-worst` | `min` less the shipped model's own worst client, in points |
 | `d-mean` | `mean` less the shipped model's own cohort mean, in points |
 | `lifted` | share of clients whose own accuracy beats **its own** shipped-model accuracy |
 
 **The reference is per client, not pooled.** Asking whether a writer improved
-needs that writer's own number under `g-0`, so the reference is read per fold
+needs that writer's own number under `g-0`, so the reference is read per split
 from the study's own evaluation books - `g0_perfold_evaluations.json`,
 `g0_c5_evaluations.json`, `g0_c20_evaluations.json` - and the book is chosen by
 which one *covers* the run's clients rather than by the stage's name. The ten-

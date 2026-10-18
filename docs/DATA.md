@@ -221,5 +221,5 @@ not a trimmed SD19.
 
 NIST Special Database 19 is redistributed by NIST under the terms on its
 landing page. This repository contains **no SD19 data** — only code, task
-definitions, checksums, and small derived artefacts (writer lists, fold
+definitions, checksums, and small derived artefacts (writer lists, split
 assignments, accuracy tables) that do not contain images.

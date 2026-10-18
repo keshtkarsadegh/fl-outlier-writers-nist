@@ -134,7 +134,7 @@ shipped model serves worst - the clients the study is about. The data confirms
 it is not acting as a restraint: more trimming *raises* adaptation and *lowers*
 preservation, the opposite of a drift control.
 
-It nevertheless finished second in the finals with the smallest fold spread of
+It nevertheless finished second in the finals with the smallest split spread of
 any method.
 
 **Decision:** `beta in {0.1, 0.2, 0.3, 0.4}` - the full meaningful range, four
@@ -195,7 +195,7 @@ evaluated outside its assumptions.
 
 ## Totals
 
-| | cells | tasks at 5 folds |
+| | cells | tasks at 5 splits |
 |---|---|---|
 | current | 169 | 845 |
 | proposed | ~98 | ~490 |

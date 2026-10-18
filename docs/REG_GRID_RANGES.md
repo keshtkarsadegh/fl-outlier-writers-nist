@@ -317,7 +317,7 @@ direction rather than pushing ntd up to kd's old 50.
 
 ## Totals
 
-| | cells | tasks at 5 folds |
+| | cells | tasks at 5 splits |
 |---|---|---|
 | superseded screen | 125 | 625 |
 | this screen | 140 | 700 |
@@ -513,7 +513,7 @@ winner.
 ## Two horizons, two jobs
 
     screen  25 rounds   RANKS cells within a method.   Nothing here is reported.
-    finals 100 rounds   REPORTS the winners, 5 folds.
+    finals 100 rounds   REPORTS the winners, 5 splits.
 
 The screen exists because the full grid at the reporting horizon is unaffordable.
 A 25-round result is a ranking signal, and this study now has direct evidence of
@@ -525,14 +525,14 @@ the difference between the two jobs - see the finals below.
 
 ## The two headline quantities, defined
 
-Read by `select_reg_screen.read_family_runs`, per (cell, fold, family):
+Read by `select_reg_screen.read_family_runs`, per (cell, split, family):
 
 * **adaptation** - the last value of `pool_val_accuracies`: the cohort's
   held-out **validation** half. Validation, not test, is the protocol letter;
   the test column is carried alongside and both orderings are recorded, so a
   selection can be re-read either way.
 * **preservation** - `final_evaluation.old.mean`: the source population's five
-  fold test partitions, scored separately, with their mean and spread.
+  split test sets, scored separately, with their mean and spread.
 
 **Preservation is `source_val_accuracies`, and it FALLS.** `pool_test_accuracies`
 tracks the cohort and RISES through a run; reading it as preservation reports a
@@ -579,9 +579,9 @@ cached.
 python tools/check_signals.py --root "$FOA_STUDY_DIR" --all
 ``` This matters
 because in an earlier run four of the eight were silently empty: the MNIST proxy
-set had never been built and the winning fold's Fisher was never promoted to the
-name the artefact resolver looks for. Both are fixed, and the fold selector now
-promotes the Fisher as part of choosing the fold.
+set had never been built and the winning split's Fisher was never promoted to the
+name the artefact resolver looks for. Both are fixed, and the split selector now
+promotes the Fisher as part of choosing the split.
 
 `analysis/forgetting_signals.py` then asks the three questions that decide
 whether a signal can stand in for the forbidden source split: does it correlate
@@ -622,7 +622,7 @@ The boundary rule reports nine edge hits, eight at the weak end:
 the `alpha = 0.99` corner of `kd` (both), `ntd t = 0.5`; the one exception is
 `kd_T8`, at the top of the trimmed T row.
 
-## The finals - 14 winners, 70 tasks, 100 rounds, 5 folds
+## The finals - 14 winners, 70 tasks, 100 rounds, 5 splits
 
 | | concurrent | | | sequential | | |
 |---|---|---|---|---|---|---|
@@ -765,7 +765,7 @@ on the source population, and `score` is the difference.
 | `param_l2_mu0` *(control)* | cyclic | 0.9169 | 0.0160 | 0.9695 | 9.44p | 2.91p | 6.53 |
 
 Every row is 8/8 significant. The cyclic blend row prints within a hundredth of
-`hybrid_seq_mix0.25` parallel in every column but the fold spread: two different
+`hybrid_seq_mix0.25` parallel in every column but the split spread: two different
 arms that round to the same line, not a duplicated row. Three things to read off
 it:
 
@@ -830,11 +830,11 @@ Six of six blend points have a higher **mean** score than both of their parents,
 and the mean rises monotonically with `mix` in both families. This section used
 to stop there and say the blends beat both parents. That is the same reading
 that made eleven of eighteen combinations "beat both halves", and it does not
-survive being paired by fold:
+survive being paired by split:
 
     python tools/compare_arms.py --root "$FOA_STUDY_DIR" --what blends
 
-| the blend against | positive on EVERY fold | the six means |
+| the blend against | positive on EVERY split | the six means |
 |---|---|---|
 | its **KD** parent | **5 of 6** | +0.98 to +2.05 points |
 | its **Fisher** parent | **0 of 6** | +0.08 to +1.28 points |
@@ -842,11 +842,11 @@ survive being paired by fold:
 So the honest statement is narrower than the old one and in three parts. The
 blends hold the best mean score in both families and the nine best preservation
 figures in the table (below). Against the KD parent the advantage is on every
-fold in five of the six points, the exception being `hybrid_seq_mix0.25`, which
-loses fold 1 by 1.2. Against the Fisher parent nothing is shown at all: **not
-one** of the six is ahead on all five folds, all three concurrent blends lose
-fold 1 to `fisher_lam8` by 2.6 to 3.3 points - larger than any of their mean
-gains - and `hybrid_seq_mix0.25` loses two folds to `fisher_lam0.1`.
+split in five of the six points, the exception being `hybrid_seq_mix0.25`, which
+loses split 1 by 1.2. Against the Fisher parent nothing is shown at all: **not
+one** of the six is ahead on all five splits, all three concurrent blends lose
+split 1 to `fisher_lam8` by 2.6 to 3.3 points - larger than any of their mean
+gains - and `hybrid_seq_mix0.25` loses two splits to `fisher_lam0.1`.
 
 The asymmetry is expected from the caveat above and is worth reading with it.
 `mix = 1` reproduces the KD parent, so the KD rows compare the line against a
@@ -892,16 +892,16 @@ selected, and recorded here rather than fixed silently.
     python tools/compare_arms.py --root "$FOA_STUDY_DIR" --what composition
 
 Each shortlisted penalty, alone, against each shortlisted server rule, alone,
-differenced within a fold:
+differenced within a split:
 
-| | pairings positive on every fold | margin |
+| | pairings positive on every split | margin |
 |---|---|---|
 | concurrent | **6 of 6** | +1.25 to +2.96 points |
 | sequential | **6 of 6** | +3.20 to +4.14 points |
 
 Six rather than nine: the blend in each shortlist has no paired result yet,
 because the cross has not been re-run against these shortlists. Every pairing
-that does exist is positive on all five folds, which is a much stronger statement
+that does exist is positive on all five splits, which is a much stronger statement
 than the mean-against-mean reading that `COMBINATIONS.md` records for the
 discarded run - there, only 1 of 9 survived pairing.
 
@@ -965,7 +965,7 @@ of 0.1. The row starts where EWC's row starts because that is the range EWC was
 screened over. The three cells that ran keep their full-horizon results and still
 compete in `reg-top3`; nothing here supersedes them.
 
-| | cells | tasks at 5 folds |
+| | cells | tasks at 5 splits |
 |---|---|---|
 | the blend as emitted, per schedule | 3 | 15 |
 | this screen | 234 | 1170 |
@@ -1045,7 +1045,7 @@ together.
 
     54 x 3 server steps = 162 parallel cells
     54 x 1 (no rule knob) =  54 cyclic cells
-                          = 216 cells x 5 folds = 1080 tasks at 25 rounds
+                          = 216 cells x 5 splits = 1080 tasks at 25 rounds
 
 **`c_ewc`.** EWC's own selections sat at `lambda = 8` parallel and `lambda = 0.1`
 cyclic - two decades apart, which already says the coefficient is not the same
@@ -1083,7 +1083,7 @@ needs `m * c_kd` and `(1 - m) * c_ewc` to repeat *together*, and the nine
 `(m, c_kd)` products on this grid are all distinct. It is emitted anyway, so a
 widened row cannot quietly pay twice.
 
-| | cells | tasks at 5 folds |
+| | cells | tasks at 5 splits |
 |---|---|---|
 | the pair as `s20` ran it, per schedule | 1 | 5 |
 | this screen, parallel | 162 | 810 |
@@ -1139,7 +1139,7 @@ together, and section 9 moved a rule the programme did not select.
 
     54 x 3 half-lives     = 162 parallel cells
     54 x 1 (no rule knob) =  54 cyclic cells
-                          = 216 cells x 5 folds = 1080 tasks at 25 rounds
+                          = 216 cells x 5 splits = 1080 tasks at 25 rounds
 
 **`h`, and where the row leaves the programme.** `anchor_h2` is one setting of a
 coefficient row, so the selected parallel rule *has* a knob and this grid moves
@@ -1185,7 +1185,7 @@ be a different grid, not this one widened. It is not run and it is not claimed.
 `(m, c_kd)` products and the same nine `(1 - m) * c_ewc` weights, over a rule
 axis that cannot collide with itself.
 
-| | cells | tasks at 5 folds |
+| | cells | tasks at 5 splits |
 |---|---|---|
 | the pair as `s20` ran it, per schedule | 1 | 5 |
 | this screen, parallel | 162 | 810 |

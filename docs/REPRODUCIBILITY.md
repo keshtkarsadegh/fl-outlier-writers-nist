@@ -27,8 +27,8 @@ Two conventions hold throughout:
 Python 3.12.
 
 ```bash
-git clone https://github.com/keshtkarsadegh/federated-outlier-adaptation.git
-cd federated-outlier-adaptation
+git clone https://github.com/keshtkarsadegh/fl-outlier-writers-nist.git   # renamed; the old URL redirects
+cd fl-outlier-writers-nist
 
 # GPU (CUDA 12.1), the build used for the published runs
 pip install torch==2.3.1 torchvision==0.18.1 \

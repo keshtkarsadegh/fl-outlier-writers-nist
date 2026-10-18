@@ -179,7 +179,7 @@ forgetting - and it does not have to, because the round the cohort stops
 improving turns out to be close to the round after which the horizon is only
 spending the source model.
 
-`tools/plateau_rule.py` prices it. Let `c(t)` be the fold-mean cohort validation
+`tools/plateau_rule.py` prices it. Let `c(t)` be the split-mean cohort validation
 accuracy and `b(t)` its best value so far. The rule **fires** at the first round
 where `c` has failed to exceed `b + eps` for `k` consecutive rounds. What the
 server deploys is not the round it fired on: it has been keeping the checkpoint
@@ -262,12 +262,12 @@ beside the kept round rather than folding the two together.
 Holding the two extremes out is the weakest form of that question: it removes
 two arms. `tools/plateau_holdout.py` asks the strong one - choose `(k, eps)` on
 a designated subset and evaluate it, unchanged, on a disjoint one - in three
-directions, over **28 protocols**: by fold, by stage, and by ten seeded random
-halves of the arms. A fold split is the one that needs care, because the
-published rule runs on the fold MEAN of an arm's five folds: there is one trace
-per arm and cutting it in half would not be a fold split at all. So the arm is
-**re-averaged over the selected folds alone**, which is the trace a study run on
-those folds alone would have had, and the five-fold filter is applied to the
+directions, over **28 protocols**: by split, by stage, and by ten seeded random
+halves of the arms. Holding out by split is the one that needs care, because the
+published rule runs on the split MEAN of an arm's five splits: there is one trace
+per arm and cutting it in half would not be a hold-out by split at all. So the arm is
+**re-averaged over the selected splits alone**, which is the trace a study run on
+those splits alone would have had, and the five-split filter is applied to the
 full five so that a protocol changes the traces and never which arms are in the
 table.
 
@@ -275,14 +275,14 @@ table.
 beside it, and `held_gain_at_primary` prices what that cost: nothing, to a
 hundredth of a point. **And no protocol loses on the set it did not see** - the
 worst held-out gain of the 28 is zero, on the two federations where the rule
-never fires at all. Leave one fold out, choose on the other four and evaluate
-on the fold the setting never saw: **+1.83p, sd 0.49p** over the five folds. Cut
+never fires at all. Leave one split out, choose on the other four and evaluate
+on the split the setting never saw: **+1.83p, sd 0.49p** over the five splits. Cut
 the arms in half at random, ten times: **+1.33p, sd 0.23p** on the half held
 out. Both sit above the in-sample +1.19p rather than below it, which is not a
-stronger result but a different one - a single fold is a noisier trace than the
-five-fold mean, and a noisier trace is one the fixed horizon costs more on.
+stronger result but a different one - a single split is a noisier trace than the
+five-split mean, and a noisier trace is one the fixed horizon costs more on.
 
-The two extreme arrangements are read off the full five-fold traces whatever
+The two extreme arrangements are read off the full five-split traces whatever
 the setting was chosen on, because that is what the rounds above are quoted
 from: **`dual` keeps round 8 and `double` round 36, at the same scores, under
 all 28 protocols.** All 28 are on the page: `tables/kholdout.tex` prints the six
@@ -292,7 +292,7 @@ deviation rather than dropped. The appendix table used to print six rows that
 expanded to nineteen, so the twenty-eight its own caption counted could not be
 reached from it. `plateau_holdout_protocols.csv` carries the rows,
 `plateau_holdout_extremes.csv` the 56 extreme checks and
-`plateau_holdout_grids.csv` the thirteen fold sets against all sixteen cells;
+`plateau_holdout_grids.csv` the thirteen split sets against all sixteen cells;
 `tests/test_plateau_holdout.py` pins the count, the patience, the sign of every
 held-out gain and both extreme rounds.
 
@@ -352,7 +352,7 @@ the source model apart.
 | `double` | 36 | 22.03p | +16.08p | 5.96p | 17.07p | 59 | +1.00p |
 
 The rows reproduce `tools/extreme_stopping.py` exactly, because
-`stopping_table.py` imports that tool's fold mean, oracle round and score
+`stopping_table.py` imports that tool's split mean, oracle round and score
 functions rather than restating them. Running `stopping_table.py --stage
 extreme` and `extreme_stopping.py` against the same root is a check that the two
 have not come apart.
