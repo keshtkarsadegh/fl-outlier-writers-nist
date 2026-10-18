@@ -6,8 +6,8 @@ Emit P07 of the digits study: g-0, and the starting line every method is judged 
 Writes two text files: a login-node job.
 
 g-0 is the shipped model - trained on the two hundred old-data writers drawn in
-P04, five-fold cross-validated, early-stopped on validation with the best
-weights restored. Everything this study reports is measured against it.
+P04, once on each of the five splits, early-stopped on validation with the
+best weights restored. Everything this study reports is measured against it.
 """
 
 from __future__ import annotations
@@ -75,6 +75,9 @@ def header(tasks: list[str]) -> list[str]:
         f"# d01_p07.txt - {STUDY}, P07: g-0 and the starting line.",
         "#",
         "# g-0 is the SHIPPED model: trained on the 200 old-data writers P04 drew,",
+        # The emitted wording is kept as submitted, so the output regenerates
+        # byte for byte; the five folds are independent splits, not a
+        # cross-validation partition (see data/fold_book.py).
         "# five-fold cross-validated on their book, early-stopped on validation",
         "# with the best weights restored. Every number this study reports is",
         "# measured against it. g-init is not a baseline and never was - it exists",
@@ -129,6 +132,9 @@ def header(tasks: list[str]) -> list[str]:
     ]
 
 
+# The emitted wording is kept as submitted, so the output regenerates
+# byte for byte; the five folds are independent splits, not a
+# cross-validation partition (see data/fold_book.py).
 def readme(tasks: list[str]) -> str:
     return f"""# {STUDY} - P07: g-0 and the starting line
 

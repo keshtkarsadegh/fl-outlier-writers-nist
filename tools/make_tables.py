@@ -4,7 +4,7 @@ SUPERSEDED - see tools/report_tables.py.
 This assembles the PRIOR programme's two headline tables. Its rows are that
 programme's cells and folders: ``combo_trimmed_0p4_feature_l2_lam0p1``, the
 P18/P19/P20 rungs, and a scaling table pinned to fold 1 because those probes
-ran without cross-validation. None of those ids exists under Digits_study01,
+ran on one split only. None of those ids exists under Digits_study01,
 and every setting this study reports has five folds. Running it against the
 current study root reads nothing and reports nothing, which is the failure
 mode that made this banner necessary: it does not raise, it produces an empty
@@ -41,7 +41,7 @@ sentence that states an interpretation is not something a program can derive.
 
 The fold-1 rules of the scaling table
 -------------------------------------
-The scaling and dropout probes ran without cross-validation - one g-0, one
+The scaling and dropout probes ran on one split only - one g-0, one
 client split - so their cells are single-fold point estimates.  Three
 consequences are baked in here rather than left to the person writing the table:
 
@@ -50,7 +50,7 @@ consequences are baked in here rather than left to the person writing the table:
   that globbed would average five folds for some rungs and one for others, and
   the difference would read as a size effect.
 * the ten-client anchors are read from **fold 1 of the same runs**, not from the
-  CV-5 mean, so every cell in the table is one draw.
+  five-split mean, so every cell in the table is one draw.
 * no cell carries a ``±``.  A single fold has no spread; the P15 cross-fold
   spread is quoted once, as the noise floor a reader should judge differences
   against.
@@ -73,7 +73,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 #: mixed horizons would be indistinguishable from a size effect.
 FOLD_ONLY = 1
 
-#: The folds the main study cross-validates over.
+#: The five splits (folds) the main study runs on.
 CV_FOLDS = (1, 2, 3, 4, 5)
 
 #: Which sub-directory of a run folder belongs to which schedule.  A run that
@@ -242,7 +242,7 @@ def read_p15_spread(root: Path) -> Dict[str, Optional[float]]:
 
     A single-fold cell has no error bar of its own.  The nearest honest thing to
     put beside it is how far the *same* configurations moved across folds when
-    they were cross-validated, which is exactly what P15 measured.
+    they ran on all five splits, which is exactly what P15 measured.
     """
     grid = _load(f"{root}/tables/p15_combination_grid.json") or {}
     pooled_sd, old_sd = [], []
@@ -358,6 +358,9 @@ def master_table(root: Path) -> str:
     per_writer = read_writer_baseline(root)
     ranked = read_extreme_writers(root)
 
+    # "CV-5" and "CV" below are the prior programme's words for its five
+    # splits, kept as shipped (see the banner); they were never a
+    # cross-validation partition.
     out = [
         "# Master table — Digits_study01 (10 outliers / 200 old / 10% dropout / CV-5)",
         "",
@@ -501,8 +504,9 @@ def scaling_table(root: Path) -> str:
 
     for federation, config, parent10, parent20 in SCALING_ROWS:
         if parent10 == "extreme_double":
-            # The extreme stage kept CV-5; its cell is a five-fold mean and is
-            # starred, so it is never read as one of the fold-1 probes.
+            # The extreme stage kept all five splits; its cell is a five-split
+            # mean and is starred, so it is never read as one of the fold-1
+            # probes.
             cell = read_folds(root, parent10)
             left = f"{f4(cell['pooled'])}* / {f4(cell['old'])}*"
             right = "— (never dropped)"

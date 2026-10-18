@@ -45,7 +45,7 @@ from typing import Dict, List, Optional
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-#: The folds the study cross-validates over, everywhere.
+#: The five splits (folds) the study runs on, everywhere.
 FOLDS = (1, 2, 3, 4, 5)
 
 #: How every accuracy in these two views is written.

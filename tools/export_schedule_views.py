@@ -34,7 +34,7 @@ is why four of the six are two DIFFERENT cells: the cyclic grid crowned
 cell across both schedules would report a setting one of them never chose.
 
 PAIRED BY FOLD, and the mean is not the finding. The five folds are the same
-five partitions for every arm, so a fold that is hard for one arm is hard for
+five re-draws for every arm, so a fold that is hard for one arm is hard for
 all of them; differencing within a fold removes that shared difficulty, and
 comparing two means does not. So every row carries its five per-fold
 differences and how many of the five the cyclic half won, beside the mean -

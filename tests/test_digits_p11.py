@@ -233,7 +233,7 @@ def test_every_line_starts_from_g0_and_keeps_its_model(parsed):
 
 
 def test_preservation_is_five_folds_on_every_line(parsed):
-    """Five partitions of one population is what the error bar is made of."""
+    """Five independent re-draws of one population are what the error bar is made of."""
     for args in parsed:
         assert args.old_fold == "all"
 

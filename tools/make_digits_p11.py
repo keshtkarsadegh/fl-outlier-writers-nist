@@ -127,6 +127,9 @@ def header(tasks: list[str]) -> list[str]:
         "# EVERY LINE reports the standard three categories into its",
         "# accuracies_0.json under 'final_evaluation': the pooled clients test on",
         "# the cohort's fold-k rows, the per-client column, and the old data's",
+        # The emitted wording is kept as submitted, so the output regenerates
+        # byte for byte; the five folds are independent splits, not a
+        # cross-validation partition (see data/fold_book.py).
         "# FIVE fold test partitions scored separately with their mean and spread.",
         "# Preservation is five numbers because five partitions of one population",
         "# is what the error bar is made of; merging them would report a precision",

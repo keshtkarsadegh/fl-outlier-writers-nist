@@ -1719,7 +1719,7 @@ def test_the_population_reaches_the_pipeline(monkeypatch):
 # v6 stage 2: choosing a fold, scoring writers, drawing the old data
 # --------------------------------------------------------------------------- #
 def _fold_run(root, prefix, fold, val, test, model_bytes=b"weights"):
-    """A directory shaped like one fold of a cross-validated training."""
+    """A directory shaped like one split (fold) of a five-split training."""
     import json
 
     directory = root / f"{prefix}_fold{fold}"

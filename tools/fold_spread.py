@@ -27,7 +27,7 @@ the per-fold differences behind the 0.57-point replicate spread.
 
 THE SD IS THE SAMPLE SD, AND THE SHIPPED VIEWS' IS NOT. ``report_tables.py``
 writes ``adaptation_sd`` with ``statistics.pstdev`` (divide by n), and so does
-the extension view's ``score_sd``. Five folds are a sample of partitions, not
+the extension view's ``score_sd``. Five splits are a sample of re-draws, not
 the population of them, so this tool divides by n - 1; its SDs are
 sqrt(5/4) = 1.118 times the views' wherever both exist.
 

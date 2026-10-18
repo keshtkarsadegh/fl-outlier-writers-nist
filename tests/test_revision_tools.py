@@ -32,7 +32,7 @@ import stopping_test_axis as STA  # noqa: E402
 
 # ------------------------------------------------------------ the arithmetic
 def test_the_spread_is_the_sample_sd_not_the_population_one():
-    """Five folds are a sample of partitions; the views' pstdev is not used."""
+    """Five splits are a sample of re-draws; the views' pstdev is not used."""
     out = FS.summary([1.0, 2.0, 3.0, 4.0, 5.0])
     assert out["mean"] == 3.0
     assert out["sd"] == pytest.approx(math.sqrt(2.5))

@@ -56,7 +56,7 @@ for stage in STAGES:
             rows[stage][config] = per_fold
 
 print(f"{'stage':8s} {'config':11s} {'folds':>6s} "
-      f"{'fold-1 adapt':>13s} {'CV adapt':>16s} {'fold-1 pres':>12s} {'CV pres':>16s} {'shift':>8s}")
+      f"{'fold-1 adapt':>13s} {'5-split adapt':>16s} {'fold-1 pres':>12s} {'5-split pres':>16s} {'shift':>8s}")
 print("-" * 96)
 out = {}
 for stage in STAGES:

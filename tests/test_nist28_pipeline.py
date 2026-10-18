@@ -1530,8 +1530,8 @@ def test_the_isolated_command_is_wired_up():
 # --------------------------------------------------------------------------- #
 def test_every_old_fold_is_scored_separately(isolated_setup):
     """
-    Five partitions of one population, so their spread is the error bar on
-    preservation.  Merging them into one set would throw that away.
+    Five independent re-draws of one population, so their spread is the error
+    bar on preservation.  Merging them into one set would throw that away.
     """
     from federated_outlier_adaptation.training.isolated import isolated_training
 
@@ -1547,7 +1547,7 @@ def test_every_old_fold_is_scored_separately(isolated_setup):
 
     row = payload["per_client"]["f0001_11"]
     assert set(row["old_folds"]) == {"1", "2", "3", "4", "5"}
-    # the five are the five partitions, not one repeated
+    # the five are the five splits, not one repeated
     per_fold_sizes = {
         str(k): len(old.part(k, "f0002_22", "test")) for k in range(1, 6)
     }
@@ -1696,7 +1696,7 @@ def test_the_pool_test_half_is_the_book_s_test_partition(
 def test_a_different_fold_gives_the_pool_different_test_rows(
     stage5_setup, cohort_cache, tmp_path, monkeypatch
 ):
-    """Fold membership has to reach the FL loop, or CV-5 is five identical runs."""
+    """Fold membership has to reach the FL loop, or the five splits are five identical runs."""
     from federated_outlier_adaptation.data.fold_book import write_fold_book
     from federated_outlier_adaptation.providers.nist import NistProvider
 
@@ -1756,8 +1756,8 @@ def test_the_final_model_is_scored_on_every_old_fold(stage5_setup):
     )
     assert payload["old"]["folds"] == [1, 2, 3, 4, 5]
     assert set(payload["old"]["accuracies"]) == {"1", "2", "3", "4", "5"}
-    # five partitions of one population, so the five sample counts are the five
-    # test partitions and not one set counted five times
+    # five independent re-draws of one population, so the five sample counts
+    # are the five split test sets and not one set counted five times
     assert payload["old"]["samples"] == {
         str(k): sum(len(old.part(k, w, "test")) for w in old_writers) for k in range(1, 6)
     }
@@ -2146,7 +2146,7 @@ def test_no_shared_row_is_ever_a_validation_or_test_row(stage5_setup):
     Within the fold being shared, which is where the invariant lives.
 
     A row that is train in fold 1 and validation in fold 2 is not a leak - that
-    is what cross-validation *is*. The leak would be sharing a row that the
+    is what five independent re-draws of the same rows *are*. The leak would be sharing a row that the
     same run later scores on, so the comparison is fold k's train against fold
     k's validation and test.
     """

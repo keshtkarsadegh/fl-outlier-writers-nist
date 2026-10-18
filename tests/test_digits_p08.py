@@ -144,7 +144,7 @@ def test_both_inits_are_run_in_equal_number(isolated, centralized, federated):
 # --------------------------------------------------------------------------- #
 def test_every_line_scores_all_five_old_folds(every):
     """
-    Five partitions of one population: the spread across them IS the error bar.
+    Five independent re-draws of one population: their spread IS the error bar.
 
     A single fold would report a preservation figure with no uncertainty
     attached, which is worse than reporting none.

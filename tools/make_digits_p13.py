@@ -119,6 +119,9 @@ def header(tasks: list[str]) -> list[str]:
         "#",
         "# EVERY LINE reports the standard three categories: the pooled clients",
         "# test on the cohort's fold-k rows, the per-client column, and the old",
+        # The emitted wording is kept as submitted, so the output regenerates
+        # byte for byte; the five folds are independent splits, not a
+        # cross-validation partition (see data/fold_book.py).
         "# data's FIVE fold test partitions scored separately with their mean and",
         "# spread.",
         "#",

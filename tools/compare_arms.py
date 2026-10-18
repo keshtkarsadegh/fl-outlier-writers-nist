@@ -20,7 +20,7 @@ next to it, and it labels each row by whether the sign is consistent.  A mean
 smaller than the spread it came from is not a finding, and the output should
 make that impossible to miss.
 
-WHY PAIRED.  The five folds are the same five partitions for every arm, so a
+WHY PAIRED.  The five folds are the same five re-draws for every arm, so a
 fold that is harder for one arm is harder for all of them.  Differencing within
 a fold removes that shared difficulty; comparing means does not.  Pairing is
 what lets a 0.4-point effect be discussed at all - and, here, what shows it

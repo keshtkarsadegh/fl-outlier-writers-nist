@@ -150,6 +150,9 @@ def readme(cells, folds, rounds) -> str:
         f"{rounds} rounds each.",
         "",
         "Every cell runs stage 5's protocol - cohort of 20, 16 per round, E=5, "
+        # The emitted wording is kept as submitted, so the output regenerates
+        # byte for byte; the five folds are independent splits, not a
+        # cross-validation partition (see data/fold_book.py).
         "batch 64, CV-5 outlier book, init from the winner g-0 - and changes only "
         "the server rule and its coefficients. The horizon is a screening horizon: "
         f"these are ranking signals, not reported numbers. Winners are re-run at "

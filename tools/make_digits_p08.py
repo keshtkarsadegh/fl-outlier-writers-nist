@@ -130,6 +130,9 @@ COMMON = [
     "#   own / clients   the cohort's fold-k TEST rows",
     "#   preservation    EVERY fold of the old book, separately (--old-fold all),",
     "#                   reported as five accuracies with their mean and spread.",
+    # The emitted wording is kept as submitted, so the output regenerates
+    # byte for byte; the five folds are independent splits, not a
+    # cross-validation partition (see data/fold_book.py).
     "#                   Five partitions of one population, so the spread across",
     "#                   them is the error bar - merging them would throw it away.",
     "#",
@@ -234,6 +237,9 @@ def centralized_header(tasks) -> list[str]:
     ]
 
 
+# The emitted wording is kept as submitted, so the output regenerates
+# byte for byte; the five folds are independent splits, not a
+# cross-validation partition (see data/fold_book.py).
 def readme(cohort, iso, fl, cen) -> str:
     total = len(iso) + len(fl) + len(cen)
     return f"""# {STUDY} - P08, P09, P10: three arrangements of the same ten writers
