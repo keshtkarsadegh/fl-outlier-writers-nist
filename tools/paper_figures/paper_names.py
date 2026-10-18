@@ -145,10 +145,12 @@ def _rules():
 
     # -- server rules, parallel schedule ------------------------------------
     rule(r"control_fedavg", "FedAvg (control)", "FedAvg (control)")
-    # The oracle stop rule armed, not a run that stopped: it fired on no fold
-    # of either schedule, and the table that prints this row says so.  "Early
-    # stop" alone named a thing the protocol forbids and the runs did not do.
-    rule(r"control_fedavg_earlystop", "FedAvg (control, stop rule armed)",
+    # The oracle stop rule armed, not a run that stopped: it fired on no split
+    # of either schedule, so the arm is a second run of the control, and it is
+    # named for what it is, a replicate; the table that prints this row gives
+    # the stop-rule history in its note.  "Early stop" alone named a thing the
+    # protocol forbids and the runs did not do.
+    rule(r"control_fedavg_earlystop", "FedAvg (control, replicate)",
          "FedAvg (stop armed)")
     # The final tables and figures name the eta_s cells by their role, the
     # server step; the screen tables keep the grid's own name (grid_label).

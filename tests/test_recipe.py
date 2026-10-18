@@ -529,7 +529,7 @@ def test_the_second_fedavg_control_armed_a_stop_rule_that_never_fired():
 
     import paper_names
 
-    assert "stop rule armed" in paper_names.label("control_fedavg_earlystop")
+    assert "replicate" in paper_names.label("control_fedavg_earlystop")
 
 
 def test_the_name_the_tables_print_for_it_is_defined_where_it_is_printed():

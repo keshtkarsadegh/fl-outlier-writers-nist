@@ -191,7 +191,7 @@ BLEND_MARK = (("test-leading", "\\dagger"), ("crossed", "\\ddagger"))
 CONTROL_NOTE = (
     "``FedAvg (control)'' is plain FedAvg at $\\eta_s{=}1$, the row every "
     "other row of this table is measured against. "
-    "``FedAvg (control, stop rule armed)'' is that same configuration with the "
+    "``FedAvg (control, replicate)'' is that same configuration with the "
     "accuracy-floor stop rule switched on --- it ends a run the round the "
     "global accuracy first falls below the participating clients' own "
     "accuracy or below $0.90$ --- and it is a second control rather than a "

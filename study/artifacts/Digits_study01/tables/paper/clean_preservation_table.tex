@@ -18,11 +18,11 @@ Isolated, fine-tuned from $\thg$ & - & 0.9844 & 0.9822 (0.0027) & $0.22$ & $10.7
 Centralized, from scratch & - & 0.9199 & 0.9224 (0.0040) & $-0.26$ & $1.15$ & $1.58$ & $+0.43$ \\
 Isolated, from scratch & - & 0.4192 & 0.4184 (0.0135) & $0.08$ & $-52.23$ & $-52.12$ & $+0.10$ \\
 \multicolumn{8}{@{}l}{\emph{Table~\ref{tab:agg_winners} (server rules)}} \\
-FedAvg ($\eta_s{=}0.95$) & parallel & 0.9724 & 0.9728 (0.0022) & $-0.05$ & $7.75$ & $7.98$ & $+0.23$ \\
+Server step ($\eta_s{=}0.95$) & parallel & 0.9724 & 0.9728 (0.0022) & $-0.05$ & $7.75$ & $7.98$ & $+0.23$ \\
 Server anchor ($h{=}2R$) & parallel & 0.9770 & 0.9767 (0.0029) & $0.03$ & $7.47$ & $7.62$ & $+0.15$ \\
 Uniform weighting ($q{=}0$) & parallel & 0.9740 & 0.9745 (0.0022) & $-0.05$ & $7.27$ & $7.49$ & $+0.23$ \\
 FedAvg (control) & parallel & 0.9688 & 0.9682 (0.0062) & $0.05$ & $6.64$ & $6.77$ & $+0.13$ \\
-FedAvg (control, stop rule armed) & parallel & 0.9716 & 0.9717 (0.0035) & $-0.01$ & $6.47$ & $6.65$ & $+0.19$ \\
+FedAvg (control, replicate) & parallel & 0.9716 & 0.9717 (0.0035) & $-0.01$ & $6.47$ & $6.65$ & $+0.19$ \\
 Coordinate median & parallel & 0.9613 & 0.9625 (0.0056) & $-0.12$ & $5.82$ & $6.12$ & $+0.30$ \\
 FedAvgM ($\beta{=}0.3$) & parallel & 0.9634 & 0.9634 (0.0061) & $0.00$ & $5.36$ & $5.54$ & $+0.18$ \\
 Trimmed mean ($t{=}3$) & parallel & 0.9648 & 0.9654 (0.0065) & $-0.06$ & $5.12$ & $5.36$ & $+0.24$ \\
@@ -34,7 +34,7 @@ Cyclic FedAvg & cyclic & 0.9714 & 0.9713 (0.0027) & $0.01$ & $7.00$ & $7.16$ & $
 FedAvg (control) & cyclic & 0.9691 & 0.9686 (0.0033) & $0.04$ & $6.77$ & $6.91$ & $+0.14$ \\
 Cyclic, shuffled order & cyclic & 0.9698 & 0.9701 (0.0033) & $-0.04$ & $6.74$ & $6.96$ & $+0.22$ \\
 Cyclic mixing ($r{=}0.3$) & cyclic & 0.9704 & 0.9719 (0.0023) & $-0.14$ & $6.53$ & $6.86$ & $+0.32$ \\
-FedAvg (control, stop rule armed) & cyclic & 0.9699 & 0.9707 (0.0022) & $-0.08$ & $6.20$ & $6.46$ & $+0.26$ \\
+FedAvg (control, replicate) & cyclic & 0.9699 & 0.9707 (0.0022) & $-0.08$ & $6.20$ & $6.46$ & $+0.26$ \\
 Cyclic, equal mix & cyclic & 0.9529 & 0.9539 (0.0063) & $-0.09$ & $4.78$ & $5.06$ & $+0.27$ \\
 Cyclic, incremental mix & cyclic & 0.9509 & 0.9520 (0.0076) & $-0.10$ & $3.64$ & $3.93$ & $+0.28$ \\
 \multicolumn{8}{@{}l}{\emph{Table~\ref{tab:reg_winners} (client penalties)}} \\

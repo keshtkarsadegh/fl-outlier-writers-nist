@@ -896,6 +896,18 @@ TABLE_NAMES = {
 }
 
 
+#: Two arms the tables renamed after clean_preservation.json was written. The
+#: JSON keeps the cell text the tables printed then, which is how a row is found
+#: again in its table; the table written here prints the names they print now,
+#: so it matches the manuscript. A JSON rebuilt from today's tables already
+#: carries the new names, and the replacement is then a no-op.
+RENAMED = {
+    "eta_0p95": ("FedAvg (", "Server step ("),
+    "control_fedavg_earlystop": ("FedAvg (control, stop rule armed)",
+                                 "FedAvg (control, replicate)"),
+}
+
+
 def write_table(path: Path, rows: List[dict], base: dict, sched: List[dict]) -> None:
     """
     One longtable of every printed arm, printed against clean, then the
@@ -938,6 +950,9 @@ def write_table(path: Path, rows: List[dict], base: dict, sched: List[dict]) -> 
             current = r["table"]
             lines.append("\\multicolumn{8}{@{}l}{\\emph{%s}} \\\\" % TABLE_NAMES[current])
         label = r["label"].replace("\\quad", "").strip()
+        old, new = RENAMED.get(r["cell"], ("", ""))
+        if old and label.startswith(old):
+            label = new + label[len(old):]
         lines.append(
             "%s & %s & %.4f & %.4f (%.4f) & $%.2f$ & $%.2f$ & $%.2f$ & $%+.2f$ \\\\" % (
                 label, r["family"], r["preservation"], r["preservation_clean"],
