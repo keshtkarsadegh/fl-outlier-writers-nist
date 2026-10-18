@@ -21,14 +21,14 @@ Three categories, and why each is separate
     the preservation axis: the model's accuracy on the old data's test rows,
     measured on **every fold of the old-data book separately**.  Five numbers,
     reported with their mean and standard deviation.  The five folds are five
-    partitions of one population, so the spread across them is the error bar on
-    preservation - merging them into a single set would throw exactly that away
+    independent re-draws of one population, so the spread across them is the
+    error bar on preservation - merging them into a single set would throw exactly that away
     and report a false precision.
 
 The runner also keeps a per-round source series, which is cheap and useful for
 seeing *when* forgetting happened.  It is not this number: it is measured on the
 pre-book source notion of "the global writers", and the preservation figure the
-paper reports is the five-fold set computed here.
+paper reports is the five-split set computed here.
 
 Everything is read off the books, so every number is on rows the model never
 trained on, and every number is reproducible from the files alone.
@@ -138,7 +138,7 @@ def final_model_evaluation(
 
     Returns:
         The payload: the pooled and per-client cohort figures, and the
-        five-fold old-data set.
+        five-split old-data set.
     """
     from federated_outlier_adaptation.training.evaluate import evaluate_on_book
 

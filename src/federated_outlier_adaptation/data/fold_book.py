@@ -1,5 +1,13 @@
 """
-Fold books: the cross-validation splits, written down once and reused forever.
+Fold books: the five splits, written down once and reused forever.
+
+What the paper calls a split, the code, its flags (``--fold``, ``--folds``,
+``--old-fold``), its file names (``fold_books/``, ``g0_fold1/``) and the records
+call a **fold**; the names stay so that every record and task file still reads.
+A split is an independent, per-writer, per-class stratified 60/20/20 re-draw of
+every writer's rows, seeded by (book seed, split, writer) - not a
+cross-validation partition.  Each split re-draws all the rows, so the five test
+sets are not disjoint (they overlap by about a fifth) and no writer is held out.
 
 A seed is a promise that a split can be recomputed; a **fold book** is the split
 itself, on disk.  The difference matters here because the same folds are read by
@@ -180,7 +188,7 @@ def split_rows(
 
 class FoldBook:
     """
-    A written-down cross-validation split.
+    The five written-down splits (``folds``) of a set of writers.
 
     Args:
         assignment: ``int8 [folds, N]`` part index per row per fold.

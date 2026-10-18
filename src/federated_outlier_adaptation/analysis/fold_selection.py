@@ -1,7 +1,7 @@
 """
-Choosing one model out of a cross-validation run, and writing it down.
+Choosing one model out of a five-split training, and writing it down.
 
-Five folds produce five models.  Exactly one of them is the artefact everything
+Five splits (``fold`` in the code) produce five models.  Exactly one of them is the artefact everything
 downstream is built on - g-init, and later g-0 - so which one, and on what
 evidence, has to be a recorded decision rather than a convention.
 
@@ -35,7 +35,7 @@ from typing import Any, Dict, List, Optional, Sequence
 
 from federated_outlier_adaptation.logging_utils import NistLogger
 
-#: Where one fold of a cross-validated training leaves its metrics.
+#: Where one split of a five-split training leaves its metrics.
 METRICS_NAME = "global_metrics.json"
 
 #: ...and its checkpoint.
@@ -43,7 +43,7 @@ MODEL_NAME = "global_model"
 
 
 def fold_dir(root, prefix: str, fold: int) -> Path:
-    """The directory one fold of a cross-validated training wrote into."""
+    """The directory one split of a five-split training wrote into."""
     return Path(root) / f"{prefix}_fold{int(fold)}"
 
 
@@ -121,7 +121,7 @@ def select_best_fold(
     evaluations=None,
 ) -> Dict[str, Any]:
     """
-    Pick the best fold of a cross-validated training and persist it.
+    Pick the best split of a five-split training and persist it.
 
     Args:
         root: Where the per-fold directories live.

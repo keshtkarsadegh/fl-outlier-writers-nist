@@ -23,7 +23,7 @@ So the series follows the old-data book when there is one: fold k's *test* rows,
 where k is the fold the run itself was split by, at roughly 6k rows.  That makes
 it a cheap, honest, clearly-labelled **diagnostic** - it says *when* something
 happened over the rounds.  It is not the preservation figure.  The preservation
-figure is the five-fold set computed on the final server model by
+figure is the five-split set computed on the final server model by
 :mod:`federated_outlier_adaptation.training.final_eval`, and nothing here
 replaces it.
 
@@ -95,7 +95,7 @@ def _book_loaders(
         f"Per-round source series: old-data book fold {chosen}, "
         f"{len(test_rows)} test rows from {len(writers)} writers. "
         "This is a diagnostic; the reported preservation figure is the "
-        "five-fold evaluation of the final server model."
+        "five-split evaluation of the final server model."
     )
     return test_loader, val_loader, info
 

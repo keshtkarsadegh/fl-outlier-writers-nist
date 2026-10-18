@@ -22,8 +22,8 @@ things:
     Measured on **every fold of the old-data book separately**: five numbers
     per client, reported with their mean and standard deviation.  Five
     evaluations rather than one merged set, because the folds are five
-    partitions of the same population and the spread across them *is* the error
-    bar on the preservation figure - merging them throws exactly that away.
+    independent re-draws of the same population and the spread across them *is*
+    the error bar on the preservation figure - merging them throws exactly that away.
 
 Nothing is written but numbers
 ------------------------------
@@ -123,7 +123,7 @@ def isolated_training(
         old_book: Fold book of the old data.
         old_fold: ``"all"`` (the default) evaluates every fold of the old book
             separately; an integer evaluates that one fold, kept for
-            compatibility with runs made before the five-fold rule.
+            compatibility with runs made before the five-split rule.
         old_clients: The old-data writers; defaults to everyone that book covers.
         only_client: Train and score just this writer.  The union evaluation
             still spans every client in ``clients`` - see the module docstring.

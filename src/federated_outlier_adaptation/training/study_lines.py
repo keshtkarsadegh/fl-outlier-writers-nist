@@ -58,7 +58,7 @@ def fisher_dir(cfg=None) -> str:
     """
     Where a study's g-0 left its Fisher information.
 
-    Two layouts, because two things differ.  A cross-validated study trains one
+    Two layouts, because two things differ.  A five-split study trains one
     g-0 per fold and the winner's fold number is only known at submit time, so
     its path carries ``$G0_FOLD`` and the runner substitutes it.  A study that
     trains a single g-0 has no fold to substitute - and a non-NIST provider
@@ -82,7 +82,7 @@ def folds_of(cfg=None) -> tuple:
     The folds a study's stages emit lines for.
 
     ``FOLDS`` is the five a book is always built with.  What a study *trains*
-    on is its own: the digit study cross-validates, the transfer studies do not.
+    on is its own: the digit study trains all five, the transfer studies do not.
     Reading this rather than the constant is what lets one generator serve both.
     """
     return tuple(getattr(cfg, "folds", None) or FOLDS)

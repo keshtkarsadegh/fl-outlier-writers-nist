@@ -119,9 +119,11 @@ class StudyConfig:
     #: wrong one would still run and would be recorded, in its own provenance,
     #: as something it is not.
     model: str = "fedavg_cnn"
-    #: Whether the study cross-validates.  The digit study does; the transfer
-    #: studies deliberately do not - one g-0, one client split - so that a
-    #: second modality costs a probe rather than a second full programme.
+    #: Whether the study trains on all five splits (``folds``).  The name is
+    #: historical: the splits are independent re-draws, not a cross-validation
+    #: partition.  The digit study does; the transfer studies deliberately do
+    #: not - one g-0, one client split - so that a second modality costs a probe
+    #: rather than a second full programme.
     cross_validated: bool = True
     #: Prefix of every output folder, so two studies cannot collide in one root.
     tag: str = "d01"
@@ -164,9 +166,9 @@ class StudyConfig:
         The folds a run of this study uses.
 
         A book is always **built** with five folds - preservation is the mean
-        over five old-fold test partitions either way, and that is what keeps
-        the metric comparable across studies.  What a cross-validated study does
-        and a transfer study does not is *train* on all five.
+        over five old-split test sets either way, and that is what keeps the
+        metric comparable across studies.  What a five-split study does and a
+        transfer study does not is *train* on all five.
         """
         return (1, 2, 3, 4, 5) if self.cross_validated else (1,)
 

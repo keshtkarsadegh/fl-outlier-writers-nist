@@ -28,11 +28,11 @@ Commands (in pipeline order)::
     select           constrained, validation-based configuration selection
     signals          analyse the constraint-respecting forgetting signals
     isolated-train   one private model per cohort client, scored three ways
-    select-fold      pick the best fold of a CV training and persist it
+    select-fold      pick the best split (fold) of a training and persist it
     score-writers    score every writer on its held-out partition of a fold
     draw-old-data    draw the old-data population, seeded and documented
     evaluate-book    score a saved model on one part of one fold
-    fold-book        materialise a cross-validation split and write it down
+    fold-book        materialise the five stratified splits and write them down
     outlier-figure   the selected clients' glyphs against the source means
     report           tables and figures of the whole evaluation protocol
     figures          regenerate grid-search rankings and heatmaps
@@ -117,7 +117,7 @@ AGG_VARIANT_KEYS = ("all", "fedavg", "anchored", "capped", "cyclic")
 #: check that the two agree.
 MAIN_SETTING = "pool0.05 m10 uniform"
 
-#: Folds of the cross-validation protocol, mirrored from ``config.FOLD_COUNT``.
+#: Splits of the protocol (``fold`` in the code), mirrored from ``config.FOLD_COUNT``.
 FOLD_COUNT = 5
 
 #: Source-sharing modes, mirrored from ``data.source_share``.
@@ -278,12 +278,12 @@ def _add_common(parser: argparse.ArgumentParser) -> None:
         choices=range(1, FOLD_COUNT + 1),
         metavar="K",
         help=(
-            f"Cross-validation fold, 1..{FOLD_COUNT}. Re-splits every client's "
-            "own 60/20/20 deterministically and re-seeds the run, so folds are "
-            "different draws over the same clients and the same shipped global "
-            "model. Absent (the default) is the single published split, "
-            "unchanged. The fold is part of the output path, so folds never "
-            "overwrite each other."
+            f"Split, 1..{FOLD_COUNT} (the paper's split; the code calls it a "
+            "fold). Re-splits every client's own 60/20/20 deterministically "
+            "and re-seeds the run, so splits are independent re-draws over the "
+            "same clients and the same shipped global model. Absent (the "
+            "default) is the single published split, unchanged. The split is "
+            "part of the output path, so splits never overwrite each other."
         ),
     )
     parser.add_argument(
@@ -1400,7 +1400,7 @@ def _load_checkpoint(provider, path):
 
 
 def cmd_select_fold(args: argparse.Namespace) -> int:
-    """Pick the best fold of a cross-validated training and persist it."""
+    """Pick the best split (fold) of a five-split training and persist it."""
     from federated_outlier_adaptation import config
     from federated_outlier_adaptation.analysis.fold_selection import select_best_fold
 
@@ -1986,7 +1986,7 @@ def cmd_isolated_train(args: argparse.Namespace) -> int:
 
 
 def cmd_fold_book(args: argparse.Namespace) -> int:
-    """Materialise a cross-validation split and write it down."""
+    """Materialise the five stratified splits of a fold book and write them down."""
     import json as _json
 
     from federated_outlier_adaptation.data.fold_book import (
@@ -2620,10 +2620,10 @@ def build_parser() -> argparse.ArgumentParser:
         default="all",
         metavar="K|all",
         help=(
-            "Which folds of --old-book to score the final model on. Default "
-            "'all': five partitions of one population, so the spread across "
-            "them is the error bar on preservation and merging them would "
-            "throw it away."
+            "Which splits (folds) of --old-book to score the final model on. "
+            "Default 'all': five independent re-draws of one population, so "
+            "the spread across them is the error bar on preservation and "
+            "merging them would throw it away."
         ),
     )
     p.add_argument(
@@ -2969,12 +2969,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--old-fold", default="all", metavar="K|all",
         help=(
-            "Which folds of the old-data book the preservation evaluation uses. "
-            "'all' (the default) scores every fold separately and reports the "
-            "five accuracies with their mean and standard deviation - the folds "
-            "are five partitions of one population, so their spread is the error "
-            "bar, and merging them would throw that away. An integer scores that "
-            "one fold, kept for compatibility."
+            "Which splits (folds) of the old-data book the preservation "
+            "evaluation uses. 'all' (the default) scores every split separately "
+            "and reports the five accuracies with their mean and standard "
+            "deviation - the splits are five independent re-draws of one "
+            "population, so their spread is the error bar, and merging them "
+            "would throw that away. An integer scores that one split, kept for "
+            "compatibility."
         ),
     )
     p.add_argument(
@@ -3025,7 +3026,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser(
         "select-fold",
-        help="Pick the best fold of a cross-validated training and persist it.",
+        help="Pick the best split (fold) of a five-split training and persist it.",
     )
     _add_common(p)
     p.add_argument("--root", default=None, help="Where the per-fold folders live.")
@@ -3323,7 +3324,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser(
         "fold-book",
-        help="Materialise a cross-validation split and write it down for reuse.",
+        help="Materialise the five stratified splits (a fold book) and write them down for reuse.",
     )
     _add_common(p)
     p.add_argument(

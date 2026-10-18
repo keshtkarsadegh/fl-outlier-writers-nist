@@ -123,13 +123,13 @@ def nist_classes() -> str:
     return raw
 
 
-#: Folds of the cross-validation protocol.
+#: Splits of the protocol: independent stratified re-draws, ``fold`` in the code.
 FOLD_COUNT = 5
 
 
 def fold() -> Optional[int]:
     """
-    The cross-validation fold this run belongs to, or ``None``.
+    The split (``fold``) this run belongs to, or ``None``.
 
     ``None`` - the default - means "the single split every published run used",
     and every seed, split and output path is then exactly what it was.  A fold
