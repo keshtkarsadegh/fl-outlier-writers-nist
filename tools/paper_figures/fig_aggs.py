@@ -74,7 +74,7 @@ def main():
     fs.caption("fig_aggs", r"""
         The three selected server rules on the parallel schedule with no
         client-side penalty, over the full hundred-round budget on the
-        ten-client cohort, fold-mean over the five folds on the validation
+        ten-client cohort, split-mean over the five splits on the validation
         rows.  Every panel repeats the federated-averaging control (black,
         dashed) and the shipped model's accuracy (dotted); the three rules
         are split across the two rows, the server anchor and the server step

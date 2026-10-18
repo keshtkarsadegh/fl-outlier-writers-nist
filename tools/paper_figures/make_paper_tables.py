@@ -197,8 +197,8 @@ CONTROL_NOTE = (
     "accuracy or below $0.90$ --- and it is a second control rather than a "
     "server rule. "
     "\\textbf{It never fired.} Both control arms ran the full hundred rounds on "
-    "every fold of both schedules, so the pair is one configuration run twice: "
-    "same task file, same horizon, same folds, same participation and the same "
+    "every split of both schedules, so the pair is one configuration run twice: "
+    "same task file, same horizon, same splits, same participation and the same "
     "run seeds, differing only in the client-sampling seed block. They "
     "disagree by \\nControlSeedSpread{} points on the cyclic schedule and "
     "\\nControlSeedSpreadPar{} on the parallel one, which is the run-to-run "
@@ -443,7 +443,7 @@ def t_references(refs):
                                 num(r, "score", 2, 100)]) + " \\\\")
     return block(
         "tab:references",
-        "The reference ladder, five-fold means, \\textbf{test} axis. Gained "
+        "The reference ladder, five-split means, \\textbf{test} axis. Gained "
         "(Eq.~\\eqref{eq:fg}) "
         "and spent are the differences from $\\thg$, score their difference, "
         "Eq.~\\eqref{eq:score}; centralized training is a ceiling the "
@@ -479,7 +479,7 @@ def t_agg(agg):
     return block(
         "tab:agg_winners",
         "Every server rule at its own best setting, at the full horizon under "
-        "a plain cross-entropy objective. Five-fold means, \\textbf{test} axis, "
+        "a plain cross-entropy objective. Five-split means, \\textbf{test} axis, "
         "grouped by schedule and ordered by score within each block.",
         "lrrrr",
         "Server rule & Adaptation & Preservation & Spent (pts) & Score (pts) \\\\",
@@ -637,7 +637,7 @@ def t_reg(reg_rows, agg, regu):
                   "at $\\lambda{=}%s, T{=}%s$"
                   % (COMPOSITE["cyclic"] + COMPOSITE["parallel"]))
     note = ("$\\S$ The no-penalty control: plain FedAvg with no client penalty, "
-            "at the same horizon, the same five folds and the same "
+            "at the same horizon, the same five splits and the same "
             "participation --- the row of Table~\\ref{tab:agg_winners} that "
             "every penalty here is measured against. It is borrowed on both "
             "schedules because this stage ran one cell per penalty family at "
@@ -700,7 +700,7 @@ def t_reg(reg_rows, agg, regu):
         "tab:reg_winners",
         "Every client penalty at its own best setting, at the full horizon "
         "under plain FedAvg on the server, together with the composite rows "
-        "the other tables read. Five-fold means, \\textbf{test} axis, "
+        "the other tables read. Five-split means, \\textbf{test} axis, "
         "grouped by schedule and ordered by score within each block over "
         "the rows printed; "
         "``No penalty (control)'' is the proximal term at $\\mu{=}0$, and the "
@@ -752,10 +752,10 @@ def t_blends(regu, blend):
             verdict.get(key + ("kd",), "---"),
             verdict.get(key + ("fisher",), "---")]) + " \\\\")
 
-    note = ("Verdict columns: the mean of the five fold-paired score "
+    note = ("Verdict columns: the mean of the five split-paired score "
             "differences, in points, against the distillation component and "
             "the consolidation component the blend was built from, with the "
-            "number of folds on which "
+            "number of splits on which "
             "the difference is positive. A blend is compared on the schedule "
             "its two components were selected on, so the six rows run off "
             "that "
@@ -770,13 +770,13 @@ def t_blends(regu, blend):
         "The one composite penalty the study builds, "
         "$\\lambda\\,[\\,m\\,D_{\\mathrm{kd}} + (1-m)\\,D_{\\mathrm{fisher}}\\,]$, "
         "at the three mixes and on both schedules. Performance columns are "
-        "five-fold means on the \\textbf{test} axis; the two verdict columns "
-        "are fold-paired against the blend's own parents. The plain rows are "
+        "five-split means on the \\textbf{test} axis; the two verdict columns "
+        "are split-paired against the blend's own parents. The plain rows are "
         "built from the parallel schedule's selected components; the "
         "\\emph{cyclic-tuned} rows are built from the cyclic schedule's.",
         "llrrrrrr",
         "Blend & Schedule & Adapt. & Pres. & Spent & Score & vs.\\ KD & vs.\\ EWC \\\\\n"
-        " & & & & (pts) & (pts) & (pts, folds) & (pts, folds) \\\\",
+        " & & & & (pts) & (pts) & (pts, splits) & (pts, splits) \\\\",
         body, size="\\scriptsize", colsep="4pt", note=note,
         comment="sources: data/reg-winners.csv, the 12 rows whose cell starts\n"
                 "with 'hybrid', ordered by col score; data/blends.csv for the\n"
@@ -870,14 +870,14 @@ def t_combos(combo, agg, regu, printed):
             "--- the two composite penalties, one per schedule, that six of "
             "these rows cross are the rows marked $\\ddagger$ there. The "
             "column is "
-            "a difference of five-fold means, not a fold-paired verdict, which "
+            "a difference of five-split means, not a split-paired verdict, which "
             "the text reports instead. $\\star$ marks the crowned pair.")
 
     return block(
         "tab:combos",
         "All eighteen combinations: each schedule's three best server rules "
         "crossed with the three best penalty families on validation score, "
-        "one cell per family, at the full horizon. Five-fold "
+        "one cell per family, at the full horizon. Five-split "
         "means, \\textbf{test} axis, grouped by schedule and ordered by score "
         "within each block.",
         "llrrrr",
@@ -949,7 +949,7 @@ def t_scaling(sizes, cost_s):
     return block(
         "tab:scaling",
         "The frozen configuration set carried, without re-search, to four "
-        "federation settings. Five-fold means, \\textbf{test} axis; nothing "
+        "federation settings. Five-split means, \\textbf{test} axis; nothing "
         "here was tuned at the setting it is reported at.",
         "llrrr",
         "Arm & Schedule & Adaptation & Preservation & Score \\\\\n"
@@ -1077,20 +1077,20 @@ def t_fairness(fair, sizes, combo, cost_s):
             "three columns beside it are the per-client reading the mean "
             "hides: the worst-served client's own accuracy, that client's "
             "accuracy minus \\emph{its own} accuracy under the shipped model, "
-            "in points, and the share of client-fold pairs that finish above "
-            "their own shipped-model accuracy. Every entry is a five-fold "
+            "in points, and the share of client-split pairs that finish above "
+            "their own shipped-model accuracy. Every entry is a five-split "
             "mean over the per-client records, on the \\textbf{test} axis, and "
             "each block states its own participation in its header. "
             "The shipped-model reference $\\Delta$ worst is taken against is "
-            "the five-fold mean of the worst-served client \\emph{of each "
-            "fold}: \\nGZeroWorstFoldMeanFive{} at five clients, "
+            "the five-split mean of the worst-served client \\emph{of each "
+            "split}: \\nGZeroWorstFoldMeanFive{} at five clients, "
             "\\nGZeroWorstFoldMeanTen{} at ten and "
             "\\nGZeroWorstFoldMeanTwenty{} at twenty. It is not "
             "\\nGZeroClientMin{}, the figure quoted for the shipped model's "
-            "worst client elsewhere: that is the worst client's own five-fold "
+            "worst client elsewhere: that is the worst client's own five-split "
             "mean. Same writers, same rows, same model --- the minimum and "
             "the mean taken in the other order, and the worst-served client "
-            "is not the same writer on every fold. "
+            "is not the same writer on every split. "
             "In the ten-client carry setting every arm lifts its worst-served "
             "client, by between \\nFairWorstMinGain{} and "
             "\\nFairWorstMaxGain{} points. The only negative "
@@ -1100,7 +1100,7 @@ def t_fairness(fair, sizes, combo, cost_s):
             "\\nBalancedWorstTwentyFour{} with four --- and in both the "
             "lifted column stands at $" + lifted["c20d10"] + "$ and $"
             + lifted["c20d20"] + "$, so between a third and two fifths of "
-            "client--fold pairs finished \\emph{below} their own "
+            "client--split pairs finished \\emph{below} their own "
             "shipped-model accuracy, which is exactly what a cohort mean "
             "hides. The lifted column reaches $1.00$ nowhere in this table. "
             "Arms: " + ARM["winner"] + " is "
@@ -1119,7 +1119,7 @@ def t_fairness(fair, sizes, combo, cost_s):
         "The per-client distribution at the end of the budget, each client "
         "read against its own accuracy under the shipped model. Every carried "
         "arm at every setting it was carried to. "
-        "\\textbf{Test} axis, five-fold means. The mean column is the cohort "
+        "\\textbf{Test} axis, five-split means. The mean column is the cohort "
         "accuracy the selection rule optimises, the same one Tables~"
         "\\ref{tab:combos} and~\\ref{tab:scaling} report; the three columns "
         "beside it are what that mean can hide.",
@@ -1240,8 +1240,8 @@ def selection_block(sel, stage, family):
 
 SELECTION_BASIS = (
     "Basis, column by column: the four columns under "
-    "\\textbf{validation} are the fold-mean cohort accuracy, the "
-    "fold-mean source accuracy and the selection score of "
+    "\\textbf{validation} are the split-mean cohort accuracy, the "
+    "split-mean source accuracy and the selection score of "
     "Eq.~\\eqref{eq:score} that each selection record was cut on, and "
     "the arm's place in that score's ordering --- which is the "
     "ordering that did the choosing. Both scores are taken against one "
@@ -1450,7 +1450,7 @@ def t_selection_axis(sel, agg, regu, combo):
         "What the selecting saw, and what the tables report: the two "
         "selecting stages. Each stage's ranked arms at the top of the "
         "\\textbf{validation} ordering that chose them, beside the "
-        "\\textbf{test} row that reports them. Five-fold means throughout; "
+        "\\textbf{test} row that reports them. Five-split means throughout; "
         "the two axes are two evaluations of one set of runs and must not be "
         "quoted against each other.",
         "lrrrrrrrr", SELECTION_HEAD, body,
@@ -1519,7 +1519,7 @@ def t_selection_axis_cross(sel, combo):
         "What the selecting saw, and what the tables report: the cross. All "
         "nine crossings of each schedule in the \\textbf{validation} "
         "ordering that crowned one of them, beside the \\textbf{test} row "
-        "that reports them. Five-fold means throughout; the two axes are two "
+        "that reports them. Five-split means throughout; the two axes are two "
         "evaluations of one set of runs and must not be quoted against each "
         "other.",
         "lrrrrrrrr", SELECTION_HEAD, body,
@@ -1976,9 +1976,9 @@ HOLDOUT_STAGE = {stem: name.replace("\\textbf{", "").replace("}", "")
 #: protocols, and a reader who counted the rows had nowhere to look for the
 #: other nine.
 HOLDOUT_FAMILIES = (
-    ("fold", "each", "Designated fold splits"),
-    ("fold-loo", "summary", "Leave one fold out"),
-    ("stage", "each", "Designated stage splits"),
+    ("fold", "each", "Designated split groups"),
+    ("fold-loo", "summary", "Leave one split out"),
+    ("stage", "each", "Designated stage groups"),
     ("stage-loo", "each", "Leave one stage out"),
     ("random-half", "summary", "Random halves of the arms"),
     ("in-sample", "each", "In sample: the published setting, not a holdout"),
@@ -1996,13 +1996,15 @@ def _sd(xs):
 
 
 def _folds(digits):
-    """``"123" -> "folds 1--3"``, and a comma list when they are not a run."""
+    """``"123" -> "splits 1--3"``, and a comma list when they are not a run.
+
+    The view names them folds, as the code does; the page says split."""
     numbers = [int(d) for d in digits]
     if len(numbers) == 1:
-        return "fold %d" % numbers[0]
+        return "split %d" % numbers[0]
     if numbers == list(range(numbers[0], numbers[-1] + 1)):
-        return "folds %d--%d" % (numbers[0], numbers[-1])
-    return "folds " + ", ".join("%d" % n for n in numbers)
+        return "splits %d--%d" % (numbers[0], numbers[-1])
+    return "splits " + ", ".join("%d" % n for n in numbers)
 
 
 def _holdout_name(text):
@@ -2016,7 +2018,7 @@ def _holdout_name(text):
         return "---"
     match = re.fullmatch(r"all arms, (all folds|folds? (\d+))", text)
     if match:
-        return ("All arms, all folds" if match.group(2) is None
+        return ("All arms, all splits" if match.group(2) is None
                 else "All arms, " + _folds(match.group(2)))
     for stem, name in sorted(HOLDOUT_STAGE.items(), key=lambda kv: -len(kv[0])):
         if text == "%s arms" % stem:
@@ -2072,9 +2074,10 @@ def t_kholdout(prot):
             held = {int(float(r["held_arms"])) for r in here}
             assert len(chosen) == 1 and len(held) == 1, (name, chosen, held)
             body.append(" & ".join([
-                "\\quad each split, mean $\\pm$ sd",
+                "\\quad each cut, mean $\\pm$ sd" if name == "random-half"
+                else "\\quad each split, mean $\\pm$ sd",
                 "the other half of the same cut" if name == "random-half"
-                else "the fold that was held",
+                else "the split that was held",
                 "%d" % held.pop(),
                 "%d on %d/%d" % (chosen.pop(), len(here), len(here)),
                 "%s $\\pm$ %s" % (derived(sum(gains) / len(gains), 2, 100,
@@ -2092,16 +2095,16 @@ def t_kholdout(prot):
 
     note = ("Every protocol the tool runs is on this table: "
             "\\nKholdoutProtocols{} of them in six families, with the two "
-            "families whose splits are interchangeable summarised as one row "
+            "families whose cuts are interchangeable summarised as one row "
             "apiece carrying the mean and the sample standard deviation of "
             "their held-out gains. The patience $\\kappa=\\nPlateauK{}$ is "
             "chosen "
             "by every one of the \\nKholdoutProtocols{}, at every margin and "
-            "on every split. The designated stage split and the "
+            "on every cut. The designated stage group and the "
             "leave-one-stage-out of the same stage are one cut seen from its "
             "two sides, so the regularisation finals appear in both families "
-            "and agree. The arm population is held fixed across every split: "
-            "a fold protocol changes the traces an arm is read from, never "
+            "and agree. The arm population is held fixed across every cut: "
+            "a split protocol changes the traces an arm is read from, never "
             "which arms are in the table. The smallest held-out gain any "
             "protocol returns is \\nKholdoutMinHeldGain{} points and the "
             "largest is \\nKholdoutMaxHeldGain{}; the two three-arm settings "

@@ -65,8 +65,8 @@ def main():
         The crowned combination against each of its two components and against
         the unprotected control, over the full hundred-round budget on the
         study's ten-client cohort: accuracy on the source population (left,
-        preservation) and on the outlier cohort (right, adaptation), fold-mean
-        over the five folds on the validation rows.  All four arms run the
+        preservation) and on the outlier cohort (right, adaptation), split-mean
+        over the five splits on the validation rows.  All four arms run the
         parallel schedule and start from the shipped model at round 0; the
         server rule is the anchor at $h=2R$ and the penalty is FedNTD at
         $\beta=0.01$, $\tau=0.5$.

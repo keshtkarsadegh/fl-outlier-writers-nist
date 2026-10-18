@@ -88,8 +88,8 @@ def main():
     ax1.set_ylim(0.96, 1.002)
     ax1.grid(True, color="#EEEEEE", lw=0.5)
     handles = [
-        plt.Line2D([], [], color=st.BLUE, lw=0.5, label="validation, fold-mean"),
-        plt.Line2D([], [], color=st.LIGHT, lw=0.5, label="single folds"),
+        plt.Line2D([], [], color=st.BLUE, lw=0.5, label="validation, split-mean"),
+        plt.Line2D([], [], color=st.LIGHT, lw=0.5, label="single splits"),
         plt.Line2D([], [], color=st.GREY, marker="o", ms=2.4, lw=0.5,
                    label="selected epoch"),
     ]

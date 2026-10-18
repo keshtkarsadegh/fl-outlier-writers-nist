@@ -74,8 +74,8 @@ def main():
         The distillation-plus-elastic-weight construction of each schedule
         against the two parents it was built from, one row of panels per
         schedule: accuracy on the source population (left, preservation) and
-        on the outlier cohort (right, adaptation), fold-mean over the five
-        folds on the validation rows, from the shipped model at round 0.
+        on the outlier cohort (right, adaptation), split-mean over the five
+        splits on the validation rows, from the shipped model at round 0.
         In each row the parents are the orange and blue curves, distillation
         and the elastic-weight term, and the green curve is that schedule's own
         construction at $m{=}0.5$; the composite each schedule's validation

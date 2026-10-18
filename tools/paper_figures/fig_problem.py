@@ -72,7 +72,7 @@ def main():
         Unprotected federated averaging over the whole budget, on the study's
         ten-client outlier cohort: accuracy on the source population (left,
         preservation) and on the outlier cohort (right, adaptation) against the
-        communication round, fold-mean over the five folds on the validation
+        communication round, split-mean over the five splits on the validation
         rows.  Round 0 is the shipped model's own evaluation, so the curve
         begins at the dotted reference on both panels.  The dashed line is the
         centralized pooled ceiling, the same adaptation run with the cohort's

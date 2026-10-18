@@ -56,7 +56,7 @@ def main():
         search selected, against the no-penalty control, over the full
         hundred-round budget on the study's ten-client cohort: accuracy on the
         source population (left, preservation) and on the outlier cohort
-        (right, adaptation), fold-mean over the five folds on the validation
+        (right, adaptation), split-mean over the five splits on the validation
         rows.  All seven arms run the same cyclic schedule and start from the
         shipped model at round 0, so the curves differ only in the penalty.
         Only the four curves the text argues from are drawn
