@@ -73,7 +73,7 @@ for _path in (REPO / "src", REPO / "tools", REPO / "tools" / "paper_figures"):
     if str(_path) not in sys.path:
         sys.path.insert(0, str(_path))
 
-from paper_names import label  # noqa: E402
+from paper_names import grid_label, label  # noqa: E402
 
 #: The schedules in the order the paper's tables print them, with the family
 #: name the run records use for each.
@@ -427,7 +427,7 @@ def _pts(value: str) -> str:
 
 def _cell_text(row: Dict[str, str]) -> str:
     """The published name, the control in bold, the screen winner starred."""
-    text = label(row["cell"])
+    text = grid_label(row["cell"])
     if row["control"] == "1":
         text = r"\textbf{" + text + "}"
     if row["selected"] == "1":

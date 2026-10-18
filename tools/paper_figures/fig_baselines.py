@@ -103,10 +103,10 @@ def main():
                 edgecolors=st.BLUE, lw=0.5, zorder=2,
                 label="shipped model $\\theta_g$")
     ax2.scatter([r[1] for r in rows_], ys, s=22, color=st.BLUE,
-                zorder=3, label="after fine-tuning on this client")
-    ax2.set_xlabel("Accuracy on the client's own rows")
-    ax2.set_ylabel("Client (sorted)")
-    ax2.set_title("What each client gains", loc="left")
+                zorder=3, label="after fine-tuning on this writer")
+    ax2.set_xlabel("Accuracy on the writer's own rows")
+    ax2.set_ylabel("Writer (sorted)")
+    ax2.set_title("What each writer gains", loc="left")
     ax2.set_yticks(ys)
     ax2.set_yticklabels([str(y) for y in ys])
     ax2.set_xlim(0.72, 1.02)
@@ -124,7 +124,7 @@ def main():
         ax3.plot([src_, p0], [y, y], color=st.LIGHT, lw=0.5, zorder=1)
     ax3.scatter([r[2] for r in rows_], ys, s=26, color=st.VERMILION,
                 marker="x", lw=0.5, zorder=3,
-                label="after fine-tuning on this client")
+                label="after fine-tuning on this writer")
     ax3.axvline(p0, color=st.GREY, lw=0.5, ls=":")
     ax3.text(p0 - 0.0012, 0.62, "$\\theta_g$", ha="right", va="bottom",
              fontsize=6.5, color=st.GREY)

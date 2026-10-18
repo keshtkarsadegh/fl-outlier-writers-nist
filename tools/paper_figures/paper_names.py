@@ -150,7 +150,9 @@ def _rules():
     # stop" alone named a thing the protocol forbids and the runs did not do.
     rule(r"control_fedavg_earlystop", "FedAvg (control, stop rule armed)",
          "FedAvg (stop armed)")
-    rule(r"eta_([0-9p]+)", "FedAvg", "Server step",
+    # The final tables and figures name the eta_s cells by their role, the
+    # server step; the screen tables keep the grid's own name (grid_label).
+    rule(r"eta_([0-9p]+)", "Server step", "Server step",
          lambda g: _math([r"\eta_s{=}%s" % _dec(g[0])]))
     rule(r"anchor_h([0-9p]+)", "Server anchor", "Anchor",
          lambda g: _math([r"h{=}%sR" % _dec(g[0])]))
@@ -363,6 +365,19 @@ def label(cell):
         # dropping it is what left one name standing for three arms.
         return short_mix(cell)
     raise UntranslatedIdentifier(cell)
+
+
+def grid_label(cell):
+    """The name a screen table prints.
+
+    A screen table lists every point of a grid, and there an eta_s cell is one
+    step size of FedAvg's grid, so it keeps the name FedAvg; every other table
+    calls the selected point the server step (label).
+    """
+    full = label(cell)
+    if re.match(r"\Aeta_[0-9p]+\Z", cell):
+        return "FedAvg" + full[len("Server step"):]
+    return full
 
 
 def short(cell):

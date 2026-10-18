@@ -896,10 +896,10 @@ def t_combos(combo, agg, regu, printed):
 # T4 --- the four carry settings
 # --------------------------------------------------------------------------
 
-SETTING = [("c10d10", "ten clients, one dropped", "Ten clients"),
-           ("five", "five clients, one dropped", "Five clients"),
-           ("c20d10", "twenty, two dropped", "Twenty clients, two dropped"),
-           ("c20d20", "twenty, four dropped", "Twenty clients, four dropped")]
+SETTING = [("c10d10", "ten clients, one dropped", "Ten writers"),
+           ("five", "five clients, one dropped", "Five writers"),
+           ("c20d10", "twenty, two dropped", "Twenty writers"),
+           ("c20d20", "twenty, four dropped", "Twenty writers")]
 
 ARM_ORDER = ["winner", "balanced", "sequential", "control"]
 
@@ -971,13 +971,11 @@ def t_scaling(sizes, cost_s):
 #: the search setting leads because it is the setting the arms were chosen at.
 FAIRNESS_BLOCKS = (
     ("combo", "combinations",
-     "Search setting, the combination stage (ten clients)"),
-    ("c10d10", "ten clients, one dropped", "Carry setting, ten clients"),
-    ("five", "five clients, one dropped", "Carry setting, five clients"),
-    ("c20d10", "twenty, two dropped",
-     "Carry setting, twenty clients, two dropped"),
-    ("c20d20", "twenty, four dropped",
-     "Carry setting, twenty clients, four dropped"),
+     "Search setting, the combination stage (ten writers)"),
+    ("c10d10", "ten clients, one dropped", "Carry setting, ten writers"),
+    ("five", "five clients, one dropped", "Carry setting, five writers"),
+    ("c20d10", "twenty, two dropped", "Carry setting, twenty writers"),
+    ("c20d20", "twenty, four dropped", "Carry setting, twenty writers"),
 )
 
 
@@ -1809,10 +1807,10 @@ STAGE_LABEL = [
     ("aggfull", "Aggregation finals"),
     ("regfull", "Regularisation finals"),
     ("combo", "Combinations"),
-    ("c10d10", "Ten clients, one dropped"),
-    ("five", "Five clients, one dropped"),
-    ("c20d10", "Twenty clients, two dropped"),
-    ("c20d20", "Twenty clients, four dropped"),
+    ("c10d10", "Ten writers, nine participating"),
+    ("five", "Five writers, four participating"),
+    ("c20d10", "Twenty writers, eighteen participating"),
+    ("c20d20", "Twenty writers, sixteen participating"),
     ("extreme", "\\textbf{The extreme cases}"),
 ]
 
