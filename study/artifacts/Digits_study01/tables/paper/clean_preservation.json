@@ -309,8 +309,8 @@
   "tab:agg_winners/0": {
    "n": 10,
    "moved": [],
-   "top_printed": "\\quad FedAvg ($\\eta_s{=}0.95$)",
-   "top_clean": "\\quad FedAvg ($\\eta_s{=}0.95$)"
+   "top_printed": "\\quad Server step ($\\eta_s{=}0.95$)",
+   "top_clean": "\\quad Server step ($\\eta_s{=}0.95$)"
   },
   "tab:agg_winners/1": {
    "n": 9,
@@ -1617,7 +1617,7 @@
   {
    "table": "tab:agg_winners",
    "block": 0,
-   "label": "\\quad FedAvg ($\\eta_s{=}0.95$)",
+   "label": "\\quad Server step ($\\eta_s{=}0.95$)",
    "stage": "aggfull",
    "cell": "eta_0p95",
    "family": "parallel",
@@ -1753,7 +1753,7 @@
   {
    "table": "tab:agg_winners",
    "block": 0,
-   "label": "\\quad FedAvg (control, stop rule armed)",
+   "label": "\\quad FedAvg (control, replicate)",
    "stage": "aggfull",
    "cell": "control_fedavg_earlystop",
    "family": "parallel",
@@ -2161,7 +2161,7 @@
   {
    "table": "tab:agg_winners",
    "block": 1,
-   "label": "\\quad FedAvg (control, stop rule armed)",
+   "label": "\\quad FedAvg (control, replicate)",
    "stage": "aggfull",
    "cell": "control_fedavg_earlystop",
    "family": "cyclic",
@@ -4643,7 +4643,7 @@
   {
    "table": "tab:selection_axis",
    "block": 0,
-   "label": "\\quad FedAvg ($\\eta_s{=}0.95$)$^{\\ddagger}$",
+   "label": "\\quad Server step ($\\eta_s{=}0.95$)$^{\\ddagger}$",
    "stage": "aggfull",
    "cell": "eta_0p95",
    "family": "parallel",

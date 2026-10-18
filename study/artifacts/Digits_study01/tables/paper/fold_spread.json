@@ -8555,7 +8555,7 @@
      "A0": 0.8225200326521813,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 2.1432715608822868,
-     "block": "Ten clients",
+     "block": "Ten writers",
      "folds": [
       1,
       2,
@@ -8616,7 +8616,7 @@
      "A0": 0.8225200326521813,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 2.2477289328060643,
-     "block": "Ten clients",
+     "block": "Ten writers",
      "folds": [
       1,
       2,
@@ -8677,7 +8677,7 @@
      "A0": 0.8225200326521813,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 1.8751138101005353,
-     "block": "Ten clients",
+     "block": "Ten writers",
      "folds": [
       1,
       2,
@@ -8738,7 +8738,7 @@
      "A0": 0.8225200326521813,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 1.901057304032093,
-     "block": "Ten clients",
+     "block": "Ten writers",
      "folds": [
       1,
       2,
@@ -8799,7 +8799,7 @@
      "A0": 0.8225200326521813,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 1.521455754812017,
-     "block": "Ten clients",
+     "block": "Ten writers",
      "folds": [
       1,
       2,
@@ -8860,7 +8860,7 @@
      "A0": 0.803205923965891,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 2.3057162113865246,
-     "block": "Five clients",
+     "block": "Five writers",
      "folds": [
       1,
       2,
@@ -8921,7 +8921,7 @@
      "A0": 0.803205923965891,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 1.7594730634973357,
-     "block": "Five clients",
+     "block": "Five writers",
      "folds": [
       1,
       2,
@@ -8982,7 +8982,7 @@
      "A0": 0.803205923965891,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 1.8298870113563317,
-     "block": "Five clients",
+     "block": "Five writers",
      "folds": [
       1,
       2,
@@ -9043,7 +9043,7 @@
      "A0": 0.803205923965891,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 1.99492984640424,
-     "block": "Five clients",
+     "block": "Five writers",
      "folds": [
       1,
       2,
@@ -9104,7 +9104,7 @@
      "A0": 0.803205923965891,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 4.4423703823252465,
-     "block": "Five clients",
+     "block": "Five writers",
      "folds": [
       1,
       2,
@@ -9165,7 +9165,7 @@
      "A0": 0.8440524717917046,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 0.7554522760597852,
-     "block": "Twenty clients, two dropped",
+     "block": "Twenty writers",
      "folds": [
       1,
       2,
@@ -9226,7 +9226,7 @@
      "A0": 0.8440524717917046,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 1.0307000598046379,
-     "block": "Twenty clients, two dropped",
+     "block": "Twenty writers",
      "folds": [
       1,
       2,
@@ -9287,7 +9287,7 @@
      "A0": 0.8440524717917046,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 0.9272918798618901,
-     "block": "Twenty clients, two dropped",
+     "block": "Twenty writers",
      "folds": [
       1,
       2,
@@ -9348,7 +9348,7 @@
      "A0": 0.8440524717917046,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 0.42829171613996303,
-     "block": "Twenty clients, four dropped",
+     "block": "Twenty writers",
      "folds": [
       1,
       2,
@@ -9409,7 +9409,7 @@
      "A0": 0.8440524717917046,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 0.6082953779140828,
-     "block": "Twenty clients, four dropped",
+     "block": "Twenty writers",
      "folds": [
       1,
       2,
@@ -9470,7 +9470,7 @@
      "A0": 0.8440524717917046,
      "P0": 0.9985506551168347,
      "score_sd_against_own_fold_a0": 0.512103816934071,
-     "block": "Twenty clients, four dropped",
+     "block": "Twenty writers",
      "folds": [
       1,
       2,
@@ -14456,7 +14456,7 @@
      "setting": "combo",
      "cell": "anchor_h2_ntd_b0p01_t0p5",
      "schedule": "parallel",
-     "block": "Search setting, the combination stage (ten clients)",
+     "block": "Search setting, the combination stage (ten writers)",
      "delta_worst_same_client_pts": {
       "values": [
        -4.761904761904767,
@@ -14555,7 +14555,7 @@
      "setting": "combo",
      "cell": "eta_0p95_hybrid_seq_mix0p5",
      "schedule": "parallel",
-     "block": "Search setting, the combination stage (ten clients)",
+     "block": "Search setting, the combination stage (ten writers)",
      "delta_worst_same_client_pts": {
       "values": [
        12.5,
@@ -14654,7 +14654,7 @@
      "setting": "combo",
      "cell": "seq_fedavg_ntd_b0p01_t2",
      "schedule": "cyclic",
-     "block": "Search setting, the combination stage (ten clients)",
+     "block": "Search setting, the combination stage (ten writers)",
      "delta_worst_same_client_pts": {
       "values": [
        12.5,
@@ -14753,7 +14753,7 @@
      "setting": "combo",
      "cell": "eta_0p95_logit_l2_lam0p001",
      "schedule": "parallel",
-     "block": "Search setting, the combination stage (ten clients)",
+     "block": "Search setting, the combination stage (ten writers)",
      "delta_worst_same_client_pts": {
       "values": [
        4.761904761904756,
@@ -14852,7 +14852,7 @@
      "setting": "c10d10",
      "cell": "winner",
      "schedule": "parallel",
-     "block": "Carry setting, ten clients",
+     "block": "Carry setting, ten writers",
      "delta_worst_same_client_pts": {
       "values": [
        4.761904761904756,
@@ -14951,7 +14951,7 @@
      "setting": "c10d10",
      "cell": "balanced",
      "schedule": "parallel",
-     "block": "Carry setting, ten clients",
+     "block": "Carry setting, ten writers",
      "delta_worst_same_client_pts": {
       "values": [
        12.5,
@@ -15050,7 +15050,7 @@
      "setting": "c10d10",
      "cell": "sequential",
      "schedule": "cyclic",
-     "block": "Carry setting, ten clients",
+     "block": "Carry setting, ten writers",
      "delta_worst_same_client_pts": {
       "values": [
        4.761904761904756,
@@ -15149,7 +15149,7 @@
      "setting": "c10d10",
      "cell": "control",
      "schedule": "parallel",
-     "block": "Carry setting, ten clients",
+     "block": "Carry setting, ten writers",
      "delta_worst_same_client_pts": {
       "values": [
        0.0,
@@ -15248,7 +15248,7 @@
      "setting": "c10d10",
      "cell": "control",
      "schedule": "cyclic",
-     "block": "Carry setting, ten clients",
+     "block": "Carry setting, ten writers",
      "delta_worst_same_client_pts": {
       "values": [
        0.0,
@@ -15347,7 +15347,7 @@
      "setting": "five",
      "cell": "winner",
      "schedule": "parallel",
-     "block": "Carry setting, five clients",
+     "block": "Carry setting, five writers",
      "delta_worst_same_client_pts": {
       "values": [
        0.0,
@@ -15446,7 +15446,7 @@
      "setting": "five",
      "cell": "balanced",
      "schedule": "parallel",
-     "block": "Carry setting, five clients",
+     "block": "Carry setting, five writers",
      "delta_worst_same_client_pts": {
       "values": [
        6.25,
@@ -15545,7 +15545,7 @@
      "setting": "five",
      "cell": "sequential",
      "schedule": "cyclic",
-     "block": "Carry setting, five clients",
+     "block": "Carry setting, five writers",
      "delta_worst_same_client_pts": {
       "values": [
        4.761904761904756,
@@ -15644,7 +15644,7 @@
      "setting": "five",
      "cell": "control",
      "schedule": "cyclic",
-     "block": "Carry setting, five clients",
+     "block": "Carry setting, five writers",
      "delta_worst_same_client_pts": {
       "values": [
        18.75,
@@ -15743,7 +15743,7 @@
      "setting": "five",
      "cell": "control",
      "schedule": "parallel",
-     "block": "Carry setting, five clients",
+     "block": "Carry setting, five writers",
      "delta_worst_same_client_pts": {
       "values": [
        4.761904761904756,
@@ -15842,7 +15842,7 @@
      "setting": "c20d10",
      "cell": "winner",
      "schedule": "parallel",
-     "block": "Carry setting, twenty clients, two dropped",
+     "block": "Carry setting, twenty writers",
      "delta_worst_same_client_pts": {
       "values": [
        0.0,
@@ -15941,7 +15941,7 @@
      "setting": "c20d10",
      "cell": "balanced",
      "schedule": "parallel",
-     "block": "Carry setting, twenty clients, two dropped",
+     "block": "Carry setting, twenty writers",
      "delta_worst_same_client_pts": {
       "values": [
        -16.666666666666664,
@@ -16040,7 +16040,7 @@
      "setting": "c20d10",
      "cell": "sequential",
      "schedule": "cyclic",
-     "block": "Carry setting, twenty clients, two dropped",
+     "block": "Carry setting, twenty writers",
      "delta_worst_same_client_pts": {
       "values": [
        0.0,
@@ -16139,7 +16139,7 @@
      "setting": "c20d20",
      "cell": "winner",
      "schedule": "parallel",
-     "block": "Carry setting, twenty clients, four dropped",
+     "block": "Carry setting, twenty writers",
      "delta_worst_same_client_pts": {
       "values": [
        0.0,
@@ -16238,7 +16238,7 @@
      "setting": "c20d20",
      "cell": "balanced",
      "schedule": "parallel",
-     "block": "Carry setting, twenty clients, four dropped",
+     "block": "Carry setting, twenty writers",
      "delta_worst_same_client_pts": {
       "values": [
        -16.666666666666664,
@@ -16337,7 +16337,7 @@
      "setting": "c20d20",
      "cell": "sequential",
      "schedule": "cyclic",
-     "block": "Carry setting, twenty clients, four dropped",
+     "block": "Carry setting, twenty writers",
      "delta_worst_same_client_pts": {
       "values": [
        0.0,

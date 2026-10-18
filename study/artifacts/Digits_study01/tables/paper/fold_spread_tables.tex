@@ -4,11 +4,11 @@
 
 % tab:agg_winners --- body rows, page order, labels from agg_winners.tex
 \rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Parallel schedule}} \\
-\quad FedAvg ($\eta_s{=}0.95$) & 0.9263{\scriptsize±0.0166} & 0.9724{\scriptsize±0.0023} & 2.62{\scriptsize±0.23} & 7.75{\scriptsize±1.74} \\
+\quad Server step ($\eta_s{=}0.95$) & 0.9263{\scriptsize±0.0166} & 0.9724{\scriptsize±0.0023} & 2.62{\scriptsize±0.23} & 7.75{\scriptsize±1.74} \\
 \quad Server anchor ($h{=}2R$) & 0.9188{\scriptsize±0.0217} & 0.9770{\scriptsize±0.0032} & 2.16{\scriptsize±0.32} & 7.47{\scriptsize±1.92} \\
 \quad Uniform weighting ($q{=}0$) & 0.9197{\scriptsize±0.0172} & 0.9740{\scriptsize±0.0028} & 2.45{\scriptsize±0.28} & 7.27{\scriptsize±1.63} \\
 \quad FedAvg (control) & 0.9187{\scriptsize±0.0197} & 0.9688{\scriptsize±0.0072} & 2.98{\scriptsize±0.72} & 6.64{\scriptsize±2.35} \\
-\quad FedAvg (control, stop rule armed) & 0.9141{\scriptsize±0.0234} & 0.9716{\scriptsize±0.0036} & 2.70{\scriptsize±0.36} & 6.47{\scriptsize±2.22} \\
+\quad FedAvg (control, replicate) & 0.9141{\scriptsize±0.0234} & 0.9716{\scriptsize±0.0036} & 2.70{\scriptsize±0.36} & 6.47{\scriptsize±2.22} \\
 \quad Coordinate median & 0.9179{\scriptsize±0.0215} & 0.9613{\scriptsize±0.0050} & 3.72{\scriptsize±0.50} & 5.82{\scriptsize±2.54} \\
 \quad FedAvgM ($\beta{=}0.3$) & 0.9113{\scriptsize±0.0226} & 0.9634{\scriptsize±0.0064} & 3.51{\scriptsize±0.64} & 5.36{\scriptsize±2.09} \\
 \quad Trimmed mean ($t{=}3$) & 0.9075{\scriptsize±0.0156} & 0.9648{\scriptsize±0.0076} & 3.37{\scriptsize±0.76} & 5.12{\scriptsize±1.52} \\
@@ -22,7 +22,7 @@
 \quad FedAvg (control) & 0.9197{\scriptsize±0.0213} & 0.9691{\scriptsize±0.0034} & 2.95{\scriptsize±0.34} & 6.77{\scriptsize±1.97} \\
 \quad Cyclic, shuffled order & 0.9187{\scriptsize±0.0145} & 0.9698{\scriptsize±0.0034} & 2.88{\scriptsize±0.34} & 6.74{\scriptsize±1.22} \\
 \quad Cyclic mixing ($r{=}0.3$) & 0.9160{\scriptsize±0.0196} & 0.9704{\scriptsize±0.0031} & 2.81{\scriptsize±0.31} & 6.53{\scriptsize±1.85} \\
-\quad FedAvg (control, stop rule armed) & 0.9132{\scriptsize±0.0204} & 0.9699{\scriptsize±0.0023} & 2.87{\scriptsize±0.23} & 6.20{\scriptsize±1.84} \\
+\quad FedAvg (control, replicate) & 0.9132{\scriptsize±0.0204} & 0.9699{\scriptsize±0.0023} & 2.87{\scriptsize±0.23} & 6.20{\scriptsize±1.84} \\
 \quad Cyclic, equal mix & 0.9160{\scriptsize±0.0189} & 0.9529{\scriptsize±0.0066} & 4.56{\scriptsize±0.66} & 4.78{\scriptsize±1.58} \\
 \quad Cyclic, incremental mix & 0.9066{\scriptsize±0.0142} & 0.9509{\scriptsize±0.0087} & 4.76{\scriptsize±0.87} & 3.64{\scriptsize±0.98} \\
 
@@ -99,7 +99,7 @@ cyclic & crowned pair & 93.56{\scriptsize±1.80} & 99.07{\scriptsize±0.20} & 10
 cyclic & tuned pair & 92.42{\scriptsize±1.92} & 99.20{\scriptsize±0.29} & 9.52{\scriptsize±2.12} & n/a \\
 
 % tab:scaling --- body rows, page order, labels from scaling.tex
-\rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Ten clients, 9 participating per round}} \\
+\rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Ten writers, 9 participating per round}} \\
 \quad Anchor + FedNTD (crowned) & parallel & 0.9300{\scriptsize±0.0235} & 0.9877{\scriptsize±0.0028} & 9.67{\scriptsize±2.11} \\
 \quad Server step + KD/EWC blend & parallel & 0.9290{\scriptsize±0.0134} & 0.9921{\scriptsize±0.0013} & 10.01{\scriptsize±1.30} \\
 \quad Cyclic + FedNTD & cyclic & 0.9328{\scriptsize±0.0172} & 0.9898{\scriptsize±0.0012} & 10.15{\scriptsize±1.62} \\
@@ -107,7 +107,7 @@ cyclic & tuned pair & 92.42{\scriptsize±1.92} & 99.20{\scriptsize±0.29} & 9.52
 \quad FedAvg (control) & cyclic & 0.9160{\scriptsize±0.0208} & 0.9703{\scriptsize±0.0030} & 6.52{\scriptsize±2.00} \\
 \midrule
 \midrule
-\rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Five clients, 4 participating per round}} \\
+\rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Five writers, 4 participating per round}} \\
 \quad Anchor + FedNTD (crowned) & parallel & 0.9324{\scriptsize±0.0232} & 0.9812{\scriptsize±0.0018} & 11.18{\scriptsize±2.15} \\
 \quad Server step + KD/EWC blend & parallel & 0.9327{\scriptsize±0.0249} & 0.9889{\scriptsize±0.0027} & 11.98{\scriptsize±2.59} \\
 \quad Cyclic + FedNTD & cyclic & 0.9366{\scriptsize±0.0214} & 0.9866{\scriptsize±0.0033} & 12.14{\scriptsize±1.92} \\
@@ -115,13 +115,13 @@ cyclic & tuned pair & 92.42{\scriptsize±1.92} & 99.20{\scriptsize±0.29} & 9.52
 \quad FedAvg (control) & parallel & 0.9253{\scriptsize±0.0427} & 0.9368{\scriptsize±0.0155} & 6.04{\scriptsize±5.57} \\
 \midrule
 \midrule
-\rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Twenty clients, two dropped, 18 participating per round}} \\
+\rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Twenty writers, 18 participating per round}} \\
 \quad Anchor + FedNTD (crowned) & parallel & 0.9071{\scriptsize±0.0056} & 0.9931{\scriptsize±0.0008} & 5.77{\scriptsize±0.55} \\
 \quad Server step + KD/EWC blend & parallel & 0.8944{\scriptsize±0.0117} & 0.9958{\scriptsize±0.0007} & 4.76{\scriptsize±1.11} \\
 \quad Cyclic + FedNTD & cyclic & 0.9095{\scriptsize±0.0051} & 0.9939{\scriptsize±0.0009} & 6.08{\scriptsize±0.46} \\
 \midrule
 \midrule
-\rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Twenty clients, four dropped, 16 participating per round}} \\
+\rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Twenty writers, 16 participating per round}} \\
 \quad Anchor + FedNTD (crowned) & parallel & 0.9001{\scriptsize±0.0053} & 0.9935{\scriptsize±0.0007} & 5.10{\scriptsize±0.47} \\
 \quad Server step + KD/EWC blend & parallel & 0.8884{\scriptsize±0.0111} & 0.9961{\scriptsize±0.0005} & 4.18{\scriptsize±1.07} \\
 \quad Cyclic + FedNTD & cyclic & 0.9100{\scriptsize±0.0047} & 0.9944{\scriptsize±0.0005} & 6.18{\scriptsize±0.45} \\
@@ -131,7 +131,7 @@ cyclic & tuned pair & 92.42{\scriptsize±1.92} & 99.20{\scriptsize±0.29} & 9.52
 \multicolumn{9}{@{}l}{\emph{Parallel schedule: the top 5 of 8 ranked arms by validation score; both rank columns are over those 8 ranked arms}} \\
 \quad Server anchor ($h{=}2R$)$^{\ddagger}$ & 0.9184{\scriptsize±0.0130} & 0.9785{\scriptsize±0.0044} & 7.58{\scriptsize±1.22} & 1 & 0.9188{\scriptsize±0.0217} & 0.9770{\scriptsize±0.0032} & 7.47{\scriptsize±1.92} & 2 \\
 \quad Uniform weighting ($q{=}0$)$^{\ddagger}$ & 0.9156{\scriptsize±0.0146} & 0.9719{\scriptsize±0.0029} & 6.64{\scriptsize±1.49} & 2 & 0.9197{\scriptsize±0.0172} & 0.9740{\scriptsize±0.0028} & 7.27{\scriptsize±1.63} & 3 \\
-\quad FedAvg ($\eta_s{=}0.95$)$^{\ddagger}$ & 0.9176{\scriptsize±0.0141} & 0.9699{\scriptsize±0.0049} & 6.64{\scriptsize±1.33} & 3 & 0.9263{\scriptsize±0.0166} & 0.9724{\scriptsize±0.0023} & 7.75{\scriptsize±1.74} & 1 \\
+\quad Server step ($\eta_s{=}0.95$)$^{\ddagger}$ & 0.9176{\scriptsize±0.0141} & 0.9699{\scriptsize±0.0049} & 6.64{\scriptsize±1.33} & 3 & 0.9263{\scriptsize±0.0166} & 0.9724{\scriptsize±0.0023} & 7.75{\scriptsize±1.74} & 1 \\
 \quad Trimmed mean ($t{=}3$) & 0.9074{\scriptsize±0.0195} & 0.9670{\scriptsize±0.0092} & 5.33{\scriptsize±2.41} & 4 & 0.9075{\scriptsize±0.0156} & 0.9648{\scriptsize±0.0076} & 5.12{\scriptsize±1.52} & 6 \\
 \quad FedAvgM ($\beta{=}0.3$) & 0.9100{\scriptsize±0.0263} & 0.9618{\scriptsize±0.0038} & 5.07{\scriptsize±2.46} & 5 & 0.9113{\scriptsize±0.0226} & 0.9634{\scriptsize±0.0064} & 5.36{\scriptsize±2.09} & 5 \\
 \multicolumn{9}{@{}l}{\emph{Cyclic schedule: the top 5 of 7 ranked arms by validation score; both rank columns are over those 7 ranked arms}} \\
@@ -180,32 +180,32 @@ cyclic & tuned pair & 92.42{\scriptsize±1.92} & 99.20{\scriptsize±0.29} & 9.52
 \quad Cyclic FedAvg + KD+EWC composite, parallel-tuned, $m{=}0.5$ & 0.9101{\scriptsize±0.0120} & 0.9902{\scriptsize±0.0024} & 7.92{\scriptsize±1.17} & 9 & 0.9178{\scriptsize±0.0151} & 0.9906{\scriptsize±0.0030} & 8.73{\scriptsize±1.31} & 9 \\
 
 % tab:fairness --- body rows, page order, labels from fairness.tex
-\multicolumn{7}{@{}l}{\emph{Search setting, the combination stage (ten clients), 8 participating per round}} \\
+\multicolumn{7}{@{}l}{\emph{Search setting, the combination stage (ten writers), 8 participating per round}} \\
 \quad Anchor + FedNTD (crowned) & parallel & 0.9347{\scriptsize±0.0186} & 0.8174{\scriptsize±0.0428} & $+9.71${\scriptsize±3.23} & $+1.06${\scriptsize±6.65} & 0.92{\scriptsize±0.04} \\
 \quad Server step + KD/EWC blend & parallel & 0.9290{\scriptsize±0.0195} & 0.8342{\scriptsize±0.0194} & $+11.39${\scriptsize±4.07} & $+8.58${\scriptsize±3.70} & 0.96{\scriptsize±0.09} \\
 \quad Cyclic + FedNTD & cyclic & 0.9356{\scriptsize±0.0180} & 0.8383{\scriptsize±0.0381} & $+11.80${\scriptsize±2.99} & $+7.50${\scriptsize±5.20} & 0.90{\scriptsize±0.07} \\
 \quad best worst-client & parallel & 0.9374{\scriptsize±0.0112} & 0.8628{\scriptsize±0.0264} & $+14.24${\scriptsize±4.42} & $+7.15${\scriptsize±3.13} & 0.94{\scriptsize±0.05} \\
 \midrule
-\multicolumn{7}{@{}l}{\emph{Carry setting, ten clients, 9 participating per round}} \\
+\multicolumn{7}{@{}l}{\emph{Carry setting, ten writers, 9 participating per round}} \\
 \quad Anchor + FedNTD (crowned) & parallel & 0.9300{\scriptsize±0.0235} & 0.8351{\scriptsize±0.0572} & $+11.48${\scriptsize±7.75} & $+2.83${\scriptsize±7.11} & 0.88{\scriptsize±0.11} \\
 \quad Server step + KD/EWC blend & parallel & 0.9290{\scriptsize±0.0134} & 0.8420{\scriptsize±0.0314} & $+12.17${\scriptsize±4.72} & $+8.07${\scriptsize±3.63} & 0.92{\scriptsize±0.08} \\
 \quad Cyclic + FedNTD & cyclic & 0.9328{\scriptsize±0.0172} & 0.8385{\scriptsize±0.0460} & $+11.82${\scriptsize±5.61} & $+5.08${\scriptsize±5.19} & 0.92{\scriptsize±0.08} \\
 \quad FedAvg (control) & parallel & 0.9196{\scriptsize±0.0147} & 0.8227{\scriptsize±0.0319} & $+10.24${\scriptsize±4.15} & $+0.00${\scriptsize±0.00} & 0.84{\scriptsize±0.05} \\
 \quad FedAvg (control) & cyclic & 0.9160{\scriptsize±0.0208} & 0.8118{\scriptsize±0.0276} & $+9.14${\scriptsize±4.35} & $+1.00${\scriptsize±4.04} & 0.82{\scriptsize±0.11} \\
 \midrule
-\multicolumn{7}{@{}l}{\emph{Carry setting, five clients, 4 participating per round}} \\
+\multicolumn{7}{@{}l}{\emph{Carry setting, five writers, 4 participating per round}} \\
 \quad Anchor + FedNTD (crowned) & parallel & 0.9324{\scriptsize±0.0232} & 0.8402{\scriptsize±0.0259} & $+9.93${\scriptsize±4.30} & $+4.88${\scriptsize±3.98} & 0.96{\scriptsize±0.09} \\
 \quad Server step + KD/EWC blend & parallel & 0.9327{\scriptsize±0.0249} & 0.8592{\scriptsize±0.0715} & $+11.82${\scriptsize±3.98} & $+5.95${\scriptsize±7.24} & 0.96{\scriptsize±0.09} \\
 \quad Cyclic + FedNTD & cyclic & 0.9366{\scriptsize±0.0214} & 0.8661{\scriptsize±0.0390} & $+12.51${\scriptsize±5.37} & $+5.86${\scriptsize±4.35} & 0.96{\scriptsize±0.09} \\
 \quad FedAvg (control) & cyclic & 0.9309{\scriptsize±0.0321} & 0.8586{\scriptsize±0.0416} & $+11.77${\scriptsize±6.10} & $+6.45${\scriptsize±7.90} & 0.92{\scriptsize±0.11} \\
 \quad FedAvg (control) & parallel & 0.9253{\scriptsize±0.0427} & 0.8541{\scriptsize±0.0328} & $+11.32${\scriptsize±4.56} & $+2.81${\scriptsize±5.41} & 0.92{\scriptsize±0.11} \\
 \midrule
-\multicolumn{7}{@{}l}{\emph{Carry setting, twenty clients, two dropped, 18 participating per round}} \\
+\multicolumn{7}{@{}l}{\emph{Carry setting, twenty writers, 18 participating per round}} \\
 \quad Anchor + FedNTD (crowned) & parallel & 0.9071{\scriptsize±0.0056} & 0.7202{\scriptsize±0.0376} & $+6.43${\scriptsize±10.57} & $-1.90${\scriptsize±4.26} & 0.70{\scriptsize±0.09} \\
 \quad Server step + KD/EWC blend & parallel & 0.8944{\scriptsize±0.0117} & 0.6107{\scriptsize±0.1074} & $-4.52${\scriptsize±6.54} & $-14.05${\scriptsize±13.53} & 0.63{\scriptsize±0.07} \\
 \quad Cyclic + FedNTD & cyclic & 0.9095{\scriptsize±0.0051} & 0.6790{\scriptsize±0.1110} & $+2.31${\scriptsize±18.12} & $-12.21${\scriptsize±19.38} & 0.71{\scriptsize±0.10} \\
 \midrule
-\multicolumn{7}{@{}l}{\emph{Carry setting, twenty clients, four dropped, 16 participating per round}} \\
+\multicolumn{7}{@{}l}{\emph{Carry setting, twenty writers, 16 participating per round}} \\
 \quad Anchor + FedNTD (crowned) & parallel & 0.9001{\scriptsize±0.0053} & 0.6940{\scriptsize±0.0486} & $+3.81${\scriptsize±12.53} & $-12.14${\scriptsize±13.74} & 0.70{\scriptsize±0.04} \\
 \quad Server step + KD/EWC blend & parallel & 0.8884{\scriptsize±0.0111} & 0.5821{\scriptsize±0.0907} & $-7.38${\scriptsize±7.16} & $-11.19${\scriptsize±10.96} & 0.62{\scriptsize±0.10} \\
 \quad Cyclic + FedNTD & cyclic & 0.9100{\scriptsize±0.0047} & 0.7040{\scriptsize±0.0653} & $+4.81${\scriptsize±14.66} & $-9.71${\scriptsize±15.77} & 0.71{\scriptsize±0.07} \\
