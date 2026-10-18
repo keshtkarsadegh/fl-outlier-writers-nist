@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "federated_outlier_adaptation"
 version = "1.0.0"
-description = "Knowledge-preserving adaptation to outlier clients in federated learning"
+description = "A Practical Evaluation of Knowledge Preservation and Adaptation to Outlier NIST Writers in Federated Learning"
 authors = [
     "Sadegh Keshtkar <sadegh.keshtkar@gwdg.de>",
     "Michael Bidollahkhani <michael.bkhani@uni-goettingen.de>",

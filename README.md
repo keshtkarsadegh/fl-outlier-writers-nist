@@ -1,7 +1,8 @@
-# Federated outlier adaptation
+# A Practical Evaluation of Knowledge Preservation and Adaptation to Outlier NIST Writers in Federated Learning
 
 Adapting a shipped handwriting model to the writers it fails on, without losing
-the writers it already serves.
+the writers it already serves. This repository, `fl-outlier-writers-nist`, holds
+the code and the records of that evaluation.
 
 A global model is trained on a population of writers and deployed. A small group
 of **outlier writers** — the ones it reads worst — then federate to adapt it.
@@ -11,7 +12,7 @@ server rule and which client-side penalty trade those two off best.
 
 The study is **`Digits_study01`**: NIST Special Database 19 by writer, digits
 0–9, 28×28, a FedAvg CNN of 1,663,370 parameters, ten outlier clients against
-two hundred retained writers, five-fold cross-validation throughout.
+two hundred retained writers, five independent stratified splits throughout.
 
 ---
 
@@ -31,7 +32,7 @@ two hundred retained writers, five-fold cross-validation throughout.
 
 `study/artifacts/` is the part that makes this checkable without re-running
 anything: the writer pools and their scores, the three cohorts, all four fold
-books, the g-init and g-0 selection records, the baseline evaluations, every
+books (the split files; see below), the g-init and g-0 selection records, the baseline evaluations, every
 selection table each stage produced, every task file that was submitted, and
 the thirty-seven CSV views the manuscript's figures, numbers and tables are
 built from — so every figure redraws, and every number and every table
@@ -68,7 +69,7 @@ prove your cache matches ours.
 ## Quickstart
 
 ```bash
-git clone https://github.com/keshtkarsadegh/federated-outlier-adaptation.git && cd federated-outlier-adaptation
+git clone https://github.com/keshtkarsadegh/fl-outlier-writers-nist.git && cd fl-outlier-writers-nist
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt && pip install -e . --no-deps
 export FOA_ENV="$PWD/.venv"                  # the runner resolves this; see below
@@ -76,6 +77,9 @@ export FOA_ENV="$PWD/.venv"                  # the runner resolves this; see bel
 pytest -q tests                              # ~2 minutes, no GPU; it prints the count
 cd study/artifacts && sha256sum -c SHA256SUMS && cd ../..
 ```
+
+The repository was renamed from `federated-outlier-adaptation`; the old URL,
+its clone URL and its release links redirect here.
 
 **`python3`, not `python`.** Ubuntu and Debian ship `/usr/bin/python3` and
 no `python` at all, so the one line that has to run before the venv exists is
@@ -135,7 +139,7 @@ and that is three short stages rather than the whole programme:
 |---|---|---|---|---|
 | 2 | `s01a_book.txt` | 2 | writer census, all-writer fold book | ~1 min |
 | 3 | `s01b_detector.txt` | 2 | trains **g-init** and scores every writer with it | **~21 min** |
-| 4 | `s02_selection.txt` | 29 | cuts the pools, draws the 200 source writers, trains **g-0** once per fold, crowns one, cuts the three cohorts | **~23 min** |
+| 4 | `s02_selection.txt` | 29 | cuts the pools, draws the 200 source writers, trains **g-0** once per split, crowns one, cuts the three cohorts | **~23 min** |
 | 17 | `d01_extreme.txt` | 10 | the extremes themselves | ~1 GPU-h |
 
 ```bash
@@ -147,7 +151,7 @@ done
 **About one and three quarter GPU-hours to the cheapest real result, 43 tasks.**
 The three preparatory stages are cheap because they are centralised trainings on
 one GPU with early stopping: g-init stopped after 23 epochs and the five g-0
-folds after 20 to 50, read off the shipped `global_metrics.json`. The times are
+splits after 20 to 50, read off the shipped `global_metrics.json`. The times are
 the scheduler's own, for the array that produced this study.
 
 Two riders. To *read* the extremes against doing nothing you also need
@@ -236,11 +240,20 @@ selected it, by construction.
 
 ### Splits are written down, not recomputed
 
-A **fold book** is a persisted CV split: an `int8 [folds, rows]` assignment
-array, per-writer stratified 60/20/20 over five folds. Runs read their train,
-validation and test rows out of the book rather than re-deriving them, so two
-runs of the same fold see the same rows — and a reviewer can check the split
-itself, not just the result. The four books ship in
+A **split** is an independent, per-writer, per-class stratified 60/20/20
+re-draw of every writer's rows, seeded by (book seed, split, writer). The study
+uses five of them. They are not a cross-validation partition: each split
+re-draws all the rows, so the five test sets are not disjoint and overlap by
+about a fifth, and no writer is held out. **The code, its flags (`--fold`,
+`--folds`, `--old-fold`), its file names (`fold_books/`, `g0_fold1/`) and the
+records keep the word `fold` for what the paper calls a split**; a fold *k*
+anywhere in this repository is split *k* of the paper.
+
+A **fold book** is the five splits written down: an `int8 [folds, rows]`
+assignment array, one row of train/validation/test labels per split. Runs read
+their train, validation and test rows out of the book rather than re-deriving
+them, so two runs of the same split see the same rows — and a reviewer can check
+the split itself, not just the result. The four books ship in
 `study/artifacts/Digits_study01/fold_books/`, and `study/artifacts/SHA256SUMS`
 carries their hashes.
 
@@ -262,7 +275,7 @@ participation.
 ### Every run reports three categories
 
 `final_evaluation` carries the cohort's pooled test accuracy, a per-client
-column, and the old data's five fold test partitions scored **separately** with
+column, and the old data's five split test sets scored **separately** with
 mean ± sd. Adaptation is read from the first, preservation from the second. A
 method that buys one at the other's expense cannot hide it.
 
@@ -285,11 +298,11 @@ exceptions are:
 - **`foa prepare-data` defaults to 128 px.** The study needs `--resolution 28`,
   and a 128 px cache will train happily and reproduce nothing. `docs/DATA.md`
   says so twice.
-- **The scaling rungs are reported on fold 1 only** (P18, P19, P20) — a
+- **The scaling rungs are reported on split 1 only** (P18, P19, P20) — a
   deliberate design, not an omission: those probes ran one g-0 and one client
-  split. P18 and P19 nonetheless have all five folds on disk, so any table over
-  them must filter on fold 1 explicitly for *every* rung including the
-  ten-client anchor, or it averages five folds for some rows and one for others
+  split. P18 and P19 nonetheless have all five splits on disk, so any table over
+  them must filter on split 1 (`fold 1`) explicitly for *every* rung including the
+  ten-client anchor, or it averages five splits for some rows and one for others
   and the difference reads as a size effect. `tools/make_tables.py` bakes that
   rule in and a test pins it; anything else reading those folders must do the
   same.
@@ -313,7 +326,7 @@ exceptions are:
 | `FOA_NIST_CLASSES` | `digits` (10) or `all` (62) | `digits` |
 | `FOA_NIST_RESOLUTION` | 28 or 128 | `128` — the study needs **28** |
 | `FOA_MODEL` | `fedavg_cnn` or `flexible_cnn` | `fedavg_cnn` |
-| `G0_FOLD` | winning g-0 fold, for Fisher-weighted penalties | derived from `g0_selection.json` |
+| `G0_FOLD` | winning g-0 split, for Fisher-weighted penalties | derived from `g0_selection.json` |
 | `FOA_DRY_RUN` | run every check, execute nothing | unset |
 | `FOA_ACCOUNT`, `FOA_GPU_PARTITION`, `FOA_CPU_PARTITION` | scheduler | unset — pass at submit time |
 | `FOA_ENV` | conda prefix or virtualenv to run in - **set it to the Quickstart's `.venv`** | auto: `$FOA_PROJECT_DIR/envs/{foa,fal}`, else a single unambiguous `envs/*`, else `python3` on PATH |

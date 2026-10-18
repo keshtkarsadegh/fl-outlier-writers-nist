@@ -2,15 +2,18 @@ cff-version: 1.2.0
 message: >-
   If you use this software or the results it reproduces, please cite both the
   software and the accompanying manuscript.
-title: federated-outlier-adaptation
+title: >-
+  A Practical Evaluation of Knowledge Preservation and Adaptation to Outlier
+  NIST Writers in Federated Learning
 abstract: >-
-  Reproducible pipeline for knowledge-preserving adaptation to outlier clients
-  in federated learning, covering communication scheduling, aggregation forms
-  and regularisation on NIST SD19 by writer.
+  Code and records of a practical evaluation of adapting a deployed handwriting
+  model to the outlier NIST SD19 writers it serves worst through federated
+  learning, while preserving what it knows of the writers it was trained on:
+  communication scheduling, aggregation forms and client-side regularisation.
 type: software
 version: 1.0.0
 license: Apache-2.0
-repository-code: "https://github.com/keshtkarsadegh/federated-outlier-adaptation"
+repository-code: "https://github.com/keshtkarsadegh/fl-outlier-writers-nist"
 keywords:
   - federated learning
   - catastrophic forgetting
@@ -35,8 +38,8 @@ authors:
 preferred-citation:
   type: unpublished
   title: >-
-    Knowledge-Preserving Adaptation to Outlier Clients in Federated Learning:
-    An Empirical Study of Aggregation, Scheduling and Regularization
+    A Practical Evaluation of Knowledge Preservation and Adaptation to Outlier
+    NIST Writers in Federated Learning
   year: 2026
   notes: Submitted
   authors:
