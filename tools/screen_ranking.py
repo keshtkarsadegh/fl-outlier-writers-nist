@@ -473,7 +473,7 @@ def render_ranking(rows: List[Dict[str, str]], schedule: str, grid: str) -> str:
         r"\centering",
         r"\caption{The quarter-horizon screen of the " + what + f", {schedule} "
         f"schedule: all {n} cells, ranked by the selection score of "
-        r"Eq.~\eqref{eq:score} at round " + rounds + r". Five-fold means, "
+        r"Eq.~\eqref{eq:score} at round " + rounds + r". Five-split means, "
         r"\textbf{validation} axis (adaptation and preservation; score in "
         r"points). $\star$ marks the cell the screen selected within its "
         f"method ({winners} on this schedule), the setting {ref} re-runs at the "
@@ -542,7 +542,7 @@ def render_logit(rows: List[Dict[str, str]]) -> str:
         + r", \textbf{validation}) and its rank among the "
         f"{first['method_of']} strengths, beside the full-horizon score (round "
         f"{full_rounds}) on validation and on \\textbf{{test}}, in "
-        r"points, five-fold means, scored by Eq.~\eqref{eq:score}. $\star$ marks "
+        r"points, five-split means, scored by Eq.~\eqref{eq:score}. $\star$ marks "
         r"the strength the screen selected on that schedule. Only the selected "
         f"strengths, {names}, were re-run at the full horizon; a dash is a "
         r"strength never measured there. Each re-run computed both schedules: "
