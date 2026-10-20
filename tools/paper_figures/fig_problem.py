@@ -60,9 +60,10 @@ def main():
                       textcoords="offset points", xytext=(-2, 2 if ceil_va == "bottom" else -2),
                       ha="right", va=ceil_va, fontsize=6.6, color=fs.GREEN)
 
-    left.annotate(fs.label(ARM), (68, src[68]), textcoords="offset points",
-                  xytext=(0, -6), ha="center", va="top", fontsize=7,
-                  color=fs.VERMILION)
+    # The source curve falls steeply and noisily, so a label hung from it lands
+    # on it; the panel's lower left, under the whole descent, is empty.
+    left.annotate(fs.label(ARM), (0.04, 0.25), xycoords="axes fraction",
+                  ha="left", va="bottom", fontsize=7, color=fs.VERMILION)
     right.annotate(fs.label(ARM), (62, cohort[62]), textcoords="offset points",
                    xytext=(0, -5), ha="center", va="top", fontsize=7,
                    color=fs.VERMILION)

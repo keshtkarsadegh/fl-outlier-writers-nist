@@ -69,6 +69,11 @@ def main():
         ("the blend, $m{=}0.5$", fs.GREEN, "-"),
     ]), loc="lower center", ncol=3, columnspacing=1.6,
         bbox_to_anchor=(0.5, 0.0))
+    # tight_layout solves the margins in one linearised step from the default
+    # subplot positions; on this two-by-two grid that step leaves the rotated
+    # left labels a pixel or two past the page edge.  A first pass here makes
+    # the one in fs.save start from its result, and the second step converges.
+    figure.tight_layout(pad=0.4, w_pad=1.4, rect=(0, 0.075, 1, 1))
     fs.save(figure, "fig_blends", rect=(0, 0.075, 1, 1))
     fs.caption("fig_blends", r"""
         The distillation-plus-elastic-weight construction of each schedule
