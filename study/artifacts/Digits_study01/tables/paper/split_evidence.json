@@ -1,0 +1,437 @@
+{
+ "generated_by": "tools/split_evidence.py",
+ "root": "$FOA_STUDY_DIR",
+ "basis": "points; final test = final_evaluation (fold_spread); test trace = per-round pool_test against the run's own source test split at the patience rule's kept round less round 100 (stopping_test_axis); val. trace = P0 less source_val_accuracies at the kept round",
+ "counts": {
+  "control": {
+   "penalties": 19,
+   "below_five": 4,
+   "all_five": 15
+  },
+  "combo": {
+   "pairs": 18,
+   "every_split": 2,
+   "checks": [
+    [
+     "nComboBeatFolds",
+     "two",
+     "combinations that beat their better component on every split"
+    ]
+   ]
+  }
+ },
+ "rows": [
+  {
+   "key": "lead",
+   "group": "lead",
+   "label": "Logit matching ($\\lambda{=}10^{-3}$) $-$ EWC ($\\lambda{=}8$)",
+   "schedule": "parallel",
+   "reading": "test",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    -0.8579963493934084,
+    2.40240167354996,
+    2.019423848984837,
+    -0.08060528257160016,
+    1.9860718334142042
+   ],
+   "mean": 1.0938591447967985,
+   "positive": 3,
+   "checks": [
+    [
+     "nSingleLeadMeanPar",
+     "1.09",
+     "mean lead, w = 1"
+    ],
+    [
+     "nSingleLeadWonPar",
+     "3",
+     "splits the leader wins"
+    ]
+   ],
+   "leader": "logit_l2_lam0p001",
+   "next": "fisher_lam8",
+   "w": 1
+  },
+  {
+   "key": "lead_w3",
+   "group": "lead",
+   "label": "Logit matching ($\\lambda{=}10^{-3}$) $-$ EWC ($\\lambda{=}8$), at $w{=}3$",
+   "schedule": "parallel",
+   "reading": "test",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    -1.635021912029977,
+    2.5775753910202486,
+    1.4711155836517609,
+    -1.20799942259403,
+    1.2853183039809197
+   ],
+   "mean": 0.49819758880578446,
+   "positive": 3,
+   "checks": [],
+   "leader": "logit_l2_lam0p001",
+   "next": "fisher_lam8",
+   "w": 3
+  },
+  {
+   "key": "control/fisher_scaled_lam50/parallel",
+   "group": "control",
+   "label": "EWC, loss-capped ($\\lambda{=}50$) $-$ FedAvg (control)",
+   "schedule": "parallel",
+   "reading": "test",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    3.146523793816969,
+    1.128903519243929,
+    3.779190023189706,
+    3.7913413624981356,
+    -0.32124016933999755
+   ],
+   "mean": 2.3049437058817484,
+   "positive": 4,
+   "checks": [
+    [
+     "nPenaltyVsControlMinWon",
+     "4",
+     "fewest splits a penalty beats the control on"
+    ]
+   ],
+   "cell": "fisher_scaled_lam50"
+  },
+  {
+   "key": "control/feature_l2_lam0p001/parallel",
+   "group": "control",
+   "label": "Feature matching ($\\lambda{=}10^{-3}$) $-$ FedAvg (control)",
+   "schedule": "parallel",
+   "reading": "test",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    5.476800477716194,
+    -0.735256050411925,
+    0.4892115680385727,
+    1.7618395946135124,
+    0.7377810049273741
+   ],
+   "mean": 1.5460753189767455,
+   "positive": 4,
+   "checks": [
+    [
+     "nPenaltyVsControlMinWon",
+     "4",
+     "fewest splits a penalty beats the control on"
+    ]
+   ],
+   "cell": "feature_l2_lam0p001"
+  },
+  {
+   "key": "control/kd_T0p25_a0p9/parallel",
+   "group": "control",
+   "label": "KD ($T{=}0.25,\\alpha{=}0.9$) $-$ FedAvg (control)",
+   "schedule": "parallel",
+   "reading": "test",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    2.809397093640875,
+    -0.023369971530861733,
+    0.8091620460418563,
+    1.1270410087634293,
+    1.9810432058235286
+   ],
+   "mean": 1.3406546765477656,
+   "positive": 4,
+   "checks": [
+    [
+     "nPenaltyVsControlMinMargin",
+     "1.34",
+     "smallest mean margin of a penalty over the control"
+    ],
+    [
+     "nPenaltyVsControlMinWon",
+     "4",
+     "fewest splits a penalty beats the control on"
+    ]
+   ],
+   "cell": "kd_T0p25_a0p9"
+  },
+  {
+   "key": "control/hybrid_mix0p5/cyclic",
+   "group": "control",
+   "label": "KD+EWC composite ($\\lambda{=}0.111,T{=}0.25,m{=}0.5$) $-$ FedAvg (control)",
+   "schedule": "cyclic",
+   "reading": "test",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    -0.25334250224227084,
+    0.7536083908289744,
+    4.664446927981746,
+    2.3387501358667855,
+    2.8025067892527566
+   ],
+   "mean": 2.0611939483375985,
+   "positive": 4,
+   "checks": [
+    [
+     "nPenaltyVsControlMinWon",
+     "4",
+     "fewest splits a penalty beats the control on"
+    ]
+   ],
+   "cell": "hybrid_mix0p5"
+  },
+  {
+   "key": "combo/anchor_h2_ntd_b0p01_t0p5/parallel",
+   "group": "combo",
+   "label": "Anchor + FedNTD $-$ FedNTD ($\\beta{=}0.01,\\tau{=}0.5$)",
+   "schedule": "parallel",
+   "reading": "test",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    1.3274844450349423,
+    1.1504782496988835,
+    1.5381749793991872,
+    0.26673683711665497,
+    1.7674885384918788
+   ],
+   "mean": 1.2100726099483095,
+   "positive": 5,
+   "checks": [
+    [
+     "nNtdAnchorGain",
+     "1.21",
+     "mean gain over the better component"
+    ]
+   ],
+   "cell": "anchor_h2_ntd_b0p01_t0p5",
+   "better_component": "ntd_b0p01_t0p5"
+  },
+  {
+   "key": "combo/eta_0p95_ntd_b0p01_t0p5/parallel",
+   "group": "combo",
+   "label": "Server step + FedNTD $-$ FedNTD ($\\beta{=}0.01,\\tau{=}0.5$)",
+   "schedule": "parallel",
+   "reading": "test",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    0.7284127725814447,
+    0.24745970421610153,
+    1.2183702027828485,
+    1.126078339609215,
+    0.5397217514312977
+   ],
+   "mean": 0.7720085541241815,
+   "positive": 5,
+   "checks": [
+    [
+     "nNtdEtaGain",
+     "0.77",
+     "mean gain over the better component"
+    ]
+   ],
+   "cell": "eta_0p95_ntd_b0p01_t0p5",
+   "better_component": "ntd_b0p01_t0p5"
+  },
+  {
+   "key": "stop/stored",
+   "group": "stop",
+   "label": "Uniform weights + KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.5$), kept round 54 $-$ round 100 (stored trace)",
+   "schedule": "parallel",
+   "reading": "trace",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    0.47728140511645867,
+    -1.5279189250225866,
+    -0.3470889873373517,
+    0.8628866981878147,
+    -1.4400443831579457
+   ],
+   "mean": -0.39497683844272213,
+   "positive": 2,
+   "checks": [
+    [
+     "nStopTestWorstStored",
+     "0.39",
+     "largest test loss of the rule, stored trace, magnitude"
+    ]
+   ],
+   "cell": "weight_q0_hybrid_seq_mix0p5",
+   "stage": "combo",
+   "kept_round": 54
+  },
+  {
+   "key": "stop/drawn",
+   "group": "stop",
+   "label": "KD+EWC composite ($\\lambda{=}0.111,T{=}0.25,m{=}0.75$), kept round 26 $-$ round 100 (drawn-only trace)",
+   "schedule": "cyclic",
+   "reading": "trace",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    -2.8663773400233405,
+    -1.9337172538392067,
+    -1.207485959465593,
+    -3.465949643231314,
+    -2.050134416035021
+   ],
+   "mean": -2.304732922518895,
+   "positive": 0,
+   "checks": [
+    [
+     "nStopTestWorstDrawn",
+     "2.30",
+     "largest test loss of the rule, drawn-only trace, magnitude"
+    ]
+   ],
+   "cell": "hybrid_mix0p75",
+   "stage": "regfull",
+   "kept_round": 26
+  },
+  {
+   "key": "extreme/dual",
+   "group": "extreme",
+   "label": "Merged pair, forgetting at kept round 8",
+   "schedule": "parallel",
+   "reading": "val",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    0.9548000585169913,
+    0.614943931136358,
+    0.7118819625593242,
+    0.2934947911344854,
+    0.15849809275686466
+   ],
+   "mean": 0.5467237672208047,
+   "positive": 5,
+   "checks": [
+    [
+     "nDualSatRound",
+     "8",
+     "the round the rule keeps"
+    ],
+    [
+     "nDualOraclePres",
+     "0.9931",
+     "source validation accuracy at that round"
+    ]
+   ],
+   "cell": "dual",
+   "kept_round": 8,
+   "forgetting_against_own_round_0": [
+    0.8532423208191142,
+    0.6079027355623046,
+    0.7996953541507978,
+    0.32405642394205403,
+    0.2465389721221345
+   ]
+  },
+  {
+   "key": "extreme/double",
+   "group": "extreme",
+   "label": "Two-client pair, forgetting at kept round 36",
+   "schedule": "parallel",
+   "reading": "val",
+   "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "values": [
+    1.5425892128590468,
+    2.001722046637877,
+    1.3782947576849947,
+    1.2656640629606364,
+    1.1256894449283017
+   ],
+   "mean": 1.4627919050141713,
+   "positive": 5,
+   "checks": [
+    [
+     "nDoubleSatRound",
+     "36",
+     "the round the rule keeps"
+    ],
+    [
+     "nDoubleOraclePres",
+     "0.9839",
+     "source validation accuracy at that round"
+    ]
+   ],
+   "cell": "double",
+   "kept_round": 36,
+   "forgetting_against_own_round_0": [
+    1.4410314751611697,
+    1.9946808510638236,
+    1.4661081492764683,
+    1.296225695768205,
+    1.2137303242935715
+   ]
+  }
+ ]
+}

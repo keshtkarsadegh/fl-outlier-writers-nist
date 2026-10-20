@@ -15,15 +15,17 @@
 #                                  fig_combo, fig_extremes, fig_baselines
 #
 # and, when FOA_STUDY_DIR names an assembled records tree (docs/REPRODUCE.md
-# section 10), the four revision tools that read the records themselves and
-# the one that reads what the second of them wrote:
+# section 10), the four revision tools that read the records themselves, the
+# one that reads what the second of them wrote, and the one that reads both:
 #
 #     <out dir>/revision/          fold_spread.py, stopping_test_axis.py,
 #                                  sensitivity_counts.py (tables, JSON and the
 #                                  prose macros of revision_numbers.tex),
 #                                  clean_preservation.py (the clean-row table
 #                                  and its macros), stopping_best_vs_best.py
-#                                  (best rule against best penalty, macros)
+#                                  (best rule against best penalty, macros),
+#                                  split_evidence.py (the split-level evidence
+#                                  behind the headline sentences)
 #
 # It adds nothing to them. Each script is run exactly as REPRODUCE documents
 # it, with FOA_PAPER_OUT pointing at <out dir>, so the per-script commands there
@@ -138,10 +140,21 @@ if [ -n "${FOA_STUDY_DIR:-}" ]; then
     run python tools/stopping_best_vs_best.py --json "$out/revision/stopping_test_axis.json" \
         --out "$out/revision/stopping_best_vs_best.tex" \
         --macros study/artifacts/Digits_study01/tables/stopping/stopping_best_vs_best.tex
+    # The split-level evidence behind the headline sentences reads the records
+    # and the test-axis JSON just written; every mean it prints is held to the
+    # macro the prose quotes it by, in the numbers.tex written above and the
+    # shipped revision_numbers.tex, and its table is then compared byte for
+    # byte with the shipped copy the manuscript sets.
+    run python tools/split_evidence.py --root "$FOA_STUDY_DIR" \
+        --stopping-json "$out/revision/stopping_test_axis.json" \
+        --macros "$out/numbers.tex" "$shipped" \
+        --json "$out/revision/split_evidence.json" \
+        --table "$out/revision/split_evidence_table.tex"
+    run cmp "$out/revision/split_evidence_table.tex" "$paper/split_evidence_table.tex"
 else
     echo "FOA_STUDY_DIR is not set: skipped fold_spread.py, stopping_test_axis.py,"
-    echo "sensitivity_counts.py, clean_preservation.py and stopping_best_vs_best.py,"
-    echo "which read the run records (docs/REPRODUCE.md section 10)"
+    echo "sensitivity_counts.py, clean_preservation.py, stopping_best_vs_best.py and"
+    echo "split_evidence.py, which read the run records (docs/REPRODUCE.md section 10)"
 fi
 
 [ $dry -eq 1 ] || echo "numbers.tex and tables/ in $out, figures in $out/figures"
