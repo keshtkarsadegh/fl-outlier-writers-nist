@@ -97,3 +97,46 @@ def test_regenerate_runs_it_on_the_generated_tables_and_compares_its_outputs(tmp
     for name in ("clean_preservation_table.tex", "clean_preservation_numbers.tex"):
         assert (f"+ cmp {tmp_path}/revision/{name} "
                 f"study/artifacts/Digits_study01/tables/paper/{name}") in out
+
+
+# ------------------------------------------------ labels and marks on the page
+def test_the_caption_explains_exactly_the_marks_the_rows_carry():
+    """Every mark a row sets is explained in the caption, in the main tables' words.
+
+    The table repeats rows of the main tables with their marks, and a mark
+    explained only in the prose above the float is a mark its own caption
+    leaves unexplained; one that no caption could explain stops the run.
+    """
+    labels = [r"Anchor + FedNTD$^{\star}$", r"KD+EWC composite$^{\ddagger}$", "plain"]
+    note = CP.marks_note(labels)
+    assert r"$\star$ marks the selected pair" in note
+    assert r"$\ddagger$ the composite that schedule's validation ordering" in note
+    assert r"\dagger$ the composite that leads" not in note
+    assert CP.marks_note(["plain"]) == ""
+    with pytest.raises(SystemExit):
+        CP.marks_note([r"Anchor + FedNTD$^{\star\P}$"])
+
+
+def test_the_shipped_table_names_every_setting_and_explains_its_marks():
+    """Rows of the federation-settings group carry their setting; marks are captioned.
+
+    That group repeats the same carried arms at four settings, so a label
+    without its setting reads as four rows of one arm with four numbers.
+    """
+    text = (PAPER / "clean_preservation_table.tex").read_text()
+    body = text.split("\\midrule\\endhead", 1)[1].split("\\bottomrule", 1)[0]
+    group, settings = None, []
+    for line in body.splitlines():
+        if line.startswith("\\multicolumn"):
+            group = line
+            continue
+        if group and "tab:scaling" in group and "&" in line:
+            label = line.split("&", 1)[0].strip()
+            settings.append(label.rsplit(", ", 1)[-1])
+    assert settings and set(settings) == set(CP.SETTING_OF_STAGE.values()), settings
+    caption = text.split("\\caption{", 1)[1].split("\\label{", 1)[0]
+    for mark, words in CP.MARKS:
+        if "$^{%s}$" % mark in body:
+            assert words in caption, mark
+    for old in ("(cross)", "crowned", "blend", "cyclic-tuned", "parallel-tuned", "sibling"):
+        assert old not in text, old

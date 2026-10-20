@@ -168,11 +168,16 @@ def test_the_tables_render_from_the_views_alone(reg_root, tmp_path_factory):
     reg = SR.read_view("screen_ranking_reg.csv", views)
     text = SR.render_ranking(reg, "parallel", "reg")
     assert "ranks 4th of 5" in text
-    assert r"Logit matching ($\lambda{=}10^{-3}$)$^{\star}$" in text
+    assert r"Logit matching ($\lambda{=}10^{-3}$)" + SR.SCREEN_MARK in text
     assert r"\textbf{No penalty (control)}" in text
     assert "logit_l2" not in text.split("\n", 1)[1]   # no run id on the page
     logit = SR.render_logit(SR.read_view("screen_ranking_logit.csv", views))
-    assert r"$^{\dagger}$" in logit and "--" in logit
+    assert SR.OTHER_MARK in logit and "--" in logit
+    # The screen's marks are its own letters, never a symbol the main tables
+    # give another meaning (the selected pair, the selected or test-leading
+    # composite, the borrowed control).
+    for symbol in (r"\star", r"\dagger", r"\ddagger", r"\S"):
+        assert symbol not in text and symbol not in logit, symbol
     assert r"$3{\times}10^{-3}$" in logit
 
 

@@ -293,8 +293,9 @@ class Row:
         self.cells = cells
         self.meta = meta
         #: Words the printed label must contain, where rows are not in the
-        #: view's own order and a positional match would be a guess.
-        self.expect: Optional[str] = None
+        #: view's own order and a positional match would be a guess; a tuple
+        #: lists alternatives, any one of which will do.
+        self.expect: Optional[object] = None
 
     def to_json(self) -> dict:
         out = dict(self.meta)
@@ -403,11 +404,12 @@ def t_reg(study: Study, views: dict) -> Tuple[List[Row], dict]:
     """
     agg_cells = {r["cell"] for r in views["agg"]}
     printed = MPT.reg_printed(views["regu"], views["combo"], agg_cells)
-    rows, against = [], []
+    rows, against, leads = [], [], []
     for fam, title in MPT.SCHEDULE_BLOCKS:
         here = [x for x in printed if x[0]["family"] == fam]
         control = MPT.pick(views["agg"], cell=MPT.NO_PENALTY_CONTROL, family=fam)
         control_arm = study.arm("aggfull", control["cell"], fam)
+        singles = []
         for r, roles in sorted(here, key=lambda x: -float(x[0]["score"])):
             arm = study.arm("regfull", r["cell"], fam)
             rows.append(Row(f"{r['cell']}/{fam}", [MPT.code(r["cell"])],
@@ -415,6 +417,9 @@ def t_reg(study: Study, views: dict) -> Tuple[List[Row], dict]:
             if r["cell"] != NO_PENALTY_CELL:
                 against.append({"cell": r["cell"], "schedule": fam,
                                 "minus_control": paired(arm["score"], control_arm["score"])})
+            if is_single_penalty(r["cell"]):
+                singles.append((r["cell"], arm))
+        leads.append(single_penalty_lead(fam, singles))
         rows.append(Row(f"{control['cell']}/{fam}", [MPT.code(control["cell"])],
                         _score_row(control_arm, control),
                         _meta(control_arm, block=title, borrowed=True)))
@@ -429,7 +434,40 @@ def t_reg(study: Study, views: dict) -> Tuple[List[Row], dict]:
                       "min_folds_won_row": f"{fewest['cell']}/{fewest['schedule']}",
                       "rows_winning_every_fold": sum(
                           1 for a in against if a["minus_control"]["won"] == len(FOLDS)),
-                      "smallest_single_fold": min(a["minus_control"]["min"] for a in against)}}
+                      "smallest_single_fold": min(a["minus_control"]["min"] for a in against)},
+                  "single_penalty_lead": leads}
+
+
+def is_single_penalty(cell: str) -> bool:
+    """One penalty family at one setting: not a composite, not the mu = 0 control.
+
+    The composites (``hybrid_*`` built by the construction stage, ``blend_*``
+    from their own screen) mix two penalties, and the proximal cell at mu = 0
+    is no penalty at all, so neither is "the next single penalty".
+    """
+    return not (cell.startswith("hybrid") or cell.startswith("blend_")
+                or cell == NO_PENALTY_CELL)
+
+
+def single_penalty_lead(schedule: str, singles: Sequence[Tuple[str, dict]]) -> dict:
+    """The leading single penalty against the next one, split by split.
+
+    WHY THIS IS PAIRED HERE. The paper's first finding quotes the lead of the
+    best single penalty over the next one on the parallel schedule, a
+    difference of five-split means. A difference of means says nothing about
+    how many splits it holds on, and the paper's rule is that a lead is
+    called split-paired only when all five within-split differences share
+    its sign. So the five differences are computed from the same per-split
+    scores the table prints, and the count of splits the leader wins is
+    emitted as a macro beside the mean it qualifies. Ranked by the printed
+    five-split mean score, ties to the cell id, as the table orders its rows.
+    """
+    ranked = sorted(singles, key=lambda x: (-st.mean(x[1]["score"]), x[0]))
+    if len(ranked) < 2:
+        raise SystemExit(f"FATAL: {schedule}: fewer than two single penalties printed")
+    (lead_cell, lead), (next_cell, nxt) = ranked[0], ranked[1]
+    return {"schedule": schedule, "leader": lead_cell, "next": next_cell,
+            "leader_minus_next": paired(lead["score"], nxt["score"])}
 
 
 def t_combos(study: Study, views: dict) -> Tuple[List[Row], dict]:
@@ -532,9 +570,13 @@ def t_schedule(study: Study, views: dict) -> Tuple[List[Row], dict]:
 
 
 #: The printed order of Table 6 inside a schedule, by the role each row plays,
-#: and the words its label is recognised by on the page.
+#: and the words its label is recognised by on the page.  The role keys are
+#: the view's; the words are the manuscript's, which calls the view's
+#: "crowned pair" the selected pair on the parallel schedule and the cyclic
+#: leader on the cyclic one, so a role may be recognised by either.
 JOINT_ORDER = (("rule alone", "Rule alone"), ("penalty alone", "Penalty alone"),
-               ("untuned pair", "untuned"), ("crowned pair", "Crowned pair"),
+               ("untuned pair", "untuned"),
+               ("crowned pair", ("Selected pair", "Cyclic leader")),
                ("tuned pair", "Tuned pair"))
 
 
@@ -1011,6 +1053,14 @@ def macros_of(payload: dict) -> List[Tuple[str, str, str]]:
                 "block's no-penalty control"))
     out.append(("nPenaltyVsControlMinWon", "%d" % versus["min_folds_won"],
                 "tab:reg_winners: fewest folds (of five) a penalty beats that control on"))
+    for lead in tables["tab:reg_winners"]["single_penalty_lead"]:
+        tag = {"parallel": "Par", "cyclic": "Cyc"}[lead["schedule"]]
+        d = lead["leader_minus_next"]
+        out.append((f"nSingleLeadMean{tag}", _p2(d["mean"]),
+                    f"tab:reg_winners {lead['schedule']}: mean score of {lead['leader']} "
+                    f"minus {lead['next']}, the next single penalty, in points"))
+        out.append((f"nSingleLeadWon{tag}", "%d" % d["won"],
+                    f"the same pair: folds (of five) on which {lead['leader']} is ahead"))
     fair = tables["tab:fairness"]["delta_worst_definition"]
     out.append(("nFairWorstChangedArmFolds",
                 "%d" % fair["arm_folds_where_the_worst_writer_changed"],
@@ -1087,7 +1137,9 @@ def main() -> int:
                     printed = split_cells(line)[label_cols:]
                     problems += check_row(row, printed, f"{name} row {i} ({row.key})")
                     words = " ".join(split_cells(line)[:label_cols])
-                    if row.expect and row.expect.lower() not in words.lower():
+                    expect = ((row.expect,) if isinstance(row.expect, str)
+                              else tuple(row.expect or ()))
+                    if expect and not any(w.lower() in words.lower() for w in expect):
                         problems.append(f"{name} row {i} ({row.key}): the printed label "
                                         f"{words!r} does not name {row.expect!r}")
             payload["checked_against"][label] = source
@@ -1127,6 +1179,11 @@ def main() -> int:
     sign = payload["tables"]["tab:combos"]["sign_agreement"]
     print(f"Table 4: 5/5 sign agreement expected {sign['expected_count_under_null']:.3f} "
           f"of {sign['pairs']} under the null, observed {sign['actual_count']}")
+    for lead in payload["tables"]["tab:reg_winners"]["single_penalty_lead"]:
+        d = lead["leader_minus_next"]
+        print(f"Table 3 {lead['schedule']}: {lead['leader']} minus {lead['next']}: "
+              f"mean {d['mean']:.4f}, folds " + " ".join(f"{x:+.2f}" for x in d["values"])
+              + f", ahead on {d['won']} of {len(d['values'])}")
     for fam, rep in payload["control_replicates"].items():
         d = rep["plain_minus_armed"]
         print(f"{rep['macro']} ({fam}): mean {d['mean']:.4f}, folds "

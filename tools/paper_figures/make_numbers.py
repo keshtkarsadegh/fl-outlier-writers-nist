@@ -301,16 +301,25 @@ PROSE = {
     "fisher_scaled_lam50": "loss-capped EWC at $\\lambda = 50$",
     "param_l2_mu0": "FedProx at $\\mu = 0$",
     "param_l2_mu0p0001": "FedProx at $\\mu = 10^{-4}$",
-    "hybrid_mix0p25": "the KD+EWC composite at $m = 0.25$",
-    "hybrid_mix0p5": "the KD+EWC composite at $m = 0.5$",
-    "hybrid_mix0p75": "the KD+EWC composite at $m = 0.75$",
-    "hybrid_seq_mix0p25": "the cyclic-tuned KD+EWC composite at $m = 0.25$",
-    "hybrid_seq_mix0p5": "the cyclic-tuned KD+EWC composite at $m = 0.5$",
-    "hybrid_seq_mix0p75": "the cyclic-tuned KD+EWC composite at $m = 0.75$",
+    # A composite is named by its coefficients, as the manuscript names it:
+    # the two constructions differ in lambda and T, not in a word for the
+    # schedule they were built on.
+    "hybrid_mix0p25":
+        "the KD+EWC composite at $\\lambda = 0.111$, $T = 0.25$, $m = 0.25$",
+    "hybrid_mix0p5":
+        "the KD+EWC composite at $\\lambda = 0.111$, $T = 0.25$, $m = 0.5$",
+    "hybrid_mix0p75":
+        "the KD+EWC composite at $\\lambda = 0.111$, $T = 0.25$, $m = 0.75$",
+    "hybrid_seq_mix0p25":
+        "the KD+EWC composite at $\\lambda = 0.0101$, $T = 2$, $m = 0.25$",
+    "hybrid_seq_mix0p5":
+        "the KD+EWC composite at $\\lambda = 0.0101$, $T = 2$, $m = 0.5$",
+    "hybrid_seq_mix0p75":
+        "the KD+EWC composite at $\\lambda = 0.0101$, $T = 2$, $m = 0.75$",
     "blend_lam0p1_T0p5_mix0p25":
-        "the screened KD+EWC blend at $\\lambda = 0.1$, $T = 0.5$, $m = 0.25$",
+        "the screened KD+EWC composite at $\\lambda = 0.1$, $T = 0.5$, $m = 0.25$",
     "blend_lam0p1_T0p25_mix0p5":
-        "the screened KD+EWC blend at $\\lambda = 0.1$, $T = 0.25$, $m = 0.5$",
+        "the screened KD+EWC composite at $\\lambda = 0.1$, $T = 0.25$, $m = 0.5$",
 }
 
 # trimmed_t<k> keeps k updates out of n; the grid it was drawn from is
@@ -785,7 +794,7 @@ def build():
                 ("c_ewc", "Ewc", "the consolidation coefficient"),
                 ("c_kd", "Kd", "the distillation coefficient"),
                 ("T", "T", "the distillation temperature"),
-                ("m", "Mix", "the blend weight")):
+                ("m", "Mix", "the composite's mix")):
             put("nJointSel%s%s" % (name, tag), dial(won, col),
                 "extension_combo_screen_selected.csv, row family=%s rank=1"
                 " (%s), col %s -- %s the joint search chose on that schedule;"

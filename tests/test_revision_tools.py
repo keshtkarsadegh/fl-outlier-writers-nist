@@ -253,3 +253,63 @@ def test_the_baselines_figure_names_the_shipped_model_as_the_paper_does():
     source = (TOOLS / "paper_figures" / "fig_baselines.py").read_text()
     assert "$g$-$0$" not in source
     assert source.count("$\\\\theta_g$") == 3
+
+
+# ------------------------------------------- the lead of the best single penalty
+def test_the_single_penalty_lead_is_paired_split_by_split():
+    """The leader and the runner-up are ranked by mean, then paired per split.
+
+    The paper quotes the best single penalty's lead over the next one as a
+    difference of five-split means and states on how many splits it holds, so
+    what is pinned is the ranking (composites and the mu = 0 control are not
+    single penalties), the five within-split differences, and the count.
+    """
+    singles = [("fisher_lam8", {"score": [9.0, 8.0, 7.0, 12.0, 9.0]}),
+               ("logit_l2_lam0p001", {"score": [8.0, 11.0, 9.0, 11.5, 10.5]}),
+               ("param_l2_mu0p0001", {"score": [9.0, 9.0, 9.0, 9.0, 8.0]})]
+    lead = FS.single_penalty_lead("parallel", singles)
+    assert (lead["leader"], lead["next"]) == ("logit_l2_lam0p001", "fisher_lam8")
+    d = lead["leader_minus_next"]
+    assert d["values"] == [-1.0, 3.0, 2.0, -0.5, 1.5]
+    assert d["won"] == 3 and not d["same_sign_all_folds"]
+    assert d["mean"] == pytest.approx(1.0)
+
+
+def test_composites_and_the_zero_penalty_are_not_single_penalties():
+    for cell in ("hybrid_seq_mix0p75", "hybrid_mix0p5", "blend_lam0p1_T0p5_mix0p25",
+                 "param_l2_mu0"):
+        assert not FS.is_single_penalty(cell), cell
+    for cell in ("logit_l2_lam0p001", "fisher_lam8", "param_l2_mu0p0001",
+                 "ntd_b0p01_t0p5", "kd_T0p25_a0p9"):
+        assert FS.is_single_penalty(cell), cell
+
+
+def test_the_shipped_lead_macros_are_the_shipped_json_printed():
+    """revision_numbers.tex carries the lead and its split count as fold_spread.json has them.
+
+    On the parallel schedule this is the lead the paper quotes: logit matching
+    at lambda = 1e-3 over EWC at lambda = 8, 1.09 points on means, ahead on
+    three of the five splits, so it is a lead on means and not split-paired.
+    """
+    payload = json.loads((TABLES / "paper" / "fold_spread.json").read_text())
+    numbers = (TABLES / "paper" / "revision_numbers.tex").read_text()
+    leads = {x["schedule"]: x for x in
+             payload["tables"]["tab:reg_winners"]["single_penalty_lead"]}
+    assert set(leads) == {"parallel", "cyclic"}
+    for schedule, tag in (("parallel", "Par"), ("cyclic", "Cyc")):
+        d = leads[schedule]["leader_minus_next"]
+        assert d["won"] == sum(1 for v in d["values"] if v > 0)
+        assert d["mean"] == pytest.approx(sum(d["values"]) / len(d["values"]))
+        assert "\\newcommand{\\nSingleLeadMean%s}{%.2f}" % (tag, d["mean"]) in numbers
+        assert "\\newcommand{\\nSingleLeadWon%s}{%d}" % (tag, d["won"]) in numbers
+    par = leads["parallel"]
+    assert (par["leader"], par["next"]) == ("logit_l2_lam0p001", "fisher_lam8")
+    assert "%.2f" % par["leader_minus_next"]["mean"] == "1.09"
+    assert par["leader_minus_next"]["won"] == 3
+    # The rows it pairs are the rows the table prints, value for value.
+    rows = {(r["cell"], r["schedule"]): r["columns"]["score"]["values"]
+            for r in payload["tables"]["tab:reg_winners"]["rows"]}
+    lead = rows[("logit_l2_lam0p001", "parallel")]
+    nxt = rows[("fisher_lam8", "parallel")]
+    assert par["leader_minus_next"]["values"] == pytest.approx(
+        [a - b for a, b in zip(lead, nxt)], abs=1e-12)

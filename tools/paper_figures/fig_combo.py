@@ -18,7 +18,7 @@ import figstyle as fs
 
 
 ARMS = [
-    # The claim is a pair: the crowned combination (thick black) rides on its
+    # The claim is a pair: the selected pair (thick black) rides on its
     # penalty component (red dashed) --- those two carry the argument; the server
     # rule alone and the control are context, thin and light.
     ("control_fedavg", fs.LIGHT, (0, (5, 2)), 0.5, 3),
@@ -49,7 +49,7 @@ def main():
         "anchor_h2": fs.short("anchor_h2") + ", no penalty",
         "ntd_b0p01_t0p5": fs.short("ntd_b0p01_t0p5") + ", plain server",
         "anchor_h2_ntd_b0p01_t0p5": fs.label("anchor_h2_ntd_b0p01_t0p5")
-                                    + " (crowned)",
+                                    + " (selected)",
     }
     figure.legend(handles=fs.handles([(names[a], c, s)
                                       for a, c, s, _, _ in ARMS]),
@@ -62,7 +62,7 @@ def main():
     # LaTeX.  A plain string here put a literal 0x08 into the caption file
     # and ate the tau, and neither shows up in a diff.
     fs.caption("fig_combo", r"""
-        The crowned combination against each of its two components and against
+        The selected pair against each of its two components and against
         the unprotected control, over the full hundred-round budget on the
         study's ten-client cohort: accuracy on the source population (left,
         preservation) and on the outlier cohort (right, adaptation), split-mean

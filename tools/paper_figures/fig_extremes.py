@@ -65,7 +65,7 @@ def main():
     fs.save(figure, "fig_extremes", rect=(0, 0.10, 1, 1))
     fs.caption("fig_extremes", """
         The two extreme arrangements under the fixed hundred-round budget,
-        both running the crowned configuration at full participation: the two
+        both running the selected pair at full participation: the two
         worst-served writers held as two clients, and the same writers' rows
         merged into one client, so the two hold identical data and differ
         only in whether the aggregation ever sees a client boundary.

@@ -420,6 +420,11 @@ MIXED_NAME = re.compile(r"composite|blend", re.IGNORECASE)
 #: "$\lambda{=}0.0101,T{=}2,m{=}0.5$" as often as it arrives on its own.
 MIX = "m{=}"
 
+#: How a printed parentage reads: the composite's lambda, which is 0.0101 for
+#: the construction from the cyclic schedule's halves and 0.111 for the one
+#: from the parallel schedule's, and is how the manuscript names the two.
+PARENTAGE = "\\lambda{=}"
+
 
 def _row_cells(text):
     """Every column entry of every data row of one emitted table.
@@ -442,19 +447,20 @@ def _row_cells(text):
 
 def test_every_composite_a_table_names_carries_its_mix(tmp_path, monkeypatch):
     """
-    "KD+EWC composite, cyclic-tuned" is the name of three arms, not one.
+    "KD+EWC composite (lambda = 0.0101)" is the name of three arms, not one.
 
     The construction stage built one composite per schedule and swept three
     mixes of each, and the mix is the only dial it turned - the lambda and the
     T are inherited from the halves. So a row that prints the parentage and
-    stops has named a family and been read as an arm: tab:combos crosses the
-    cyclic-tuned composite at m = 0.5 and tab:reg_winners leads with the same
-    parentage at m = 0.75, and nothing on the combination row said which.
+    stops has named a family and been read as an arm: tab:combos uses the
+    composite at lambda = 0.0101, m = 0.5 and tab:reg_winners leads with the
+    same parentage at m = 0.75, and nothing on the combination row said which.
 
     The rule is therefore on the emitted LaTeX and on every table at once: a
     data cell that names a mixed penalty either carries its mix or is a
     carried arm's short name that the table's own note expands, with the
-    parentage and the mix in the sentence that expands it. Anything else is a
+    parentage (its lambda, the coefficient that tells the two constructions
+    apart) and the mix in the sentence that expands it. Anything else is a
     row the reader cannot resolve without leaving the page.
     """
     out = _generated_tables(tmp_path, monkeypatch)
@@ -473,7 +479,7 @@ def test_every_composite_a_table_names_carries_its_mix(tmp_path, monkeypatch):
             assert windows, (
                 f"{path.name} prints {cell!r}, which names a mixed penalty "
                 f"without its mix, and its note never expands the name")
-            assert any(MIX in w and "-tuned" in w for w in windows), (
+            assert any(MIX in w and PARENTAGE in w for w in windows), (
                 f"{path.name} prints {cell!r} without its mix, and the note "
                 f"expands it without saying which composite it is and at "
                 f"what mix")

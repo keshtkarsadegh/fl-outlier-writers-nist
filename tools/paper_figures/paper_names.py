@@ -203,33 +203,37 @@ def _rules():
          lambda g: _math([r"\beta{=}%s" % _dec(g[0]), r"\tau{=}%s" % _dec(g[1])]))
 
     # -- the composite penalty, and the screen that swept the same three
-    # -- coefficients on its own.  THREE DIFFERENT ARMS USED TO READ "KD+EWC
-    # -- blend" ON THE PAGE.  The construction stage took a schedule's
-    # -- selected distillation and consolidation halves, INHERITED their
-    # -- lambda and T, and swept the mix alone; the screen swept lambda, T and
-    # -- m together and is a different arm built a different way.  So the
-    # -- composite is named for the construction and the screen for the
-    # -- screen, and which schedule's halves a composite is built from stays
-    # -- part of its identity: the two parentages never share a name, in the
-    # -- full form or in the short one.
+    # -- coefficients on its own.  THREE DIFFERENT ARMS USED TO SHARE ONE NAME
+    # -- ON THE PAGE.  The construction stage took a schedule's selected
+    # -- distillation and consolidation halves, INHERITED their lambda and T,
+    # -- and swept the mix alone; the screen swept lambda, T and m together
+    # -- and is a different arm built a different way.  So the composite is
+    # -- named for the construction and the screen for the screen, and which
+    # -- halves a composite is built from stays part of its identity: the two
+    # -- parentages never share a name, in the full form or in the short one.
     # -- A composite cell spells its mix and nothing else, because the mix is
     # -- the only dial that stage turned, so its lambda and T reach the page
     # -- from COMPOSITE above or they reach it nowhere at all.
-    # -- BOTH parentages are marked, not just the cyclic one.  An unlabelled
-    # -- composite beside a "cyclic-tuned" one reads as the default rather
-    # -- than as the other parentage, and the two are crossed under both
-    # -- schedules, so a reader meeting the unlabelled row in a cyclic block
-    # -- had nothing on the page to tell it apart from the block's own.
+    # -- THE PARENTAGE IS SAID BY ITS COEFFICIENT, NOT BY A WORD.  The two
+    # -- parentages were once told apart as "cyclic-tuned" and
+    # -- "parallel-tuned", and both are run under both schedules, so the word
+    # -- named a schedule a row was not run on and the reader had to learn a
+    # -- second vocabulary to decode it.  The manuscript names a composite by
+    # -- its coefficients, and lambda alone already separates the two
+    # -- parentages (0.0101 against 0.111), so the short name carries lambda
+    # -- and short_mix adds the mix inside the same parentheses.
     rule(r"hybrid_mix([0-9p]+)",
-         "KD+EWC composite", "KD+EWC composite, parallel-tuned",
+         "KD+EWC composite",
+         r"KD+EWC composite ($\lambda{=}%s$)" % COMPOSITE["parallel"][0],
          lambda g: _math([r"\lambda{=}%s" % COMPOSITE["parallel"][0],
                           r"T{=}%s" % COMPOSITE["parallel"][1],
-                          r"m{=}%s" % _dec(g[0])]), "parallel-tuned")
+                          r"m{=}%s" % _dec(g[0])]))
     rule(r"hybrid_seq_mix([0-9p]+)",
-         "KD+EWC composite", "KD+EWC composite, cyclic-tuned",
+         "KD+EWC composite",
+         r"KD+EWC composite ($\lambda{=}%s$)" % COMPOSITE["cyclic"][0],
          lambda g: _math([r"\lambda{=}%s" % COMPOSITE["cyclic"][0],
                           r"T{=}%s" % COMPOSITE["cyclic"][1],
-                          r"m{=}%s" % _dec(g[0])]), "cyclic-tuned")
+                          r"m{=}%s" % _dec(g[0])]))
     # -- the screen carries all three coefficients in the identifier itself,
     # -- which is the whole difference between it and the rows above.
     rule(r"blend_lam([0-9pem]+)_T([0-9p]+)_mix([0-9p]+)",
@@ -242,17 +246,17 @@ def _rules():
     # -- a whole arm - a server rule AND the penalty beside it - because that
     # -- is what was swept, so the name has to carry both halves.  The dials
     # -- are the owner's, not the trainer's: lambda_E and lambda_K are the two
-    # -- coefficients and m the blend weight, and the trainer's own mix is a
+    # -- coefficients and m the composite's mix, and the trainer's own mix is a
     # -- function of all three, so printing that instead would name a number
     # -- nobody chose.  A cell with a server step is a parallel cell and one
     # -- without is cyclic; that is the whole of the schedule marking, and it
     # -- is why the two get different names rather than a shared one.
     rule(r"ctune_ewc([0-9pem]+)_kd([0-9pem]+)_T([0-9p]+)_mix([0-9p]+)"
          r"(?:_eta([0-9p]+))?",
-         lambda g: ("FedAvg + KD+EWC blend" if g[4]
-                    else r"Cyclic, capped $\delta$ + KD+EWC blend"),
-         lambda g: ("Server step + blend (tuned)" if g[4]
-                    else "Cyclic capped + blend (tuned)"),
+         lambda g: ("FedAvg + KD+EWC composite" if g[4]
+                    else r"Cyclic, capped $\delta$ + KD+EWC composite"),
+         lambda g: ("Server step + composite (jointly tuned)" if g[4]
+                    else "Cyclic capped + composite (jointly tuned)"),
          lambda g: _math(
              ([r"\eta_s{=}%s" % _dec(g[4])] if g[4] else [])
              + [r"\lambda_E{=}%s" % _sci(g[0]), r"\lambda_K{=}%s" % _sci(g[1]),
@@ -270,19 +274,24 @@ def _rules():
     # -- cell.  A cell with a half-life is parallel and one without is cyclic.
     rule(r"ctunesel_ewc([0-9pem]+)_kd([0-9pem]+)_T([0-9p]+)_mix([0-9p]+)"
          r"(?:_h([0-9p]+))?",
-         lambda g: ("Server anchor + KD+EWC blend" if g[4]
-                    else "Cyclic FedAvg + KD+EWC blend"),
-         lambda g: ("Anchor + blend (tuned)" if g[4]
-                    else "Cyclic FedAvg + blend (tuned)"),
+         lambda g: ("Server anchor + KD+EWC composite" if g[4]
+                    else "Cyclic FedAvg + KD+EWC composite"),
+         lambda g: ("Anchor + composite (jointly tuned)" if g[4]
+                    else "Cyclic FedAvg + composite (jointly tuned)"),
          lambda g: _math(
              ([r"h{=}%sR" % _dec(g[4])] if g[4] else [])
              + [r"\lambda_E{=}%s" % _sci(g[0]), r"\lambda_K{=}%s" % _sci(g[1]),
                 r"T{=}%s" % _dec(g[2]), r"m{=}%s" % _dec(g[3])]))
 
     # -- the carried arms and the extreme federations -----------------------
-    rule(r"winner", "Anchor + FedNTD (crowned)", "Crowned")
-    rule(r"balanced", "Server step + KD/EWC blend", "Balanced")
-    rule(r"sequential", "Cyclic + FedNTD", "Cyclic arm")
+    # -- Named by the role the manuscript gives each, in its words: the
+    # -- records' own keys ("winner", "balanced") are identifiers, and printing
+    # -- them, or older nicknames for them, made every table that carried
+    # -- these arms need a glossary entry of its own.
+    rule(r"winner", "Anchor + FedNTD (selected)", "Selected pair")
+    rule(r"balanced", "Server step + KD+EWC composite (most-preserving)",
+         "Most-preserving pair")
+    rule(r"sequential", "Cyclic FedAvg + FedNTD", "Cyclic leader")
     rule(r"control", "FedAvg (control)", "Control")
     rule(r"double", "Two-client pair", "Two-client pair")
     rule(r"dual", "Merged pair", "Merged pair")
@@ -410,17 +419,27 @@ def short_mix(cell):
     such a row, so both are printed short and the settings are stated once
     underneath --- which works for every method whose name already tells the
     reader what it is, and fails on the composite: the study built two of them
-    and swept three mixes of each, so "KD+EWC composite, cyclic-tuned" is the
-    name of three different arms.  The parentage is in the short name already;
-    the mix is what the row was still missing, and a footnote is not where a
-    reader should have to go to find out which arm a row reports.
+    and swept three mixes of each, so "KD+EWC composite ($\\lambda{=}0.0101$)"
+    is the name of three different arms.  The parentage is in the short name
+    already; the mix is what the row was still missing, and a footnote is not
+    where a reader should have to go to find out which arm a row reports.
+
+    A short name that already ends in a parenthesised setting takes the mix
+    inside the same parentheses, "KD+EWC composite ($\\lambda{=}0.0101$,
+    $m{=}0.5$)", which is how the manuscript's own tables print it; a second
+    pair of parentheses would read as a second arm.
     """
     pair = _split_combo(cell)
     if pair:
         return "%s + %s" % (short_mix(pair[0]), short_mix(pair[1]))
     hit = _match(cell)
     mix = _MIX.search(hit[2]) if hit and hit[2] else None
-    return "%s, $%s$" % (short(cell), mix.group(0)) if mix else short(cell)
+    if not mix:
+        return short(cell)
+    name = short(cell)
+    if name.endswith("$)"):
+        return "%s, $%s$)" % (name[:-1], mix.group(0))
+    return "%s, $%s$" % (name, mix.group(0))
 
 
 def params(cell):

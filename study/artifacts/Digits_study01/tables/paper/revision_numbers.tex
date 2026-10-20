@@ -17,6 +17,10 @@
 \newcommand{\nCyclicReplicateFoldSD}{0.69}  % the same four rows: per fold the SD of their four scores, mean over folds
 \newcommand{\nPenaltyVsControlMinMargin}{1.34}  % tab:reg_winners: smallest mean fold-paired margin of a penalty over its block's no-penalty control
 \newcommand{\nPenaltyVsControlMinWon}{4}  % tab:reg_winners: fewest folds (of five) a penalty beats that control on
+\newcommand{\nSingleLeadMeanPar}{1.09}  % tab:reg_winners parallel: mean score of logit_l2_lam0p001 minus fisher_lam8, the next single penalty, in points
+\newcommand{\nSingleLeadWonPar}{3}  % the same pair: folds (of five) on which logit_l2_lam0p001 is ahead
+\newcommand{\nSingleLeadMeanCyc}{0.45}  % tab:reg_winners cyclic: mean score of logit_l2_lam0p003 minus ntd_b0p01_t2, the next single penalty, in points
+\newcommand{\nSingleLeadWonCyc}{4}  % the same pair: folds (of five) on which logit_l2_lam0p003 is ahead
 \newcommand{\nFairWorstChangedArmFolds}{78}  % tab:fairness: arm-folds whose worst-served writer is not g-0's worst
 \newcommand{\nFairArmFolds}{100}  % tab:fairness: arm-folds the table is a mean over
 \newcommand{\nComboChanceExpected}{1.1}  % tab:combos: rows agreeing in sign on all five folds expected by chance

@@ -3,7 +3,7 @@
 
 One row of panels per schedule, so the parents and their own mixtures are
 never drawn over the other schedule's: within each row the two parents carry
-the interval, and the blend leaves that interval only on preservation, where
+the interval, and the composite leaves that interval only on preservation, where
 it holds at or above the elastic-weight parent.  On adaptation it stays inside
 it, below the distillation parent for all but a handful of rounds --- which is
 why the caption reports the construction and not a win.
@@ -66,7 +66,7 @@ def main():
     figure.legend(handles=fs.handles([
         ("distillation parent", fs.VERMILION, "-"),
         ("elastic-weight parent", fs.BLUE, "-"),
-        ("the blend, $m{=}0.5$", fs.GREEN, "-"),
+        ("the composite, $m{=}0.5$", fs.GREEN, "-"),
     ]), loc="lower center", ncol=3, columnspacing=1.6,
         bbox_to_anchor=(0.5, 0.0))
     # tight_layout solves the margins in one linearised step from the default
@@ -86,7 +86,7 @@ def main():
         construction at $m{=}0.5$; the composite each schedule's validation
         ordering selected is the $m{=}0.5$ cell built from the other
         schedule's components (Table~\ref{tab:selection_axis}), and the other
-        two ratios are in the released records.  On the left the blend holds
+        two ratios are in the released records.  On the left the composite holds
         the elastic-weight parent's preservation; on the right it tracks below
         the distillation parent on both rows, crossing just above it in the
         closing rounds of the cyclic row, and, on the parallel row, below both

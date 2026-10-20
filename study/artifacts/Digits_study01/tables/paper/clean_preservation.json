@@ -171,7 +171,7 @@
     "folds_won_changes": false
    },
    {
-    "label": "KD+EWC composite, cyclic-tuned, $m{=}0.75$",
+    "label": "KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.75$)",
     "parallel": [
      "hybrid_seq_mix0p75",
      "parallel",
@@ -270,7 +270,7 @@
     "folds_won_changes": false
    },
    {
-    "label": "Crowned pair / its cyclic sibling",
+    "label": "Anchor + FedNTD / cyclic FedAvg + FedNTD",
     "parallel": [
      "anchor_h2_ntd_b0p01_t0p5",
      "parallel",
@@ -365,20 +365,20 @@
      "score_clean": 0.09145888849878614
     }
    ],
-   "top_printed": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\\dagger}$",
-   "top_clean": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\\dagger}$"
+   "top_printed": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\\dagger}$",
+   "top_clean": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\\dagger}$"
   },
   "tab:reg_winners/1": {
    "n": 11,
    "moved": [],
-   "top_printed": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\\dagger}$",
-   "top_clean": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\\dagger}$"
+   "top_printed": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\\dagger}$",
+   "top_clean": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\\dagger}$"
   },
   "tab:combos/0": {
    "n": 9,
    "moved": [
     {
-     "label": "\\quad Uniform weights + KD+EWC composite, cyclic-tuned, $m{=}0.5$",
+     "label": "\\quad Uniform weights + KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.5$)",
      "rank_printed": 6,
      "rank_clean": 7,
      "score": 0.09853495609960783,
@@ -404,26 +404,26 @@
   "tab:scaling/0": {
    "n": 5,
    "moved": [],
-   "top_printed": "\\quad Cyclic + FedNTD / cyclic",
-   "top_clean": "\\quad Cyclic + FedNTD / cyclic"
+   "top_printed": "\\quad Cyclic FedAvg + FedNTD / cyclic",
+   "top_clean": "\\quad Cyclic FedAvg + FedNTD / cyclic"
   },
   "tab:scaling/1": {
    "n": 5,
    "moved": [],
-   "top_printed": "\\quad Cyclic + FedNTD / cyclic",
-   "top_clean": "\\quad Cyclic + FedNTD / cyclic"
+   "top_printed": "\\quad Cyclic FedAvg + FedNTD / cyclic",
+   "top_clean": "\\quad Cyclic FedAvg + FedNTD / cyclic"
   },
   "tab:scaling/2": {
    "n": 3,
    "moved": [],
-   "top_printed": "\\quad Cyclic + FedNTD / cyclic",
-   "top_clean": "\\quad Cyclic + FedNTD / cyclic"
+   "top_printed": "\\quad Cyclic FedAvg + FedNTD / cyclic",
+   "top_clean": "\\quad Cyclic FedAvg + FedNTD / cyclic"
   },
   "tab:scaling/3": {
    "n": 3,
    "moved": [],
-   "top_printed": "\\quad Cyclic + FedNTD / cyclic",
-   "top_clean": "\\quad Cyclic + FedNTD / cyclic"
+   "top_printed": "\\quad Cyclic FedAvg + FedNTD / cyclic",
+   "top_clean": "\\quad Cyclic FedAvg + FedNTD / cyclic"
   },
   "tab:references/0": {
    "n": 4,
@@ -1465,7 +1465,7 @@
    ],
    "tab:combos/0": [
     {
-     "label": "\\quad Uniform weights + KD+EWC composite, cyclic-tuned, $m{=}0.5$",
+     "label": "\\quad Uniform weights + KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.5$)",
      "rank_printed": 6,
      "rank_clean": 7,
      "score": 0.09853495609960783,
@@ -2263,7 +2263,7 @@
   {
    "table": "tab:reg_winners",
    "block": 0,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\\dagger}$",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\\dagger}$",
    "stage": "regfull",
    "cell": "hybrid_seq_mix0p75",
    "family": "parallel",
@@ -2297,7 +2297,7 @@
   {
    "table": "tab:reg_winners",
    "block": 0,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.5$, cyclic-tuned)$^{\\ddagger}$",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.5$)$^{\\ddagger}$",
    "stage": "regfull",
    "cell": "hybrid_seq_mix0p5",
    "family": "parallel",
@@ -2637,7 +2637,7 @@
   {
    "table": "tab:reg_winners",
    "block": 1,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\\dagger}$",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\\dagger}$",
    "stage": "regfull",
    "cell": "hybrid_seq_mix0p75",
    "family": "cyclic",
@@ -2875,7 +2875,7 @@
   {
    "table": "tab:reg_winners",
    "block": 1,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.111,T{=}0.25,m{=}0.5$, parallel-tuned)$^{\\ddagger}$",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.111,T{=}0.25,m{=}0.5$)$^{\\ddagger}$",
    "stage": "regfull",
    "cell": "hybrid_mix0p5",
    "family": "cyclic",
@@ -3045,7 +3045,7 @@
   {
    "table": "tab:combos",
    "block": 0,
-   "label": "\\quad Anchor + KD+EWC composite, cyclic-tuned, $m{=}0.5$",
+   "label": "\\quad Anchor + KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "anchor_h2_hybrid_seq_mix0p5",
    "family": "parallel",
@@ -3113,7 +3113,7 @@
   {
    "table": "tab:combos",
    "block": 0,
-   "label": "\\quad Server step + KD+EWC composite, cyclic-tuned, $m{=}0.5$",
+   "label": "\\quad Server step + KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "eta_0p95_hybrid_seq_mix0p5",
    "family": "parallel",
@@ -3181,7 +3181,7 @@
   {
    "table": "tab:combos",
    "block": 0,
-   "label": "\\quad Uniform weights + KD+EWC composite, cyclic-tuned, $m{=}0.5$",
+   "label": "\\quad Uniform weights + KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "weight_q0_hybrid_seq_mix0p5",
    "family": "parallel",
@@ -3521,7 +3521,7 @@
   {
    "table": "tab:combos",
    "block": 1,
-   "label": "\\quad Cyclic mixing + KD+EWC composite, parallel-tuned, $m{=}0.5$",
+   "label": "\\quad Cyclic mixing + KD+EWC composite ($\\lambda{=}0.111$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "seq_mix_r0p3_hybrid_mix0p5",
    "family": "cyclic",
@@ -3555,7 +3555,7 @@
   {
    "table": "tab:combos",
    "block": 1,
-   "label": "\\quad Cyclic capped + KD+EWC composite, parallel-tuned, $m{=}0.5$",
+   "label": "\\quad Cyclic capped + KD+EWC composite ($\\lambda{=}0.111$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "seq_delta_capped_hybrid_mix0p5",
    "family": "cyclic",
@@ -3589,7 +3589,7 @@
   {
    "table": "tab:combos",
    "block": 1,
-   "label": "\\quad Cyclic FedAvg + KD+EWC composite, parallel-tuned, $m{=}0.5$",
+   "label": "\\quad Cyclic FedAvg + KD+EWC composite ($\\lambda{=}0.111$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "seq_fedavg_hybrid_mix0p5",
    "family": "cyclic",
@@ -3623,7 +3623,7 @@
   {
    "table": "tab:scaling",
    "block": 0,
-   "label": "\\quad Anchor + FedNTD (crowned) / parallel",
+   "label": "\\quad Anchor + FedNTD (selected) / parallel",
    "stage": "c10d10",
    "cell": "winner",
    "family": "parallel",
@@ -3657,7 +3657,7 @@
   {
    "table": "tab:scaling",
    "block": 0,
-   "label": "\\quad Server step + KD/EWC blend / parallel",
+   "label": "\\quad Server step + KD+EWC composite (most-preserving) / parallel",
    "stage": "c10d10",
    "cell": "balanced",
    "family": "parallel",
@@ -3691,7 +3691,7 @@
   {
    "table": "tab:scaling",
    "block": 0,
-   "label": "\\quad Cyclic + FedNTD / cyclic",
+   "label": "\\quad Cyclic FedAvg + FedNTD / cyclic",
    "stage": "c10d10",
    "cell": "sequential",
    "family": "cyclic",
@@ -3793,7 +3793,7 @@
   {
    "table": "tab:scaling",
    "block": 1,
-   "label": "\\quad Anchor + FedNTD (crowned) / parallel",
+   "label": "\\quad Anchor + FedNTD (selected) / parallel",
    "stage": "five",
    "cell": "winner",
    "family": "parallel",
@@ -3827,7 +3827,7 @@
   {
    "table": "tab:scaling",
    "block": 1,
-   "label": "\\quad Server step + KD/EWC blend / parallel",
+   "label": "\\quad Server step + KD+EWC composite (most-preserving) / parallel",
    "stage": "five",
    "cell": "balanced",
    "family": "parallel",
@@ -3861,7 +3861,7 @@
   {
    "table": "tab:scaling",
    "block": 1,
-   "label": "\\quad Cyclic + FedNTD / cyclic",
+   "label": "\\quad Cyclic FedAvg + FedNTD / cyclic",
    "stage": "five",
    "cell": "sequential",
    "family": "cyclic",
@@ -3963,7 +3963,7 @@
   {
    "table": "tab:scaling",
    "block": 2,
-   "label": "\\quad Anchor + FedNTD (crowned) / parallel",
+   "label": "\\quad Anchor + FedNTD (selected) / parallel",
    "stage": "c20d10",
    "cell": "winner",
    "family": "parallel",
@@ -3997,7 +3997,7 @@
   {
    "table": "tab:scaling",
    "block": 2,
-   "label": "\\quad Server step + KD/EWC blend / parallel",
+   "label": "\\quad Server step + KD+EWC composite (most-preserving) / parallel",
    "stage": "c20d10",
    "cell": "balanced",
    "family": "parallel",
@@ -4031,7 +4031,7 @@
   {
    "table": "tab:scaling",
    "block": 2,
-   "label": "\\quad Cyclic + FedNTD / cyclic",
+   "label": "\\quad Cyclic FedAvg + FedNTD / cyclic",
    "stage": "c20d10",
    "cell": "sequential",
    "family": "cyclic",
@@ -4065,7 +4065,7 @@
   {
    "table": "tab:scaling",
    "block": 3,
-   "label": "\\quad Anchor + FedNTD (crowned) / parallel",
+   "label": "\\quad Anchor + FedNTD (selected) / parallel",
    "stage": "c20d20",
    "cell": "winner",
    "family": "parallel",
@@ -4099,7 +4099,7 @@
   {
    "table": "tab:scaling",
    "block": 3,
-   "label": "\\quad Server step + KD/EWC blend / parallel",
+   "label": "\\quad Server step + KD+EWC composite (most-preserving) / parallel",
    "stage": "c20d20",
    "cell": "balanced",
    "family": "parallel",
@@ -4133,7 +4133,7 @@
   {
    "table": "tab:scaling",
    "block": 3,
-   "label": "\\quad Cyclic + FedNTD / cyclic",
+   "label": "\\quad Cyclic FedAvg + FedNTD / cyclic",
    "stage": "c20d20",
    "cell": "sequential",
    "family": "cyclic",
@@ -4303,7 +4303,7 @@
   {
    "table": "tab:schedule",
    "block": 0,
-   "label": "KD+EWC composite, cyclic-tuned, $m{=}0.75$ / parallel",
+   "label": "KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.75$) / parallel",
    "stage": "regfull",
    "cell": "hybrid_seq_mix0p75",
    "family": "parallel",
@@ -4337,7 +4337,7 @@
   {
    "table": "tab:schedule",
    "block": 0,
-   "label": "KD+EWC composite, cyclic-tuned, $m{=}0.75$ / cyclic",
+   "label": "KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.75$) / cyclic",
    "stage": "regfull",
    "cell": "hybrid_seq_mix0p75",
    "family": "cyclic",
@@ -4507,7 +4507,7 @@
   {
    "table": "tab:schedule",
    "block": 0,
-   "label": "Crowned pair / its cyclic sibling / parallel",
+   "label": "Anchor + FedNTD / cyclic FedAvg + FedNTD / parallel",
    "stage": "combo",
    "cell": "anchor_h2_ntd_b0p01_t0p5",
    "family": "parallel",
@@ -4541,7 +4541,7 @@
   {
    "table": "tab:schedule",
    "block": 0,
-   "label": "Crowned pair / its cyclic sibling / cyclic",
+   "label": "Anchor + FedNTD / cyclic FedAvg + FedNTD / cyclic",
    "stage": "combo",
    "cell": "seq_fedavg_ntd_b0p01_t2",
    "family": "cyclic",
@@ -4949,7 +4949,7 @@
   {
    "table": "tab:selection_axis",
    "block": 2,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.5$, cyclic-tuned)$^{\\ddagger}$",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.5$)$^{\\ddagger}$",
    "stage": "regfull",
    "cell": "hybrid_seq_mix0p5",
    "family": "parallel",
@@ -4983,7 +4983,7 @@
   {
    "table": "tab:selection_axis",
    "block": 2,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.25$, cyclic-tuned)",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.25$)",
    "stage": "regfull",
    "cell": "hybrid_seq_mix0p25",
    "family": "parallel",
@@ -5051,7 +5051,7 @@
   {
    "table": "tab:selection_axis",
    "block": 2,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.111,T{=}0.25,m{=}0.25$, parallel-tuned)",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.111,T{=}0.25,m{=}0.25$)",
    "stage": "regfull",
    "cell": "hybrid_mix0p25",
    "family": "parallel",
@@ -5085,7 +5085,7 @@
   {
    "table": "tab:selection_axis",
    "block": 2,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\\dagger}$",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\\dagger}$",
    "stage": "regfull",
    "cell": "hybrid_seq_mix0p75",
    "family": "parallel",
@@ -5153,7 +5153,7 @@
   {
    "table": "tab:selection_axis",
    "block": 3,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.111,T{=}0.25,m{=}0.5$, parallel-tuned)$^{\\ddagger}$",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.111,T{=}0.25,m{=}0.5$)$^{\\ddagger}$",
    "stage": "regfull",
    "cell": "hybrid_mix0p5",
    "family": "cyclic",
@@ -5187,7 +5187,7 @@
   {
    "table": "tab:selection_axis",
    "block": 3,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\\dagger}$",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\\dagger}$",
    "stage": "regfull",
    "cell": "hybrid_seq_mix0p75",
    "family": "cyclic",
@@ -5221,7 +5221,7 @@
   {
    "table": "tab:selection_axis",
    "block": 3,
-   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.5$, cyclic-tuned)",
+   "label": "\\quad KD+EWC composite ($\\lambda{=}0.0101,T{=}2,m{=}0.5$)",
    "stage": "regfull",
    "cell": "hybrid_seq_mix0p5",
    "family": "cyclic",
@@ -5459,7 +5459,7 @@
   {
    "table": "tab:selection_axis_cross",
    "block": 0,
-   "label": "\\quad Uniform weights + KD+EWC composite, cyclic-tuned, $m{=}0.5$",
+   "label": "\\quad Uniform weights + KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "weight_q0_hybrid_seq_mix0p5",
    "family": "parallel",
@@ -5527,7 +5527,7 @@
   {
    "table": "tab:selection_axis_cross",
    "block": 0,
-   "label": "\\quad Anchor + KD+EWC composite, cyclic-tuned, $m{=}0.5$",
+   "label": "\\quad Anchor + KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "anchor_h2_hybrid_seq_mix0p5",
    "family": "parallel",
@@ -5561,7 +5561,7 @@
   {
    "table": "tab:selection_axis_cross",
    "block": 0,
-   "label": "\\quad Server step + KD+EWC composite, cyclic-tuned, $m{=}0.5$\\,$^{\\S}$",
+   "label": "\\quad Server step + KD+EWC composite ($\\lambda{=}0.0101$, $m{=}0.5$)$^{\\S}$",
    "stage": "combo",
    "cell": "eta_0p95_hybrid_seq_mix0p5",
    "family": "parallel",
@@ -5799,7 +5799,7 @@
   {
    "table": "tab:selection_axis_cross",
    "block": 1,
-   "label": "\\quad Cyclic capped + KD+EWC composite, parallel-tuned, $m{=}0.5$",
+   "label": "\\quad Cyclic capped + KD+EWC composite ($\\lambda{=}0.111$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "seq_delta_capped_hybrid_mix0p5",
    "family": "cyclic",
@@ -5833,7 +5833,7 @@
   {
    "table": "tab:selection_axis_cross",
    "block": 1,
-   "label": "\\quad Cyclic mixing + KD+EWC composite, parallel-tuned, $m{=}0.5$",
+   "label": "\\quad Cyclic mixing + KD+EWC composite ($\\lambda{=}0.111$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "seq_mix_r0p3_hybrid_mix0p5",
    "family": "cyclic",
@@ -5867,7 +5867,7 @@
   {
    "table": "tab:selection_axis_cross",
    "block": 1,
-   "label": "\\quad Cyclic FedAvg + KD+EWC composite, parallel-tuned, $m{=}0.5$",
+   "label": "\\quad Cyclic FedAvg + KD+EWC composite ($\\lambda{=}0.111$, $m{=}0.5$)",
    "stage": "combo",
    "cell": "seq_fedavg_hybrid_mix0p5",
    "family": "cyclic",
@@ -5911,7 +5911,7 @@
   "nCleanGapNarrow": 0.25591180202801933,
   "_gap_narrow_arm": {
    "table": "tab:scaling",
-   "label": "\\quad Server step + KD/EWC blend / parallel",
+   "label": "\\quad Server step + KD+EWC composite (most-preserving) / parallel",
    "stage": "five",
    "family": "parallel"
   }

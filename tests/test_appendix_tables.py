@@ -441,7 +441,7 @@ def test_the_note_names_the_rule_that_carried_each_marked_arm(
     note = (out / "selection_axis_cross.tex").read_text()
     assert "least preservation" in note
     assert "strongest cyclic pair" in note
-    assert "crowning record" in note
+    assert "selection record" in note
     # and the rules are true of the view, which is what the generator asserts
     parallel = [r for r in _rows(PAPER / "selection_axis.csv")
                 if r["stage"] == "combination" and r["schedule"] == "parallel"]

@@ -883,17 +883,64 @@ def write_numbers(path: Path, values: dict) -> None:
 
 
 #: Block headers name the table each block comes from by its label, so the
-#: page prints the manuscript's own number for it whatever the numbering is.
+#: page prints the manuscript's own number for it whatever the numbering is,
+#: and say in the manuscript's words what that table holds.  The records'
+#: stage nicknames ("the cross", "the settings") once stood here, and a
+#: heading that needs a glossary of its own is not a heading.
 TABLE_NAMES = {
     "tab:references": "Table~\\ref{tab:references} (reference ladder)",
     "tab:agg_winners": "Table~\\ref{tab:agg_winners} (server rules)",
     "tab:reg_winners": "Table~\\ref{tab:reg_winners} (client penalties)",
-    "tab:combos": "Table~\\ref{tab:combos} (cross)",
+    "tab:combos": "Table~\\ref{tab:combos} (combinations)",
     "tab:schedule": "Table~\\ref{tab:schedule} (schedule pairs)",
-    "tab:scaling": "Table~\\ref{tab:scaling} (settings)",
+    "tab:scaling": "Table~\\ref{tab:scaling} (carried arms by federation setting,"
+                   " writers/participating after each arm)",
     "tab:selection_axis": "Table~\\ref{tab:selection_axis} (shortlists, test columns)",
-    "tab:selection_axis_cross": "Table~\\ref{tab:selection_axis_cross} (cross, test columns)",
+    "tab:selection_axis_cross": "Table~\\ref{tab:selection_axis_cross}"
+                                " (combinations, test columns)",
 }
+
+#: The federation setting of each stage Table~\ref{tab:scaling} reads, as
+#: writers/participating per round.  ROWS OF THAT GROUP REPEAT ONE LABEL FOUR
+#: TIMES: the same three carried arms and the controls run at every setting,
+#: and the table they come from tells the settings apart by its band rows,
+#: which this one-group table does not have.  So each such row carries its
+#: setting in its own label; without it four rows read "Anchor + FedNTD
+#: (selected)" with four different numbers and nothing to say which is which.
+SETTING_OF_STAGE = {"c10d10": "10/9", "five": "5/4", "c20d10": "20/18",
+                    "c20d20": "20/16"}
+
+#: The marks a row label can carry, and what each means.  They are the main
+#: tables' marks, read off the rows those tables print, so a row keeps the
+#: mark it has there and means the same thing by it.  The caption explains
+#: every mark that occurs, and a mark that is not listed here stops the run:
+#: an unexplained symbol on the page is the failure this list exists to stop.
+MARKS = (
+    ("\\star", "$\\star$ marks the selected pair"),
+    ("\\ddagger", "$\\ddagger$ the composite that schedule's validation ordering "
+                  "selected"),
+    ("\\dagger", "$\\dagger$ the composite that leads on test and was not selected"),
+    ("\\S", "$\\S$ the borrowed no-penalty control"),
+)
+
+#: A superscript a row label sets, ``$^{\ddagger}$`` or ``\,$^{\S}$``; the
+#: marks are the macros inside it, so a combined ``$^{\star\P}$`` is two.
+SUPERSCRIPT = re.compile(r"\$\^\{([^{}]*)\}\$")
+MACRO = re.compile(r"\\[A-Za-z]+")
+
+
+def marks_note(labels: List[str]) -> str:
+    """The caption sentence for the marks these labels carry, in MARKS order."""
+    used = {m for label in labels for sup in SUPERSCRIPT.findall(label)
+            for m in MACRO.findall(sup)}
+    unknown = used - {m for m, _ in MARKS}
+    if unknown:
+        raise SystemExit(f"row labels carry marks no caption explains: {sorted(unknown)}")
+    said = [text for m, text in MARKS if m in used]
+    if not said:
+        return ""
+    text = said[0] if len(said) == 1 else ", ".join(said[:-1]) + " and " + said[-1]
+    return " Marks are those of the main tables: " + text + "."
 
 
 #: Two arms the tables renamed after clean_preservation.json was written. The
@@ -940,7 +987,7 @@ def write_table(path: Path, rows: List[dict], base: dict, sched: List[dict]) -> 
         "Arm & Sched. & $P$ & $P_1$ (SD) & $P-P_1$ & Score & Clean & $\\Delta$ \\\\",
         "\\midrule\\endhead",
     ]
-    current, listed = None, set()
+    current, listed, body = None, set(), []
     for r in rows:
         key = (r["stage"], r["cell"], r["family"])
         if key in listed and r["stage"] != "references":
@@ -948,16 +995,26 @@ def write_table(path: Path, rows: List[dict], base: dict, sched: List[dict]) -> 
         listed.add(key)
         if r["table"] != current:
             current = r["table"]
-            lines.append("\\multicolumn{8}{@{}l}{\\emph{%s}} \\\\" % TABLE_NAMES[current])
+            body.append("\\multicolumn{8}{@{}l}{\\emph{%s}} \\\\" % TABLE_NAMES[current])
         label = r["label"].replace("\\quad", "").strip()
         old, new = RENAMED.get(r["cell"], ("", ""))
         if old and label.startswith(old):
             label = new + label[len(old):]
-        lines.append(
+        if r["table"] == "tab:scaling":
+            # The matcher appended " / <schedule>" to find the row; the
+            # schedule has its own column, so the setting takes its place.
+            suffix = " / " + r["family"]
+            if label.endswith(suffix):
+                label = label[:-len(suffix)]
+            label = "%s, %s" % (label, SETTING_OF_STAGE[r["stage"]])
+        body.append(
             "%s & %s & %.4f & %.4f (%.4f) & $%.2f$ & $%.2f$ & $%.2f$ & $%+.2f$ \\\\" % (
                 label, r["family"], r["preservation"], r["preservation_clean"],
                 r["preservation_clean_sd"], r["printed_minus_clean"] * 100,
                 r["score"] * 100, r["score_clean"] * 100, r["score_change"] * 100))
+    lines[lines.index("\\toprule") - 1] = lines[lines.index("\\toprule") - 1].replace(
+        "}\\label{tab:clean_preservation}", marks_note(body) + "}\\label{tab:clean_preservation}")
+    lines += body
     lines += ["\\bottomrule", "\\end{longtable}", "\\endgroup", "",
               "\\begin{table}[!htbp]", "\\centering",
               "\\caption{The schedule pairs of Table~\\ref{tab:schedule} with clean"

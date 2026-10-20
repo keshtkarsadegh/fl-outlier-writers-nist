@@ -28,8 +28,8 @@
 
 % tab:reg_winners --- body rows, page order, labels from reg_winners.tex
 \rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Parallel schedule}} \\
-\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\dagger}$ & 0.9337{\scriptsize±0.0162} & 0.9924{\scriptsize±0.0019} & 0.62{\scriptsize±0.19} & 10.50{\scriptsize±1.65} \\
-\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.5$, cyclic-tuned)$^{\ddagger}$ & 0.9327{\scriptsize±0.0191} & 0.9926{\scriptsize±0.0009} & 0.59{\scriptsize±0.09} & 10.43{\scriptsize±1.97} \\
+\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\dagger}$ & 0.9337{\scriptsize±0.0162} & 0.9924{\scriptsize±0.0019} & 0.62{\scriptsize±0.19} & 10.50{\scriptsize±1.65} \\
+\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.5$)$^{\ddagger}$ & 0.9327{\scriptsize±0.0191} & 0.9926{\scriptsize±0.0009} & 0.59{\scriptsize±0.09} & 10.43{\scriptsize±1.97} \\
 \quad Logit matching ($\lambda{=}10^{-3}$) & 0.9356{\scriptsize±0.0149} & 0.9877{\scriptsize±0.0039} & 1.08{\scriptsize±0.39} & 10.22{\scriptsize±1.27} \\
 \quad KD+EWC composite, screened ($\lambda{=}0.1,T{=}0.5,m{=}0.25$) & 0.9243{\scriptsize±0.0233} & 0.9932{\scriptsize±0.0006} & 0.54{\scriptsize±0.06} & 9.65{\scriptsize±2.34} \\
 \quad EWC ($\lambda{=}8$) & 0.9216{\scriptsize±0.0192} & 0.9907{\scriptsize±0.0022} & 0.78{\scriptsize±0.22} & 9.13{\scriptsize±1.76} \\
@@ -41,14 +41,14 @@
 \quad FedAvg (control)$^{\S}$ & 0.9187{\scriptsize±0.0197} & 0.9688{\scriptsize±0.0072} & 2.98{\scriptsize±0.72} & 6.64{\scriptsize±2.35} \\
 \midrule
 \rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Cyclic schedule}} \\
-\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\dagger}$ & 0.9355{\scriptsize±0.0138} & 0.9925{\scriptsize±0.0010} & 0.61{\scriptsize±0.10} & 10.69{\scriptsize±1.43} \\
+\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\dagger}$ & 0.9355{\scriptsize±0.0138} & 0.9925{\scriptsize±0.0010} & 0.61{\scriptsize±0.10} & 10.69{\scriptsize±1.43} \\
 \quad Logit matching ($\lambda{=}3{\times}10^{-3}$) & 0.9374{\scriptsize±0.0162} & 0.9903{\scriptsize±0.0027} & 0.82{\scriptsize±0.27} & 10.67{\scriptsize±1.46} \\
 \quad FedNTD ($\beta{=}0.01,\tau{=}2$) & 0.9329{\scriptsize±0.0225} & 0.9904{\scriptsize±0.0013} & 0.82{\scriptsize±0.13} & 10.22{\scriptsize±2.13} \\
 \quad KD+EWC composite, screened ($\lambda{=}0.1,T{=}0.25,m{=}0.5$) & 0.9243{\scriptsize±0.0151} & 0.9913{\scriptsize±0.0015} & 0.73{\scriptsize±0.15} & 9.45{\scriptsize±1.50} \\
 \quad EWC ($\lambda{=}0.1$) & 0.9235{\scriptsize±0.0209} & 0.9916{\scriptsize±0.0008} & 0.69{\scriptsize±0.08} & 9.40{\scriptsize±2.06} \\
 \quad EWC, loss-capped ($\lambda{=}0.1$) & 0.9225{\scriptsize±0.0177} & 0.9902{\scriptsize±0.0021} & 0.83{\scriptsize±0.21} & 9.17{\scriptsize±1.70} \\
 \quad Feature matching ($\lambda{=}10^{-2}$) & 0.9299{\scriptsize±0.0127} & 0.9813{\scriptsize±0.0024} & 1.73{\scriptsize±0.24} & 9.01{\scriptsize±1.09} \\
-\quad KD+EWC composite ($\lambda{=}0.111,T{=}0.25,m{=}0.5$, parallel-tuned)$^{\ddagger}$ & 0.9168{\scriptsize±0.0233} & 0.9926{\scriptsize±0.0008} & 0.60{\scriptsize±0.08} & 8.83{\scriptsize±2.37} \\
+\quad KD+EWC composite ($\lambda{=}0.111,T{=}0.25,m{=}0.5$)$^{\ddagger}$ & 0.9168{\scriptsize±0.0233} & 0.9926{\scriptsize±0.0008} & 0.60{\scriptsize±0.08} & 8.83{\scriptsize±2.37} \\
 \quad KD ($T{=}2,\alpha{=}0.99$) & 0.9271{\scriptsize±0.0149} & 0.9803{\scriptsize±0.0037} & 1.82{\scriptsize±0.37} & 8.64{\scriptsize±1.27} \\
 \quad No penalty (control) & 0.9169{\scriptsize±0.0179} & 0.9695{\scriptsize±0.0031} & 2.91{\scriptsize±0.31} & 6.53{\scriptsize±1.73} \\
 \quad FedAvg (control)$^{\S}$ & 0.9197{\scriptsize±0.0213} & 0.9691{\scriptsize±0.0034} & 2.95{\scriptsize±0.34} & 6.77{\scriptsize±1.97} \\
@@ -56,11 +56,11 @@
 % tab:combos --- body rows, page order, labels from combos.tex
 \rowcolor{blockband}\multicolumn{6}{@{}l}{\textbf{Parallel schedule}} \\
 \quad Server step & Logit matching & 0.9374{\scriptsize±0.0112} & 0.9877{\scriptsize±0.0032} & 10.41{\scriptsize±0.86} & $+0.18${\scriptsize±0.82} \\
-\quad Anchor & KD+EWC composite, cyclic-tuned, $m{=}0.5$ & 0.9309{\scriptsize±0.0125} & 0.9936{\scriptsize±0.0013} & 10.34{\scriptsize±1.19} & $-0.09${\scriptsize±1.39} \\
+\quad Anchor & KD+EWC composite ($\lambda{=}0.0101$, $m{=}0.5$) & 0.9309{\scriptsize±0.0125} & 0.9936{\scriptsize±0.0013} & 10.34{\scriptsize±1.19} & $-0.09${\scriptsize±1.39} \\
 \quad Anchor & FedNTD$^{\star}$ & 0.9347{\scriptsize±0.0186} & 0.9885{\scriptsize±0.0027} & 10.21{\scriptsize±1.62} & $+1.21${\scriptsize±0.58} \\
-\quad Server step & KD+EWC composite, cyclic-tuned, $m{=}0.5$ & 0.9290{\scriptsize±0.0195} & 0.9929{\scriptsize±0.0022} & 10.09{\scriptsize±1.84} & $-0.34${\scriptsize±1.09} \\
+\quad Server step & KD+EWC composite ($\lambda{=}0.0101$, $m{=}0.5$) & 0.9290{\scriptsize±0.0195} & 0.9929{\scriptsize±0.0022} & 10.09{\scriptsize±1.84} & $-0.34${\scriptsize±1.09} \\
 \quad Anchor & Logit matching & 0.9318{\scriptsize±0.0109} & 0.9898{\scriptsize±0.0021} & 10.05{\scriptsize±0.91} & $-0.18${\scriptsize±0.68} \\
-\quad Uniform weights & KD+EWC composite, cyclic-tuned, $m{=}0.5$ & 0.9262{\scriptsize±0.0175} & 0.9934{\scriptsize±0.0016} & 9.85{\scriptsize±1.71} & $-0.57${\scriptsize±1.10} \\
+\quad Uniform weights & KD+EWC composite ($\lambda{=}0.0101$, $m{=}0.5$) & 0.9262{\scriptsize±0.0175} & 0.9934{\scriptsize±0.0016} & 9.85{\scriptsize±1.71} & $-0.57${\scriptsize±1.10} \\
 \quad Server step & FedNTD & 0.9320{\scriptsize±0.0217} & 0.9869{\scriptsize±0.0026} & 9.78{\scriptsize±1.95} & $+0.77${\scriptsize±0.40} \\
 \quad Uniform weights & Logit matching & 0.9291{\scriptsize±0.0223} & 0.9890{\scriptsize±0.0013} & 9.70{\scriptsize±2.13} & $-0.52${\scriptsize±1.46} \\
 \quad Uniform weights & FedNTD & 0.9263{\scriptsize±0.0211} & 0.9847{\scriptsize±0.0034} & 8.99{\scriptsize±1.93} & $-0.02${\scriptsize±0.55} \\
@@ -72,9 +72,9 @@
 \quad Cyclic FedAvg & FedNTD & 0.9356{\scriptsize±0.0180} & 0.9907{\scriptsize±0.0020} & 10.52{\scriptsize±1.67} & $+0.30${\scriptsize±0.94} \\
 \quad Cyclic capped & Logit matching & 0.9356{\scriptsize±0.0151} & 0.9902{\scriptsize±0.0055} & 10.47{\scriptsize±1.12} & $-0.20${\scriptsize±1.01} \\
 \quad Cyclic mixing & FedNTD & 0.9328{\scriptsize±0.0189} & 0.9903{\scriptsize±0.0015} & 10.20{\scriptsize±1.76} & $-0.02${\scriptsize±0.71} \\
-\quad Cyclic mixing & KD+EWC composite, parallel-tuned, $m{=}0.5$ & 0.9263{\scriptsize±0.0200} & 0.9911{\scriptsize±0.0023} & 9.63{\scriptsize±2.02} & $+0.80${\scriptsize±0.91} \\
-\quad Cyclic capped & KD+EWC composite, parallel-tuned, $m{=}0.5$ & 0.9197{\scriptsize±0.0192} & 0.9925{\scriptsize±0.0015} & 9.11{\scriptsize±1.95} & $+0.28${\scriptsize±1.43} \\
-\quad Cyclic FedAvg & KD+EWC composite, parallel-tuned, $m{=}0.5$ & 0.9178{\scriptsize±0.0151} & 0.9906{\scriptsize±0.0030} & 8.73{\scriptsize±1.31} & $-0.10${\scriptsize±1.41} \\
+\quad Cyclic mixing & KD+EWC composite ($\lambda{=}0.111$, $m{=}0.5$) & 0.9263{\scriptsize±0.0200} & 0.9911{\scriptsize±0.0023} & 9.63{\scriptsize±2.02} & $+0.80${\scriptsize±0.91} \\
+\quad Cyclic capped & KD+EWC composite ($\lambda{=}0.111$, $m{=}0.5$) & 0.9197{\scriptsize±0.0192} & 0.9925{\scriptsize±0.0015} & 9.11{\scriptsize±1.95} & $+0.28${\scriptsize±1.43} \\
+\quad Cyclic FedAvg & KD+EWC composite ($\lambda{=}0.111$, $m{=}0.5$) & 0.9178{\scriptsize±0.0151} & 0.9906{\scriptsize±0.0030} & 8.73{\scriptsize±1.31} & $-0.10${\scriptsize±1.41} \\
 
 % tab:schedule --- body rows, page order
 % no manuscript source was given for this table: the label columns are run ids
@@ -100,34 +100,34 @@ cyclic & tuned pair & 92.42{\scriptsize±1.92} & 99.20{\scriptsize±0.29} & 9.52
 
 % tab:scaling --- body rows, page order, labels from scaling.tex
 \rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Ten writers, 9 participating per round}} \\
-\quad Anchor + FedNTD (crowned) & parallel & 0.9300{\scriptsize±0.0235} & 0.9877{\scriptsize±0.0028} & 9.67{\scriptsize±2.11} \\
-\quad Server step + KD/EWC blend & parallel & 0.9290{\scriptsize±0.0134} & 0.9921{\scriptsize±0.0013} & 10.01{\scriptsize±1.30} \\
-\quad Cyclic + FedNTD & cyclic & 0.9328{\scriptsize±0.0172} & 0.9898{\scriptsize±0.0012} & 10.15{\scriptsize±1.62} \\
+\quad Anchor + FedNTD (selected) & parallel & 0.9300{\scriptsize±0.0235} & 0.9877{\scriptsize±0.0028} & 9.67{\scriptsize±2.11} \\
+\quad Server step + KD+EWC composite (most-preserving) & parallel & 0.9290{\scriptsize±0.0134} & 0.9921{\scriptsize±0.0013} & 10.01{\scriptsize±1.30} \\
+\quad Cyclic FedAvg + FedNTD & cyclic & 0.9328{\scriptsize±0.0172} & 0.9898{\scriptsize±0.0012} & 10.15{\scriptsize±1.62} \\
 \quad FedAvg (control) & parallel & 0.9196{\scriptsize±0.0147} & 0.9704{\scriptsize±0.0021} & 6.89{\scriptsize±1.38} \\
 \quad FedAvg (control) & cyclic & 0.9160{\scriptsize±0.0208} & 0.9703{\scriptsize±0.0030} & 6.52{\scriptsize±2.00} \\
 \midrule
 \midrule
 \rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Five writers, 4 participating per round}} \\
-\quad Anchor + FedNTD (crowned) & parallel & 0.9324{\scriptsize±0.0232} & 0.9812{\scriptsize±0.0018} & 11.18{\scriptsize±2.15} \\
-\quad Server step + KD/EWC blend & parallel & 0.9327{\scriptsize±0.0249} & 0.9889{\scriptsize±0.0027} & 11.98{\scriptsize±2.59} \\
-\quad Cyclic + FedNTD & cyclic & 0.9366{\scriptsize±0.0214} & 0.9866{\scriptsize±0.0033} & 12.14{\scriptsize±1.92} \\
+\quad Anchor + FedNTD (selected) & parallel & 0.9324{\scriptsize±0.0232} & 0.9812{\scriptsize±0.0018} & 11.18{\scriptsize±2.15} \\
+\quad Server step + KD+EWC composite (most-preserving) & parallel & 0.9327{\scriptsize±0.0249} & 0.9889{\scriptsize±0.0027} & 11.98{\scriptsize±2.59} \\
+\quad Cyclic FedAvg + FedNTD & cyclic & 0.9366{\scriptsize±0.0214} & 0.9866{\scriptsize±0.0033} & 12.14{\scriptsize±1.92} \\
 \quad FedAvg (control) & cyclic & 0.9309{\scriptsize±0.0321} & 0.9371{\scriptsize±0.0146} & 6.63{\scriptsize±3.50} \\
 \quad FedAvg (control) & parallel & 0.9253{\scriptsize±0.0427} & 0.9368{\scriptsize±0.0155} & 6.04{\scriptsize±5.57} \\
 \midrule
 \midrule
 \rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Twenty writers, 18 participating per round}} \\
-\quad Anchor + FedNTD (crowned) & parallel & 0.9071{\scriptsize±0.0056} & 0.9931{\scriptsize±0.0008} & 5.77{\scriptsize±0.55} \\
-\quad Server step + KD/EWC blend & parallel & 0.8944{\scriptsize±0.0117} & 0.9958{\scriptsize±0.0007} & 4.76{\scriptsize±1.11} \\
-\quad Cyclic + FedNTD & cyclic & 0.9095{\scriptsize±0.0051} & 0.9939{\scriptsize±0.0009} & 6.08{\scriptsize±0.46} \\
+\quad Anchor + FedNTD (selected) & parallel & 0.9071{\scriptsize±0.0056} & 0.9931{\scriptsize±0.0008} & 5.77{\scriptsize±0.55} \\
+\quad Server step + KD+EWC composite (most-preserving) & parallel & 0.8944{\scriptsize±0.0117} & 0.9958{\scriptsize±0.0007} & 4.76{\scriptsize±1.11} \\
+\quad Cyclic FedAvg + FedNTD & cyclic & 0.9095{\scriptsize±0.0051} & 0.9939{\scriptsize±0.0009} & 6.08{\scriptsize±0.46} \\
 \midrule
 \midrule
 \rowcolor{blockband}\multicolumn{5}{@{}l}{\textbf{Twenty writers, 16 participating per round}} \\
-\quad Anchor + FedNTD (crowned) & parallel & 0.9001{\scriptsize±0.0053} & 0.9935{\scriptsize±0.0007} & 5.10{\scriptsize±0.47} \\
-\quad Server step + KD/EWC blend & parallel & 0.8884{\scriptsize±0.0111} & 0.9961{\scriptsize±0.0005} & 4.18{\scriptsize±1.07} \\
-\quad Cyclic + FedNTD & cyclic & 0.9100{\scriptsize±0.0047} & 0.9944{\scriptsize±0.0005} & 6.18{\scriptsize±0.45} \\
+\quad Anchor + FedNTD (selected) & parallel & 0.9001{\scriptsize±0.0053} & 0.9935{\scriptsize±0.0007} & 5.10{\scriptsize±0.47} \\
+\quad Server step + KD+EWC composite (most-preserving) & parallel & 0.8884{\scriptsize±0.0111} & 0.9961{\scriptsize±0.0005} & 4.18{\scriptsize±1.07} \\
+\quad Cyclic FedAvg + FedNTD & cyclic & 0.9100{\scriptsize±0.0047} & 0.9944{\scriptsize±0.0005} & 6.18{\scriptsize±0.45} \\
 
 % tab:selection_axis --- body rows, page order, labels from selection_axis.tex
-\rowcolor{blockband}\multicolumn{9}{@{}l}{\textbf{Server rules: the shortlist the cross was built from}} \\
+\rowcolor{blockband}\multicolumn{9}{@{}l}{\textbf{Server rules: the shortlist the combinations were built from}} \\
 \multicolumn{9}{@{}l}{\emph{Parallel schedule: the top 5 of 8 ranked arms by validation score; both rank columns are over those 8 ranked arms}} \\
 \quad Server anchor ($h{=}2R$)$^{\ddagger}$ & 0.9184{\scriptsize±0.0130} & 0.9785{\scriptsize±0.0044} & 7.58{\scriptsize±1.22} & 1 & 0.9188{\scriptsize±0.0217} & 0.9770{\scriptsize±0.0032} & 7.47{\scriptsize±1.92} & 2 \\
 \quad Uniform weighting ($q{=}0$)$^{\ddagger}$ & 0.9156{\scriptsize±0.0146} & 0.9719{\scriptsize±0.0029} & 6.64{\scriptsize±1.49} & 2 & 0.9197{\scriptsize±0.0172} & 0.9740{\scriptsize±0.0028} & 7.27{\scriptsize±1.63} & 3 \\
@@ -141,33 +141,33 @@ cyclic & tuned pair & 92.42{\scriptsize±1.92} & 99.20{\scriptsize±0.29} & 9.52
 \quad Cyclic, scaled $\delta$ & 0.9120{\scriptsize±0.0155} & 0.9710{\scriptsize±0.0057} & 6.20{\scriptsize±1.85} & 4 & 0.9188{\scriptsize±0.0196} & 0.9723{\scriptsize±0.0030} & 7.00{\scriptsize±1.74} & 2 \\
 \quad Cyclic, shuffled order & 0.9100{\scriptsize±0.0190} & 0.9703{\scriptsize±0.0018} & 5.92{\scriptsize±1.92} & 5 & 0.9187{\scriptsize±0.0145} & 0.9698{\scriptsize±0.0034} & 6.74{\scriptsize±1.22} & 4 \\
 \midrule
-\rowcolor{blockband}\multicolumn{9}{@{}l}{\textbf{Client penalties: the shortlist the cross was built from}} \\
+\rowcolor{blockband}\multicolumn{9}{@{}l}{\textbf{Client penalties: the shortlist the combinations were built from}} \\
 \multicolumn{9}{@{}l}{\emph{Parallel schedule: the top 5 of 13 ranked arms by validation score, plus one arm printed from below that depth; both rank columns are over those 13 ranked arms}} \\
 \quad Logit matching ($\lambda{=}10^{-3}$)$^{\ddagger}$ & 0.9252{\scriptsize±0.0169} & 0.9883{\scriptsize±0.0024} & 9.24{\scriptsize±1.83} & 1 & 0.9356{\scriptsize±0.0149} & 0.9877{\scriptsize±0.0039} & 10.22{\scriptsize±1.27} & 3 \\
-\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.5$, cyclic-tuned)$^{\ddagger}$ & 0.9166{\scriptsize±0.0170} & 0.9931{\scriptsize±0.0013} & 8.87{\scriptsize±1.73} & 2 & 0.9327{\scriptsize±0.0191} & 0.9926{\scriptsize±0.0009} & 10.43{\scriptsize±1.97} & 2 \\
-\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.25$, cyclic-tuned) & 0.9175{\scriptsize±0.0192} & 0.9899{\scriptsize±0.0025} & 8.63{\scriptsize±1.93} & 3 & 0.9243{\scriptsize±0.0167} & 0.9913{\scriptsize±0.0024} & 9.45{\scriptsize±1.64} & 5 \\
+\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.5$)$^{\ddagger}$ & 0.9166{\scriptsize±0.0170} & 0.9931{\scriptsize±0.0013} & 8.87{\scriptsize±1.73} & 2 & 0.9327{\scriptsize±0.0191} & 0.9926{\scriptsize±0.0009} & 10.43{\scriptsize±1.97} & 2 \\
+\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.25$) & 0.9175{\scriptsize±0.0192} & 0.9899{\scriptsize±0.0025} & 8.63{\scriptsize±1.93} & 3 & 0.9243{\scriptsize±0.0167} & 0.9913{\scriptsize±0.0024} & 9.45{\scriptsize±1.64} & 5 \\
 \quad FedNTD ($\beta{=}0.01,\tau{=}0.5$)$^{\ddagger}$ & 0.9213{\scriptsize±0.0150} & 0.9856{\scriptsize±0.0034} & 8.59{\scriptsize±1.67} & 4 & 0.9263{\scriptsize±0.0212} & 0.9848{\scriptsize±0.0021} & 9.00{\scriptsize±1.99} & 10 \\
-\quad KD+EWC composite ($\lambda{=}0.111,T{=}0.25,m{=}0.25$, parallel-tuned) & 0.9158{\scriptsize±0.0238} & 0.9905{\scriptsize±0.0033} & 8.52{\scriptsize±2.43} & 5 & 0.9216{\scriptsize±0.0194} & 0.9916{\scriptsize±0.0012} & 9.21{\scriptsize±2.03} & 7 \\
-\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\dagger}$ & 0.9119{\scriptsize±0.0237} & 0.9911{\scriptsize±0.0036} & 8.19{\scriptsize±2.31} & 6 & 0.9337{\scriptsize±0.0162} & 0.9924{\scriptsize±0.0019} & 10.50{\scriptsize±1.65} & 1 \\
+\quad KD+EWC composite ($\lambda{=}0.111,T{=}0.25,m{=}0.25$) & 0.9158{\scriptsize±0.0238} & 0.9905{\scriptsize±0.0033} & 8.52{\scriptsize±2.43} & 5 & 0.9216{\scriptsize±0.0194} & 0.9916{\scriptsize±0.0012} & 9.21{\scriptsize±2.03} & 7 \\
+\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\dagger}$ & 0.9119{\scriptsize±0.0237} & 0.9911{\scriptsize±0.0036} & 8.19{\scriptsize±2.31} & 6 & 0.9337{\scriptsize±0.0162} & 0.9924{\scriptsize±0.0019} & 10.50{\scriptsize±1.65} & 1 \\
 \multicolumn{9}{@{}l}{\emph{Cyclic schedule: the top 5 of 13 ranked arms by validation score; both rank columns are over those 13 ranked arms}} \\
 \quad FedNTD ($\beta{=}0.01,\tau{=}2$)$^{\ddagger}$ & 0.9270{\scriptsize±0.0181} & 0.9907{\scriptsize±0.0015} & 9.66{\scriptsize±1.83} & 1 & 0.9329{\scriptsize±0.0225} & 0.9904{\scriptsize±0.0013} & 10.22{\scriptsize±2.13} & 4 \\
-\quad KD+EWC composite ($\lambda{=}0.111,T{=}0.25,m{=}0.5$, parallel-tuned)$^{\ddagger}$ & 0.9241{\scriptsize±0.0203} & 0.9915{\scriptsize±0.0022} & 9.46{\scriptsize±1.92} & 2 & 0.9168{\scriptsize±0.0233} & 0.9926{\scriptsize±0.0008} & 8.83{\scriptsize±2.37} & 11 \\
-\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.75$, cyclic-tuned)$^{\dagger}$ & 0.9194{\scriptsize±0.0146} & 0.9922{\scriptsize±0.0035} & 9.05{\scriptsize±1.54} & 3 & 0.9355{\scriptsize±0.0138} & 0.9925{\scriptsize±0.0010} & 10.69{\scriptsize±1.43} & 1 \\
-\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.5$, cyclic-tuned) & 0.9175{\scriptsize±0.0237} & 0.9925{\scriptsize±0.0021} & 8.89{\scriptsize±2.24} & 4 & 0.9319{\scriptsize±0.0227} & 0.9923{\scriptsize±0.0013} & 10.31{\scriptsize±2.31} & 3 \\
+\quad KD+EWC composite ($\lambda{=}0.111,T{=}0.25,m{=}0.5$)$^{\ddagger}$ & 0.9241{\scriptsize±0.0203} & 0.9915{\scriptsize±0.0022} & 9.46{\scriptsize±1.92} & 2 & 0.9168{\scriptsize±0.0233} & 0.9926{\scriptsize±0.0008} & 8.83{\scriptsize±2.37} & 11 \\
+\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.75$)$^{\dagger}$ & 0.9194{\scriptsize±0.0146} & 0.9922{\scriptsize±0.0035} & 9.05{\scriptsize±1.54} & 3 & 0.9355{\scriptsize±0.0138} & 0.9925{\scriptsize±0.0010} & 10.69{\scriptsize±1.43} & 1 \\
+\quad KD+EWC composite ($\lambda{=}0.0101,T{=}2,m{=}0.5$) & 0.9175{\scriptsize±0.0237} & 0.9925{\scriptsize±0.0021} & 8.89{\scriptsize±2.24} & 4 & 0.9319{\scriptsize±0.0227} & 0.9923{\scriptsize±0.0013} & 10.31{\scriptsize±2.31} & 3 \\
 \quad Logit matching ($\lambda{=}3{\times}10^{-3}$)$^{\ddagger}$ & 0.9204{\scriptsize±0.0183} & 0.9895{\scriptsize±0.0026} & 8.88{\scriptsize±1.88} & 5 & 0.9374{\scriptsize±0.0162} & 0.9903{\scriptsize±0.0027} & 10.67{\scriptsize±1.46} & 2 \\
 
 % tab:selection_axis_cross --- body rows, page order, labels from selection_axis_cross.tex
-\rowcolor{blockband}\multicolumn{9}{@{}l}{\textbf{The cross: eighteen pairs, one crowned}} \\
+\rowcolor{blockband}\multicolumn{9}{@{}l}{\textbf{The combinations: eighteen pairs, one selected}} \\
 \multicolumn{9}{@{}l}{\emph{Parallel schedule: all 9 ranked arms, by validation score; both rank columns are over those 9 ranked arms}} \\
 \quad Anchor + FedNTD$^{\dagger\S}$ & 0.9288{\scriptsize±0.0146} & 0.9869{\scriptsize±0.0027} & 9.47{\scriptsize±1.53} & 1 & 0.9347{\scriptsize±0.0186} & 0.9885{\scriptsize±0.0027} & 10.21{\scriptsize±1.62} & 3 \\
 \quad Server step + Logit matching & 0.9251{\scriptsize±0.0169} & 0.9887{\scriptsize±0.0040} & 9.27{\scriptsize±1.74} & 2 & 0.9374{\scriptsize±0.0112} & 0.9877{\scriptsize±0.0032} & 10.41{\scriptsize±0.86} & 1 \\
 \quad Uniform weights + FedNTD & 0.9279{\scriptsize±0.0164} & 0.9847{\scriptsize±0.0037} & 9.15{\scriptsize±1.84} & 3 & 0.9263{\scriptsize±0.0211} & 0.9847{\scriptsize±0.0034} & 8.99{\scriptsize±1.93} & 9 \\
 \quad Anchor + Logit matching & 0.9223{\scriptsize±0.0235} & 0.9894{\scriptsize±0.0032} & 9.06{\scriptsize±2.39} & 4 & 0.9318{\scriptsize±0.0109} & 0.9898{\scriptsize±0.0021} & 10.05{\scriptsize±0.91} & 5 \\
 \quad Server step + FedNTD & 0.9260{\scriptsize±0.0125} & 0.9848{\scriptsize±0.0023} & 8.97{\scriptsize±1.44} & 5 & 0.9320{\scriptsize±0.0217} & 0.9869{\scriptsize±0.0026} & 9.78{\scriptsize±1.95} & 7 \\
-\quad Uniform weights + KD+EWC composite, cyclic-tuned, $m{=}0.5$ & 0.9184{\scriptsize±0.0216} & 0.9918{\scriptsize±0.0034} & 8.91{\scriptsize±2.35} & 6 & 0.9262{\scriptsize±0.0175} & 0.9934{\scriptsize±0.0016} & 9.85{\scriptsize±1.71} & 6 \\
+\quad Uniform weights + KD+EWC composite ($\lambda{=}0.0101$, $m{=}0.5$) & 0.9184{\scriptsize±0.0216} & 0.9918{\scriptsize±0.0034} & 8.91{\scriptsize±2.35} & 6 & 0.9262{\scriptsize±0.0175} & 0.9934{\scriptsize±0.0016} & 9.85{\scriptsize±1.71} & 6 \\
 \quad Uniform weights + Logit matching & 0.9214{\scriptsize±0.0223} & 0.9881{\scriptsize±0.0019} & 8.84{\scriptsize±2.30} & 7 & 0.9291{\scriptsize±0.0223} & 0.9890{\scriptsize±0.0013} & 9.70{\scriptsize±2.13} & 8 \\
-\quad Anchor + KD+EWC composite, cyclic-tuned, $m{=}0.5$ & 0.9147{\scriptsize±0.0209} & 0.9908{\scriptsize±0.0042} & 8.44{\scriptsize±2.10} & 8 & 0.9309{\scriptsize±0.0125} & 0.9936{\scriptsize±0.0013} & 10.34{\scriptsize±1.19} & 2 \\
-\quad Server step + KD+EWC composite, cyclic-tuned, $m{=}0.5$\,$^{\S}$ & 0.9129{\scriptsize±0.0206} & 0.9921{\scriptsize±0.0024} & 8.38{\scriptsize±2.10} & 9 & 0.9290{\scriptsize±0.0195} & 0.9929{\scriptsize±0.0022} & 10.09{\scriptsize±1.84} & 4 \\
+\quad Anchor + KD+EWC composite ($\lambda{=}0.0101$, $m{=}0.5$) & 0.9147{\scriptsize±0.0209} & 0.9908{\scriptsize±0.0042} & 8.44{\scriptsize±2.10} & 8 & 0.9309{\scriptsize±0.0125} & 0.9936{\scriptsize±0.0013} & 10.34{\scriptsize±1.19} & 2 \\
+\quad Server step + KD+EWC composite ($\lambda{=}0.0101$, $m{=}0.5$)$^{\S}$ & 0.9129{\scriptsize±0.0206} & 0.9921{\scriptsize±0.0024} & 8.38{\scriptsize±2.10} & 9 & 0.9290{\scriptsize±0.0195} & 0.9929{\scriptsize±0.0022} & 10.09{\scriptsize±1.84} & 4 \\
 \multicolumn{9}{@{}l}{\emph{Cyclic schedule: all 9 ranked arms, by validation score; both rank columns are over those 9 ranked arms}} \\
 \quad Cyclic FedAvg + FedNTD$^{\S}$ & 0.9242{\scriptsize±0.0197} & 0.9907{\scriptsize±0.0017} & 9.38{\scriptsize±2.01} & 1 & 0.9356{\scriptsize±0.0180} & 0.9907{\scriptsize±0.0020} & 10.52{\scriptsize±1.67} & 4 \\
 \quad Cyclic capped + FedNTD & 0.9242{\scriptsize±0.0160} & 0.9906{\scriptsize±0.0018} & 9.37{\scriptsize±1.67} & 2 & 0.9375{\scriptsize±0.0157} & 0.9902{\scriptsize±0.0014} & 10.66{\scriptsize±1.44} & 1 \\
@@ -175,37 +175,37 @@ cyclic & tuned pair & 92.42{\scriptsize±1.92} & 99.20{\scriptsize±0.29} & 9.52
 \quad Cyclic mixing + FedNTD & 0.9233{\scriptsize±0.0170} & 0.9899{\scriptsize±0.0016} & 9.21{\scriptsize±1.83} & 4 & 0.9328{\scriptsize±0.0189} & 0.9903{\scriptsize±0.0015} & 10.20{\scriptsize±1.76} & 6 \\
 \quad Cyclic FedAvg + Logit matching & 0.9196{\scriptsize±0.0191} & 0.9909{\scriptsize±0.0018} & 8.94{\scriptsize±1.85} & 5 & 0.9365{\scriptsize±0.0162} & 0.9909{\scriptsize±0.0028} & 10.63{\scriptsize±1.39} & 3 \\
 \quad Cyclic capped + Logit matching & 0.9195{\scriptsize±0.0169} & 0.9898{\scriptsize±0.0047} & 8.82{\scriptsize±1.82} & 6 & 0.9356{\scriptsize±0.0151} & 0.9902{\scriptsize±0.0055} & 10.47{\scriptsize±1.12} & 5 \\
-\quad Cyclic capped + KD+EWC composite, parallel-tuned, $m{=}0.5$ & 0.9100{\scriptsize±0.0177} & 0.9921{\scriptsize±0.0029} & 8.11{\scriptsize±1.69} & 7 & 0.9197{\scriptsize±0.0192} & 0.9925{\scriptsize±0.0015} & 9.11{\scriptsize±1.95} & 8 \\
-\quad Cyclic mixing + KD+EWC composite, parallel-tuned, $m{=}0.5$ & 0.9100{\scriptsize±0.0148} & 0.9917{\scriptsize±0.0026} & 8.06{\scriptsize±1.40} & 8 & 0.9263{\scriptsize±0.0200} & 0.9911{\scriptsize±0.0023} & 9.63{\scriptsize±2.02} & 7 \\
-\quad Cyclic FedAvg + KD+EWC composite, parallel-tuned, $m{=}0.5$ & 0.9101{\scriptsize±0.0120} & 0.9902{\scriptsize±0.0024} & 7.92{\scriptsize±1.17} & 9 & 0.9178{\scriptsize±0.0151} & 0.9906{\scriptsize±0.0030} & 8.73{\scriptsize±1.31} & 9 \\
+\quad Cyclic capped + KD+EWC composite ($\lambda{=}0.111$, $m{=}0.5$) & 0.9100{\scriptsize±0.0177} & 0.9921{\scriptsize±0.0029} & 8.11{\scriptsize±1.69} & 7 & 0.9197{\scriptsize±0.0192} & 0.9925{\scriptsize±0.0015} & 9.11{\scriptsize±1.95} & 8 \\
+\quad Cyclic mixing + KD+EWC composite ($\lambda{=}0.111$, $m{=}0.5$) & 0.9100{\scriptsize±0.0148} & 0.9917{\scriptsize±0.0026} & 8.06{\scriptsize±1.40} & 8 & 0.9263{\scriptsize±0.0200} & 0.9911{\scriptsize±0.0023} & 9.63{\scriptsize±2.02} & 7 \\
+\quad Cyclic FedAvg + KD+EWC composite ($\lambda{=}0.111$, $m{=}0.5$) & 0.9101{\scriptsize±0.0120} & 0.9902{\scriptsize±0.0024} & 7.92{\scriptsize±1.17} & 9 & 0.9178{\scriptsize±0.0151} & 0.9906{\scriptsize±0.0030} & 8.73{\scriptsize±1.31} & 9 \\
 
 % tab:fairness --- body rows, page order, labels from fairness.tex
 \multicolumn{7}{@{}l}{\emph{Search setting, the combination stage (ten writers), 8 participating per round}} \\
-\quad Anchor + FedNTD (crowned) & parallel & 0.9347{\scriptsize±0.0186} & 0.8174{\scriptsize±0.0428} & $+9.71${\scriptsize±3.23} & $+1.06${\scriptsize±6.65} & 0.92{\scriptsize±0.04} \\
-\quad Server step + KD/EWC blend & parallel & 0.9290{\scriptsize±0.0195} & 0.8342{\scriptsize±0.0194} & $+11.39${\scriptsize±4.07} & $+8.58${\scriptsize±3.70} & 0.96{\scriptsize±0.09} \\
-\quad Cyclic + FedNTD & cyclic & 0.9356{\scriptsize±0.0180} & 0.8383{\scriptsize±0.0381} & $+11.80${\scriptsize±2.99} & $+7.50${\scriptsize±5.20} & 0.90{\scriptsize±0.07} \\
+\quad Anchor + FedNTD (selected) & parallel & 0.9347{\scriptsize±0.0186} & 0.8174{\scriptsize±0.0428} & $+9.71${\scriptsize±3.23} & $+1.06${\scriptsize±6.65} & 0.92{\scriptsize±0.04} \\
+\quad Server step + KD+EWC composite (most-preserving) & parallel & 0.9290{\scriptsize±0.0195} & 0.8342{\scriptsize±0.0194} & $+11.39${\scriptsize±4.07} & $+8.58${\scriptsize±3.70} & 0.96{\scriptsize±0.09} \\
+\quad Cyclic FedAvg + FedNTD & cyclic & 0.9356{\scriptsize±0.0180} & 0.8383{\scriptsize±0.0381} & $+11.80${\scriptsize±2.99} & $+7.50${\scriptsize±5.20} & 0.90{\scriptsize±0.07} \\
 \quad best worst-client & parallel & 0.9374{\scriptsize±0.0112} & 0.8628{\scriptsize±0.0264} & $+14.24${\scriptsize±4.42} & $+7.15${\scriptsize±3.13} & 0.94{\scriptsize±0.05} \\
 \midrule
 \multicolumn{7}{@{}l}{\emph{Carry setting, ten writers, 9 participating per round}} \\
-\quad Anchor + FedNTD (crowned) & parallel & 0.9300{\scriptsize±0.0235} & 0.8351{\scriptsize±0.0572} & $+11.48${\scriptsize±7.75} & $+2.83${\scriptsize±7.11} & 0.88{\scriptsize±0.11} \\
-\quad Server step + KD/EWC blend & parallel & 0.9290{\scriptsize±0.0134} & 0.8420{\scriptsize±0.0314} & $+12.17${\scriptsize±4.72} & $+8.07${\scriptsize±3.63} & 0.92{\scriptsize±0.08} \\
-\quad Cyclic + FedNTD & cyclic & 0.9328{\scriptsize±0.0172} & 0.8385{\scriptsize±0.0460} & $+11.82${\scriptsize±5.61} & $+5.08${\scriptsize±5.19} & 0.92{\scriptsize±0.08} \\
+\quad Anchor + FedNTD (selected) & parallel & 0.9300{\scriptsize±0.0235} & 0.8351{\scriptsize±0.0572} & $+11.48${\scriptsize±7.75} & $+2.83${\scriptsize±7.11} & 0.88{\scriptsize±0.11} \\
+\quad Server step + KD+EWC composite (most-preserving) & parallel & 0.9290{\scriptsize±0.0134} & 0.8420{\scriptsize±0.0314} & $+12.17${\scriptsize±4.72} & $+8.07${\scriptsize±3.63} & 0.92{\scriptsize±0.08} \\
+\quad Cyclic FedAvg + FedNTD & cyclic & 0.9328{\scriptsize±0.0172} & 0.8385{\scriptsize±0.0460} & $+11.82${\scriptsize±5.61} & $+5.08${\scriptsize±5.19} & 0.92{\scriptsize±0.08} \\
 \quad FedAvg (control) & parallel & 0.9196{\scriptsize±0.0147} & 0.8227{\scriptsize±0.0319} & $+10.24${\scriptsize±4.15} & $+0.00${\scriptsize±0.00} & 0.84{\scriptsize±0.05} \\
 \quad FedAvg (control) & cyclic & 0.9160{\scriptsize±0.0208} & 0.8118{\scriptsize±0.0276} & $+9.14${\scriptsize±4.35} & $+1.00${\scriptsize±4.04} & 0.82{\scriptsize±0.11} \\
 \midrule
 \multicolumn{7}{@{}l}{\emph{Carry setting, five writers, 4 participating per round}} \\
-\quad Anchor + FedNTD (crowned) & parallel & 0.9324{\scriptsize±0.0232} & 0.8402{\scriptsize±0.0259} & $+9.93${\scriptsize±4.30} & $+4.88${\scriptsize±3.98} & 0.96{\scriptsize±0.09} \\
-\quad Server step + KD/EWC blend & parallel & 0.9327{\scriptsize±0.0249} & 0.8592{\scriptsize±0.0715} & $+11.82${\scriptsize±3.98} & $+5.95${\scriptsize±7.24} & 0.96{\scriptsize±0.09} \\
-\quad Cyclic + FedNTD & cyclic & 0.9366{\scriptsize±0.0214} & 0.8661{\scriptsize±0.0390} & $+12.51${\scriptsize±5.37} & $+5.86${\scriptsize±4.35} & 0.96{\scriptsize±0.09} \\
+\quad Anchor + FedNTD (selected) & parallel & 0.9324{\scriptsize±0.0232} & 0.8402{\scriptsize±0.0259} & $+9.93${\scriptsize±4.30} & $+4.88${\scriptsize±3.98} & 0.96{\scriptsize±0.09} \\
+\quad Server step + KD+EWC composite (most-preserving) & parallel & 0.9327{\scriptsize±0.0249} & 0.8592{\scriptsize±0.0715} & $+11.82${\scriptsize±3.98} & $+5.95${\scriptsize±7.24} & 0.96{\scriptsize±0.09} \\
+\quad Cyclic FedAvg + FedNTD & cyclic & 0.9366{\scriptsize±0.0214} & 0.8661{\scriptsize±0.0390} & $+12.51${\scriptsize±5.37} & $+5.86${\scriptsize±4.35} & 0.96{\scriptsize±0.09} \\
 \quad FedAvg (control) & cyclic & 0.9309{\scriptsize±0.0321} & 0.8586{\scriptsize±0.0416} & $+11.77${\scriptsize±6.10} & $+6.45${\scriptsize±7.90} & 0.92{\scriptsize±0.11} \\
 \quad FedAvg (control) & parallel & 0.9253{\scriptsize±0.0427} & 0.8541{\scriptsize±0.0328} & $+11.32${\scriptsize±4.56} & $+2.81${\scriptsize±5.41} & 0.92{\scriptsize±0.11} \\
 \midrule
 \multicolumn{7}{@{}l}{\emph{Carry setting, twenty writers, 18 participating per round}} \\
-\quad Anchor + FedNTD (crowned) & parallel & 0.9071{\scriptsize±0.0056} & 0.7202{\scriptsize±0.0376} & $+6.43${\scriptsize±10.57} & $-1.90${\scriptsize±4.26} & 0.70{\scriptsize±0.09} \\
-\quad Server step + KD/EWC blend & parallel & 0.8944{\scriptsize±0.0117} & 0.6107{\scriptsize±0.1074} & $-4.52${\scriptsize±6.54} & $-14.05${\scriptsize±13.53} & 0.63{\scriptsize±0.07} \\
-\quad Cyclic + FedNTD & cyclic & 0.9095{\scriptsize±0.0051} & 0.6790{\scriptsize±0.1110} & $+2.31${\scriptsize±18.12} & $-12.21${\scriptsize±19.38} & 0.71{\scriptsize±0.10} \\
+\quad Anchor + FedNTD (selected) & parallel & 0.9071{\scriptsize±0.0056} & 0.7202{\scriptsize±0.0376} & $+6.43${\scriptsize±10.57} & $-1.90${\scriptsize±4.26} & 0.70{\scriptsize±0.09} \\
+\quad Server step + KD+EWC composite (most-preserving) & parallel & 0.8944{\scriptsize±0.0117} & 0.6107{\scriptsize±0.1074} & $-4.52${\scriptsize±6.54} & $-14.05${\scriptsize±13.53} & 0.63{\scriptsize±0.07} \\
+\quad Cyclic FedAvg + FedNTD & cyclic & 0.9095{\scriptsize±0.0051} & 0.6790{\scriptsize±0.1110} & $+2.31${\scriptsize±18.12} & $-12.21${\scriptsize±19.38} & 0.71{\scriptsize±0.10} \\
 \midrule
 \multicolumn{7}{@{}l}{\emph{Carry setting, twenty writers, 16 participating per round}} \\
-\quad Anchor + FedNTD (crowned) & parallel & 0.9001{\scriptsize±0.0053} & 0.6940{\scriptsize±0.0486} & $+3.81${\scriptsize±12.53} & $-12.14${\scriptsize±13.74} & 0.70{\scriptsize±0.04} \\
-\quad Server step + KD/EWC blend & parallel & 0.8884{\scriptsize±0.0111} & 0.5821{\scriptsize±0.0907} & $-7.38${\scriptsize±7.16} & $-11.19${\scriptsize±10.96} & 0.62{\scriptsize±0.10} \\
-\quad Cyclic + FedNTD & cyclic & 0.9100{\scriptsize±0.0047} & 0.7040{\scriptsize±0.0653} & $+4.81${\scriptsize±14.66} & $-9.71${\scriptsize±15.77} & 0.71{\scriptsize±0.07} \\
+\quad Anchor + FedNTD (selected) & parallel & 0.9001{\scriptsize±0.0053} & 0.6940{\scriptsize±0.0486} & $+3.81${\scriptsize±12.53} & $-12.14${\scriptsize±13.74} & 0.70{\scriptsize±0.04} \\
+\quad Server step + KD+EWC composite (most-preserving) & parallel & 0.8884{\scriptsize±0.0111} & 0.5821{\scriptsize±0.0907} & $-7.38${\scriptsize±7.16} & $-11.19${\scriptsize±10.96} & 0.62{\scriptsize±0.10} \\
+\quad Cyclic FedAvg + FedNTD & cyclic & 0.9100{\scriptsize±0.0047} & 0.7040{\scriptsize±0.0653} & $+4.81${\scriptsize±14.66} & $-9.71${\scriptsize±15.77} & 0.71{\scriptsize±0.07} \\

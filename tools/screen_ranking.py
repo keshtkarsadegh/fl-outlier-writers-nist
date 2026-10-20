@@ -425,13 +425,28 @@ def _pts(value: str) -> str:
     return "" if value == "" else f"{float(value) * 100:.2f}"
 
 
+#: The two marks these tables set.  THEY ARE LETTERS AND NOT THE MAIN
+#: TABLES' SYMBOLS, because the main tables have given every symbol one
+#: meaning across the paper ($\star$ the selected pair, $\ddagger$ and
+#: $\dagger$ the selected and the test-leading composite, $\S$ the borrowed
+#: control) and a screen means something else by its winner: the cell a
+#: screen selected within ITS OWN method, of which there are seven per
+#: schedule.  A star here once needed a sentence in the appendix's prose
+#: saying that it meant something else on these pages; a letter of its own,
+#: as the edge winner has $^{e}$, needs no such sentence.  ``f``: the setting
+#: the finals re-run at the full horizon.  ``o``: the half of a run selected
+#: for the other schedule.
+SCREEN_MARK = r"$^{f}$"
+OTHER_MARK = r"$^{o}$"
+
+
 def _cell_text(row: Dict[str, str]) -> str:
-    """The published name, the control in bold, the screen winner starred."""
+    """The published name, the control in bold, the screen winner marked."""
     text = grid_label(row["cell"])
     if row["control"] == "1":
         text = r"\textbf{" + text + "}"
     if row["selected"] == "1":
-        text += r"$^{\star}$"
+        text += SCREEN_MARK
     return text
 
 
@@ -475,7 +490,8 @@ def render_ranking(rows: List[Dict[str, str]], schedule: str, grid: str) -> str:
         f"schedule: all {n} cells, ranked by the selection score of "
         r"Eq.~\eqref{eq:score} at round " + rounds + r". Five-split means, "
         r"\textbf{validation} axis (adaptation and preservation; score in "
-        r"points). $\star$ marks the cell the screen selected within its "
+        r"points). The mark $^{f}$ flags the cell the screen selected within "
+        r"its "
         f"method ({winners} on this schedule), the setting {ref} re-runs at the "
         f"full horizon. {control_note}" + "}",
         r"\label{" + tab + "}",
@@ -523,8 +539,8 @@ def render_logit(rows: List[Dict[str, str]]) -> str:
     names = " and ".join("$" + label(c).split("$")[1] + "$" for c in measured)
 
     def block(r):
-        mark = r"$^{\star}$" if r["selected"] == "1" else ""
-        other = r"$^{\dagger}$" if r["full_source"] == "other" else ""
+        mark = SCREEN_MARK if r["selected"] == "1" else ""
+        other = OTHER_MARK if r["full_source"] == "other" else ""
         full_val = _pts(r["full_val_score"])
         full_test = _pts(r["full_test_score"])
         return [_pts(r["screen_score"]) + mark,
@@ -542,11 +558,12 @@ def render_logit(rows: List[Dict[str, str]]) -> str:
         + r", \textbf{validation}) and its rank among the "
         f"{first['method_of']} strengths, beside the full-horizon score (round "
         f"{full_rounds}) on validation and on \\textbf{{test}}, in "
-        r"points, five-split means, scored by Eq.~\eqref{eq:score}. $\star$ marks "
-        r"the strength the screen selected on that schedule. Only the selected "
+        r"points, five-split means, scored by Eq.~\eqref{eq:score}. The mark "
+        r"$^{f}$ flags the strength the screen selected on that schedule. Only "
+        r"the selected "
         f"strengths, {names}, were re-run at the full horizon; a dash is a "
         r"strength never measured there. Each re-run computed both schedules: "
-        r"$\dagger$ is the half of a run selected for the \emph{other} "
+        r"the mark $^{o}$ flags the half of a run selected for the \emph{other} "
         r"schedule, a measurement no selection read.}",
         r"\label{tab:screen_logit}",
         r"\scriptsize",

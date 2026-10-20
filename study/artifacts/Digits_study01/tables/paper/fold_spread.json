@@ -3572,7 +3572,51 @@
     "min_folds_won_row": "fisher_scaled_lam50/parallel",
     "rows_winning_every_fold": 15,
     "smallest_single_fold": -0.735256050411925
-   }
+   },
+   "single_penalty_lead": [
+    {
+     "schedule": "parallel",
+     "leader": "logit_l2_lam0p001",
+     "next": "fisher_lam8",
+     "leader_minus_next": {
+      "values": [
+       -0.8579963493934084,
+       2.40240167354996,
+       2.019423848984837,
+       -0.08060528257160016,
+       1.9860718334142042
+      ],
+      "mean": 1.0938591447967985,
+      "sd": 1.4623699612511352,
+      "min": -0.8579963493934084,
+      "max": 2.40240167354996,
+      "won": 3,
+      "lost": 2,
+      "same_sign_all_folds": false
+     }
+    },
+    {
+     "schedule": "cyclic",
+     "leader": "logit_l2_lam0p003",
+     "next": "ntd_b0p01_t2",
+     "leader_minus_next": {
+      "values": [
+       0.37799212135682936,
+       1.1505834420709196,
+       0.5158818879045359,
+       -1.7310855928083573,
+       1.9186378926433267
+      ],
+      "mean": 0.44640195023345086,
+      "sd": 1.3614614950575994,
+      "min": -1.7310855928083573,
+      "max": 1.9186378926433267,
+      "won": 4,
+      "lost": 1,
+      "same_sign_all_folds": false
+     }
+    }
+   ]
   },
   "tab:combos": {
    "name": "Table 4",
@@ -9883,7 +9927,7 @@
    "rows": [
     {
      "stage": "aggregation",
-     "block": "Server rules: the shortlist the cross was built from / Parallel schedule",
+     "block": "Server rules: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "aggfull",
       "cell": "anchor_h2",
@@ -9998,7 +10042,7 @@
     },
     {
      "stage": "aggregation",
-     "block": "Server rules: the shortlist the cross was built from / Parallel schedule",
+     "block": "Server rules: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "aggfull",
       "cell": "weight_q0",
@@ -10113,7 +10157,7 @@
     },
     {
      "stage": "aggregation",
-     "block": "Server rules: the shortlist the cross was built from / Parallel schedule",
+     "block": "Server rules: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "aggfull",
       "cell": "eta_0p95",
@@ -10228,7 +10272,7 @@
     },
     {
      "stage": "aggregation",
-     "block": "Server rules: the shortlist the cross was built from / Parallel schedule",
+     "block": "Server rules: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "aggfull",
       "cell": "trimmed_t3",
@@ -10343,7 +10387,7 @@
     },
     {
      "stage": "aggregation",
-     "block": "Server rules: the shortlist the cross was built from / Parallel schedule",
+     "block": "Server rules: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "aggfull",
       "cell": "fedavgm_b0p3",
@@ -10458,7 +10502,7 @@
     },
     {
      "stage": "aggregation",
-     "block": "Server rules: the shortlist the cross was built from / Cyclic schedule",
+     "block": "Server rules: the shortlist the combinations were built from / Cyclic schedule",
      "validation": {
       "stem": "aggfull",
       "cell": "seq_delta_capped",
@@ -10573,7 +10617,7 @@
     },
     {
      "stage": "aggregation",
-     "block": "Server rules: the shortlist the cross was built from / Cyclic schedule",
+     "block": "Server rules: the shortlist the combinations were built from / Cyclic schedule",
      "validation": {
       "stem": "aggfull",
       "cell": "seq_fedavg",
@@ -10688,7 +10732,7 @@
     },
     {
      "stage": "aggregation",
-     "block": "Server rules: the shortlist the cross was built from / Cyclic schedule",
+     "block": "Server rules: the shortlist the combinations were built from / Cyclic schedule",
      "validation": {
       "stem": "aggfull",
       "cell": "seq_mix_r0p3",
@@ -10803,7 +10847,7 @@
     },
     {
      "stage": "aggregation",
-     "block": "Server rules: the shortlist the cross was built from / Cyclic schedule",
+     "block": "Server rules: the shortlist the combinations were built from / Cyclic schedule",
      "validation": {
       "stem": "aggfull",
       "cell": "seq_delta_scaled",
@@ -10918,7 +10962,7 @@
     },
     {
      "stage": "aggregation",
-     "block": "Server rules: the shortlist the cross was built from / Cyclic schedule",
+     "block": "Server rules: the shortlist the combinations were built from / Cyclic schedule",
      "validation": {
       "stem": "aggfull",
       "cell": "seq_order_shuffle",
@@ -11033,7 +11077,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Parallel schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "regfull",
       "cell": "logit_l2_lam0p001",
@@ -11148,7 +11192,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Parallel schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "regfull",
       "cell": "hybrid_seq_mix0p5",
@@ -11263,7 +11307,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Parallel schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "regfull",
       "cell": "hybrid_seq_mix0p25",
@@ -11378,7 +11422,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Parallel schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "regfull",
       "cell": "ntd_b0p01_t0p5",
@@ -11493,7 +11537,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Parallel schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "regfull",
       "cell": "hybrid_mix0p25",
@@ -11608,7 +11652,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Parallel schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Parallel schedule",
      "validation": {
       "stem": "regfull",
       "cell": "hybrid_seq_mix0p75",
@@ -11723,7 +11767,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Cyclic schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Cyclic schedule",
      "validation": {
       "stem": "regfull",
       "cell": "ntd_b0p01_t2",
@@ -11838,7 +11882,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Cyclic schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Cyclic schedule",
      "validation": {
       "stem": "regfull",
       "cell": "hybrid_mix0p5",
@@ -11953,7 +11997,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Cyclic schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Cyclic schedule",
      "validation": {
       "stem": "regfull",
       "cell": "hybrid_seq_mix0p75",
@@ -12068,7 +12112,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Cyclic schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Cyclic schedule",
      "validation": {
       "stem": "regfull",
       "cell": "hybrid_seq_mix0p5",
@@ -12183,7 +12227,7 @@
     },
     {
      "stage": "regularisation",
-     "block": "Client penalties: the shortlist the cross was built from / Cyclic schedule",
+     "block": "Client penalties: the shortlist the combinations were built from / Cyclic schedule",
      "validation": {
       "stem": "regfull",
       "cell": "logit_l2_lam0p003",
@@ -12341,7 +12385,7 @@
    "rows": [
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Parallel schedule",
+     "block": "The combinations: eighteen pairs, one selected / Parallel schedule",
      "validation": {
       "stem": "combo",
       "cell": "anchor_h2_ntd_b0p01_t0p5",
@@ -12456,7 +12500,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Parallel schedule",
+     "block": "The combinations: eighteen pairs, one selected / Parallel schedule",
      "validation": {
       "stem": "combo",
       "cell": "eta_0p95_logit_l2_lam0p001",
@@ -12571,7 +12615,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Parallel schedule",
+     "block": "The combinations: eighteen pairs, one selected / Parallel schedule",
      "validation": {
       "stem": "combo",
       "cell": "weight_q0_ntd_b0p01_t0p5",
@@ -12686,7 +12730,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Parallel schedule",
+     "block": "The combinations: eighteen pairs, one selected / Parallel schedule",
      "validation": {
       "stem": "combo",
       "cell": "anchor_h2_logit_l2_lam0p001",
@@ -12801,7 +12845,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Parallel schedule",
+     "block": "The combinations: eighteen pairs, one selected / Parallel schedule",
      "validation": {
       "stem": "combo",
       "cell": "eta_0p95_ntd_b0p01_t0p5",
@@ -12916,7 +12960,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Parallel schedule",
+     "block": "The combinations: eighteen pairs, one selected / Parallel schedule",
      "validation": {
       "stem": "combo",
       "cell": "weight_q0_hybrid_seq_mix0p5",
@@ -13031,7 +13075,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Parallel schedule",
+     "block": "The combinations: eighteen pairs, one selected / Parallel schedule",
      "validation": {
       "stem": "combo",
       "cell": "weight_q0_logit_l2_lam0p001",
@@ -13146,7 +13190,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Parallel schedule",
+     "block": "The combinations: eighteen pairs, one selected / Parallel schedule",
      "validation": {
       "stem": "combo",
       "cell": "anchor_h2_hybrid_seq_mix0p5",
@@ -13261,7 +13305,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Parallel schedule",
+     "block": "The combinations: eighteen pairs, one selected / Parallel schedule",
      "validation": {
       "stem": "combo",
       "cell": "eta_0p95_hybrid_seq_mix0p5",
@@ -13376,7 +13420,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Cyclic schedule",
+     "block": "The combinations: eighteen pairs, one selected / Cyclic schedule",
      "validation": {
       "stem": "combo",
       "cell": "seq_fedavg_ntd_b0p01_t2",
@@ -13491,7 +13535,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Cyclic schedule",
+     "block": "The combinations: eighteen pairs, one selected / Cyclic schedule",
      "validation": {
       "stem": "combo",
       "cell": "seq_delta_capped_ntd_b0p01_t2",
@@ -13606,7 +13650,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Cyclic schedule",
+     "block": "The combinations: eighteen pairs, one selected / Cyclic schedule",
      "validation": {
       "stem": "combo",
       "cell": "seq_mix_r0p3_logit_l2_lam0p003",
@@ -13721,7 +13765,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Cyclic schedule",
+     "block": "The combinations: eighteen pairs, one selected / Cyclic schedule",
      "validation": {
       "stem": "combo",
       "cell": "seq_mix_r0p3_ntd_b0p01_t2",
@@ -13836,7 +13880,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Cyclic schedule",
+     "block": "The combinations: eighteen pairs, one selected / Cyclic schedule",
      "validation": {
       "stem": "combo",
       "cell": "seq_fedavg_logit_l2_lam0p003",
@@ -13951,7 +13995,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Cyclic schedule",
+     "block": "The combinations: eighteen pairs, one selected / Cyclic schedule",
      "validation": {
       "stem": "combo",
       "cell": "seq_delta_capped_logit_l2_lam0p003",
@@ -14066,7 +14110,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Cyclic schedule",
+     "block": "The combinations: eighteen pairs, one selected / Cyclic schedule",
      "validation": {
       "stem": "combo",
       "cell": "seq_delta_capped_hybrid_mix0p5",
@@ -14181,7 +14225,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Cyclic schedule",
+     "block": "The combinations: eighteen pairs, one selected / Cyclic schedule",
      "validation": {
       "stem": "combo",
       "cell": "seq_mix_r0p3_hybrid_mix0p5",
@@ -14296,7 +14340,7 @@
     },
     {
      "stage": "combination",
-     "block": "The cross: eighteen pairs, one crowned / Cyclic schedule",
+     "block": "The combinations: eighteen pairs, one selected / Cyclic schedule",
      "validation": {
       "stem": "combo",
       "cell": "seq_fedavg_hybrid_mix0p5",
