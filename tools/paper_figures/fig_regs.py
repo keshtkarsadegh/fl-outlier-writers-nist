@@ -23,7 +23,7 @@ import figstyle as fs
 # features.
 ARMS = [
     # Four curves only: the falling control, the two output-space leaders,
-    # and one elastic-weight representative for the trailing claim.  The
+    # and one EWC representative for the trailing claim.  The
     # remaining families are in the table; more lines here buried the point.
     ("param_l2_mu0", fs.BLACK, (0, (5, 2)), 0.5, 8),
     ("logit_l2_lam0p003", fs.BLUE, "-", 0.5, 7),
@@ -61,7 +61,7 @@ def main():
         shipped model at round 0, so the curves differ only in the penalty.
         Only the four curves the text argues from are drawn
         --- the falling control, logit matching, FedNTD, and one
-        elastic-weight arm --- the remaining families are read from the
+        EWC arm --- the remaining families are read from the
         table.  Validation basis, so the endpoints are not the
         test-set figures the tables report.
         """)

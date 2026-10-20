@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""The distillation-plus-elastic-weight mixtures against their two parents.
+"""The KD+EWC composites against their two parents.
 
 One row of panels per schedule, so the parents and their own mixtures are
 never drawn over the other schedule's: within each row the two parents carry
 the interval, and the composite leaves that interval only on preservation, where
-it holds at or above the elastic-weight parent.  On adaptation it stays inside
-it, below the distillation parent for all but a handful of rounds --- which is
+it holds at or above the EWC parent.  On adaptation it stays inside
+it, below the KD parent for all but a handful of rounds --- which is
 why the caption reports the construction and not a win.
 
     python fig_blends.py           # regenerates fig_blends.pdf from ../data
@@ -63,9 +63,20 @@ def main():
     for axis in axes[1]:
         axis.set_xlabel("Round")
 
+    # One legend serves both rows, so a parent is named by its family alone,
+    # from paper_names like every other printed name: the settings differ by
+    # row and the caption gives them.  The two rows must agree on that name,
+    # or the legend would be naming one row's parent for both.
+    parents = []
+    for slot in (0, 1):
+        names = {fs.short(arms[slot][0]) for _, arms in ROWS}
+        if len(names) != 1:
+            raise SystemExit("the rows' parents disagree on a name: %s"
+                             % sorted(names))
+        parents.append("%s parent" % names.pop())
     figure.legend(handles=fs.handles([
-        ("distillation parent", fs.VERMILION, "-"),
-        ("elastic-weight parent", fs.BLUE, "-"),
+        (parents[0], fs.VERMILION, "-"),
+        (parents[1], fs.BLUE, "-"),
         ("the composite, $m{=}0.5$", fs.GREEN, "-"),
     ]), loc="lower center", ncol=3, columnspacing=1.6,
         bbox_to_anchor=(0.5, 0.0))
@@ -76,22 +87,22 @@ def main():
     figure.tight_layout(pad=0.4, w_pad=1.4, rect=(0, 0.075, 1, 1))
     fs.save(figure, "fig_blends", rect=(0, 0.075, 1, 1))
     fs.caption("fig_blends", r"""
-        The distillation-plus-elastic-weight construction of each schedule
-        against the two parents it was built from, one row of panels per
-        schedule: accuracy on the source population (left, preservation) and
-        on the outlier cohort (right, adaptation), split-mean over the five
-        splits on the validation rows, from the shipped model at round 0.
-        In each row the parents are the orange and blue curves, distillation
-        and the elastic-weight term, and the green curve is that schedule's own
+        The KD+EWC composite of each schedule against the two parents it
+        was built from, one row of panels per schedule: accuracy on the
+        source population (left, preservation) and on the outlier cohort
+        (right, adaptation), split-mean over the five splits on the
+        validation rows, from the shipped model at round 0.  In each row the
+        parents are the orange and blue curves, distillation (KD) and the
+        Fisher penalty (EWC), and the green curve is that schedule's own
         construction at $m{=}0.5$; the composite each schedule's validation
         ordering selected is the $m{=}0.5$ cell built from the other
         schedule's components (Table~\ref{tab:selection_axis}), and the other
-        two ratios are in the released records.  On the left the composite holds
-        the elastic-weight parent's preservation; on the right it tracks below
-        the distillation parent on both rows, crossing just above it in the
-        closing rounds of the cyclic row, and, on the parallel row, below both
-        parents by the end of the budget.  Validation basis, so the endpoints
-        are not the test-set figures the tables report.
+        two ratios are in the released records.  On the left the composite
+        holds the EWC parent's preservation; on the right it tracks below the
+        KD parent on both rows, crossing just above it in the closing rounds
+        of the cyclic row, and, on the parallel row, below both parents by
+        the end of the budget.  Validation basis, so the endpoints are not
+        the test-set figures the tables report.
         """)
 
 

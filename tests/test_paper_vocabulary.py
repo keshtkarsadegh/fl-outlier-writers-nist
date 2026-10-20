@@ -130,6 +130,13 @@ def test_no_figure_prints_an_old_word(tmp_path, monkeypatch):
     # The two legends that once needed a caption sentence to decode them.
     assert any("composite" in t for t in drawn["fig_blends"])
     assert any(t.endswith("(selected)") for t in drawn["fig_combo"])
+    # The Fisher penalty is "EWC" on every page; the blends legend once wrote
+    # "elastic-weight parent", and the manuscript had to map it in a caption.
+    assert {"KD parent", "EWC parent"} <= set(drawn["fig_blends"])
+    for stem, texts in drawn.items():
+        assert not any("elastic-weight" in t for t in texts), stem
+    for caption in sorted(tmp_path.glob("*_caption.txt")):
+        assert "elastic-weight" not in caption.read_text(), caption.name
 
 
 # ------------------------------------------------------------ the tables
